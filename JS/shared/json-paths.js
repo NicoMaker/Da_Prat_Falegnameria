@@ -8,18 +8,20 @@
 const JsonPaths = (() => {
   // Calcola il percorso base per raggiungere la cartella JSON
   // a partire dalla posizione della pagina HTML corrente.
-  const pathSegments = window.location.pathname.split('/').filter(seg => seg.length > 0);
-  
+  const pathSegments = window.location.pathname
+    .split("/")
+    .filter((seg) => seg.length > 0);
+
   // Rimuove l'ultimo segmento se è un nome di file (contiene un punto)
   const last = pathSegments[pathSegments.length - 1];
-  if (last && last.includes('.')) {
+  if (last && last.includes(".")) {
     pathSegments.pop();
   }
-  
+
   // Numero di cartelle da risalire per tornare alla root
   const upLevels = pathSegments.length;
   // Se siamo nella root, base = "JSON/", altrimenti base = "../" * upLevels + "JSON/"
-  const basePath = upLevels > 0 ? '../'.repeat(upLevels) + 'JSON/' : 'JSON/';
+  const basePath = upLevels > 0 ? "../".repeat(upLevels) + "JSON/" : "JSON/";
 
   function get(jsonFilename) {
     if (!jsonFilename) throw new Error("JsonPaths.get: filename mancante");
