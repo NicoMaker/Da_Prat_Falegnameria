@@ -1373,3 +1373,36 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 6px;
   font-size: 1rem;
 }
+
+/* Migliorie per il select mobile (stessi colori dei bottoni) */
+#filter-select {
+  height: 48px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0 14px;
+  transition: all 0.2s ease;
+  appearance: auto;
+  -webkit-appearance: auto;
+  cursor: pointer;
+  /* I colori vengono impostati via JS, ma qui diamo un fallback */
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 3px solid #2d2d2d;
+}
+
+/* Stile per le opzioni nel dropdown (alcuni browser supportano) */
+#filter-select option {
+  padding: 10px 12px;
+  font-weight: 600;
+  border-radius: 0;
+  /* I colori vengono applicati inline da JS */
+}
+
+/* Su mobile, il select occupa tutta la larghezza disponibile */
+@media (max-width: 768px) {
+  #filter-select-wrapper {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
