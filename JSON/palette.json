@@ -1,0 +1,7 @@
+[
+  { "nome": "Antracite", "hex": "#2d2d2d" },
+  { "nome": "Grigio Chiaro", "hex": "#f0f0f0" },
+  { "nome": "Bianco", "hex": "#ffffff" },
+  { "nome": "Accento", "hex": "#c0a060" },
+  { "nome": "Testo", "hex": "#1a1a1a" }
+]

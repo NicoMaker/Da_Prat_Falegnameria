@@ -1,0 +1,76 @@
+{
+  "info": {
+    "titolo": "Falso Nameria Da Prat",
+    "testo": "Soluzioni su misura per la tua casa",
+    "p_iva": ""
+  },
+  "contatti": {
+    "telefono": "+39 339 179 2590",
+    "email": "dapratmauro@gmail.com",
+    "indirizzo": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x477a2b2c2bab224b:0x1a5222f7789eb527?sa=X&ved=1t:8290&ictx=111",
+    "indirizzo_visuale": "Borgo Navarons 2a, 33097 Spilimbergo (PN)"
+  },
+  "social": {
+    "facebook": "",
+    "instagram": ""
+  },
+  "mappa": {
+    "latitudine": 46.1111,
+    "longitudine": 12.9003
+  },
+  "nomiGiorni": [
+    "Domenica",
+    "Lunedì",
+    "Martedì",
+    "Mercoledì",
+    "Giovedì",
+    "Venerdì",
+    "Sabato"
+  ],
+  "orari": [
+    "Lunedì: 8:00 - 12:30 / 14:00 - 19:00",
+    "Martedì: 8:00 - 12:30 / 14:00 - 19:00",
+    "Mercoledì: 8:00 - 12:30 / 14:00 - 19:00",
+    "Giovedì: 8:00 - 12:30 / 14:00 - 19:00",
+    "Venerdì: 8:00 - 12:30 / 14:00 - 19:00",
+    "Sabato: 8:00 - 12:00",
+    "Domenica: Chiuso"
+  ],
+  "orariStagionali": [],
+  "minutiInChiusura": 30,
+  "cambioStagione": {
+    "meseEstivo": 3,
+    "meseInvernale": 10
+  },
+  "legendaOrari": {
+    "titolo": "Legenda",
+    "colori": {
+      "aperto": "#00FF7F",
+      "in apertura": "#90EE90",
+      "in chiusura": "yellow",
+      "chiuso": "orange"
+    },
+    "testo": {
+      "aperto": "Aperto",
+      "in apertura": "In apertura",
+      "in chiusura": "In chiusura",
+      "chiuso": "Chiuso"
+    }
+  },
+  "festivita": [
+    "01/01",
+    "06/01",
+    "25/04",
+    "01/05",
+    "02/06",
+    "15/08",
+    "01/11",
+    "08/12",
+    "25/12",
+    "26/12"
+  ],
+  "chiusure": [
+    { "tipo": "giorno", "data": "", "motivo": "" }
+  ],
+  "orariExtra": [{ "giorno": "", "orari": "", "motivo": "" }]
+}
