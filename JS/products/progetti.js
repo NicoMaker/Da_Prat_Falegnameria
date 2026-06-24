@@ -124,6 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
     filterSelect.style.border = `3px solid ${colors.border}`;
     filterSelect.style.outline = `2px solid ${colors.border}`;
     filterSelect.style.outlineOffset = "1px";
+
+    // Aggiorna il colore di ogni option in base a se è selezionata o meno
+    Array.from(filterSelect.options).forEach((opt) => {
+      const optColors = getCategoryColors(opt.value);
+      if (opt.value === selected) {
+        opt.style.backgroundColor = optColors.activeBg;
+        opt.style.color = optColors.activeText;
+      } else {
+        opt.style.backgroundColor = optColors.bg;
+        opt.style.color = optColors.text;
+      }
+    });
   }
 
   // ── Aggiorna UI bottoni e select ──────────────────────────
