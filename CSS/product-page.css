@@ -95,22 +95,32 @@
 .dots-container {
   text-align: center;
   padding-top: var(--spacing-sm);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
 }
 
 .dot {
   cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 5px;
-  background-color: var(--gray-medium);
+  height: 10px;
+  width: 10px;
+  margin: 0 2px;
+  background-color: rgba(0,0,0,0.2);
+  border: 2px solid rgba(0,0,0,0.25);
   border-radius: 50%;
   display: inline-block;
-  transition: background-color var(--transition-fast);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
-.dot:hover,
 .dot.active {
-  background-color: var(--primary);
+  background-color: var(--color-gold, #b89a5a);
+  border-color: var(--color-gold, #b89a5a);
+  transform: scale(1.35);
+}
+
+.dot:hover {
+  background-color: var(--color-gold-light, #d4b878);
+  border-color: var(--color-gold-light, #d4b878);
 }
 
 /* Product Info */
@@ -188,28 +198,34 @@
 .back-button {
   display: inline-flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: 12px 30px;
-  background-color: #8b5a2b;
-  color: var(--white);
-  font-weight: 600;
-  border-radius: var(--radius-button);
-  transition: all var(--transition-base);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  gap: 8px;
+  padding: 11px 0;
+  color: var(--color-dark, #1a1a1a);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-top: 1px solid #eee;
+  width: 100%;
+  transition: color var(--transition-fast), gap var(--transition-fast);
+  background: none;
 }
 
 .back-button:hover {
-  background-color: var(--accent-rust);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  color: var(--color-gold, #b89a5a);
+  gap: 12px;
+  background: none;
+  transform: none;
+  box-shadow: none;
 }
 
 .back-button .material-icons {
+  font-size: 16px;
   transition: transform var(--transition-base);
 }
 
 .back-button:hover .material-icons {
-  transform: translateX(-3px);
+  transform: translateX(-4px);
 }
 
 /* Responsive */
@@ -226,8 +242,7 @@
 
 @media (max-width: 767px) {
   .back-button {
-    width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .main-product-image {
