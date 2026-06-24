@@ -578,26 +578,54 @@ h1, h2, h3, h4, h5, h6 {
 .gallery-item:hover img { transform: scale(1.06); }
 
 /* ===== FOOTER ===== */
+
+/* ── Struttura base (mobile-first, 1 colonna) ── */
 .site-footer {
   background: var(--color-anthracite);
   color: rgba(255,255,255,0.85);
   font-size: 0.9rem;
 }
 
-.footer-content { padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-xl); }
-
-.footer-grid {
+.footer-content {
   max-width: 1200px;
   margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-xl);
+}
+
+.footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  align-items: flex-start;
 }
 
-@media (max-width: 768px) {
-  .footer-grid { grid-template-columns: 1fr; gap: var(--spacing-lg); }
+/* Tablet: 2 colonne */
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
 }
 
+/* Desktop: 3 colonne */
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1.8fr 1.4fr 1fr;
+  }
+}
+
+/* Ogni colonna come flex colonna */
+.footer-grid > .footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-section {
+  padding-top: 1rem;
+}
+
+/* ── Titoli ── */
 .footer-title {
   font-family: var(--font-heading);
   font-size: 1.4rem;
@@ -606,9 +634,9 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em;
   color: var(--color-white);
   margin-bottom: var(--spacing-xs);
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
-
-.footer-text { color: rgba(255,255,255,0.5); margin-bottom: var(--spacing-md); font-size: 0.85rem; }
 
 .footer-subtitle {
   font-size: 0.68rem;
@@ -617,10 +645,28 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color: var(--color-gold);
   margin-bottom: var(--spacing-sm);
-  margin-top: var(--spacing-md);
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
-.footer-list { display: flex; flex-direction: column; gap: 8px; }
+/* Spazio tra "info aziendale" e il sottotitolo "Contatti" */
+.footer-section-tradizione-contatti .footer-subtitle {
+  margin-top: 1.5rem !important;
+}
+
+/* ── Testo e lista ── */
+.footer-text {
+  color: rgba(255,255,255,0.55);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.footer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
 .footer-item {
   display: flex;
@@ -628,156 +674,113 @@ h1, h2, h3, h4, h5, h6 {
   gap: 8px;
   color: rgba(255,255,255,0.7);
   font-size: 0.88rem;
+  line-height: 1.5;
+  opacity: 0.9;
 }
 
-.footer-item .material-icons { font-size: 16px; color: var(--color-gold); margin-top: 2px; flex-shrink: 0; }
-.footer-item a:hover { color: var(--color-gold); }
-
-.social-links { display: flex; gap: var(--spacing-sm); margin-bottom: var(--spacing-md); }
-.social-links a { opacity: 0.7; transition: opacity var(--transition-fast); }
-.social-links a:hover { opacity: 1; }
-
-.legenda-orari { margin-top: var(--spacing-md); display: flex; flex-direction: column; gap: 6px; font-size: 0.83rem; }
-.legenda-orari div { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.65); }
-
-.footer-map {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing-md);
+.footer-item .material-icons {
+  font-size: 16px;
+  color: var(--color-gold);
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, color 0.25s ease;
+  vertical-align: middle;
 }
 
-#map {
+.footer-item:hover .material-icons {
+  transform: scale(1.2);
+  color: var(--color-gold-light);
+}
+
+/* Link nel footer */
+.footer-list .footer-item a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+.footer-list .footer-item a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold-light);
+  transition: width 0.3s ease;
+}
+
+.footer-list .footer-item a:hover {
+  color: var(--color-gold-light);
+}
+
+.footer-list .footer-item a:hover::after {
   width: 100%;
-  height: 280px;
-  background: #333;
-  margin-bottom: var(--spacing-lg);
 }
 
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08);
-  padding: var(--spacing-md);
-  text-align: center;
-  color: rgba(255,255,255,0.35);
+/* ── Social ── */
+.social-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: 1.5rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.1);
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  opacity: 1;
+}
+
+.social-links a:hover {
+  background-color: rgba(184,154,90,0.25);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.social-links a img {
+  width: 24px;
+  height: 24px;
+  transition: filter 0.25s ease;
+}
+
+.social-links a:hover img {
+  filter: brightness(1.15) drop-shadow(0 0 4px rgba(184,154,90,0.6));
+}
+
+/* ── Legenda orari ── */
+.legenda-orari {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
   font-size: 0.8rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  margin-top: 0;
 }
 
-/* closure alerts */
+.legenda-orari div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.65);
+}
+
+/* ── Chiusure ── */
 .footer-closure-alert {
   background: rgba(220,50,50,0.15);
   border: 1px solid rgba(220,50,50,0.4);
   padding: 10px 14px;
-  margin-top: 10px;
+  border-radius: 4px;
   font-size: 0.82rem;
-  color: #ff9999;
+  margin-top: 10px;
+  color: rgba(255,180,180,0.9);
 }
 
-.footer-future-closures { margin-top: 10px; font-size: 0.82rem; color: rgba(255,255,255,0.55); }
-.footer-future-closures-title { font-weight: 600; margin-bottom: 4px; color: rgba(255,255,255,0.7); }
-.footer-future-closures-item { padding: 2px 0; }
-
-/* ===== Responsive utility ===== */
-@media (max-width: 600px) {
-  .cta-button { padding: 12px 22px; font-size: 0.72rem; }
-  .hero-title { font-size: 2.6rem; }
-}
-
-/* ===== Scrollbar ===== */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-light-gray); }
-::-webkit-scrollbar-thumb { background: var(--color-anthracite); }
-
-/* ===== Progetti Card (rendered by progetti.js) ===== */
-.Progetti-card {
-  background: var(--color-white);
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-.Progetti-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-
-.Progetti-card .container-immagine {
-  overflow: hidden;
-  height: 210px;
-}
-.Progetti-card .immagine {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-.Progetti-card:hover .immagine { transform: scale(1.04); }
-
-.Progetti-card .Progetti-card-content {
-  padding: 1.2rem 1.4rem 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  align-items: center;
-  text-align: center;
-}
-
-.Progetti-card .nome {
-  font-family: var(--font-heading);
-  font-size: 1.1rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--color-dark);
-}
-
-.Progetti-card .descrizione {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.no-results {
-  text-align: center;
-  color: var(--text-muted);
-  padding: 3rem;
-  font-size: 1rem;
-  grid-column: 1/-1;
-}
-
-/* ===== CARD HOVER FIX — testo sempre leggibile ===== */
-.Progetti-card {
-  position: relative;
-}
-
-/* Overlay scuro sull'immagine all'hover per contrasto */
-.Progetti-card .container-immagine::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(26,26,26,0.0);
-  transition: background var(--transition-base);
-  pointer-events: none;
-}
-.Progetti-card:hover .container-immagine::after {
-  background: rgba(26,26,26,0.18);
-}
-
-/* Il contenuto card non deve scalare — solo l'immagine */
-.Progetti-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.18);
-}
-
-/* Barra dorata in basso al nome all'hover */
-.Progetti-card:hover .nome {
-  color: var(--color-gold);
-}
-
-/* ===== FOOTER MIGLIORATO ===== */
-
-/* Grid footer più bilanciata */
-.footer-grid {
-  grid-template-columns: 1.8fr 1.4fr 1fr !important;
-}
-
-/* Chiusure — layout inline più compatto */
 .footer-future-closures {
   margin-top: 12px;
   padding: 10px 14px;
@@ -812,38 +815,58 @@ h1, h2, h3, h4, h5, h6 {
   flex-shrink: 0;
 }
 
-/* Legenda orari più compatta */
-.legenda-orari {
-  gap: 5px !important;
-  font-size: 0.8rem !important;
-}
-
-/* Orario attivo evidenziato */
-#orari-footer li:first-child {
-  font-size: 0.95rem;
-}
-
-/* Colonna contatti — icone allineate */
-.footer-item {
-  line-height: 1.5;
-}
-
-/* Mappa con bordo sottile */
-#map {
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-/* Separatore elegante prima della mappa */
+/* ── Mappa ── */
 .footer-map {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
   border-top: 1px solid rgba(255,255,255,0.06);
   padding-top: var(--spacing-lg);
   margin-top: var(--spacing-sm);
 }
 
-/* Footer bottom con copyright e P.IVA */
+#map {
+  width: 100%;
+  height: 280px;
+  background: #333;
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ── Copyright ── */
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.06) !important;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: var(--spacing-md);
+  text-align: center;
+  color: rgba(255,255,255,0.35);
+  font-size: 0.8rem;
+  max-width: 1200px;
+  margin: 0 auto;
   letter-spacing: 0.05em;
+}
+
+/* ── Orario oggi evidenziato ── */
+#orari-footer li:first-child {
+  font-size: 0.95rem;
+}
+
+/* ── Disabilita hover su touch ── */
+@media (hover: none) and (pointer: coarse) {
+  .footer-list .footer-item a:hover {
+    color: rgba(255,255,255,0.7) !important;
+  }
+  .footer-list .footer-item a:hover::after {
+    width: 0 !important;
+  }
+  .footer-item:hover .material-icons {
+    transform: none !important;
+    color: var(--color-gold) !important;
+  }
+  .social-links a:hover {
+    background-color: rgba(255,255,255,0.1) !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
 }
 
 /* ===== PRODUCT PAGE STYLES ===== */
