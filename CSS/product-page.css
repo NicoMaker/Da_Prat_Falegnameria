@@ -300,3 +300,117 @@
   position: absolute !important;
   top: 50% !important;
 }
+
+/* ===== RESPONSIVE COMPLETO PAGINA PRODOTTO ===== */
+
+/* Layout base mobile-first */
+.product-detail-container {
+  padding: var(--spacing-sm);
+  margin-top: 0;
+}
+
+.product-breadcrumb {
+  font-size: 0.8rem;
+  padding: 12px 0;
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+/* Tablet: 2 colonne */
+@media (min-width: 768px) {
+  .product-detail-container {
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+  }
+
+  .product-detail-card {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-2xl);
+  }
+}
+
+/* Mobile: tutto in colonna, ottimizzato */
+@media (max-width: 767px) {
+  .product-detail-card {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-md);
+  }
+
+  .product-image-gallery {
+    position: static !important; /* rimuove lo sticky */
+  }
+
+  .main-product-image {
+    height: 260px;
+  }
+
+  /* Titolo prodotto più compatto */
+  .product-title {
+    font-size: clamp(1.8rem, 8vw, 2.4rem) !important;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .product-eyebrow {
+    font-size: 0.65rem;
+  }
+
+  /* Descrizione */
+  .product-description h2 {
+    font-size: 1.15rem;
+  }
+
+  .product-description p {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  /* Feature pills: 2 colonne su mobile */
+  .product-features {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .product-feature {
+    font-size: 0.72rem;
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  /* CTA: bottoni full-width su mobile */
+  .product-cta {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .product-cta .cta-button {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Tabella specifiche */
+  .product-detail-card table {
+    font-size: 0.8rem;
+  }
+
+  /* Badge categoria */
+  .product-info .categoria-badges-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+/* Schermi molto piccoli */
+@media (max-width: 380px) {
+  .product-features {
+    grid-template-columns: 1fr;
+  }
+
+  .main-product-image {
+    height: 220px;
+  }
+
+  .product-detail-card {
+    padding: var(--spacing-sm);
+  }
+}
