@@ -458,7 +458,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0 var(--spacing-md);
 }
 
-.filter-btn {
+.filter-button {
   padding: 7px 18px;
   font-size: 0.72rem;
   font-weight: 700;
@@ -471,8 +471,8 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-secondary);
   border-radius: var(--radius-sm);
 }
-.filter-btn:hover { border-color: var(--color-gold); color: var(--color-gold); }
-.filter-btn.active {
+.filter-button:hover { border-color: var(--color-gold); color: var(--color-gold); }
+.filter-button.active {
   background: var(--color-dark);
   border-color: var(--color-dark);
   color: var(--color-white);
@@ -1017,6 +1017,11 @@ h1, h2, h3, h4, h5, h6 {
 .back-button .material-icons { font-size: 16px; }
 
 /* ===== Card hover overlay & link hint ===== */
+.container-immagine {
+  position: relative;
+  overflow: hidden;
+}
+
 .card-hover-overlay {
   position: absolute;
   inset: 0;
@@ -1026,6 +1031,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   opacity: 0;
   transition: opacity var(--transition-base);
+  z-index: 2;
 }
 .card-hover-overlay .material-icons {
   font-size: 2rem;
@@ -1047,4 +1053,5 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color: var(--color-gold);
   margin-top: 0.5rem;
+  text-align: center;
 }

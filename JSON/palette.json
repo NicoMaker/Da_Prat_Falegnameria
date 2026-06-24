@@ -1,7 +1,9 @@
 [
-  { "nome": "Antracite", "hex": "#2d2d2d" },
-  { "nome": "Grigio Chiaro", "hex": "#f0f0f0" },
-  { "nome": "Bianco", "hex": "#ffffff" },
-  { "nome": "Accento", "hex": "#c0a060" },
-  { "nome": "Testo", "hex": "#1a1a1a" }
+  { "bg": "#e8f0e8", "text": "#2d5a2d", "border": "#4a8a4a" },
+  { "bg": "#e8eaf6", "text": "#283593", "border": "#3f51b5" },
+  { "bg": "#fce4ec", "text": "#880e4f", "border": "#c2185b" },
+  { "bg": "#fff3e0", "text": "#e65100", "border": "#f57c00" },
+  { "bg": "#e0f2f1", "text": "#00695c", "border": "#00897b" },
+  { "bg": "#f3e5f5", "text": "#6a1b9a", "border": "#8e24aa" },
+  { "bg": "#e3f2fd", "text": "#0d47a1", "border": "#1976d2" }
 ]

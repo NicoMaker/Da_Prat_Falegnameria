@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hasLink) card.style.cursor = "pointer";
 
     card.innerHTML = `
-      <div class="container-immagine" style="position:relative; overflow:hidden;">
+      <div class="container-immagine">
         <img class="immagine" src="${item.immagine}" alt="${item.nome}" loading="lazy">
         ${hasLink ? '<div class="card-hover-overlay"><span class="material-icons">open_in_new</span></div>' : ''}
       </div>
