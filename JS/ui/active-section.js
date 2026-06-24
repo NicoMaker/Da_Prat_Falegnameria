@@ -1,7 +1,17 @@
-// Active section highlighting on scroll
+// Active section highlighting on scroll + product pages support
 // Questo script è il SOLO responsabile di aggiornare l'hash dell'URL
 
 document.addEventListener("DOMContentLoaded", () => {
+  // ── Rileva se siamo su una pagina prodotto (Projects/) ──────────────────
+  const isProductPage = window.location.pathname.includes("/Projects/");
+
+  // Su pagine prodotto: evidenzia sempre "Prodotti" fisso
+  if (isProductPage) {
+    highlightProductPage();
+    return;
+  }
+
+  // ── LOGICA INDEX ─────────────────────────────────────────────────────────
   const sections = document.querySelectorAll("section[id], footer#Contatti");
   const navLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
 
@@ -10,33 +20,48 @@ document.addEventListener("DOMContentLoaded", () => {
   let preventHashUpdate = false;
   let isInitialLoad = true;
 
+  // Normalizza id per confronto case-insensitive
+  function normalizeId(id) {
+    return (id || "").toLowerCase();
+  }
+
+  function updateActiveLink(sectionId) {
+    const normTarget = normalizeId(sectionId);
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href") || "";
+      // Supporta href="#home", "#Home", "../index.html#prodotti" ecc.
+      const hash = href.includes("#") ? href.split("#").pop() : "";
+      const normHash = normalizeId(hash);
+      if (normHash === normTarget) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  }
+
   function highlightNavigation() {
     if (isInitialLoad) return;
 
     const scrollY = window.pageYOffset;
     let currentSectionId = "";
 
-    // Crea un array di sezioni con le loro posizioni
     const sectionPositions = Array.from(sections).map((section) => ({
       id: section.getAttribute("id"),
       top: section.offsetTop,
       bottom: section.offsetTop + section.offsetHeight,
     }));
 
-    // Controlla se siamo alla fine della pagina (Contatti)
     const windowBottom = scrollY + window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
 
     if (windowBottom >= documentHeight - 50) {
       currentSectionId = "Contatti";
     } else {
-      // Trova la sezione corrente basandosi sulla posizione di scroll
-      // Usa un offset per l'header
       const header = document.querySelector(".site-header");
       const headerHeight = header ? header.offsetHeight : 80;
-      const scrollPosition = scrollY + headerHeight + 100; // Aggiungi un margine
+      const scrollPosition = scrollY + headerHeight + 100;
 
-      // Trova la sezione che contiene la posizione corrente
       for (let i = sectionPositions.length - 1; i >= 0; i--) {
         const section = sectionPositions[i];
         if (scrollPosition >= section.top) {
@@ -45,64 +70,43 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
 
-      // Se siamo in cima alla pagina
       if (scrollY < 100) {
-        currentSectionId = "Home";
+        currentSectionId = "home";
       }
     }
 
-    // Se non abbiamo trovato una sezione, usa Home come default
     if (!currentSectionId) {
-      currentSectionId = "Home";
+      currentSectionId = "home";
     }
 
-    // Aggiorna i link di navigazione
     updateActiveLink(currentSectionId);
 
-    // NON aggiornare l'hash se è bloccato
     if (preventHashUpdate) return;
 
-    // Aggiorna l'hash SOLO se è diverso dall'attuale
     const currentHash = window.location.hash.substring(1);
-    if (currentHash !== currentSectionId) {
+    if (normalizeId(currentHash) !== normalizeId(currentSectionId)) {
       try {
         history.replaceState(null, null, `#${currentSectionId}`);
-        console.log(`📍 Hash aggiornato: #${currentSectionId}`);
-      } catch (e) {
-        console.error("Errore nell'aggiornamento dell'hash:", e);
-      }
+      } catch (e) {}
     }
   }
 
-  function updateActiveLink(sectionId) {
-    navLinks.forEach((link) => {
-      const targetId = link.getAttribute("href").substring(1);
-      if (targetId === sectionId) {
-        link.classList.add("active");
-      } else {
-        link.classList.remove("active");
-      }
-    });
-    console.log(`🎯 Link attivo: ${sectionId}`);
-  }
-
-  // Click su link
+  // Click su link nav
   navLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
+      const href = link.getAttribute("href") || "";
+
+      // Link verso altra pagina (es. ../index.html#prodotti) — lascia navigare
+      if (href.includes("index.html") || href.startsWith("http")) return;
+
       event.preventDefault();
-      const targetId = link.getAttribute("href").substring(1);
+      const targetId = href.includes("#") ? href.split("#").pop() : "";
+      if (!targetId) return;
 
       if (targetId === "Contatti" && !document.getElementById("Contatti")) {
-        document.addEventListener(
-          "footerLoaded",
-          () => {
-            scrollToSection(targetId);
-          },
-          { once: true },
-        );
+        document.addEventListener("footerLoaded", () => { scrollToSection(targetId); }, { once: true });
         return;
       }
-
       scrollToSection(targetId);
     });
   });
@@ -122,11 +126,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const header = document.querySelector(".site-header");
     const totalOffset = header ? header.offsetHeight : 80;
-
     const offsetPosition = targetElement.offsetTop - totalOffset;
     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-
-    console.log(`🔄 Scroll verso: ${targetId}`);
 
     setTimeout(() => {
       preventHashUpdate = false;
@@ -134,15 +135,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 800);
   }
 
-  // Scroll listener con debounce
   window.addEventListener("scroll", () => {
     if (isManualNavigation || isInitialLoad) return;
-
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(highlightNavigation, 150);
   });
 
-  // Inizializzazione
   function initializePage() {
     const hash = window.location.hash.substring(1);
 
@@ -150,36 +148,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
         updateActiveLink(targetId);
-
         const header = document.querySelector(".site-header");
         const headerHeight = header ? header.offsetHeight : 80;
 
-        if (targetId === "Prodotti") {
-          if (window.pageYOffset > 0) {
-            const offsetPosition = targetElement.offsetTop - headerHeight;
-            window.scrollTo({ top: offsetPosition, behavior: "auto" });
-          }
-        } else if (targetId === "Contatti") {
-          console.log("⬇️ Scrolling verso Contatti (fine pagina)");
-          setTimeout(() => {
-            window.scrollTo({
-              top: document.body.scrollHeight,
-              behavior: "auto",
-            });
-          }, 100);
-        } else if (targetId === "Home") {
-          console.log("🏠 Sezione Home, scroll non necessario.");
+        if (normalizeId(targetId) === "contatti") {
+          setTimeout(() => { window.scrollTo({ top: document.body.scrollHeight, behavior: "auto" }); }, 100);
+        } else if (normalizeId(targetId) === "home") {
+          // no scroll needed
         } else {
-          const offsetPosition = targetElement.offsetTop - headerHeight;
-          window.scrollTo({ top: offsetPosition, behavior: "auto" });
+          window.scrollTo({ top: targetElement.offsetTop - headerHeight, behavior: "auto" });
         }
 
         preventHashUpdate = true;
-
         setTimeout(() => {
           preventHashUpdate = false;
           isInitialLoad = false;
-          console.log("✅ Inizializzazione completata, sistema sbloccato");
         }, 1500);
       } else {
         preventHashUpdate = false;
@@ -189,26 +172,11 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (hash) {
-      console.log(`🎯 Hash rilevato al caricamento: #${hash}`);
-
-      if (hash === "Contatti") {
+      if (normalizeId(hash) === "contatti") {
         preventHashUpdate = true;
-        console.log(
-          "🔄 In attesa del caricamento del footer per sezione Contatti...",
-        );
-
-        document.addEventListener(
-          "footerLoaded",
-          () => {
-            console.log("✅ Footer caricato, scroll verso Contatti");
-            scrollToHash(hash);
-          },
-          { once: true },
-        );
-
+        document.addEventListener("footerLoaded", () => { scrollToHash(hash); }, { once: true });
         setTimeout(() => {
           if (!document.getElementById("Contatti")) {
-            console.warn("⚠️ Timeout: Footer non caricato entro 5 secondi");
             preventHashUpdate = false;
             isInitialLoad = false;
             highlightNavigation();
@@ -218,10 +186,9 @@ document.addEventListener("DOMContentLoaded", () => {
         scrollToHash(hash);
       }
     } else {
-      console.log("🏠 Nessun hash, imposto #Home");
-      updateActiveLink("Home");
-      history.replaceState(null, null, "#Home");
-
+      // Nessun hash: siamo in cima → Home attivo
+      updateActiveLink("home");
+      history.replaceState(null, null, "#home");
       setTimeout(() => {
         preventHashUpdate = false;
         isInitialLoad = false;
@@ -231,3 +198,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initializePage();
 });
+
+// ── Pagine prodotto: evidenzia "Prodotti" nel nav ──────────────────────────
+function highlightProductPage() {
+  const navLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
+  navLinks.forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    // Attiva il link che punta a #prodotti (anche con ../index.html#prodotti)
+    if (href.toLowerCase().includes("prodotti")) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}

@@ -1216,3 +1216,24 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0.5rem;
   text-align: center;
 }
+/* ===== Mobile menu close button ===== */
+.mobile-menu-close {
+  display: block;
+  margin-left: auto;
+  margin-bottom: var(--spacing-sm);
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color var(--transition-fast);
+}
+.mobile-menu-close:hover { color: var(--color-gold); }
+
+/* ===== Mobile nav active ===== */
+.mobile-nav-link.active {
+  color: var(--color-gold) !important;
+  border-bottom-color: var(--color-gold);
+}
