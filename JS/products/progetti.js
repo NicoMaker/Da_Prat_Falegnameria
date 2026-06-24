@@ -29,18 +29,19 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener("prodottiErrore", () => {
-    progettiContainer.innerHTML = "<p class='no-results'>Errore nel caricamento dei prodotti.</p>";
+    progettiContainer.innerHTML =
+      "<p class='no-results'>Errore nel caricamento dei prodotti.</p>";
   });
 
   // ── Ottiene i colori per una categoria ──
   function getCategoryColors(category) {
     if (category === "Tutti") {
       return {
-        bg: "#e0e0e0",      // sfondo opzione (inattivo)
-        text: "#333333",    // testo opzione
+        bg: "#e0e0e0", // sfondo opzione (inattivo)
+        text: "#333333", // testo opzione
         border: "#aaaaaa",
         activeBg: "#2d2d2d", // sfondo select attivo
-        activeText: "#ffffff"
+        activeText: "#ffffff",
       };
     }
     const c = CategoryColors.getColor(category);
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         text: "#333",
         border: "#ccc",
         activeBg: "#333",
-        activeText: "#fff"
+        activeText: "#fff",
       };
     }
     return {
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
       text: c.text,
       border: c.border,
       activeBg: c.text,
-      activeText: "#ffffff"
+      activeText: "#ffffff",
     };
   }
 
@@ -127,11 +128,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ── Aggiorna UI bottoni e select ──────────────────────────
   function updateFilterUI() {
-    document.querySelectorAll("#filter-buttons .filter-button").forEach((btn) => {
-      const isActive = btn.dataset.category === currentFilter;
-      btn.classList.toggle("active", isActive);
-      CategoryColors.applyFilterButtonStyle(btn, btn.dataset.category, isActive);
-    });
+    document
+      .querySelectorAll("#filter-buttons .filter-button")
+      .forEach((btn) => {
+        const isActive = btn.dataset.category === currentFilter;
+        btn.classList.toggle("active", isActive);
+        CategoryColors.applyFilterButtonStyle(
+          btn,
+          btn.dataset.category,
+          isActive,
+        );
+      });
 
     if (filterSelect) {
       filterSelect.value = currentFilter;
@@ -145,10 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!grid) return;
     const header = document.querySelector(".site-header");
     const controls = document.getElementById("product-controls-sticky");
-    const totalOffset = (header ? header.offsetHeight : 0) +
-                        (controls ? controls.offsetHeight : 0) +
-                        CONFIG.scrollMargin;
-    const offsetPosition = grid.getBoundingClientRect().top + window.pageYOffset - totalOffset;
+    const totalOffset =
+      (header ? header.offsetHeight : 0) +
+      (controls ? controls.offsetHeight : 0) +
+      CONFIG.scrollMargin;
+    const offsetPosition =
+      grid.getBoundingClientRect().top + window.pageYOffset - totalOffset;
     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
   }
 
@@ -164,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
         (p) =>
           p.nome.toLowerCase().includes(term) ||
           p.descrizione.toLowerCase().includes(term) ||
-          p.categorie.some((c) => c.toLowerCase().includes(term))
+          p.categorie.some((c) => c.toLowerCase().includes(term)),
       );
     }
     displayProducts(filtered);
@@ -174,10 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayProducts(products) {
     progettiContainer.innerHTML = "";
     if (products.length === 0) {
-      progettiContainer.innerHTML = "<p class='no-results'>Nessun prodotto trovato.</p>";
+      progettiContainer.innerHTML =
+        "<p class='no-results'>Nessun prodotto trovato.</p>";
       return;
     }
-    products.forEach((p) => progettiContainer.appendChild(createProductCard(p)));
+    products.forEach((p) =>
+      progettiContainer.appendChild(createProductCard(p)),
+    );
   }
 
   function createProductCard(item) {
@@ -200,13 +212,13 @@ document.addEventListener("DOMContentLoaded", () => {
     card.innerHTML = `
       <div class="container-immagine">
         <img class="immagine" src="${item.immagine}" alt="${item.nome}" loading="lazy">
-        ${hasLink ? '<div class="card-hover-overlay"><span class="material-icons">open_in_new</span></div>' : ''}
+        ${hasLink ? '<div class="card-hover-overlay"><span class="material-icons">open_in_new</span></div>' : ""}
       </div>
       <div class="Progetti-card-content">
         <h3 class="nome">${item.nome}</h3>
         <p class="descrizione">${item.descrizione}</p>
         ${categoriaHtml}
-        ${hasLink ? '<p class="card-link-hint">Scopri di più →</p>' : ''}
+        ${hasLink ? '<p class="card-link-hint">Scopri di più →</p>' : ""}
       </div>
     `;
     return card;
@@ -226,7 +238,8 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const storedCategory = localStorage.getItem(CONFIG.storageKeyCategory);
       const storedSearchTerm = localStorage.getItem(CONFIG.storageKeySearch);
-      if (storedCategory && storedCategory !== "null") currentFilter = storedCategory;
+      if (storedCategory && storedCategory !== "null")
+        currentFilter = storedCategory;
       if (storedSearchTerm && storedSearchTerm !== "null") {
         currentSearchTerm = storedSearchTerm;
         if (searchInput) searchInput.value = storedSearchTerm;

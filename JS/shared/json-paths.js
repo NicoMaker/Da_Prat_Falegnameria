@@ -7,7 +7,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 const JsonPaths = (() => {
   function get(jsonFilename) {
-    if (!jsonFilename) throw new Error('JsonPaths.get: filename mancante');
+    if (!jsonFilename) throw new Error("JsonPaths.get: filename mancante");
     // Percorso sempre relativo alla root del sito
     return `JSON/${jsonFilename}`;
   }

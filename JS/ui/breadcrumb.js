@@ -16,7 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. Fallback: primo <h1>
   // 3. Fallback: <title> (parte prima di " —")
   let productName = "";
-  const h1 = document.querySelector("h1.product-title") || document.querySelector("h1");
+  const h1 =
+    document.querySelector("h1.product-title") || document.querySelector("h1");
   if (h1) {
     // Prende il testo pulito (rimuove eventuali <br> sostituendoli con spazio)
     productName = h1.innerText.replace(/\n/g, " ").replace(/\s+/g, " ").trim();

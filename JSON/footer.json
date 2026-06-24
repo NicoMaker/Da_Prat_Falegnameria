@@ -69,8 +69,6 @@
     "25/12",
     "26/12"
   ],
-  "chiusure": [
-    { "tipo": "giorno", "data": "", "motivo": "" }
-  ],
+  "chiusure": [{ "tipo": "giorno", "data": "", "motivo": "" }],
   "orariExtra": [{ "giorno": "", "orari": "", "motivo": "" }]
 }

@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
 
   if (menuToggle && mobileMenu) {
-
     function openMenu() {
       menuToggle.classList.add("active");
       mobileMenu.classList.add("active");
@@ -42,7 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Scroll to top per link #home
 document.addEventListener("DOMContentLoaded", () => {
-  const homeLinks = document.querySelectorAll('a[href="#home"], a[href="#Home"]');
+  const homeLinks = document.querySelectorAll(
+    'a[href="#home"], a[href="#Home"]',
+  );
   homeLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       if (!link.getAttribute("href").includes("index.html")) {

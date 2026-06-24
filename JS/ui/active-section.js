@@ -104,7 +104,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!targetId) return;
 
       if (targetId === "Contatti" && !document.getElementById("Contatti")) {
-        document.addEventListener("footerLoaded", () => { scrollToSection(targetId); }, { once: true });
+        document.addEventListener(
+          "footerLoaded",
+          () => {
+            scrollToSection(targetId);
+          },
+          { once: true },
+        );
         return;
       }
       scrollToSection(targetId);
@@ -152,11 +158,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const headerHeight = header ? header.offsetHeight : 80;
 
         if (normalizeId(targetId) === "contatti") {
-          setTimeout(() => { window.scrollTo({ top: document.body.scrollHeight, behavior: "auto" }); }, 100);
+          setTimeout(() => {
+            window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: "auto",
+            });
+          }, 100);
         } else if (normalizeId(targetId) === "home") {
           // no scroll needed
         } else {
-          window.scrollTo({ top: targetElement.offsetTop - headerHeight, behavior: "auto" });
+          window.scrollTo({
+            top: targetElement.offsetTop - headerHeight,
+            behavior: "auto",
+          });
         }
 
         preventHashUpdate = true;
@@ -174,7 +188,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hash) {
       if (normalizeId(hash) === "contatti") {
         preventHashUpdate = true;
-        document.addEventListener("footerLoaded", () => { scrollToHash(hash); }, { once: true });
+        document.addEventListener(
+          "footerLoaded",
+          () => {
+            scrollToHash(hash);
+          },
+          { once: true },
+        );
         setTimeout(() => {
           if (!document.getElementById("Contatti")) {
             preventHashUpdate = false;

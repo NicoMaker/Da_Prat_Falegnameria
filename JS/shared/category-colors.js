@@ -119,7 +119,7 @@ const CategoryColors = (() => {
     const badgesHtml = categories
       .map(
         (cat) =>
-          `<span class="categoria-badge" style="${getBadgeStyle(cat)}">${cat}</span>`
+          `<span class="categoria-badge" style="${getBadgeStyle(cat)}">${cat}</span>`,
       )
       .join("");
     return `<p class="categoria-badges-wrapper">${prefixHtml}${badgesHtml}</p>`;
