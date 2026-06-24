@@ -1,5 +1,6 @@
 // ──────────────────────────────────────────────────────────────
 // progetti.js — Gestione filtri (bottoni + select mobile)
+// con colori della palette per le opzioni del select
 // ──────────────────────────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -37,12 +38,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const categories = new Set([CONFIG.defaultFilter]);
     allProducts.forEach((p) => p.categorie.forEach((c) => categories.add(c)));
 
-    // Pulisci contenitori
     filterButtonsContainer.innerHTML = "";
     filterSelect.innerHTML = "";
 
     categories.forEach((category) => {
-      // Crea bottone
+      // Bottone
       const button = document.createElement("button");
       button.classList.add("filter-button");
       button.textContent = category;
@@ -57,21 +57,52 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       filterButtonsContainer.appendChild(button);
 
-      // Crea option per select
+      // Option con colori
       const option = document.createElement("option");
       option.value = category;
       option.textContent = category;
+
+      // Applica i colori della palette all'option
+      const color = CategoryColors.getColor(category);
+      if (color) {
+        option.style.backgroundColor = color.bg;
+        option.style.color = color.text;
+        // Per garantire leggibilità, forziamo il colore del testo
+        option.style.fontWeight = "bold";
+      }
+
       filterSelect.appendChild(option);
     });
 
-    // Evento cambio select
+    // Evento cambio select – aggiorna anche il colore del select stesso
     filterSelect.addEventListener("change", () => {
       currentFilter = filterSelect.value;
+      applyColorsToSelect(); // cambia il colore del select
       saveStateToLocalStorage();
       applyFiltersAndSearch();
       updateFilterUI();
       scrollToProductGrid();
     });
+
+    // Imposta il colore iniziale del select
+    applyColorsToSelect();
+  }
+
+  // ── Applica il colore della categoria selezionata al select ──
+  function applyColorsToSelect() {
+    const selected = filterSelect.value;
+    if (!selected) return;
+    const color = CategoryColors.getColor(selected);
+    if (color) {
+      filterSelect.style.backgroundColor = color.bg;
+      filterSelect.style.color = color.text;
+      filterSelect.style.borderColor = color.border || color.text;
+    } else {
+      // Fallback per "Tutti"
+      filterSelect.style.backgroundColor = "#fff";
+      filterSelect.style.color = "#333";
+      filterSelect.style.borderColor = "#ddd";
+    }
   }
 
   // ── Aggiorna UI bottoni e select ──────────────────────────
@@ -83,9 +114,10 @@ document.addEventListener("DOMContentLoaded", () => {
       CategoryColors.applyFilterButtonStyle(btn, btn.dataset.category, isActive);
     });
 
-    // Select
+    // Select: aggiorna il valore e il colore
     if (filterSelect) {
       filterSelect.value = currentFilter;
+      applyColorsToSelect();
     }
   }
 
