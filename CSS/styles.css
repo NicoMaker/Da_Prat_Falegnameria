@@ -1253,3 +1253,110 @@ h1, h2, h3, h4, h5, h6 {
   transform-origin: center;
   transition: transform 0.25s ease, opacity 0.2s ease !important;
 }
+
+
+/* ── Filtri: bottoni desktop, select mobile ── */
+#filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+#filter-select-wrapper {
+  display: none;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+#filter-select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  color: var(--text-primary);
+  appearance: auto;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+#filter-select:focus {
+  border-color: var(--color-gold);
+  outline: none;
+}
+
+/* Mobile: nascondi bottoni, mostra select */
+@media (max-width: 768px) {
+  #filter-buttons {
+    display: none;
+  }
+  #filter-select-wrapper {
+    display: block;
+  }
+}
+
+/* Tablet: se vuoi mantenere i bottoni anche su tablet, alza il breakpoint */
+@media (min-width: 769px) {
+  #filter-select-wrapper {
+    display: none !important;
+  }
+  #filter-buttons {
+    display: flex !important;
+  }
+}
+
+/* ── Filtri: bottoni desktop, select mobile ── */
+#filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+#filter-select-wrapper {
+  display: none;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+#filter-select {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: white;
+  color: var(--text-primary);
+  appearance: auto;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+#filter-select:focus {
+  border-color: var(--color-gold);
+  outline: none;
+}
+
+/* Mobile: nascondi bottoni, mostra select */
+@media (max-width: 768px) {
+  #filter-buttons {
+    display: none;
+  }
+  #filter-select-wrapper {
+    display: block;
+  }
+}
+
+/* Tablet e desktop: mostra bottoni, nascondi select */
+@media (min-width: 769px) {
+  #filter-select-wrapper {
+    display: none !important;
+  }
+  #filter-buttons {
+    display: flex !important;
+  }
+}

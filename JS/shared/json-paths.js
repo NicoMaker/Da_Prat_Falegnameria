@@ -5,16 +5,11 @@
 //   JsonPaths.get("footer.json")    -> "JSON/footer.json"   oppure "../JSON/footer.json"
 //   JsonPaths.get("palette.json")   -> "JSON/palette.json"  oppure "../JSON/palette.json"
 // ─────────────────────────────────────────────────────────────────────────────
-
 const JsonPaths = (() => {
-  const isInProjectsSubfolder = () =>
-    window.location.pathname.includes("/Projects/");
-
   function get(jsonFilename) {
-    if (!jsonFilename) throw new Error("JsonPaths.get: filename mancante");
-    const prefix = isInProjectsSubfolder() ? "../JSON/" : "JSON/";
-    return `${prefix}${jsonFilename}`;
+    if (!jsonFilename) throw new Error('JsonPaths.get: filename mancante');
+    // Percorso sempre relativo alla root del sito
+    return `JSON/${jsonFilename}`;
   }
-
-  return { get, isInProjectsSubfolder };
+  return { get };
 })();
