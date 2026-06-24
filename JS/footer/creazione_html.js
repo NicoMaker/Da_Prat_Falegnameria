@@ -82,20 +82,33 @@ function getClosuresHTML(data, oggiReal) {
 
   if (toShow.length > 0) {
     html += '<div class="footer-future-closures">';
-    html += '<div class="footer-future-closures-title"><span>📅</span> Prossime chiusure:</div>';
+    html += '<div class="footer-future-closures-title">'
+          +   '<span class="ffc-icon">📅</span>'
+          +   '<span>Prossime chiusure</span>'
+          + '</div>';
+    html += '<div class="ffc-list">';
 
     for (var j = 0; j < toShow.length; j++) {
       var c = toShow[j];
       var giorni = c.giorni;
-      var giornoTesto = giorni === 0 ? "oggi" : (giorni === 1 ? "domani" : "tra " + giorni + " giorni");
+      var badge = giorni === 0 ? 'Oggi'
+                : giorni === 1 ? 'Domani'
+                : 'fra ' + giorni + ' giorni';
 
-      if (c.isSingleDay) {
-        html += '<div class="footer-future-closures-item">• ' + c.inizioFmt + ': ' + c.label + ' (' + giornoTesto + ')</div>';
-      } else {
-        html += '<div class="footer-future-closures-item">• ' + c.inizioFmt + ' → ' + c.fineFmt + ': ' + c.label + ' (' + giornoTesto + ')</div>';
-      }
+      var dataStr = c.isSingleDay
+        ? c.inizioFmt
+        : c.inizioFmt + '<span class="ffc-arrow">→</span>' + c.fineFmt;
+
+      html += '<div class="ffc-item">';
+      html +=   '<div class="ffc-date">' + dataStr + '</div>';
+      html +=   '<div class="ffc-body">';
+      html +=     '<span class="ffc-motivo">' + c.label + '</span>';
+      html +=     '<span class="ffc-badge">' + badge + '</span>';
+      html +=   '</div>';
+      html += '</div>';
     }
-    html += '</div>';
+
+    html += '</div></div>';
   }
 
   return html;

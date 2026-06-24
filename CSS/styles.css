@@ -772,46 +772,103 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── Chiusure ── */
 .footer-closure-alert {
-  background: rgba(220,50,50,0.15);
-  border: 1px solid rgba(220,50,50,0.4);
+  background: rgba(220,50,50,0.12);
+  border-left: 3px solid rgba(220,80,80,0.7);
   padding: 10px 14px;
-  border-radius: 4px;
+  border-radius: 0 4px 4px 0;
   font-size: 0.82rem;
   margin-top: 10px;
   color: rgba(255,180,180,0.9);
 }
 
+/* ── Prossime chiusure — widget elegante ── */
 .footer-future-closures {
-  margin-top: 12px;
-  padding: 10px 14px;
-  background: rgba(255,255,255,0.05);
-  border-left: 3px solid var(--color-gold);
-  border-radius: 0 4px 4px 0;
-  font-size: 0.82rem;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: rgba(184,154,90,0.07);
+  border: 1px solid rgba(184,154,90,0.2);
+  border-radius: 8px;
+  position: relative;
 }
 
 .footer-future-closures-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.6rem;
   font-weight: 700;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 
-.footer-future-closures-item {
-  color: rgba(255,255,255,0.65);
-  padding: 3px 0;
+.ffc-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.ffc-list {
   display: flex;
-  align-items: flex-start;
-  gap: 6px;
-  font-size: 0.82rem;
-  line-height: 1.5;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.footer-future-closures-item::before {
-  content: '–';
-  color: var(--color-gold);
+.ffc-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 5px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.ffc-date {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  white-space: nowrap;
+  min-width: 44px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ffc-arrow {
+  color: rgba(184,154,90,0.5);
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+.ffc-body {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ffc-motivo {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ffc-badge {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(184,154,90,0.9);
+  background: rgba(184,154,90,0.12);
+  border: 1px solid rgba(184,154,90,0.25);
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
   flex-shrink: 0;
 }
 
