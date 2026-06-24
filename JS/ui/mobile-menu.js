@@ -5,12 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
 
   if (menuToggle && mobileMenu) {
-    // Aggiunge pulsante × per chiudere
-    const closeBtn = document.createElement("button");
-    closeBtn.className = "mobile-menu-close";
-    closeBtn.setAttribute("aria-label", "Chiudi menu");
-    closeBtn.innerHTML = "&times;";
-    mobileMenu.insertBefore(closeBtn, mobileMenu.firstChild);
 
     function openMenu() {
       menuToggle.classList.add("active");
@@ -32,8 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    closeBtn.addEventListener("click", closeMenu);
-
     // Chiude cliccando sui link
     mobileNavLinks.forEach((link) => {
       link.addEventListener("click", closeMenu);
@@ -48,12 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// Scroll to top per link #home / #Home
+// Scroll to top per link #home
 document.addEventListener("DOMContentLoaded", () => {
   const homeLinks = document.querySelectorAll('a[href="#home"], a[href="#Home"]');
   homeLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-      // Solo su index (senza ../index.html nel path)
       if (!link.getAttribute("href").includes("index.html")) {
         e.preventDefault();
         const mobileMenu = document.querySelector(".mobile-menu");
