@@ -3,8 +3,10 @@
 // ============================================================
 
 function getWhatsappURL(contatti) {
-  if (!contatti || !contatti.telefono) return null;
-  const numSoloCifre = contatti.telefono.replace(/[^\d]/g, "");
+  // Usa il cellulare del titolare se disponibile, altrimenti il telefono aziendale
+  const numero = contatti.cellulare || contatti.telefono;
+  if (!numero) return null;
+  const numSoloCifre = numero.replace(/[^\d]/g, "");
   return `https://wa.me/${numSoloCifre}`;
 }
 
@@ -55,35 +57,18 @@ function getAllStagioniHTML(data, dataRiferimento) {
 }
 
 // ── Genera HTML per le chiusure programmate nel footer ──────────────────────
-// Mostra:
-//   - se c'è una chiusura ATTIVA → banner rosso con i dettagli
-//   - poi le 2 prossime chiusure imminenti (ferie + festività + Pasqua)
-// ─────────────────────────────────────────────────────────────────────────────
 function getClosuresHTML(data, oggiReal) {
   const oggi = oggiReal || new Date();
-
-  // Usa la nuova funzione unificata (ferie + festività + Pasqua, 365 giorni)
   const allClosures = getAllUpcomingClosures(data, oggi, 365);
-
   if (!allClosures.length) return "";
 
   var html = "";
-
-  // ── Chiusure attive ──
-  const active = allClosures.filter(function (c) {
-    return c.tipo === "attiva";
-  });
+  const active = allClosures.filter(function (c) { return c.tipo === "attiva"; });
   for (var i = 0; i < active.length; i++) {
     var c = active[i];
-    var motivoTesto =
-      c.label === "Festività"
-        ? "Festività"
-        : "Ferie" + (c.label !== "Ferie" ? " - " + c.label : "");
+    var motivoTesto = c.label === "Festività" ? "Festività" : "Ferie" + (c.label !== "Ferie" ? " - " + c.label : "");
     html += '<div class="footer-closure-alert">';
-    html +=
-      '<span class="material-icons">warning</span> <strong>🔴 CHIUSO - ' +
-      motivoTesto.toUpperCase() +
-      "</strong>";
+    html += '<span class="material-icons">warning</span> <strong>🔴 CHIUSO - ' + motivoTesto.toUpperCase() + "</strong>";
     if (!c.isSingleDay) {
       html += "<br>dal " + c.inizioFmt + " al " + c.fineFmt;
     } else {
@@ -92,35 +77,17 @@ function getClosuresHTML(data, oggiReal) {
     html += "</div>";
   }
 
-  // ── Prossime 2 chiusure (non ancora iniziate) ──
-  const upcoming = allClosures.filter(function (c) {
-    return c.tipo === "imminente";
-  });
+  const upcoming = allClosures.filter(function (c) { return c.tipo === "imminente"; });
   const toShow = upcoming.slice(0, 2);
-
   if (toShow.length > 0) {
     html += '<div class="footer-future-closures">';
-    html +=
-      '<div class="footer-future-closures-title">' +
-      '<span class="ffc-icon">📅</span>' +
-      "<span>Prossime chiusure</span>" +
-      "</div>";
+    html += '<div class="footer-future-closures-title"><span class="ffc-icon">📅</span><span>Prossime chiusure</span></div>';
     html += '<div class="ffc-list">';
-
     for (var j = 0; j < toShow.length; j++) {
       var c = toShow[j];
       var giorni = c.giorni;
-      var badge =
-        giorni === 0
-          ? "Oggi"
-          : giorni === 1
-            ? "Domani"
-            : "fra " + giorni + " giorni";
-
-      var dataStr = c.isSingleDay
-        ? c.inizioFmt
-        : c.inizioFmt + '<span class="ffc-arrow">→</span>' + c.fineFmt;
-
+      var badge = giorni === 0 ? "Oggi" : giorni === 1 ? "Domani" : "fra " + giorni + " giorni";
+      var dataStr = c.isSingleDay ? c.inizioFmt : c.inizioFmt + '<span class="ffc-arrow">→</span>' + c.fineFmt;
       html += '<div class="ffc-item">';
       html += '<div class="ffc-date">' + dataStr + "</div>";
       html += '<div class="ffc-body">';
@@ -129,36 +96,26 @@ function getClosuresHTML(data, oggiReal) {
       html += "</div>";
       html += "</div>";
     }
-
     html += "</div></div>";
   }
-
   return html;
 }
 
 function _getCountdownHTML(transizione) {
   if (!transizione || transizione.eCambioOggi) return "";
-
   const stagioneAttivaLabel = transizione.da.toUpperCase();
   const stagioneProssimaLabel = transizione.a.toUpperCase();
   const g = transizione.giorniMancanti;
   const preview = g === 1 ? "1g" : g + "g";
-
-  var styleContenitore =
-    "display:block; margin-bottom:10px; padding:10px 12px; border-radius:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); width: 240px; box-sizing: border-box;";
-
+  var styleContenitore = "display:block; margin-bottom:10px; padding:10px 12px; border-radius:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.13); width: 240px; box-sizing: border-box;";
   return (
-    '<div id="countdown-stagione" style="' +
-    styleContenitore +
-    '">' +
+    '<div id="countdown-stagione" style="' + styleContenitore + '">' +
     '<div id="countdown-content-wrapper">' +
     '<div id="countdown-header-labels" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:0.78em;letter-spacing:0.08em;font-weight:600;">' +
     '<span id="countdown-label-attiva" style="display:flex;align-items:center;gap:5px;"></span>' +
     '<span id="countdown-label-prossima" style="opacity:0.55;"></span>' +
     "</div>" +
-    '<div style="font-size:1.35em;font-weight:800;letter-spacing:0.12em;font-variant-numeric:tabular-nums;" id="countdown-testo">' +
-    preview +
-    "</div>" +
+    '<div style="font-size:1.35em;font-weight:800;letter-spacing:0.12em;font-variant-numeric:tabular-nums;" id="countdown-testo">' + preview + "</div>" +
     "</div>" +
     "</div>"
   );
@@ -166,13 +123,7 @@ function _getCountdownHTML(transizione) {
 
 function _calcolaTitoloOrari(transizione, nomeStagione) {
   if (transizione && !transizione.eCambioOggi) {
-    return (
-      'Orario <span style="font-weight:900;">' +
-      transizione.da +
-      '</span><span style="font-weight:400;opacity:0.6;">/' +
-      transizione.a +
-      "</span>"
-    );
+    return 'Orario <span style="font-weight:900;">' + transizione.da + '</span><span style="font-weight:400;opacity:0.6;">/' + transizione.a + "</span>";
   }
   if (nomeStagione) return "Orario " + nomeStagione;
   return "Orario";
@@ -206,41 +157,21 @@ function createFooterHTML(data, giornoPartenza) {
   const closuresHTML = getClosuresHTML(data, oggiReal);
 
   const unifiedFerieDates = getUnifiedFerieDates(data, oggi.getFullYear());
-  const unifiedFerieDatesNextYear = getUnifiedFerieDates(
-    data,
-    oggi.getFullYear() + 1,
-  );
+  const unifiedFerieDatesNextYear = getUnifiedFerieDates(data, oggi.getFullYear() + 1);
 
   const dataOggiFormattata = formatDateDM(oggiReal);
-  const orariExtraOggi = getOrariExtraForDate(
-    data,
-    dataOggiFormattata,
-    giornoSettimana,
-  );
+  const orariExtraOggi = getOrariExtraForDate(data, dataOggiFormattata, giornoSettimana);
 
-  const singleDayClosure = getSingleDayClosureReason(
-    oggiReal,
-    data,
-    unifiedFerieDates,
-    unifiedFerieDatesNextYear,
-  );
-  const isFestivita =
-    singleDayClosure && singleDayClosure.reason === "festivita";
+  const singleDayClosure = getSingleDayClosureReason(oggiReal, data, unifiedFerieDates, unifiedFerieDatesNextYear);
+  const isFestivita = singleDayClosure && singleDayClosure.reason === "festivita";
   const eFerieOggi = singleDayClosure && singleDayClosure.reason === "ferie";
-  const isMotivoExtra =
-    singleDayClosure && singleDayClosure.reason === "motivi-extra";
+  const isMotivoExtra = singleDayClosure && singleDayClosure.reason === "motivi-extra";
 
   let eChiusoOggi = isFestivita || eFerieOggi || isMotivoExtra;
   const orariDaUsareOggi = orariExtraOggi || orari[indiceGiornoCorrente];
   if (orariExtraOggi) eChiusoOggi = false;
 
-  const statoApertura = checkStatoApertura(
-    orariDaUsareOggi,
-    oraCorrente,
-    eChiusoOggi,
-    orariExtraOggi,
-    data.minutiInChiusura,
-  );
+  const statoApertura = checkStatoApertura(orariDaUsareOggi, oraCorrente, eChiusoOggi, orariExtraOggi, data.minutiInChiusura);
 
   const giorniDaVisualizzare = [];
   for (var i = 0; i < 7; i++) {
@@ -268,25 +199,14 @@ function createFooterHTML(data, giornoPartenza) {
       testoOrario = orariExtraGiorno;
     } else {
       testoOrario = orariGiorno[orariIndex];
-      var closureCheck = getSingleDayClosureReason(
-        dataDelGiorno,
-        data,
-        unifiedFerieDates,
-        unifiedFerieDatesNextYear,
-      );
+      var closureCheck = getSingleDayClosureReason(dataDelGiorno, data, unifiedFerieDates, unifiedFerieDatesNextYear);
       if (closureCheck && closureCheck.reason === "festivita") {
         testoOrario = nomeGiorno + ": Chiuso (Festività)";
       } else if (closureCheck && closureCheck.reason === "ferie") {
         var motivo = closureCheck.motivoSpecifico || "Ferie";
-        testoOrario =
-          nomeGiorno +
-          ": Chiuso (" +
-          motivo +
-          ") fino al " +
-          closureCheck.dataChiusura;
+        testoOrario = nomeGiorno + ": Chiuso (" + motivo + ") fino al " + closureCheck.dataChiusura;
       } else if (closureCheck && closureCheck.reason === "motivi-extra") {
-        testoOrario =
-          nomeGiorno + ": Chiuso (" + closureCheck.motivoSpecifico + ")";
+        testoOrario = nomeGiorno + ": Chiuso (" + closureCheck.motivoSpecifico + ")";
       }
     }
 
@@ -297,45 +217,42 @@ function createFooterHTML(data, giornoPartenza) {
       } else if (statoApertura.stato === "in-apertura") {
         colore = legenda.colori["in apertura"] || "#87CEEB";
         var minuti = statoApertura.minutiAllaApertura;
-        testoOrario +=
-          " (" + minuti + " " + (minuti === 1 ? "minuto" : "minuti") + ")";
+        testoOrario += " (" + minuti + " " + (minuti === 1 ? "minuto" : "minuti") + ")";
       } else if (statoApertura.stato === "in-chiusura") {
         colore = legenda.colori["in chiusura"] || "#FFD700";
         var minuti = statoApertura.minutiAllaChiusura;
-        testoOrario +=
-          " (" + minuti + " " + (minuti === 1 ? "minuto" : "minuti") + ")";
+        testoOrario += " (" + minuti + " " + (minuti === 1 ? "minuto" : "minuti") + ")";
       } else {
         colore = legenda.colori.aperto || "#00FF7F";
       }
     }
 
-    orariHtmlItems.push(
-      '<li class="footer-item" style="color:' +
-        colore +
-        ";" +
-        peso +
-        '">' +
-        testoOrario +
-        "</li>",
-    );
+    orariHtmlItems.push('<li class="footer-item" style="color:' + colore + ";" + peso + '">' + testoOrario + "</li>");
   }
   var orariHtml = orariHtmlItems.join("");
 
-  var testoInAperturaSpan =
-    statoApertura.stato === "in-apertura"
-      ? "In apertura tra " +
-        statoApertura.minutiAllaApertura +
-        " " +
-        (statoApertura.minutiAllaApertura === 1 ? "minuto" : "minuti")
-      : legenda.testo["in apertura"] || "In apertura";
+  var testoInAperturaSpan = statoApertura.stato === "in-apertura"
+    ? "In apertura tra " + statoApertura.minutiAllaApertura + " " + (statoApertura.minutiAllaApertura === 1 ? "minuto" : "minuti")
+    : legenda.testo["in apertura"] || "In apertura";
 
-  var testoInChiusuraSpan =
-    statoApertura.stato === "in-chiusura"
-      ? "In chiusura tra " +
-        statoApertura.minutiAllaChiusura +
-        " " +
-        (statoApertura.minutiAllaChiusura === 1 ? "minuto" : "minuti")
-      : legenda.testo["in chiusura"] || "In chiusura";
+  var testoInChiusuraSpan = statoApertura.stato === "in-chiusura"
+    ? "In chiusura tra " + statoApertura.minutiAllaChiusura + " " + (statoApertura.minutiAllaChiusura === 1 ? "minuto" : "minuti")
+    : legenda.testo["in chiusura"] || "In chiusura";
+
+  // Costruisce la lista contatti con entrambi i numeri
+  var contattiHtml = "";
+  if (contatti.telefono) {
+    contattiHtml += '<li class="footer-item"><span class="material-icons">phone</span> <a href="tel:' + contatti.telefono.replace(/\s/g, "") + '">' + formatPhoneNumber(contatti.telefono) + "</a></li>";
+  }
+  if (contatti.cellulare) {
+    contattiHtml += '<li class="footer-item"><span class="material-icons">phone_iphone</span> <a href="tel:' + contatti.cellulare.replace(/\s/g, "") + '">' + formatPhoneNumber(contatti.cellulare) + " (Cellulare)</a></li>";
+  }
+  if (contatti.email) {
+    contattiHtml += '<li class="footer-item"><span class="material-icons">email</span> <a href="mailto:' + contatti.email + '">' + contatti.email + "</a></li>";
+  }
+  if (contatti.indirizzo) {
+    contattiHtml += '<li class="footer-item"><span class="material-icons">location_on</span> <a href="' + contatti.indirizzo + '" target="_blank">' + contatti.indirizzo_visuale + "</a></li>";
+  }
 
   return `
     <div class="footer-content">
@@ -346,11 +263,7 @@ function createFooterHTML(data, giornoPartenza) {
           <p class="footer-text">${info.testo || ""}</p>
 
           <h4 class="footer-subtitle">Contatti</h4>
-          <ul class="footer-list">
-            ${contatti.telefono ? '<li class="footer-item"><span class="material-icons">phone</span> <a href="tel:' + contatti.telefono.replace(/\s/g, "") + '">' + formatPhoneNumber(contatti.telefono) + "</a></li>" : ""}
-            ${contatti.email ? '<li class="footer-item"><span class="material-icons">email</span> <a href="mailto:' + contatti.email + '">' + contatti.email + "</a></li>" : ""}
-            ${contatti.indirizzo ? '<li class="footer-item"><span class="material-icons">location_on</span> <a href="' + contatti.indirizzo + '" target="_blank">' + contatti.indirizzo_visuale + "</a></li>" : ""}
-          </ul>
+          <ul class="footer-list">${contattiHtml}</ul>
         </div>
 
         <div class="footer-section">

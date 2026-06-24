@@ -5,7 +5,8 @@
     "p_iva": "ffff"
   },
   "contatti": {
-    "telefono": "+39 339 179 2590",
+    "telefono": "+39 0432 179 2590",
+    "cellulare": "+39 339 179 2590",
     "email": "dapratmauro@gmail.com",
     "indirizzo": "https://www.google.com/maps/place//data=!4m2!3m1!1s0x477a2b2c2bab224b:0x1a5222f7789eb527?sa=X&ved=1t:8290&ictx=111",
     "indirizzo_visuale": "Borgo Navarons 2a, 33097 Spilimbergo (PN)"
@@ -69,6 +70,10 @@
     "25/12",
     "26/12"
   ],
-  "chiusure": [{ "tipo": "giorno", "data": "", "motivo": "" }],
-  "orariExtra": [{ "giorno": "", "orari": "", "motivo": "" }]
+  "chiusure": [
+    { "tipo": "giorno", "data": "", "motivo": "" }
+  ],
+  "orariExtra": [
+    { "giorno": "", "orari": "", "motivo": "" }
+  ]
 }
