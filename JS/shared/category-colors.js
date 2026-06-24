@@ -1,3 +1,7 @@
+// ──────────────────────────────────────────────────────────────
+// category-colors.js — Gestione colori per badge e filtri
+// ──────────────────────────────────────────────────────────────
+
 const CategoryColors = (() => {
   let PALETTE = [];
   const _cache = {};
@@ -13,7 +17,7 @@ const CategoryColors = (() => {
       console.log("Palette caricata:", PALETTE.length, "colori.");
     } catch (err) {
       console.error("Errore caricamento colori:", err);
-      // Fallback in caso di errore per non lasciare il sito senza colori
+      // Fallback
       PALETTE = [{ bg: "#eee", text: "#333", border: "#ccc" }];
       isLoaded = true;
     }
@@ -41,23 +45,28 @@ const CategoryColors = (() => {
     return `background-color:${c.bg};color:${c.text};border:1px solid ${c.border};`;
   }
 
+  // ─── applyFilterButtonStyle con colori dedicati per "Tutti" ───
   function applyFilterButtonStyle(button, categoryName, isActive) {
+    // Caso "Tutti" (o categoria vuota)
     if (categoryName === "Tutti" || !categoryName) {
       if (isActive) {
+        // Stato attivo: sfondo scuro, testo bianco, bordo marcato
         button.style.cssText =
-          "background-color:#5c4a3a;color:#fff;border:3px solid #5c4a3a;transform:none;box-shadow:0 0 0 3px #8b7355, 0 4px 14px rgba(0,0,0,0.2);";
+          "background-color:#2d2d2d;color:#ffffff;border:3px solid #2d2d2d;transform:none;box-shadow:0 0 0 3px #888, 0 4px 14px rgba(0,0,0,0.2);";
       } else {
+        // Stato inattivo: sfondo grigio chiaro, testo scuro
         button.style.cssText =
-          "background-color:#bf8b67;color:#fff;border:2px solid #bf8b67;";
+          "background-color:#e0e0e0;color:#333333;border:2px solid #aaaaaa;";
+        // Hover per stato inattivo
         button.onmouseenter = () => {
-          button.style.backgroundColor = "#5c4a3a";
-          button.style.borderColor = "#5c4a3a";
+          button.style.backgroundColor = "#d0d0d0";
+          button.style.borderColor = "#888";
           button.style.transform = "translateY(-3px)";
           button.style.boxShadow = "0 6px 18px rgba(0,0,0,0.18)";
         };
         button.onmouseleave = () => {
-          button.style.backgroundColor = "#bf8b67";
-          button.style.borderColor = "#bf8b67";
+          button.style.backgroundColor = "#e0e0e0";
+          button.style.borderColor = "#aaaaaa";
           button.style.transform = "";
           button.style.boxShadow = "";
         };
@@ -65,13 +74,17 @@ const CategoryColors = (() => {
       return;
     }
 
+    // Altre categorie: usa i colori dalla palette
     const c = getColor(categoryName);
+    // Rimuovi eventuali listener precedenti
     button.onmouseenter = null;
     button.onmouseleave = null;
 
     if (isActive) {
-      button.style.cssText = `background-color:${c.text};color:#fff;border:3px solid ${c.text};transform:none;box-shadow:0 0 0 3px ${c.border}, 0 4px 14px ${c.border}88;`;
+      // Stato attivo: sfondo = colore del testo (scuro), testo bianco, bordo marcato
+      button.style.cssText = `background-color:${c.text};color:#ffffff;border:3px solid ${c.text};transform:none;box-shadow:0 0 0 3px ${c.border}, 0 4px 14px ${c.border}88;`;
     } else {
+      // Stato inattivo: sfondo chiaro, testo colorato
       button.style.cssText = `background-color:${c.bg};color:${c.text};border:2px solid ${c.border};`;
       button.onmouseenter = () => {
         button.style.backgroundColor = c.text;
@@ -106,17 +119,17 @@ const CategoryColors = (() => {
     const badgesHtml = categories
       .map(
         (cat) =>
-          `<span class="categoria-badge" style="${getBadgeStyle(cat)}">${cat}</span>`,
+          `<span class="categoria-badge" style="${getBadgeStyle(cat)}">${cat}</span>`
       )
       .join("");
     return `<p class="categoria-badges-wrapper">${prefixHtml}${badgesHtml}</p>`;
   }
 
-  // Lanciamo l'inizializzazione immediatamente
+  // Avvia il caricamento della palette
   init();
 
   return {
-    init, // Esponiamo init se serve rilanciarlo
+    init,
     getColor,
     getBadgeStyle,
     createBadge,

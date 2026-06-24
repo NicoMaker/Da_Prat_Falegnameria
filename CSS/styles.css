@@ -1406,3 +1406,25 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 10px;
   }
 }
+
+/* Select mobile – altezza e padding */
+#filter-select {
+  height: 48px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0 14px;
+  appearance: auto;
+  -webkit-appearance: auto;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  /* Fallback */
+  background-color: #2d2d2d;
+  color: #ffffff;
+  border: 3px solid #2d2d2d;
+}
+
+#filter-select option {
+  padding: 10px 12px;
+  font-weight: 600;
+}

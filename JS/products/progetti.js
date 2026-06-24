@@ -32,13 +32,34 @@ document.addEventListener("DOMContentLoaded", () => {
     progettiContainer.innerHTML = "<p class='no-results'>Errore nel caricamento dei prodotti.</p>";
   });
 
-  // ── Ottiene i colori per una categoria, con fallback per "Tutti" ──
+  // ── Ottiene i colori per una categoria ──
   function getCategoryColors(category) {
     if (category === "Tutti") {
-      return { bg: "#2d2d2d", text: "#ffffff", border: "#2d2d2d" };
+      return {
+        bg: "#e0e0e0",      // sfondo opzione (inattivo)
+        text: "#333333",    // testo opzione
+        border: "#aaaaaa",
+        activeBg: "#2d2d2d", // sfondo select attivo
+        activeText: "#ffffff"
+      };
     }
     const c = CategoryColors.getColor(category);
-    return c || { bg: "#eee", text: "#333", border: "#ccc" };
+    if (!c) {
+      return {
+        bg: "#eee",
+        text: "#333",
+        border: "#ccc",
+        activeBg: "#333",
+        activeText: "#fff"
+      };
+    }
+    return {
+      bg: c.bg,
+      text: c.text,
+      border: c.border,
+      activeBg: c.text,
+      activeText: "#ffffff"
+    };
   }
 
   // ── Popola bottoni e select ──────────────────────────────
@@ -50,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
     filterSelect.innerHTML = "";
 
     categories.forEach((category) => {
-      // Bottone
+      // Bottone desktop
       const button = document.createElement("button");
       button.classList.add("filter-button");
       button.textContent = category;
@@ -65,23 +86,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       filterButtonsContainer.appendChild(button);
 
-      // Option con colori (identici ai bottoni non attivi)
+      // Option per il select mobile (colori inattivi)
       const option = document.createElement("option");
       option.value = category;
       option.textContent = category;
-
       const colors = getCategoryColors(category);
       option.style.backgroundColor = colors.bg;
       option.style.color = colors.text;
       option.style.fontWeight = "bold";
-      // Alcuni browser supportano il bordo sulle option
       option.style.border = `1px solid ${colors.border}`;
       option.style.padding = "6px 10px";
-
       filterSelect.appendChild(option);
     });
 
-    // Evento cambio select – aggiorna il colore del select stesso
+    // Evento cambio select
     filterSelect.addEventListener("change", () => {
       currentFilter = filterSelect.value;
       applyColorsToSelect();
@@ -95,15 +113,13 @@ document.addEventListener("DOMContentLoaded", () => {
     applyColorsToSelect();
   }
 
-  // ── Applica al select i colori della categoria selezionata (come bottone attivo) ──
+  // ── Applica al select i colori della categoria selezionata (stato attivo) ──
   function applyColorsToSelect() {
     const selected = filterSelect.value;
     if (!selected) return;
-
     const colors = getCategoryColors(selected);
-    // Stile "attivo": sfondo = colore del testo, testo = bianco, bordo spesso
-    filterSelect.style.backgroundColor = colors.text;   // sfondo scuro
-    filterSelect.style.color = "#ffffff";               // testo bianco
+    filterSelect.style.backgroundColor = colors.activeBg;
+    filterSelect.style.color = colors.activeText;
     filterSelect.style.border = `3px solid ${colors.border}`;
     filterSelect.style.outline = `2px solid ${colors.border}`;
     filterSelect.style.outlineOffset = "1px";
@@ -111,21 +127,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ── Aggiorna UI bottoni e select ──────────────────────────
   function updateFilterUI() {
-    // Bottoni
     document.querySelectorAll("#filter-buttons .filter-button").forEach((btn) => {
       const isActive = btn.dataset.category === currentFilter;
       btn.classList.toggle("active", isActive);
       CategoryColors.applyFilterButtonStyle(btn, btn.dataset.category, isActive);
     });
 
-    // Select: aggiorna il valore e il colore
     if (filterSelect) {
       filterSelect.value = currentFilter;
       applyColorsToSelect();
     }
   }
 
-  // ── Scroll alla griglia prodotti ──────────────────────────
+  // ── Scroll ──────────────────────────────────────────────────
   function scrollToProductGrid() {
     const grid = document.querySelector(".progetti-container");
     if (!grid) return;
@@ -141,11 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // ── Filtra e cerca ──────────────────────────────────────────
   function applyFiltersAndSearch() {
     let filtered = allProducts;
-
     if (currentFilter !== CONFIG.defaultFilter) {
       filtered = filtered.filter((p) => p.categorie.includes(currentFilter));
     }
-
     if (currentSearchTerm) {
       const term = currentSearchTerm.toLowerCase();
       filtered = filtered.filter(
@@ -155,7 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
           p.categorie.some((c) => c.toLowerCase().includes(term))
       );
     }
-
     displayProducts(filtered);
     updateFilterUI();
   }
@@ -235,7 +246,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ── Recupero stato al rientro nella pagina ──────────────────
+  // ── Recupero stato al rientro ──────────────────────────────
   window.addEventListener("pageshow", (event) => {
     if (event.persisted) {
       loadStateFromStorage();
