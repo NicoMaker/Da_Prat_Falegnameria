@@ -142,14 +142,19 @@ document.addEventListener("DOMContentLoaded", () => {
       categoriaHtml = CategoryColors.getBadgesHTML(categories);
     }
 
+    const hasLink = item.link && item.link !== "#";
+    if (hasLink) card.style.cursor = "pointer";
+
     card.innerHTML = `
-      <div class="container-immagine">
+      <div class="container-immagine" style="position:relative; overflow:hidden;">
         <img class="immagine" src="${item.immagine}" alt="${item.nome}" loading="lazy">
+        ${hasLink ? '<div class="card-hover-overlay"><span class="material-icons">open_in_new</span></div>' : ''}
       </div>
       <div class="Progetti-card-content">
         <h3 class="nome">${item.nome}</h3>
         <p class="descrizione">${item.descrizione}</p>
         ${categoriaHtml}
+        ${hasLink ? '<p class="card-link-hint">Scopri di più →</p>' : ''}
       </div>
     `;
     return card;
