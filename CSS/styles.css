@@ -148,9 +148,8 @@ h6 {
   gap: var(--spacing-sm);
 }
 .logo {
-  height: 36px;
+height:  80px; /* Aumentato da 36px a 55px */
   width: auto;
-  filter: brightness(0) invert(1);
 }
 .logo-text {
   font-family: var(--font-heading);
