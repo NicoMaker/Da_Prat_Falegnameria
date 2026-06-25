@@ -4,7 +4,6 @@
 .logo {
   height: 200px !important;
   width: auto;
-  filter: brightness(1.15);
 }
 
 /* Header padding adeguato per logo più alto */
@@ -82,4 +81,44 @@
 
 .materiali-section {
   margin-top: 0 !important;
+}
+
+
+/* ===== RISOLVE LO SPAZIO ECCESSIVO SOTTO L'HEADER ===== */
+.hero-section {
+  min-height: auto !important;              /* Toglie il 92vh che allungava tutto */
+  height: calc(100vh - 220px) !important;   /* Altezza esatta: schermo meno l'header (logo 200px + padding) */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0.5rem !important;           /* Solo un filo di respiro in alto, se vuoi */
+  padding-bottom: 0.5rem !important;
+  gap: 0 !important;
+}
+
+/* Se il contenuto della hero (testo e immagine) è centrato verticalmente 
+   e tu vuoi che il titolo "SOLUZIONI..." stia più in alto, aggiungi: */
+.hero-content {
+  align-items: flex-start !important;      /* Sposta il contenuto in alto */
+  justify-content: center !important;      /* Oppure center se vuoi centrato ma compatto */
+}
+
+/* Assicurati che l'immagine copra bene senza deformarsi */
+.hero-image img {
+  width: 100%;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
+/* Rimuovi margini strani dalla home */
+#home {
+  scroll-margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+/* Se c'è una sezione materiali sotto, falla partire subito */
+.materiali-section {
+  margin-top: 0 !important;
+  padding-top: 1rem !important;
 }
