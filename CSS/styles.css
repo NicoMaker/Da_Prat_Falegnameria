@@ -303,6 +303,7 @@ h6 {
   line-height: 0.95;
   color: var(--color-white);
   margin-bottom: var(--spacing-lg);
+  font-size: 3.8em;
 }
 
 .hero-title em {
