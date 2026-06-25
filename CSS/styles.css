@@ -1689,3 +1689,149 @@ h6 {
     object-fit: cover; /* Taglia l'immagine perfettamente senza distorcerla */
   }
 }
+
+.consulenza-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Sostituisce 'cover' per mostrare l'immagine intera */
+  background-color: transparent; /* Opzionale: evita sfondi strani se l'immagine non copre tutto il box */
+}
+
+/* --- Desktop e layout generale --- */
+.consulenza-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Mantiene le due colonne affiancate su desktop */
+  gap: var(--spacing-lg);
+  align-items: center; /* Centra verticalmente il testo rispetto all'altezza dell'immagine */
+}
+
+.consulenza-image {
+  width: 100%;
+  height: auto; /* Rimuove altezze fisse che forzano il ritaglio */
+}
+
+.consulenza-image img {
+  width: 100%;
+  height: auto; /* L'immagine mantiene le sue proporzioni native */
+  display: block;
+  object-fit: contain; /* Mostra l'immagine completamente senza tagliarla */
+}
+
+/* --- Mobile (Sotto i 768px) --- */
+@media (max-width: 768px) {
+  .consulenza-inner {
+    grid-template-columns: 1fr; /* Su mobile va a capo in un'unica colonna */
+    gap: var(--spacing-md);
+  }
+
+  .consulenza-image {
+    order: 2; /* Sposta l'immagine sotto il testo su mobile (opzionale, se vuoi prima il testo) */
+    max-width: 100%;
+  }
+  
+  .consulenza-content {
+    order: 1;
+    text-align: left; /* Mantiene il testo pulito e non sformattato */
+  }
+}
+
+/* --- Desktop --- */
+.consulenza-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr; /* Diamo più spazio alla colonna del testo se l'immagine è bassa */
+  gap: var(--spacing-xl);
+  align-items: center; 
+}
+
+.consulenza-image {
+  width: 100%;
+  /* Rimuoviamo eventuali vincoli di altezza rigidi */
+  height: auto; 
+  display: flex;
+  justify-content: center;
+}
+
+.consulenza-image img {
+  /* Invece di forzare il 100% di larghezza (che la schiaccia se è panoramica), 
+     le diamo una larghezza ottimale lasciando l'altezza libera di respirare */
+  width: 100%;
+  max-width: 550px; /* Regola questo valore (es. 500px o 600px) per decidere la grandezza ideale */
+  height: auto;
+  object-fit: contain; /* Sicurezza: non verrà MAI tagliata */
+  display: block;
+}
+
+/* --- Mobile (Sotto i 768px) --- */
+@media (max-width: 768px) {
+  .consulenza-inner {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .consulenza-image img {
+    max-width: 100%; /* Su mobile occupa tutto lo schermo disponibile */
+    height: auto;
+  }
+}
+
+/* --- Desktop (Versione Grande e Proporzionata) --- */
+.consulenza-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Due colonne speculari */
+  gap: var(--spacing-xl);
+  align-items: center; /* Allinea verticalmente l'immagine e il testo */
+}
+
+.consulenza-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.consulenza-image img {
+  /* Controlliamo l'immagine tramite l'altezza ideale */
+  height: auto; /* <--- Imposta l'altezza imponente che desideri (es. 450px, 500px, 550px) */
+  width: auto;   /* Lascia la larghezza libera di calcolarsi sulle proporzioni reali */
+  max-width: 100%; /* Impedisce che esca dallo schermo se la colonna è stretta */
+  object-fit: contain; /* Garanzia matematica che l'immagine rimanga intera e definita */
+  display: block;
+}
+
+/* --- Mobile (Sotto i 768px) --- */
+@media (max-width: 768px) {
+  .consulenza-inner {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .consulenza-image img {
+    /* Su mobile l'altezza fissa da 500px sarebbe enorme, quindi la resettiamo */
+    width: 100%;
+    height: auto; 
+    max-height: 350px; /* Evita che diventi gigantesca in verticale sui telefoni */
+  }
+}
+
+.consulenza-image {
+  width: 100%;
+  height: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* Permette all'immagine di slanciarsi in altezza */
+}
+
+.consulenza-image img {
+  width: auto;
+  height: 100%; 
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  
+  /* --- CONTROLLO ASSI SEPARATO --- */
+  /* Ingrandisce l'altezza del 35% (1.35) ma stringe/contiene la larghezza solo al 10% (1.1) */
+  transform: scale(1.1, 1.35); 
+  
+  transform-origin: center center;
+}
