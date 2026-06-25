@@ -37,21 +37,21 @@ document.addEventListener("DOMContentLoaded", () => {
   function getCategoryColors(category) {
     if (category === "Tutti") {
       return {
-        bg: "#e0e0e0", // sfondo opzione (inattivo)
-        text: "#333333", // testo opzione
-        border: "#aaaaaa",
-        activeBg: "#2d2d2d", // sfondo select attivo
-        activeText: "#ffffff",
+        bg: "#ffffff", // sfondo opzione (inattivo)
+        text: "#000000", // testo opzione
+        border: "#cccccc",
+        activeBg: "#ffffff", // sfondo select attivo
+        activeText: "#000000",
       };
     }
     const c = CategoryColors.getColor(category);
     if (!c) {
       return {
-        bg: "#eee",
-        text: "#333",
-        border: "#ccc",
-        activeBg: "#333",
-        activeText: "#fff",
+        bg: "#ffffff",
+        text: "#000000",
+        border: "#cccccc",
+        activeBg: "#ffffff",
+        activeText: "#000000",
       };
     }
     return {

@@ -566,6 +566,7 @@ h6 {
 
 .search-input-wrapper {
   max-width: 400px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
 }
@@ -1511,7 +1512,7 @@ h6 {
 #filter-select-wrapper {
   display: none;
   width: 100%;
-  max-width: 320px;
+  max-width: 400px;
   margin: 0 auto;
 }
 
@@ -1564,7 +1565,7 @@ h6 {
 #filter-select-wrapper {
   display: none;
   width: 100%;
-  max-width: 320px;
+  max-width: 400px;
   margin: 0 auto;
 }
 
@@ -1619,7 +1620,7 @@ h6 {
   font-size: 1rem;
 }
 
-/* Migliorie per il select mobile (stessi colori dei bottoni) */
+/* Migliorie per il select mobile (sfondo bianco, testo nero) */
 #filter-select {
   height: 48px;
   border-radius: 6px;
@@ -1630,10 +1631,9 @@ h6 {
   appearance: auto;
   -webkit-appearance: auto;
   cursor: pointer;
-  /* I colori vengono impostati via JS, ma qui diamo un fallback */
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border: 3px solid #2d2d2d;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #cccccc;
 }
 
 /* Stile per le opzioni nel dropdown (alcuni browser supportano) */
@@ -1663,10 +1663,9 @@ h6 {
   -webkit-appearance: auto;
   cursor: pointer;
   transition: all 0.2s ease;
-  /* Fallback */
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border: 3px solid #2d2d2d;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #cccccc;
 }
 
 #filter-select option {
