@@ -343,7 +343,7 @@ height:  80px; /* Aumentato da 36px a 55px */
 
 .cta-button.primary {
   background: var(--color-gold);
-  color: var(--color-dark);
+  color: var(--color-off-white);
 }
 .cta-button.primary:hover {
   background: var(--color-gold-light);
