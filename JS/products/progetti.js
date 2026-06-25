@@ -118,23 +118,18 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyColorsToSelect() {
     const selected = filterSelect.value;
     if (!selected) return;
-    const colors = getCategoryColors(selected);
-    filterSelect.style.backgroundColor = colors.activeBg;
-    filterSelect.style.color = colors.activeText;
-    filterSelect.style.border = `3px solid ${colors.border}`;
-    filterSelect.style.outline = `2px solid ${colors.border}`;
-    filterSelect.style.outlineOffset = "1px";
 
-    // Aggiorna il colore di ogni option in base a se è selezionata o meno
+    // Sempre bianco con testo nero
+    filterSelect.style.backgroundColor = "#ffffff";
+    filterSelect.style.color = "#000000";
+    filterSelect.style.border = "2px solid #cccccc";
+    filterSelect.style.outline = "none";
+    filterSelect.style.outlineOffset = "0";
+
+    // Aggiorna il colore di ogni option
     Array.from(filterSelect.options).forEach((opt) => {
-      const optColors = getCategoryColors(opt.value);
-      if (opt.value === selected) {
-        opt.style.backgroundColor = optColors.activeBg;
-        opt.style.color = optColors.activeText;
-      } else {
-        opt.style.backgroundColor = optColors.bg;
-        opt.style.color = optColors.text;
-      }
+      opt.style.backgroundColor = "#ffffff";
+      opt.style.color = "#000000";
     });
   }
 

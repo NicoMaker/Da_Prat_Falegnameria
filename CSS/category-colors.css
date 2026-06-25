@@ -100,3 +100,14 @@
     padding: 5px 12px;
   }
 }
+
+/* ── Forza select filtro sempre bianco/nero (override definitivo) ─────── */
+#filter-select,
+#filter-select:focus,
+#filter-select:active {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #cccccc !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
