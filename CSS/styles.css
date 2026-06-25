@@ -1839,3 +1839,37 @@ h6 {
   border-color: var(--color-gold);
   outline: none;
 }
+
+/* ===== ALLINEA TUTTO L'HERO (TESTO + IMMAGINE) VERSO L'ALTO ===== */
+.hero-section {
+  min-height: auto !important;     /* Rimuove l'altezza gigante del 92vh che crea il vuoto */
+  align-items: start !important;   /* Aggancia sia il testo che l'immagine direttamente al top sotto l'header */
+}
+
+.hero-content {
+  padding-top: var(--spacing-md) !important; /* Riduce il padding del testo in alto da 6rem a 1.5rem */
+  padding-bottom: var(--spacing-xl) !important; /* Mantiene un buon margine sotto */
+}
+
+/* Gestione dell'altezza dell'immagine su desktop per farla combaciare */
+@media (min-width: 769px) {
+  .hero-image {
+    height: 100% !important;
+    min-height: 550px; /* Decidi tu l'altezza minima dell'immagine desktop */
+  }
+}
+
+/* ===== ALLINEAMENTO PERFETTO IN ALTO (TESTO + IMMAGINE) ===== */
+.hero-section {
+  align-items: flex-start !important; /* Forza entrambe le colonne a iniziare dall'alto */
+}
+
+.hero-content {
+  justify-content: flex-start !important; /* Sposta il contenuto del testo verso l'alto */
+  padding-top: 40px !important;            /* Regola questo valore (es. 20px, 40px) per decidere la distanza esatta dal menu nero */
+}
+
+.hero-content .hero-eyebrow {
+  margin-top: 0 !important;
+}
+
