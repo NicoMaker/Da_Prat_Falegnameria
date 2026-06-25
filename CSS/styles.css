@@ -1957,3 +1957,16 @@ h6 {
     font-size: 2.5em; /* sovrascrive il clamp su mobile */
   }
 }
+
+.site-header
+{
+  border-bottom: 7.5px solid var(--color-gold);
+}
+
+.nav-link{
+  font-size: 0.9em;
+}
+
+.site-footer {
+    border-top: 7.5px solid var(--color-gold);
+}
