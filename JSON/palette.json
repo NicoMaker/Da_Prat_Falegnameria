@@ -1,6 +1,22 @@
 [
-  { "bg": "#efebe9", "text": "#4e342e", "border": "#6d4c41" },
-  { "bg": "#f5f5f5", "text": "#3e2723", "border": "#5d4037" },
-  { "bg": "#fbe9e7", "text": "#d84315", "border": "#e64a19" },
-  { "bg": "#fff8e1", "text": "#5d4037", "border": "#8d6e63" }
+  { "bg": "#efebe9", "text": "black", "border": "white" },
+  { "bg": "#f5f5f5", "text": "black", "border": "white" },
+  { "bg": "#fbe9e7", "text": "black", "border": "white" },
+  { "bg": "#fff8e1", "text": "black", "border": "white" },
+  { "bg": "#efebe9", "text": "black", "border": "white" },
+  { "bg": "#f5f5f5", "text": "black", "border": "white" },
+  { "bg": "#fbe9e7", "text": "black", "border": "white" },
+  { "bg": "#fff8e1", "text": "black", "border": "white" },
+  { "bg": "#efebe9", "text": "black", "border": "white" },
+  { "bg": "#f5f5f5", "text": "black", "border": "white" },
+  { "bg": "#fbe9e7", "text": "black", "border": "white" },
+  { "bg": "#fff8e1", "text": "black", "border": "white" },
+  { "bg": "#efebe9", "text": "black", "border": "white" },
+  { "bg": "#f5f5f5", "text": "black", "border": "white" },
+  { "bg": "#fbe9e7", "text": "black", "border": "white" },
+  { "bg": "#fff8e1", "text": "black", "border": "white" },
+  { "bg": "#efebe9", "text": "black", "border": "white" },
+  { "bg": "#f5f5f5", "text": "black", "border": "white" },
+  { "bg": "#fbe9e7", "text": "black", "border": "white" },
+  { "bg": "#fff8e1", "text": "black", "border": "white" }
 ]
