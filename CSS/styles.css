@@ -148,7 +148,7 @@ h6 {
   gap: var(--spacing-sm);
 }
 .logo {
-  height: 200px;
+  height: 100px;
   width: auto;
   transform: scale(1.3); /* Ingrandisce del 30% senza alterare il layout dell'header */
   transform-origin: left center; /* Mantiene l'allineamento a sinistra corretto */
