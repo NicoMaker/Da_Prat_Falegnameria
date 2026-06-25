@@ -36,10 +36,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Costruisce il breadcrumb
   container.innerHTML = `
-    <a href="${root}index.html" style="font-size: 0.9rem;">Home</a>
-    <span class="sep" style="font-size: 0.9rem;">›</span>
-    <a href="${root}index.html#prodotti" style="font-size: 0.9rem;">Prodotti</a>
-    <span class="sep" style="font-size: 0.9rem;">›</span>
-    <span style="font-size: 0.9rem;">${productName}</span>
+    <a href="${root}index.html">Home</a>
+    <span class="sep">›</span>
+    <a href="${root}index.html#prodotti">Prodotti</a>
+    <span class="sep">›</span>
+    <span>${productName}</span>
   `;
 });
