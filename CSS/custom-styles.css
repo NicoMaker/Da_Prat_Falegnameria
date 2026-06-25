@@ -51,3 +51,94 @@
 .nav-link.active::after {
   width: 100% !important;
 }
+
+
+
+/* ===== HERO alignment definitivo: testo + immagine allineati ===== */
+.hero-section{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  align-items: stretch !important;   /* stessa altezza colonne */
+  margin: 0 !important;
+  padding: 0 !important;
+  background: var(--color-dark) !important;
+}
+
+/* Testo: allineato in alto e senza padding che crea “vuoti” */
+.hero-content{
+  justify-content: flex-start !important;
+  align-self: stretch !important;
+  margin: 0 !important;
+  padding: 0 var(--spacing-xl) var(--spacing-xl) var(--spacing-xl) !important;
+}
+
+/* Immagine: colonna piena e immagine ancorata in alto */
+.hero-image{
+  align-self: stretch !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.hero-image img{
+  width: 100% !important;
+  height: 100% !important;              /* riempie tutta l’altezza della colonna */
+  object-fit: cover !important;
+  object-position: top center !important; /* parte alta visibile */
+  display: block !important;
+  margin: 0 !important;
+}
+
+/* Mobile: immagine sotto il testo */
+@media (max-width: 768px){
+  .hero-section{
+    grid-template-columns: 1fr !important;
+    align-items: flex-start !important;
+  }
+  .hero-content{
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-md) !important;
+  }
+  .hero-image{
+    height: 300px !important; /* come già stai facendo tu */
+  }
+  .hero-image img{
+    height: 100% !important;
+  }
+}
+
+/* ===== FIX: Hero desktop testo + immagine affiancati ===== */
+.hero-section{
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  align-items: stretch !important;
+}
+
+.hero-content{
+  grid-column: 1 !important;
+  min-width: 0 !important;
+}
+
+.hero-image{
+  grid-column: 2 !important;
+  min-width: 0 !important;
+}
+.hero-image img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: top center !important;
+  display: block !important;
+}
+
+/* Mobile */
+@media (max-width: 768px){
+  .hero-section{
+    grid-template-columns: 1fr !important;
+  }
+  .hero-content{
+    grid-column: 1 !important;
+  }
+  .hero-image{
+    grid-column: 1 !important;
+  }
+}
