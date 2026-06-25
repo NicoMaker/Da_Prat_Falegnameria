@@ -260,19 +260,14 @@ h6 {
 }
 
 /* ===== HERO ===== */
+/* ===== HERO ===== */
 .hero-section {
   position: relative;
-  min-height: 92vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
+  background: var(--color-dark);
+  min-height: auto;
 }
 
 .hero-content {
@@ -280,7 +275,7 @@ h6 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: var(--spacing-2xl) var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-xl);
   position: relative;
   z-index: 2;
 }
@@ -296,14 +291,13 @@ h6 {
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.01em;
   line-height: 0.95;
   color: var(--color-white);
   margin-bottom: var(--spacing-lg);
-  font-size: 3.8em;
 }
 
 .hero-title em {
@@ -360,28 +354,68 @@ h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
+/* Hero mobile */
 @media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
   .hero-content {
-    padding: var(--spacing-xl) var(--spacing-md);
+    order: 1;
+    padding: 2rem 1.25rem 2rem;
   }
+
+  .hero-title {
+    font-size: 2.2rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-subtitle {
+    max-width: 100%;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+
+  .cta-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 20px;
+    box-sizing: border-box;
+  }
+
   .hero-image {
-    height: 50vw;
+    order: 2;
+    width: 100%;
+    height: 60vw;
+    min-height: 220px;
+    max-height: 340px;
+    flex-shrink: 0;
   }
-}
 
-/* ===== MATERIALI SECTION ===== */
-.materiali-section {
-  padding: var(--spacing-2xl) 0;
-  background: var(--color-white);
-}
-
-.materiali-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: #ddd;
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1674,51 +1708,6 @@ h6 {
   font-weight: 600;
 }
 
-.hero-section {
-  position: relative;
-  min-height: 92vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
-  background: var(--color-dark); /* <--- AGGIUNGI QUESTO */
-}
-
-.hero-section {
-  position: relative;
-  min-height: 92vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* <--- Questo forza le due colonne sempre */
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-    /* Trasforma la griglia in un'unica colonna verticale */
-    grid-template-columns: 1fr;
-    min-height: auto;
-    display: flex;
-    flex-direction: column; /* Forza l'ordine dall'alto verso il basso */
-  }
-
-  .hero-content {
-    padding: var(--spacing-xl) var(--spacing-md);
-    order: 1; /* Il testo rimane sopra */
-  }
-
-  .hero-image {
-    order: 2; /* L'immagine va sotto il testo */
-    width: 100%;
-    height: 300px; /* Sostituisci il vecchio 50vw con un'altezza fissa e stabile */
-    position: relative;
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Taglia l'immagine perfettamente senza distorcerla */
-  }
-}
-
 /* ===== TIPOLOGIA SECTIONS (Scorrevoli / Porte Ingresso) ===== */
 .tipologia-section {
   padding: var(--spacing-2xl) 0;
@@ -1840,37 +1829,6 @@ h6 {
   outline: none;
 }
 
-/* Modifica o sostituisci questa regola nel tuo CSS */
-.hero-section {
-  position: relative;
-  min-height: auto; /* Cambiato da 92vh a auto per eliminare lo spazio vuoto forzato */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
-  background: var(--color-dark);
-}
-
-/* Modifica o sostituisci questa regola per azzerare i padding in eccesso */
-.hero-content {
-  background: var(--color-dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* Riduciamo il padding verticale (da 2xl a md/lg) per stringere lo spazio */
-  padding: var(--spacing-lg) var(--spacing-xl);
-  position: relative;
-  z-index: 2;
-}
-
-/* Assicurati che l'immagine occupi tutto lo spazio in altezza della griglia allineandosi al testo */
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block; /* Evita gap microscopici sotto l'immagine */
-}
-
-/* ===== FOOTER RECOVERY ===== */
 .footer {
   background: var(--color-dark);
   color: var(--color-white);
@@ -1950,13 +1908,6 @@ h6 {
   font-size: 0.8rem;
 }
 
-/* Solo per mobile (es. schermi fino a 768px) */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5em; /* sovrascrive il clamp su mobile */
-  }
-}
-
 .site-header {
   border-bottom: 7.5px solid var(--color-gold);
 }
@@ -1967,4 +1918,85 @@ h6 {
 
 .site-footer {
   border-top: 7.5px solid var(--color-gold);
+}
+
+/* ============================================================
+   FIX: Hero section – mobile image visibility & desktop height
+   ============================================================ */
+
+/* Solo su desktop (≥ 769px) la hero ha altezza fissa */
+@media (min-width: 769px) {
+  .hero-section {
+    min-height: auto !important;
+    height: calc(100vh - 220px) !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+    gap: 0 !important;
+  }
+}
+
+/* Su mobile l'altezza è auto (adattata al contenuto) e l'immagine occupa spazio */
+@media (max-width: 768px) {
+  .hero-section {
+    height: auto !important;
+    min-height: auto !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .hero-content {
+    order: 1 !important;
+  }
+
+  .hero-image {
+    order: 2 !important;
+    height: 60vw !important;
+    max-height: 340px !important;
+    min-height: 200px !important;
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .hero-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+}
+
+/* ============================================================
+   FIX: Materiali grid – 3 colonne su desktop, 1 su mobile
+   ============================================================ */
+
+.materiali-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Assicura che le card all'interno si estendano bene */
+.materiali-grid .materiale-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Mobile: una colonna */
+@media (max-width: 768px) {
+  .materiali-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+  }
 }
