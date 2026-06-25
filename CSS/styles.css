@@ -1641,3 +1641,13 @@ height:  80px; /* Aumentato da 36px a 55px */
   padding: 10px 12px;
   font-weight: 600;
 }
+
+
+.hero-section {
+  position: relative;
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  background: var(--color-dark); /* <--- AGGIUNGI QUESTO */
+}
