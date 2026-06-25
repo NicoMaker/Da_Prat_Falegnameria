@@ -58,7 +58,7 @@
   margin-bottom: 0 !important;
   padding-bottom: 0 !important;
   gap: 0 !important;
-  margin-top: -1px !important;   /* elimina il micro-bordo nero */
+  margin-top: -1px !important; /* elimina il micro-bordo nero */
 }
 
 #home {

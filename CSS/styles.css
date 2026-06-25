@@ -181,7 +181,7 @@ h6 {
 .nav-link {
   font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
   position: relative;
@@ -474,7 +474,7 @@ h6 {
 }
 
 .consulenza-image::after {
-  content: 'Da Prat';
+  content: "Da Prat";
   position: absolute;
   font-size: 1.1rem;
   font-weight: 800;
@@ -1673,7 +1673,6 @@ h6 {
   font-weight: 600;
 }
 
-
 .hero-section {
   position: relative;
   min-height: 92vh;
@@ -1694,7 +1693,7 @@ h6 {
 @media (max-width: 768px) {
   .hero-section {
     /* Trasforma la griglia in un'unica colonna verticale */
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
     min-height: auto;
     display: flex;
     flex-direction: column; /* Forza l'ordine dall'alto verso il basso */
@@ -1738,11 +1737,11 @@ h6 {
   color: var(--color-gold);
 }
 .tipologia-section--dark .tipologia-text {
-  color: rgba(255,255,255,0.65);
+  color: rgba(255, 255, 255, 0.65);
 }
 .tipologia-section--dark .materiale-tag {
-  background: rgba(255,255,255,0.1);
-  color: rgba(255,255,255,0.7);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .tipologia-inner {
@@ -1857,7 +1856,7 @@ h6 {
   flex-direction: column;
   justify-content: center;
   /* Riduciamo il padding verticale (da 2xl a md/lg) per stringere lo spazio */
-  padding: var(--spacing-lg) var(--spacing-xl); 
+  padding: var(--spacing-lg) var(--spacing-xl);
   position: relative;
   z-index: 2;
 }
@@ -1875,7 +1874,7 @@ h6 {
   background: var(--color-dark);
   color: var(--color-white);
   /* Ridotto il padding verticale da 2xl a lg per togliere lo spazio in eccesso */
-  padding: var(--spacing-lg) 0; 
+  padding: var(--spacing-lg) 0;
   font-size: 0.9rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -1892,7 +1891,7 @@ h6 {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-xl);
   /* Ridotto il margine inferiore per togliere lo spazio vuoto prima del copyright */
-  margin-bottom: var(--spacing-md); 
+  margin-bottom: var(--spacing-md);
   align-items: flex-start;
 }
 

@@ -16,7 +16,8 @@ const JsonPaths = (() => {
 
   // Controlla se uno dei segmenti è "projects" o "project" (case‑insensitive)
   const isInProjects = pathSegments.some(
-    (seg) => seg.toLowerCase() === "projects" || seg.toLowerCase() === "project"
+    (seg) =>
+      seg.toLowerCase() === "projects" || seg.toLowerCase() === "project",
   );
 
   // Sceglie il prefisso giusto
