@@ -85,37 +85,6 @@ function getClosuresHTML(data, oggiReal) {
     html += "</div>";
   }
 
-  const upcoming = allClosures.filter(function (c) {
-    return c.tipo === "imminente";
-  });
-  const toShow = upcoming.slice(0, 2);
-  if (toShow.length > 0) {
-    html += '<div class="footer-future-closures">';
-    html +=
-      '<div class="footer-future-closures-title"><span class="ffc-icon">📅</span><span>Prossime chiusure</span></div>';
-    html += '<div class="ffc-list">';
-    for (var j = 0; j < toShow.length; j++) {
-      var c = toShow[j];
-      var giorni = c.giorni;
-      var badge =
-        giorni === 0
-          ? "Oggi"
-          : giorni === 1
-            ? "Domani"
-            : "fra " + giorni + " giorni";
-      var dataStr = c.isSingleDay
-        ? c.inizioFmt
-        : c.inizioFmt + '<span class="ffc-arrow">→</span>' + c.fineFmt;
-      html += '<div class="ffc-item">';
-      html += '<div class="ffc-date">' + dataStr + "</div>";
-      html += '<div class="ffc-body">';
-      html += '<span class="ffc-motivo">' + c.label + "</span>";
-      html += '<span class="ffc-badge">' + badge + "</span>";
-      html += "</div>";
-      html += "</div>";
-    }
-    html += "</div></div>";
-  }
   return html;
 }
 
@@ -389,7 +358,6 @@ function createFooterHTML(data, giornoPartenza) {
         </div>
 
       </div>
-      <div class="footer-map"><div id="map"></div></div>
     </div>
     <div class="footer-bottom">
       <p>© ${oggiReal.getFullYear()} ${info.titolo || ""}. Tutti i diritti riservati.${info.p_iva ? " - P.IVA " + info.p_iva : ""}</p>
