@@ -122,3 +122,8 @@
   margin-top: 0 !important;
   padding-top: 1rem !important;
 }
+
+
+html {
+  scroll-padding-top: 220px !important; /* o 200px se basta */
+}
