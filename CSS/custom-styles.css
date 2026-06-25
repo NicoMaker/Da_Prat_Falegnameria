@@ -133,3 +133,8 @@ html {
     object-fit: cover !important;
   }
 }
+
+/* ===== HAMBURGER — icone gold-light ===== */
+.hamburger-line {
+  background: var(--color-gold-light) !important;
+}
