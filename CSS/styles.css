@@ -136,7 +136,7 @@ h6 {
 .header-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0.9rem var(--spacing-md);
+  padding: 0.5rem var(--spacing-md);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -148,10 +148,8 @@ h6 {
   gap: var(--spacing-sm);
 }
 .logo {
-  height: 100px;
+  height: 42px;
   width: auto;
-  transform: scale(1.3); /* Ingrandisce del 30% senza alterare il layout dell'header */
-  transform-origin: left center; /* Mantiene l'allineamento a sinistra corretto */
 }
 .logo-text {
   font-family: var(--font-heading);
@@ -181,9 +179,9 @@ h6 {
 }
 
 .nav-link {
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
   position: relative;
@@ -470,13 +468,11 @@ h6 {
 }
 .consulenza-image img {
   width: 100%;
-  height: 400px;
+  height: auto;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  display: block;
 }
-.consulenza-image:hover img {
-  transform: scale(1.03);
-}
+
 
 .consulenza-content {
   padding: var(--spacing-lg) 0;
@@ -1834,4 +1830,124 @@ h6 {
   transform: scale(1.1, 1.35); 
   
   transform-origin: center center;
+}
+/* ===== TIPOLOGIA SECTIONS (Scorrevoli / Porte Ingresso) ===== */
+.tipologia-section {
+  padding: var(--spacing-2xl) 0;
+  background: var(--color-off-white);
+}
+.tipologia-section--dark {
+  background: var(--color-anthracite);
+}
+.tipologia-section--dark .tipologia-title,
+.tipologia-section--dark .tipologia-eyebrow {
+  color: var(--color-white);
+}
+.tipologia-section--dark .tipologia-title {
+  color: var(--color-white);
+}
+.tipologia-section--dark .tipologia-eyebrow {
+  color: var(--color-gold);
+}
+.tipologia-section--dark .tipologia-text {
+  color: rgba(255,255,255,0.65);
+}
+.tipologia-section--dark .materiale-tag {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.7);
+}
+
+.tipologia-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+.tipologia-inner--reverse {
+  direction: rtl;
+}
+.tipologia-inner--reverse > * {
+  direction: ltr;
+}
+
+.tipologia-content {
+  padding: var(--spacing-lg) 0;
+}
+.tipologia-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-md);
+}
+.tipologia-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1;
+}
+.tipologia-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem;
+}
+.tipologia-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tipologia-image {
+  overflow: hidden;
+}
+.tipologia-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .tipologia-inner,
+  .tipologia-inner--reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+  .tipologia-inner--reverse > * {
+    direction: ltr;
+  }
+}
+
+/* ===== FILTER: select semplice sempre visibile ===== */
+#filter-buttons {
+  display: none !important;
+}
+#filter-select-wrapper {
+  display: block !important;
+  width: 100%;
+  max-width: 280px;
+}
+#filter-select {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: var(--color-white);
+  color: var(--text-primary);
+  appearance: auto;
+  -webkit-appearance: auto;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+#filter-select:focus {
+  border-color: var(--color-gold);
+  outline: none;
 }
