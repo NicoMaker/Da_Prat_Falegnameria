@@ -52,93 +52,63 @@
   width: 100% !important;
 }
 
+/* ============================================================
+   ALLINEAMENTO HERO DEFINITIVO – testo e immagine in alto
+   ============================================================ */
 
-
-/* ===== HERO alignment definitivo: testo + immagine allineati ===== */
-.hero-section{
+.hero-section {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
-  align-items: stretch !important;   /* stessa altezza colonne */
+  align-items: stretch !important;   /* le due colonne hanno la stessa altezza */
+  background: var(--color-dark) !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: var(--color-dark) !important;
+  min-height: auto !important;       /* elimina l'altezza forzata */
 }
 
-/* Testo: allineato in alto e senza padding che crea “vuoti” */
-.hero-content{
-  justify-content: flex-start !important;
-  align-self: stretch !important;
-  margin: 0 !important;
+.hero-content {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;  /* testo attaccato in alto */
   padding: 0 var(--spacing-xl) var(--spacing-xl) var(--spacing-xl) !important;
+  background: var(--color-dark) !important;
+  margin: 0 !important;
 }
 
-/* Immagine: colonna piena e immagine ancorata in alto */
-.hero-image{
-  align-self: stretch !important;
+.hero-title {
+  margin-top: 0 !important;          /* elimina lo spazio sopra "Soluzioni" */
+  margin-bottom: var(--spacing-sm) !important;
+}
+
+/* Contenitore immagine: occupa tutta l'altezza e allinea in alto */
+.hero-image {
+  display: flex !important;
+  align-items: flex-start !important; /* inchioda l'immagine al bordo superiore */
+  height: 100% !important;            /* ereditata dalla colonna */
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
 }
 
-.hero-image img{
+.hero-image img {
   width: 100% !important;
-  height: 100% !important;              /* riempie tutta l’altezza della colonna */
+  height: 100% !important;            /* riempie tutto il contenitore */
   object-fit: cover !important;
-  object-position: top center !important; /* parte alta visibile */
+  object-position: top center !important; /* mostra sempre la parte alta */
   display: block !important;
   margin: 0 !important;
+  padding: 0 !important;
 }
 
-/* Mobile: immagine sotto il testo */
-@media (max-width: 768px){
-  .hero-section{
-    grid-template-columns: 1fr !important;
-    align-items: flex-start !important;
+/* ---- Responsive mobile ---- */
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr !important;  /* una colonna */
   }
-  .hero-content{
-    padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-md) !important;
+  .hero-content {
+    padding: var(--spacing-md) !important;   /* padding ridotto su mobile */
   }
-  .hero-image{
-    height: 300px !important; /* come già stai facendo tu */
-  }
-  .hero-image img{
-    height: 100% !important;
-  }
-}
-
-/* ===== FIX: Hero desktop testo + immagine affiancati ===== */
-.hero-section{
-  display: grid !important;
-  grid-template-columns: 1fr 1fr !important;
-  align-items: stretch !important;
-}
-
-.hero-content{
-  grid-column: 1 !important;
-  min-width: 0 !important;
-}
-
-.hero-image{
-  grid-column: 2 !important;
-  min-width: 0 !important;
-}
-.hero-image img{
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: top center !important;
-  display: block !important;
-}
-
-/* Mobile */
-@media (max-width: 768px){
-  .hero-section{
-    grid-template-columns: 1fr !important;
-  }
-  .hero-content{
-    grid-column: 1 !important;
-  }
-  .hero-image{
-    grid-column: 1 !important;
+  .hero-image {
+    height: 300px !important;               /* altezza fissa per mobile */
   }
 }
