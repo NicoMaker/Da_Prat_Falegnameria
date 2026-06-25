@@ -108,7 +108,7 @@ html {
   }
 
   .logo {
-    height: 60px !important; /* logo compatto su mobile */
+    height: 100px !important; /* logo compatto su mobile */
   }
 
   /* Hero: altezza automatica, cresce col contenuto */
