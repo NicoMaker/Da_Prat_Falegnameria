@@ -2,7 +2,7 @@
 
 /* Logo — più grande e visibile sulla navbar scura */
 .logo {
-  height: 150px !important;
+  height: 200px !important;
   width: auto;
   filter: brightness(1.15);
 }
