@@ -1,9 +1,6 @@
 [
-  { "bg": "#e8f0e8", "text": "#2d5a2d", "border": "#4a8a4a" },
-  { "bg": "#e8eaf6", "text": "#283593", "border": "#3f51b5" },
-  { "bg": "#fce4ec", "text": "#880e4f", "border": "#c2185b" },
-  { "bg": "#fff3e0", "text": "#e65100", "border": "#f57c00" },
-  { "bg": "#e0f2f1", "text": "#00695c", "border": "#00897b" },
-  { "bg": "#f3e5f5", "text": "#6a1b9a", "border": "#8e24aa" },
-  { "bg": "#e3f2fd", "text": "#0d47a1", "border": "#1976d2" }
+  { "bg": "#efebe9", "text": "#4e342e", "border": "#6d4c41" },
+  { "bg": "#f5f5f5", "text": "#3e2723", "border": "#5d4037" },
+  { "bg": "#fbe9e7", "text": "#d84315", "border": "#e64a19" },
+  { "bg": "#fff8e1", "text": "#5d4037", "border": "#8d6e63" }
 ]

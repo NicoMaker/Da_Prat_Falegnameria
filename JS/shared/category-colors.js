@@ -34,6 +34,7 @@ const CategoryColors = (() => {
   function getColor(categoryName) {
     if (!isLoaded || PALETTE.length === 0)
       return { bg: "#eee", text: "#333", border: "#ccc" };
+    
     if (_cache[categoryName] === undefined) {
       _cache[categoryName] = _hash(categoryName) % PALETTE.length;
     }
@@ -47,59 +48,70 @@ const CategoryColors = (() => {
 
   // ─── applyFilterButtonStyle con colori dedicati per "Tutti" ───
   function applyFilterButtonStyle(button, categoryName, isActive) {
+    // Reset totale dei listener per evitare che i click si sovrappongano
+    button.onmouseenter = null;
+    button.onmouseleave = null;
+
+    // Rileva se il dispositivo supporta un puntatore preciso (Mouse/Desktop)
+    const isDesktop = window.matchMedia("(pointer: fine)").matches;
+
     // Caso "Tutti" (o categoria vuota)
     if (categoryName === "Tutti" || !categoryName) {
       if (isActive) {
-        // Stato attivo: sfondo scuro, testo bianco, bordo marcato
+        // STATO SELEZIONATO: Colore fisso, nessuna animazione mobile
         button.style.cssText =
-          "background-color:#2d2d2d;color:#ffffff;border:3px solid #2d2d2d;transform:none;box-shadow:0 0 0 3px #888, 0 4px 14px rgba(0,0,0,0.2);";
+          "background-color:#2d2d2d;color:#ffffff;border:3px solid #2d2d2d;transform:none;box-shadow:0 0 0 3px #888;outline:none;-webkit-tap-highlight-color:transparent;";
       } else {
-        // Stato inattivo: sfondo grigio chiaro, testo scuro
+        // STATO NON SELEZIONATO
         button.style.cssText =
-          "background-color:#e0e0e0;color:#333333;border:2px solid #aaaaaa;";
-        // Hover per stato inattivo
-        button.onmouseenter = () => {
-          button.style.backgroundColor = "#d0d0d0";
-          button.style.borderColor = "#888";
-          button.style.transform = "translateY(-3px)";
-          button.style.boxShadow = "0 6px 18px rgba(0,0,0,0.18)";
-        };
-        button.onmouseleave = () => {
-          button.style.backgroundColor = "#e0e0e0";
-          button.style.borderColor = "#aaaaaa";
-          button.style.transform = "";
-          button.style.boxShadow = "";
-        };
+          "background-color:#e0e0e0;color:#333333;border:2px solid #aaaaaa;outline:none;-webkit-tap-highlight-color:transparent;";
+        
+        // Effetti hover: Attivi SOLO su Desktop
+        if (isDesktop) {
+          button.onmouseenter = () => {
+            button.style.backgroundColor = "#d0d0d0";
+            button.style.borderColor = "#888";
+            button.style.transform = "translateY(-3px)";
+            button.style.boxShadow = "0 6px 18px rgba(0,0,0,0.18)";
+          };
+          button.onmouseleave = () => {
+            button.style.backgroundColor = "#e0e0e0";
+            button.style.borderColor = "#aaaaaa";
+            button.style.transform = "";
+            button.style.boxShadow = "";
+          };
+        }
       }
       return;
     }
 
-    // Altre categorie: usa i colori dalla palette
+    // Altre categorie specifiche
     const c = getColor(categoryName);
-    // Rimuovi eventuali listener precedenti
-    button.onmouseenter = null;
-    button.onmouseleave = null;
 
     if (isActive) {
-      // Stato attivo: sfondo = colore del testo (scuro), testo bianco, bordo marcato
-      button.style.cssText = `background-color:${c.text};color:#ffffff;border:3px solid ${c.text};transform:none;box-shadow:0 0 0 3px ${c.border}, 0 4px 14px ${c.border}88;`;
+      // STATO SELEZIONATO: Prende i colori della palette
+      button.style.cssText = `background-color:${c.text};color:#ffffff;border:3px solid ${c.text};transform:none;box-shadow:0 0 0 3px ${c.border};outline:none;-webkit-tap-highlight-color:transparent;`;
     } else {
-      // Stato inattivo: sfondo chiaro, testo colorato
-      button.style.cssText = `background-color:${c.bg};color:${c.text};border:2px solid ${c.border};`;
-      button.onmouseenter = () => {
-        button.style.backgroundColor = c.text;
-        button.style.color = "#fff";
-        button.style.borderColor = c.text;
-        button.style.transform = "translateY(-3px)";
-        button.style.boxShadow = `0 6px 18px ${c.border}88`;
-      };
-      button.onmouseleave = () => {
-        button.style.backgroundColor = c.bg;
-        button.style.color = c.text;
-        button.style.borderColor = c.border;
-        button.style.transform = "";
-        button.style.boxShadow = "";
-      };
+      // STATO NON SELEZIONATO
+      button.style.cssText = `background-color:${c.bg};color:${c.text};border:2px solid ${c.border};outline:none;-webkit-tap-highlight-color:transparent;`;
+      
+      // Effetti hover: Attivi SOLO su Desktop
+      if (isDesktop) {
+        button.onmouseenter = () => {
+          button.style.backgroundColor = c.text;
+          button.style.color = "#fff";
+          button.style.borderColor = c.text;
+          button.style.transform = "translateY(-3px)";
+          button.style.boxShadow = `0 6px 18px ${c.border}88`;
+        };
+        button.onmouseleave = () => {
+          button.style.backgroundColor = c.bg;
+          button.style.color = c.text;
+          button.style.borderColor = c.border;
+          button.style.transform = "";
+          button.style.boxShadow = "";
+        };
+      }
     }
   }
 
@@ -125,7 +137,7 @@ const CategoryColors = (() => {
     return `<p class="categoria-badges-wrapper">${prefixHtml}${badgesHtml}</p>`;
   }
 
-  // Avvia il caricamento della palette
+  // Avvia il caricamento
   init();
 
   return {
