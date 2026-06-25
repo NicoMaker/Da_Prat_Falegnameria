@@ -75,11 +75,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         e.preventDefault();
-        const headerHeight = document.querySelector(".site-header")?.offsetHeight || 0;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+        const headerHeight =
+          document.querySelector(".site-header")?.offsetHeight || 0;
+        const targetPosition =
+          targetElement.getBoundingClientRect().top +
+          window.scrollY -
+          headerHeight;
         window.scrollTo({
           top: targetPosition,
-          behavior: "smooth"
+          behavior: "smooth",
         });
         // Se il menu era aperto, chiudilo (già fatto sopra, ma per sicurezza)
         closeMenu();
@@ -92,7 +96,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logoLink) {
     logoLink.addEventListener("click", (e) => {
       // Se il logo è già in home, non fare nulla, altrimenti scrolla in cima
-      if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+      if (
+        window.location.pathname.endsWith("index.html") ||
+        window.location.pathname === "/"
+      ) {
         e.preventDefault();
         closeMenu();
         window.scrollTo({ top: 0, behavior: "smooth" });

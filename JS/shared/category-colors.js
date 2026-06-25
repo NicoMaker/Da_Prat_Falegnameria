@@ -51,7 +51,7 @@ const CategoryColors = (() => {
     } else {
       // Bottone normale
       element.style.cssText = `background-color:${FIXED_COLOR.bg};color:${FIXED_COLOR.text};border:2px solid ${FIXED_COLOR.border};outline:none;-webkit-tap-highlight-color:transparent;`;
-      
+
       if (isDesktop) {
         element.onmouseenter = () => {
           element.style.backgroundColor = "#f9f9f9"; // Un briciolo di feedback all'hover
@@ -79,9 +79,14 @@ const CategoryColors = (() => {
 
   function getBadgesHTML(categories, prefix) {
     if (!categories || categories.length === 0) return "";
-    const prefixHtml = prefix ? `<span class="categoria-label">${prefix}</span>` : "";
+    const prefixHtml = prefix
+      ? `<span class="categoria-label">${prefix}</span>`
+      : "";
     const badgesHtml = categories
-      .map((cat) => `<span class="categoria-badge" style="${getBadgeStyle(cat)}">${cat}</span>`)
+      .map(
+        (cat) =>
+          `<span class="categoria-badge" style="${getBadgeStyle(cat)}">${cat}</span>`,
+      )
       .join("");
     return `<p class="categoria-badges-wrapper">${prefixHtml}${badgesHtml}</p>`;
   }
