@@ -1,26 +1,43 @@
 /* ===== Custom overrides - Da Prat Serramenti ===== */
 
-/* Logo size increase for better visibility */
+/* Logo — più grande e visibile sulla navbar scura */
 .logo {
-  height: 64px !important;
+  height: 150px !important;
   width: auto;
-  filter: brightness(1.1);
+  filter: brightness(1.15);
 }
 
-/* Ensure header has enough height for larger logo */
+/* Header padding adeguato per logo più alto */
 .header-container {
-  padding: 0.75rem 1.5rem;
+  padding: 0.4rem 1.5rem;
 }
 
-/* Scorrevoli section - slightly different background for visual separation */
+/* ===== FILTER SELECT — sfondo bianco, testo nero quando attivo ===== */
+#filter-select {
+  background-color: #2d2d2d !important;
+  color: #ffffff !important;
+  border-color: #2d2d2d !important;
+}
+
+#filter-select:focus,
+#filter-select:active {
+  background-color: #ffffff !important;
+  color: #1a1a1a !important;
+  border-color: var(--color-gold) !important;
+  outline: none;
+}
+
+#filter-select option {
+  background-color: #ffffff;
+  color: #1a1a1a;
+}
+
+/* Scorrevoli section */
 #scorrevoli {
   background: var(--color-off-white);
 }
 
-/* Porte Ingresso section already has light-gray bg via inline style */
-
-/* Ensure all three main category sections (Serramenti, Scorrevoli, Porte Ingresso)
-   are visually consistent and well-spaced */
+/* Sezioni materiali spacing */
 #serramenti,
 #scorrevoli,
 #porte-ingresso {
