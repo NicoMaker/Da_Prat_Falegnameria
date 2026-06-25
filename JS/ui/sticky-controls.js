@@ -19,6 +19,28 @@ document.addEventListener("DOMContentLoaded", () => {
         `🔧 Header height: ${headerHeight}px - Sticky top: ${stickyTop}px`,
       );
     }
+
+    // Trova la tua select dei filtri mobile tramite la classe o l'id reale che usi nell'HTML
+    const selectFiltroMobile =
+      document.querySelector(".product-select-filter") ||
+      document.getElementById("mobile-category-select");
+
+    if (selectFiltroMobile) {
+      // Gestione del cambio di selezione
+      selectFiltroMobile.addEventListener("change", (e) => {
+        const categoriaScelta = e.target.value; // Legge ad esempio "Marrone" o "Tutti"
+
+        // Cambia in tempo reale il colore di sfondo della select in base alla categoria scelta
+        CategoryColors.applyFilterButtonStyle(
+          selectFiltroMobile,
+          categoriaScelta,
+          true,
+        );
+      });
+
+      // Imposta lo stile iniziale (Default su "Tutti") al caricamento della pagina
+      CategoryColors.applyFilterButtonStyle(selectFiltroMobile, "Tutti", true);
+    }
   }
 
   // Imposta l'altezza iniziale

@@ -46,71 +46,82 @@ const CategoryColors = (() => {
     return `background-color:${c.bg};color:${c.text};border:1px solid ${c.border};`;
   }
 
-  // ─── applyFilterButtonStyle con colori dedicati per "Tutti" ───
-  function applyFilterButtonStyle(button, categoryName, isActive) {
-    // Reset totale dei listener per evitare che i click si sovrappongano
-    button.onmouseenter = null;
-    button.onmouseleave = null;
+  // ─── applyFilterButtonStyle ottimizzato sia per Button che per Select ───
+  function applyFilterButtonStyle(element, categoryName, isActive) {
+    if (!element) return;
 
-    // Rileva se il dispositivo supporta un puntatore preciso (Mouse/Desktop)
+    // Reset totale dei listener per evitare che l'hover rimanga "appeso" o bloccato su mobile
+    element.onmouseenter = null;
+    element.onmouseleave = null;
+
+    // Rileva se l'elemento è una <select> (mobile) o un <button> (desktop)
+    const isSelect = element.tagName.toLowerCase() === "select";
     const isDesktop = window.matchMedia("(pointer: fine)").matches;
 
-    // Caso "Tutti" (o categoria vuota)
-    if (categoryName === "Tutti" || !categoryName) {
+    // Recupera i colori (se "Tutti", usa i grigi/neri di default di sistema)
+    const isTutti = categoryName === "Tutti" || !categoryName;
+    const c = isTutti ? { bg: "#e0e0e0", text: "#2d2d2d", border: "#aaaaaa" } : getColor(categoryName);
+
+    // 1. GESTIONE SPECIFICA SE L'ELEMENTO È UNA SELECT (Stato Selezionato su Mobile)
+    if (isSelect) {
       if (isActive) {
-        // STATO SELEZIONATO: Colore fisso, nessuna animazione mobile
-        button.style.cssText =
+        // Quando la select ha la categoria correntemente selezionata e attiva
+        element.style.cssText = isTutti
+          ? "background-color:#2d2d2d;color:#ffffff;border:2px solid #2d2d2d;outline:none;-webkit-tap-highlight-color:transparent;font-weight:bold;padding:6px 10px;border-radius:4px;font-size:14px;appearance:none;-webkit-appearance:none;"
+          : `background-color:${c.text};color:#ffffff;border:2px solid ${c.text};outline:none;-webkit-tap-highlight-color:transparent;font-weight:bold;padding:6px 10px;border-radius:4px;font-size:14px;appearance:none;-webkit-appearance:none;`;
+      } else {
+        // Stato normale / inattivo della select
+        element.style.cssText = `background-color:${c.bg};color:${c.text};border:2px solid ${c.border};outline:none;-webkit-tap-highlight-color:transparent;padding:6px 10px;border-radius:4px;font-size:14px;appearance:none;-webkit-appearance:none;`;
+      }
+      return; // Interrompe l'esecuzione qui per gli elementi select
+    }
+
+    // 2. GESTIONE SE L'ELEMENTO È UN BOTTONE CLASSICO (Layout Desktop / Tablet)
+    if (isTutti) {
+      if (isActive) {
+        element.style.cssText =
           "background-color:#2d2d2d;color:#ffffff;border:3px solid #2d2d2d;transform:none;box-shadow:0 0 0 3px #888;outline:none;-webkit-tap-highlight-color:transparent;";
       } else {
-        // STATO NON SELEZIONATO
-        button.style.cssText =
+        element.style.cssText =
           "background-color:#e0e0e0;color:#333333;border:2px solid #aaaaaa;outline:none;-webkit-tap-highlight-color:transparent;";
         
-        // Effetti hover: Attivi SOLO su Desktop
         if (isDesktop) {
-          button.onmouseenter = () => {
-            button.style.backgroundColor = "#d0d0d0";
-            button.style.borderColor = "#888";
-            button.style.transform = "translateY(-3px)";
-            button.style.boxShadow = "0 6px 18px rgba(0,0,0,0.18)";
+          element.onmouseenter = () => {
+            element.style.backgroundColor = "#d0d0d0";
+            element.style.borderColor = "#888";
+            element.style.transform = "translateY(-3px)";
+            element.style.boxShadow = "0 6px 18px rgba(0,0,0,0.18)";
           };
-          button.onmouseleave = () => {
-            button.style.backgroundColor = "#e0e0e0";
-            button.style.borderColor = "#aaaaaa";
-            button.style.transform = "";
-            button.style.boxShadow = "";
+          element.onmouseleave = () => {
+            element.style.backgroundColor = "#e0e0e0";
+            element.style.borderColor = "#aaaaaa";
+            element.style.transform = "";
+            element.style.boxShadow = "";
           };
         }
       }
-      return;
-    }
-
-    // Altre categorie specifiche
-    const c = getColor(categoryName);
-
-    if (isActive) {
-      // STATO SELEZIONATO: Prende i colori della palette
-      button.style.cssText = `background-color:${c.text};color:#ffffff;border:3px solid ${c.text};transform:none;box-shadow:0 0 0 3px ${c.border};outline:none;-webkit-tap-highlight-color:transparent;`;
     } else {
-      // STATO NON SELEZIONATO
-      button.style.cssText = `background-color:${c.bg};color:${c.text};border:2px solid ${c.border};outline:none;-webkit-tap-highlight-color:transparent;`;
-      
-      // Effetti hover: Attivi SOLO su Desktop
-      if (isDesktop) {
-        button.onmouseenter = () => {
-          button.style.backgroundColor = c.text;
-          button.style.color = "#fff";
-          button.style.borderColor = c.text;
-          button.style.transform = "translateY(-3px)";
-          button.style.boxShadow = `0 6px 18px ${c.border}88`;
-        };
-        button.onmouseleave = () => {
-          button.style.backgroundColor = c.bg;
-          button.style.color = c.text;
-          button.style.borderColor = c.border;
-          button.style.transform = "";
-          button.style.boxShadow = "";
-        };
+      if (isActive) {
+        element.style.cssText = `background-color:${c.text};color:#ffffff;border:3px solid ${c.text};transform:none;box-shadow:0 0 0 3px ${c.border};outline:none;-webkit-tap-highlight-color:transparent;`;
+      } else {
+        element.style.cssText = `background-color:${c.bg};color:${c.text};border:2px solid ${c.border};outline:none;-webkit-tap-highlight-color:transparent;`;
+        
+        if (isDesktop) {
+          element.onmouseenter = () => {
+            element.style.backgroundColor = c.text;
+            element.style.color = "#fff";
+            element.style.borderColor = c.text;
+            element.style.transform = "translateY(-3px)";
+            element.style.boxShadow = `0 6px 18px ${c.border}88`;
+          };
+          element.onmouseleave = () => {
+            element.style.backgroundColor = c.bg;
+            element.style.color = c.text;
+            element.style.borderColor = c.border;
+            element.style.transform = "";
+            element.style.boxShadow = "";
+          };
+        }
       }
     }
   }
@@ -137,7 +148,7 @@ const CategoryColors = (() => {
     return `<p class="categoria-badges-wrapper">${prefixHtml}${badgesHtml}</p>`;
   }
 
-  // Avvia il caricamento
+  // Inizializza i colori
   init();
 
   return {
