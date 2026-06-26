@@ -523,6 +523,7 @@
   white-space: nowrap;
   text-decoration: none;
   transition: background 0.15s, color 0.15s;
+    color: white !important;
 }
 
 .bc-dropdown-link:hover {
