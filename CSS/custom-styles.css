@@ -1,15 +1,16 @@
 /* ===== Custom overrides - Da Prat Serramenti ===== */
 
-/* Logo — più grande e visibile sulla navbar scura */
+/* Logo — 200px su desktop */
 .logo {
   height: 200px !important;
   width: auto;
 }
 
-/* Header: padding originale ma logo incollato a sx */
-.header-container {
-  padding: 0.4rem 1.5rem !important;
-  padding-left: 0 !important;
+/* Header full-width, logo tocca il bordo sinistro dello schermo */
+.site-header .header-container {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0.4rem 1.5rem 0.4rem 0 !important;
 }
 
 .logo-container {
@@ -17,7 +18,7 @@
   padding-left: 0 !important;
 }
 
-/* ===== FILTER SELECT — sfondo bianco, testo nero quando attivo ===== */
+/* ===== FILTER SELECT ===== */
 #filter-select {
   background-color: #2d2d2d !important;
   color: #ffffff !important;
@@ -57,8 +58,7 @@
   width: 100% !important;
 }
 
-/* ===== HERO: altezza corretta senza spazi neri ===== */
-
+/* ===== HERO ===== */
 :root {
   --header-height: 213px;
 }
@@ -94,19 +94,17 @@
   margin-top: 0 !important;
 }
 
-/* Hero content: testo parte dall'alto, allineato col logo */
 .hero-content {
   align-items: flex-start !important;
   justify-content: flex-start !important;
   padding-top: 3rem !important;
 }
 
-/* scroll-padding = altezza effettiva header */
 html {
   scroll-padding-top: var(--header-height) !important;
 }
 
-/* ===== MOBILE: hero in colonna, immagine visibile ===== */
+/* ===== MOBILE ===== */
 @media (max-width: 768px) {
   :root {
     --header-height: 80px;
@@ -143,7 +141,7 @@ html {
   }
 }
 
-/* ===== HAMBURGER — icone gold-light ===== */
+/* ===== HAMBURGER ===== */
 .hamburger-line {
   background: var(--color-gold-light) !important;
 }
