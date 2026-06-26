@@ -2052,3 +2052,11 @@ h6 {
 .search-input{
   background-color: white;
 }
+
+.hero-title{
+  color: var(--color-gold);
+}
+
+.hero-subtitle{
+  font-size: 1.5em;
+}
