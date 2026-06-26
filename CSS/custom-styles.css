@@ -89,10 +89,11 @@
   margin-top: 0 !important;
 }
 
-/* Hero content: testo allineato in alto a sinistra */
+/* Hero content: testo parte dall'alto, allineato col logo */
 .hero-content {
   align-items: flex-start !important;
-  justify-content: center !important;
+  justify-content: flex-start !important;
+  padding-top: 3rem !important;
 }
 
 /* scroll-padding = altezza effettiva header */
@@ -131,6 +132,13 @@ html {
     width: 100% !important;
     height: 100% !important;
     object-fit: cover !important;
+  }
+
+  /* Testo: stesso padding-top del logo mobile per allineamento ottico */
+  .hero-content {
+    padding-top: 1.5rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
   }
 }
 
