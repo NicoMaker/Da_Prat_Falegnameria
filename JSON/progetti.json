@@ -42,16 +42,16 @@
     },
     {
       "id": "ingr-1",
-      "nome": "Porta d'Ingresso Blindata",
-      "categorie": ["Porte d'Ingresso"],
+      "nome": "Porta Blindata",
+      "categorie": ["Porte Blindate"],
       "descrizione": "Porta d'ingresso con profilo in alluminio e anima blindata. Sicurezza classe 3, isolamento termico superiore, design personalizzabile in oltre 50 colori.",
       "immagine": "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&h=460&fit=crop",
       "link": "#"
     },
     {
       "id": "ingr-2",
-      "nome": "Porta d'Ingresso Vetrata",
-      "categorie": ["Porte d'Ingresso"],
+      "nome": "Porta Blindata Vetrata",
+      "categorie": ["Porte Blindate"],
       "descrizione": "Porta d'ingresso con ampia vetrata laterale e profilo in alluminio. Dona luminosità all'ingresso mantenendo alte performance di sicurezza e isolamento.",
       "immagine": "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600&h=460&fit=crop",
       "link": "#"
@@ -61,15 +61,23 @@
       "nome": "Porta Interna Legno Massello",
       "categorie": ["Porte Interne"],
       "descrizione": "Porta interna in legno massello con essenza naturale. Disponibile in finitura laccata bianca, noce, rovere e molte altre. Eleganza e solidità garantite.",
-      "immagine": "https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=600&h=460&fit=crop",
+      "immagine": "Img/Porte_Section/interne/1.png",
       "link": "#"
     },
     {
       "id": "int-alu-1",
-      "nome": "Porta Interna Alluminio",
+      "nome": "Porta Interna Design",
       "categorie": ["Porte Interne"],
-      "descrizione": "Porta interna in alluminio con vetro satinato. Design contemporaneo per ambienti moderni, disponibile a battente o scorrevole.",
-      "immagine": "https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?w=600&h=460&fit=crop",
+      "descrizione": "Porta interna dal design contemporaneo con vetro satinato. Disponibile a battente o scorrevole, si adatta a ogni stile abitativo moderno.",
+      "immagine": "Img/Porte_Section/interne/2.png",
+      "link": "#"
+    },
+    {
+      "id": "int-3",
+      "nome": "Porta Interna Premium",
+      "categorie": ["Porte Interne"],
+      "descrizione": "Porta interna di alta gamma con finiture pregiate. Perfetta per chi vuole abbinare funzionalità e stile in ogni ambiente della casa.",
+      "immagine": "Img/Porte_Section/interne/3.png",
       "link": "#"
     },
     {

@@ -64,9 +64,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ── Popola bottoni e select ──────────────────────────────
+  const PORTE_GROUP = "Porte";
+  const PORTE_SUBCATEGORIES = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
+
+  function isPorteGroup(cat) {
+    return cat === PORTE_GROUP;
+  }
+
+  function matchesFilter(product, filter) {
+    if (filter === CONFIG.defaultFilter) return true;
+    if (isPorteGroup(filter)) return product.categorie.some(c => PORTE_SUBCATEGORIES.includes(c));
+    return product.categorie.includes(filter);
+  }
+
   function populateFilters() {
     const categories = new Set([CONFIG.defaultFilter]);
-    allProducts.forEach((p) => p.categorie.forEach((c) => categories.add(c)));
+    allProducts.forEach((p) => p.categorie.forEach((c) => {
+      if (PORTE_SUBCATEGORIES.includes(c)) {
+        categories.add(PORTE_GROUP);
+      } else {
+        categories.add(c);
+      }
+    }));
 
     filterButtonsContainer.innerHTML = "";
     filterSelect.innerHTML = "";
@@ -172,7 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function applyFiltersAndSearch() {
     let filtered = allProducts;
     if (currentFilter !== CONFIG.defaultFilter) {
-      filtered = filtered.filter((p) => p.categorie.includes(currentFilter));
+      filtered = filtered.filter((p) => matchesFilter(p, currentFilter));
     }
     if (currentSearchTerm) {
       const term = currentSearchTerm.toLowerCase();

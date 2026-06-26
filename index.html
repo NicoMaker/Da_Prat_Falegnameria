@@ -72,8 +72,13 @@
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#serramenti" class="nav-link">Serramenti</a></li>
             <li><a href="#scorrevoli" class="nav-link">Scorrevoli</a></li>
-            <li>
-              <a href="#porte-ingresso" class="nav-link">Porte Ingresso</a>
+            <li class="nav-dropdown-wrapper">
+              <a href="#porte" class="nav-link nav-dropdown-toggle">Porte <span class="dropdown-arrow">▾</span></a>
+              <ul class="nav-dropdown-menu">
+                <li><a href="#porte" data-tab="interne" class="nav-dropdown-link">Porte Interne</a></li>
+                <li><a href="#porte" data-tab="scorrevoli" class="nav-dropdown-link">Porte Scorrevoli</a></li>
+                <li><a href="#porte" data-tab="blindate" class="nav-dropdown-link">Porte Blindate</a></li>
+              </ul>
             </li>
             <li><a href="#consulenza" class="nav-link">Consulenza</a></li>
             <li><a href="#prodotti" class="nav-link">Prodotti</a></li>
@@ -94,8 +99,13 @@
           <li><a href="#home" class="mobile-nav-link">Home</a></li>
           <li><a href="#serramenti" class="mobile-nav-link">Serramenti</a></li>
           <li><a href="#scorrevoli" class="mobile-nav-link">Scorrevoli</a></li>
-          <li>
-            <a href="#porte-ingresso" class="mobile-nav-link">Porte Ingresso</a>
+          <li class="mobile-dropdown-wrapper">
+            <a href="#porte" class="mobile-nav-link mobile-dropdown-toggle">Porte <span class="dropdown-arrow">▾</span></a>
+            <ul class="mobile-dropdown-menu">
+              <li><a href="#porte" data-tab="interne" class="mobile-nav-link mobile-nav-sub">Porte Interne</a></li>
+              <li><a href="#porte" data-tab="scorrevoli" class="mobile-nav-link mobile-nav-sub">Porte Scorrevoli</a></li>
+              <li><a href="#porte" data-tab="blindate" class="mobile-nav-link mobile-nav-sub">Porte Blindate</a></li>
+            </ul>
           </li>
           <li><a href="#consulenza" class="mobile-nav-link">Consulenza</a></li>
           <li><a href="#prodotti" class="mobile-nav-link">Prodotti</a></li>
@@ -198,143 +208,144 @@
       </div>
     </section>
 
-    <!-- ===== SCORREVOLI SECTION ===== -->
-    <section id="scorrevoli" class="materiali-section">
-      <div class="container" style="margin-bottom: 2rem; text-align: center">
-        <h2 class="section-title" style="margin-bottom: 0.5rem">Scorrevoli</h2>
-        <p class="section-subtitle">
-          Ampiezza, luce e design senza compromessi
-        </p>
+    <!-- ===== PORTE SECTION (unified with tabs) ===== -->
+    <section id="porte" class="materiali-section porte-section">
+      <div class="container" style="margin-bottom: 1.5rem; text-align: center">
+        <h2 class="section-title" style="margin-bottom: 0.5rem">Porte</h2>
+        <p class="section-subtitle">Interne, scorrevoli e blindate su misura</p>
       </div>
 
-      <div class="materiali-grid">
-        <div class="materiale-card">
-          <h3 class="materiale-title">Scorrevole<br />in PVC</h3>
-          <p class="materiale-text">
-            <img
-              src="Img/Scorrevoli_Section/1.png"
-              alt="Scorrevole in PVC"
-              class="materiale-image"
-            />
-            Ottima soluzione per chi cerca praticità e risparmio energetico.
-            Scorre in modo fluido e silenzioso, con elevato isolamento termico e
-            acustico. Personalizzabile in colori e finiture.
-          </p>
-          <div class="materiale-tags">
-            <span class="materiale-tag">Isolamento</span>
-            <span class="materiale-tag">Risparmio</span>
-            <span class="materiale-tag">Praticità</span>
-          </div>
+      <!-- Tab buttons -->
+      <div class="porte-tabs-wrapper">
+        <div class="porte-tabs">
+          <button class="porte-tab active" data-tab="interne">Porte Interne</button>
+          <button class="porte-tab" data-tab="scorrevoli">Porte Scorrevoli</button>
+          <button class="porte-tab" data-tab="blindate">Porte Blindate</button>
         </div>
+      </div>
 
-        <div class="materiale-card">
-          <h3 class="materiale-title">Scorrevole<br />in Alluminio</h3>
-          <p class="materiale-text">
-            <img
-              src="Img/Scorrevoli_Section/2.png"
-              alt="Scorrevole in Alluminio"
-              class="materiale-image"
-            />
-            Eleganza e leggerezza per grandi aperture. Il profilo sottile in
-            alluminio massimizza la superficie vetrata e la luminosità degli
-            ambienti, con prestazioni di sicurezza elevate.
-          </p>
-          <div class="materiale-tags">
-            <span class="materiale-tag">Design</span>
-            <span class="materiale-tag">Luce</span>
-            <span class="materiale-tag">Sicurezza</span>
+      <!-- Tab: Interne -->
+      <div class="porte-tab-content active" data-content="interne">
+        <div class="materiali-grid">
+          <div class="materiale-card">
+            <h3 class="materiale-title">Porta Interna<br />Legno Massello</h3>
+            <p class="materiale-text">
+              <img src="Img/Porte_Section/interne/1.png" alt="Porta interna legno" class="materiale-image" />
+              Porta interna in legno massello con essenza naturale. Disponibile in finitura laccata bianca, noce, rovere e molte altre. Eleganza e solidità garantite.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Calore</span>
+              <span class="materiale-tag">Solidità</span>
+              <span class="materiale-tag">Stile</span>
+            </div>
           </div>
-        </div>
-
-                <div class="materiale-card">
-          <h3 class="materiale-title">Scorrevole<br />in Alluminio</h3>
-          <p class="materiale-text">
-            <img
-              src="Img/Scorrevoli_Section/4.png"
-              alt="Scorrevole in Alluminio"
-              class="materiale-image"
-            />
-            Eleganza e leggerezza per grandi aperture. Il profilo sottile in
-            alluminio massimizza la superficie vetrata e la luminosità degli
-            ambienti, con prestazioni di sicurezza elevate.
-          </p>
-          <div class="materiale-tags">
-            <span class="materiale-tag">Design</span>
-            <span class="materiale-tag">Luce</span>
-            <span class="materiale-tag">Sicurezza</span>
+          <div class="materiale-card">
+            <h3 class="materiale-title">Porta Interna<br />Design</h3>
+            <p class="materiale-text">
+              <img src="Img/Porte_Section/interne/2.png" alt="Porta interna design" class="materiale-image" />
+              Porta interna dal design contemporaneo, disponibile a battente o scorrevole. Perfetta per chi cerca linee pulite e moderne in ogni ambiente.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Design</span>
+              <span class="materiale-tag">Modernità</span>
+              <span class="materiale-tag">Versatilità</span>
+            </div>
           </div>
-        </div>
-
-                          <div class="materiale-card">
-          <h3 class="materiale-title">Scorrevole<br />in Alluminio</h3>
-          <p class="materiale-text">
-            <img
-              src="Img/Scorrevoli_Section/3.png"
-              alt="Scorrevole in Alluminio"
-              class="materiale-image"
-            />
-            Eleganza e leggerezza per grandi aperture. Il profilo sottile in
-            alluminio massimizza la superficie vetrata e la luminosità degli
-            ambienti, con prestazioni di sicurezza elevate.
-          </p>
-          <div class="materiale-tags">
-            <span class="materiale-tag">Design</span>
-            <span class="materiale-tag">Luce</span>
-            <span class="materiale-tag">Sicurezza</span>
+          <div class="materiale-card">
+            <h3 class="materiale-title">Porta Interna<br />Premium</h3>
+            <p class="materiale-text">
+              <img src="Img/Porte_Section/interne/3.png" alt="Porta interna premium" class="materiale-image" />
+              Porta interna di alta gamma con finiture pregiate. Coniuga funzionalità e stile per ogni ambiente della casa, con personalizzazioni su misura.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Premium</span>
+              <span class="materiale-tag">Su Misura</span>
+              <span class="materiale-tag">Qualità</span>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- ===== PORTE INGRESSO SECTION ===== -->
-    <section
-      id="porte-ingresso"
-      class="materiali-section"
-      style="background: var(--color-light-gray)"
-    >
-      <div class="container" style="margin-bottom: 2rem; text-align: center">
-        <h2 class="section-title" style="margin-bottom: 0.5rem">
-          Porte d'Ingresso
-        </h2>
-        <p class="section-subtitle">Sicurezza, stile e primo impatto</p>
-      </div>
-
-      <div class="materiali-grid">
-        <div class="materiale-card">
-          <h3 class="materiale-title">Porta<br />Blindata</h3>
-          <p class="materiale-text">
-            <img
-              src="Img/Porte_section/ingresso/1.png"
-              alt="Porta blindata"
-              class="materiale-image"
-            />
-            Massima protezione antieffrazione con certificazione di sicurezza.
-            Struttura in acciaio rinforzato con isolamento termico e acustico
-            integrato. Disponibile in molte finiture esterne.
-          </p>
-          <div class="materiale-tags">
-            <span class="materiale-tag">Sicurezza</span>
-            <span class="materiale-tag">Resistenza</span>
-            <span class="materiale-tag">Isolamento</span>
+      <!-- Tab: Scorrevoli -->
+      <div class="porte-tab-content" data-content="scorrevoli">
+        <div class="materiali-grid">
+          <div class="materiale-card">
+            <h3 class="materiale-title">Scorrevole<br />in PVC</h3>
+            <p class="materiale-text">
+              <img src="Img/Scorrevoli_Section/1.png" alt="Scorrevole in PVC" class="materiale-image" />
+              Ottima soluzione per chi cerca praticità e risparmio energetico. Scorre in modo fluido e silenzioso, con elevato isolamento termico e acustico. Personalizzabile in colori e finiture.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Isolamento</span>
+              <span class="materiale-tag">Risparmio</span>
+              <span class="materiale-tag">Praticità</span>
+            </div>
+          </div>
+          <div class="materiale-card">
+            <h3 class="materiale-title">Scorrevole<br />in Alluminio</h3>
+            <p class="materiale-text">
+              <img src="Img/Scorrevoli_Section/2.png" alt="Scorrevole in Alluminio" class="materiale-image" />
+              Eleganza e leggerezza per grandi aperture. Il profilo sottile in alluminio massimizza la superficie vetrata e la luminosità degli ambienti, con prestazioni di sicurezza elevate.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Design</span>
+              <span class="materiale-tag">Luce</span>
+              <span class="materiale-tag">Sicurezza</span>
+            </div>
+          </div>
+          <div class="materiale-card">
+            <h3 class="materiale-title">Scorrevole<br />Panoramico</h3>
+            <p class="materiale-text">
+              <img src="Img/Scorrevoli_Section/3.png" alt="Scorrevole panoramico" class="materiale-image" />
+              Sistema scorrevole con apertura massimizzata verso esterno. Ideale per terrazzi e giardini, garantisce vista aperta e continuità tra interno ed esterno.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Panorama</span>
+              <span class="materiale-tag">Luce</span>
+              <span class="materiale-tag">Modernità</span>
+            </div>
+          </div>
+          <div class="materiale-card">
+            <h3 class="materiale-title">Scorrevole<br />Minimalista</h3>
+            <p class="materiale-text">
+              <img src="Img/Scorrevoli_Section/4.png" alt="Scorrevole minimalista" class="materiale-image" />
+              Profili ultra-sottili per una visuale totale. Il design minimalista esalta l'architettura contemporanea riducendo al minimo gli ingombri visivi.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Minimal</span>
+              <span class="materiale-tag">Eleganza</span>
+              <span class="materiale-tag">Design</span>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="materiale-card">
-          <h3 class="materiale-title">Porta<br />in Alluminio</h3>
-          <p class="materiale-text">
-            <img
-              src="Img/Porte_section/Ingresso/2.png"
-              alt="Porta ingresso in alluminio"
-              class="materiale-image"
-            />
-            Design contemporaneo e durata nel tempo. Leggera ma robusta,
-            resistente agli agenti atmosferici e alla corrosione. Ideale per
-            abitazioni moderne con grandi superfici vetrate.
-          </p>
-          <div class="materiale-tags">
-            <span class="materiale-tag">Design</span>
-            <span class="materiale-tag">Durabilità</span>
-            <span class="materiale-tag">Modernità</span>
+      <!-- Tab: Blindate -->
+      <div class="porte-tab-content" data-content="blindate">
+        <div class="materiali-grid">
+          <div class="materiale-card">
+            <h3 class="materiale-title">Porta<br />Blindata</h3>
+            <p class="materiale-text">
+              <img src="Img/Porte_section/ingresso/1.png" alt="Porta blindata" class="materiale-image" />
+              Massima protezione antieffrazione con certificazione di sicurezza. Struttura in acciaio rinforzato con isolamento termico e acustico integrato. Disponibile in molte finiture esterne.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Sicurezza</span>
+              <span class="materiale-tag">Resistenza</span>
+              <span class="materiale-tag">Isolamento</span>
+            </div>
+          </div>
+          <div class="materiale-card">
+            <h3 class="materiale-title">Porta Blindata<br />Vetrata</h3>
+            <p class="materiale-text">
+              <img src="Img/Porte_section/Ingresso/2.png" alt="Porta blindata vetrata" class="materiale-image" />
+              Design contemporaneo con ampia vetrata laterale in alluminio. Dona luminosità all'ingresso mantenendo alte performance di sicurezza e isolamento.
+            </p>
+            <div class="materiale-tags">
+              <span class="materiale-tag">Design</span>
+              <span class="materiale-tag">Durabilità</span>
+              <span class="materiale-tag">Modernità</span>
+            </div>
           </div>
         </div>
       </div>
@@ -478,5 +489,49 @@
     <script src="JS/footer/creazione_html.js"></script>
     <script src="JS/footer/aggiorna-orari.js"></script>
     <script src="JS/footer/config.js"></script>
+
+    <!-- Porte tabs + nav dropdown logic -->
+    <script>
+    (function () {
+      // ── Porte tabs ──────────────────────────────────────────
+      function activateTab(tabName) {
+        document.querySelectorAll(".porte-tab").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.tab === tabName);
+        });
+        document.querySelectorAll(".porte-tab-content").forEach(panel => {
+          panel.classList.toggle("active", panel.dataset.content === tabName);
+        });
+      }
+
+      document.querySelectorAll(".porte-tab").forEach(btn => {
+        btn.addEventListener("click", () => activateTab(btn.dataset.tab));
+      });
+
+      // ── Dropdown links → scroll to #porte and open correct tab ──
+      document.querySelectorAll("[data-tab]").forEach(link => {
+        link.addEventListener("click", function (e) {
+          const tab = this.dataset.tab;
+          const target = document.getElementById("porte");
+          if (!target) return;
+          // Navigate and then activate tab
+          setTimeout(() => activateTab(tab), 300);
+        });
+      });
+
+      // ── Mobile dropdown accordion ────────────────────────────
+      const mobileToggle = document.querySelector(".mobile-dropdown-toggle");
+      const mobileMenu = document.querySelector(".mobile-dropdown-menu");
+      if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener("click", function (e) {
+          // Only toggle accordion, don't navigate
+          const isOpen = mobileMenu.classList.contains("open");
+          if (!isOpen) e.preventDefault();
+          mobileMenu.classList.toggle("open");
+          const arrow = this.querySelector(".dropdown-arrow");
+          if (arrow) arrow.style.transform = isOpen ? "" : "rotate(180deg)";
+        });
+      }
+    })();
+    </script>
   </body>
 </html>

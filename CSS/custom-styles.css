@@ -145,3 +145,157 @@ html {
 .hamburger-line {
   background: var(--color-gold-light) !important;
 }
+/* ===== DROPDOWN NAV (Porte) ===== */
+.nav-dropdown-wrapper {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dropdown-arrow {
+  font-size: 0.7em;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.nav-dropdown-wrapper:hover .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-anthracite, #2c2c2c);
+  border-radius: 8px;
+  min-width: 180px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  padding: 6px 0;
+  list-style: none;
+  z-index: 1000;
+}
+
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--color-anthracite, #2c2c2c);
+}
+
+.nav-dropdown-wrapper:hover .nav-dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown-link {
+  display: block;
+  padding: 10px 20px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  text-decoration: none;
+}
+
+.nav-dropdown-link:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+/* ===== MOBILE DROPDOWN (Porte) ===== */
+.mobile-dropdown-wrapper .mobile-dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-dropdown-menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.mobile-dropdown-menu.open {
+  display: block;
+}
+
+.mobile-nav-sub {
+  padding-left: 2.5rem !important;
+  font-size: 0.9rem !important;
+  opacity: 0.85;
+}
+
+/* ===== PORTE TABS ===== */
+.porte-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.porte-tabs {
+  display: flex;
+  gap: 0;
+  border-radius: 50px;
+  background: rgba(0,0,0,0.06);
+  padding: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.porte-tab {
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2c2c2c);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.porte-tab:hover {
+  background: rgba(0,0,0,0.06);
+}
+
+.porte-tab.active {
+  background: var(--color-anthracite, #2c2c2c);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.porte-tab-content {
+  display: none;
+}
+
+.porte-tab-content.active {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .porte-tabs {
+    flex-direction: column;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 320px;
+  }
+  .porte-tab {
+    border-radius: 10px;
+    text-align: center;
+  }
+}
