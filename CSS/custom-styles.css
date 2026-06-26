@@ -6,9 +6,15 @@
   width: auto;
 }
 
-/* Header padding adeguato per logo più alto */
+/* Header: padding originale ma logo incollato a sx */
 .header-container {
-  padding: 0.4rem 1.5rem;
+  padding: 0.4rem 1.5rem !important;
+  padding-left: 0 !important;
+}
+
+.logo-container {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
 }
 
 /* ===== FILTER SELECT — sfondo bianco, testo nero quando attivo ===== */
@@ -53,14 +59,13 @@
 
 /* ===== HERO: altezza corretta senza spazi neri ===== */
 
-/* Variabile altezza header: logo 200px + padding (0.4rem * 2 ≈ 13px) */
 :root {
   --header-height: 213px;
 }
 
 .hero-section {
   height: calc(100vh - var(--header-height)) !important;
-  min-height: 400px !important; /* fallback su schermi molto bassi */
+  min-height: 400px !important;
   margin: 0 !important;
   padding: 0 !important;
   gap: 0 !important;
@@ -103,23 +108,20 @@ html {
 
 /* ===== MOBILE: hero in colonna, immagine visibile ===== */
 @media (max-width: 768px) {
-  /* Su mobile il logo si riduce, l'header è più basso */
   :root {
     --header-height: 80px;
   }
 
   .logo {
-    height: 100px !important; /* logo compatto su mobile */
+    height: 100px !important;
   }
 
-  /* Hero: altezza automatica, cresce col contenuto */
   .hero-section {
     height: auto !important;
     min-height: unset !important;
     flex-direction: column !important;
   }
 
-  /* Immagine: dimensione esplicita così non collassa */
   .hero-image {
     width: 100% !important;
     height: 60vw !important;
@@ -134,7 +136,6 @@ html {
     object-fit: cover !important;
   }
 
-  /* Testo: stesso padding-top del logo mobile per allineamento ottico */
   .hero-content {
     padding-top: 1.5rem !important;
     padding-left: 1.25rem !important;
