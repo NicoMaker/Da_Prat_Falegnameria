@@ -121,7 +121,7 @@
     <section id="home" class="hero-section">
       <div class="hero-content">
         <h1 class="hero-title">
-          Soluzioni<br />su <em>misura</em><br />per la tua<br />casa
+          Soluzioni<br /><em>su misura</em><br />per la tua<br />casa
         </h1>
         <p class="hero-subtitle">
           Funzionalità, design, efficienza energetica e sicurezza: gli
@@ -495,39 +495,50 @@
     (function () {
       // ── Porte tabs ──────────────────────────────────────────
       function activateTab(tabName) {
-        document.querySelectorAll(".porte-tab").forEach(btn => {
+        document.querySelectorAll(".porte-tab").forEach(function(btn) {
           btn.classList.toggle("active", btn.dataset.tab === tabName);
         });
-        document.querySelectorAll(".porte-tab-content").forEach(panel => {
+        document.querySelectorAll(".porte-tab-content").forEach(function(panel) {
           panel.classList.toggle("active", panel.dataset.content === tabName);
         });
       }
 
-      document.querySelectorAll(".porte-tab").forEach(btn => {
-        btn.addEventListener("click", () => activateTab(btn.dataset.tab));
+      document.querySelectorAll(".porte-tab").forEach(function(btn) {
+        btn.addEventListener("click", function() { activateTab(this.dataset.tab); });
       });
 
-      // ── Dropdown links → scroll to #porte and open correct tab ──
-      document.querySelectorAll("[data-tab]").forEach(link => {
-        link.addEventListener("click", function (e) {
-          const tab = this.dataset.tab;
-          const target = document.getElementById("porte");
-          if (!target) return;
-          // Navigate and then activate tab
-          setTimeout(() => activateTab(tab), 300);
+      // ── Dropdown / sub-links → save tab in sessionStorage ────
+      document.querySelectorAll("[data-tab]").forEach(function(link) {
+        link.addEventListener("click", function() {
+          sessionStorage.setItem("porteTab", this.dataset.tab);
         });
       });
 
+      // ── On load: open tab from sessionStorage if arriving at #porte ──
+      var savedTab = sessionStorage.getItem("porteTab");
+      if (savedTab) {
+        sessionStorage.removeItem("porteTab");
+        // Scroll to #porte and activate the right tab
+        var porteSection = document.getElementById("porte");
+        if (porteSection) {
+          activateTab(savedTab);
+          setTimeout(function() {
+            var headerH = (document.querySelector(".site-header") || {}).offsetHeight || 0;
+            var top = porteSection.getBoundingClientRect().top + window.scrollY - headerH;
+            window.scrollTo({ top: top, behavior: "smooth" });
+          }, 150);
+        }
+      }
+
       // ── Mobile dropdown accordion ────────────────────────────
-      const mobileToggle = document.querySelector(".mobile-dropdown-toggle");
-      const mobileMenu = document.querySelector(".mobile-dropdown-menu");
-      if (mobileToggle && mobileMenu) {
-        mobileToggle.addEventListener("click", function (e) {
-          // Only toggle accordion, don't navigate
-          const isOpen = mobileMenu.classList.contains("open");
+      var mobileToggle = document.querySelector(".mobile-dropdown-toggle");
+      var mobileDropMenu = document.querySelector(".mobile-dropdown-menu");
+      if (mobileToggle && mobileDropMenu) {
+        mobileToggle.addEventListener("click", function(e) {
+          var isOpen = mobileDropMenu.classList.contains("open");
           if (!isOpen) e.preventDefault();
-          mobileMenu.classList.toggle("open");
-          const arrow = this.querySelector(".dropdown-arrow");
+          mobileDropMenu.classList.toggle("open");
+          var arrow = this.querySelector(".dropdown-arrow");
           if (arrow) arrow.style.transform = isOpen ? "" : "rotate(180deg)";
         });
       }
