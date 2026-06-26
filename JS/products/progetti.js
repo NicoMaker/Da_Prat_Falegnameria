@@ -170,6 +170,12 @@ document.addEventListener("DOMContentLoaded", () => {
       filterSelect.value = currentFilter;
       applyColorsToSelect();
     }
+
+    // Evidenzia il dropdown nav corrispondente al filtro attivo
+    if (window.NavHighlight && window.NavHighlight.setFilter) {
+      const filter = currentFilter === CONFIG.defaultFilter ? null : currentFilter;
+      window.NavHighlight.setFilter(filter);
+    }
   }
 
   // ── Scroll ──────────────────────────────────────────────────

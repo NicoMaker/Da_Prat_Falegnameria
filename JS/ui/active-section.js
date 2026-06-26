@@ -103,6 +103,22 @@ document.addEventListener("DOMContentLoaded", () => {
       const targetId = href.includes("#") ? href.split("#").pop() : "";
       if (!targetId) return;
 
+      // Se il link ha data-tab (dropdown Porte), salva il tab e poi scrolla
+      const tab = link.getAttribute("data-tab");
+      if (tab) {
+        sessionStorage.setItem("porteTab", tab);
+        // Attiva subito il tab senza reload di pagina
+        const activateTab = (tabName) => {
+          document.querySelectorAll(".porte-tab").forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.tab === tabName);
+          });
+          document.querySelectorAll(".porte-tab-content").forEach((panel) => {
+            panel.classList.toggle("active", panel.dataset.content === tabName);
+          });
+        };
+        activateTab(tab);
+      }
+
       if (targetId === "Contatti" && !document.getElementById("Contatti")) {
         document.addEventListener(
           "footerLoaded",
