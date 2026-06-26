@@ -109,8 +109,13 @@
 .hero-top {
   display: flex;
   flex-direction: column;
-  /* small inner top spacing so text isn't flush against the very edge */
-  padding-top: 2rem;
+}
+
+/* Desktop only: small top padding to visually align title with image top */
+@media (min-width: 769px) {
+  .hero-top {
+    padding-top: 2rem;
+  }
 }
 
 .hero-cta-container {
