@@ -649,6 +649,21 @@
 
         // Accordion mobile Prodotti (creato dopo il build)
         initMobileAccordion("#mobile-prodotti-toggle", "#mobile-prodotti-menu");
+
+        // ── Leggi filtro da sessionStorage (arrivo da breadcrumb o nav esterno) ──
+        var savedFilter = sessionStorage.getItem("prodFilter");
+        if (savedFilter) {
+          sessionStorage.removeItem("prodFilter");
+          setTimeout(function() {
+            applyNavFilter(savedFilter);
+            var prodSection = document.getElementById("prodotti");
+            if (prodSection) {
+              var headerH = (document.querySelector(".site-header") || {}).offsetHeight || 0;
+              var top = prodSection.getBoundingClientRect().top + window.scrollY - headerH;
+              window.scrollTo({ top: top, behavior: "smooth" });
+            }
+          }, 300);
+        }
       });
 
     })();

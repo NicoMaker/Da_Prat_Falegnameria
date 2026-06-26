@@ -434,3 +434,98 @@
     padding: var(--spacing-sm);
   }
 }
+/* ===== Breadcrumb con dropdown Prodotti ===== */
+.product-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.bc-link, .bc-current {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+
+.bc-link:hover { opacity: 0.75; }
+
+.bc-current {
+  color: var(--color-anthracite, #444);
+}
+
+.bc-sep {
+  color: var(--color-gold);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+/* Wrapper con il dropdown */
+.bc-prodotti-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bc-prodotti-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.bc-arrow {
+  font-size: 0.65em;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.bc-dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--color-anthracite, #2c2c2c);
+  border-radius: 8px;
+  min-width: 190px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  padding: 6px 0;
+  list-style: none;
+  z-index: 999;
+}
+
+.bc-dropdown.bc-open {
+  display: block;
+}
+
+.bc-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 16px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid var(--color-anthracite, #2c2c2c);
+}
+
+.bc-dropdown-link {
+  display: block;
+  padding: 10px 18px;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.bc-dropdown-link:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}

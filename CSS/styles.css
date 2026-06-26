@@ -1948,23 +1948,37 @@ h6 {
     height: calc(100vh - 220px) !important;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+    padding: 0 !important;
     gap: 0 !important;
     align-items: stretch !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
   }
 
   .hero-content {
     justify-content: center !important;
+    padding: var(--spacing-lg) var(--spacing-xl) !important;
+    margin: 0 !important;
   }
 
   .hero-image {
-    display: flex !important;
-    align-items: stretch !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    height: 100% !important;
   }
 
   .hero-image img {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
     object-position: center center !important;
+    display: block !important;
   }
 }
 
