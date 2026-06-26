@@ -2060,3 +2060,17 @@ h6 {
 .hero-subtitle{
   font-size: 1.5em;
 }
+
+@media (max-width: 768px) {
+  .mobile-dropdown-wrapper .dropdown-arrow,
+  .mobile-dropdown-wrapper .mobile-dropdown-toggle .dropdown-arrow {
+    display: none !important;
+  }
+  #mobile-prodotti-menu,
+  .mobile-dropdown-menu {
+    display: none !important;
+  }
+  .mobile-dropdown-wrapper .mobile-dropdown-toggle {
+    pointer-events: auto; /* il link rimane cliccabile per l'ancora */
+  }
+}
