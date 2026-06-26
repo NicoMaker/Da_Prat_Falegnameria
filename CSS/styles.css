@@ -1957,7 +1957,10 @@ h6 {
 
   .hero-content {
     justify-content: space-between !important;
-    padding: var(--spacing-lg) var(--spacing-xl) !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    padding-left: var(--spacing-xl) !important;
+    padding-right: var(--spacing-xl) !important;
     margin: 0 !important;
   }
 

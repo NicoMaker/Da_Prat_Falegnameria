@@ -97,8 +97,25 @@
 .hero-content {
   align-items: flex-start !important;
   justify-content: space-between !important;
-  padding-top: 3rem !important;
-  padding-bottom: 3rem !important;
+  /* padding top=0 so title aligns with top of image */
+  padding-top: 0 !important;
+  /* padding bottom=0 so buttons align with bottom of image */
+  padding-bottom: 0 !important;
+  /* keep horizontal padding only */
+  padding-left: var(--spacing-xl) !important;
+  padding-right: var(--spacing-xl) !important;
+}
+
+.hero-top {
+  display: flex;
+  flex-direction: column;
+  /* small inner top spacing so text isn't flush against the very edge */
+  padding-top: 2rem;
+}
+
+.hero-cta-container {
+  /* small inner bottom spacing so buttons aren't flush against the edge */
+  padding-bottom: 2rem !important;
 }
 
 html {
@@ -245,6 +262,15 @@ html {
   padding-left: 2.5rem !important;
   font-size: 0.9rem !important;
   opacity: 0.85;
+}
+
+/* I sub-link dei dropdown prodotti NON devono avere stile active dorato
+   (evita che "Tutti" diventi oro quando la sezione prodotti è attiva) */
+.mobile-nav-sub.active {
+  color: rgba(255,255,255,0.85) !important;
+}
+.mobile-nav-sub.active::after {
+  display: none !important;
 }
 
 /* ===== PORTE TABS ===== */

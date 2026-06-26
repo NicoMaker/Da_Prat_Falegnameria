@@ -73,18 +73,44 @@
             <li><a href="#serramenti" class="nav-link">Serramenti</a></li>
             <li><a href="#scorrevoli" class="nav-link">Scorrevoli</a></li>
             <li class="nav-dropdown-wrapper">
-              <a href="#porte" class="nav-link nav-dropdown-toggle">Porte <span class="dropdown-arrow">▾</span></a>
+              <a href="#porte" class="nav-link nav-dropdown-toggle"
+                >Porte <span class="dropdown-arrow">▾</span></a
+              >
               <ul class="nav-dropdown-menu">
-                <li><a href="#porte" data-tab="interne" class="nav-dropdown-link">Porte Interne</a></li>
-                <li><a href="#porte" data-tab="scorrevoli" class="nav-dropdown-link">Porte Scorrevoli</a></li>
-                <li><a href="#porte" data-tab="blindate" class="nav-dropdown-link">Porte Blindate</a></li>
+                <li>
+                  <a href="#porte" data-tab="interne" class="nav-dropdown-link"
+                    >Porte Interne</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#porte"
+                    data-tab="scorrevoli"
+                    class="nav-dropdown-link"
+                    >Porte Scorrevoli</a
+                  >
+                </li>
+                <li>
+                  <a href="#porte" data-tab="blindate" class="nav-dropdown-link"
+                    >Porte Blindate</a
+                  >
+                </li>
               </ul>
             </li>
             <li><a href="#consulenza" class="nav-link">Consulenza</a></li>
             <li class="nav-dropdown-wrapper" id="nav-prodotti-wrapper">
-              <a href="#prodotti" class="nav-link nav-dropdown-toggle">Prodotti <span class="dropdown-arrow">▾</span></a>
+              <a href="#prodotti" class="nav-link nav-dropdown-toggle"
+                >Prodotti <span class="dropdown-arrow">▾</span></a
+              >
               <ul class="nav-dropdown-menu" id="nav-prodotti-menu">
-                <li><a href="#prodotti" class="nav-dropdown-link" data-filter="Tutti">Tutti</a></li>
+                <li>
+                  <a
+                    href="#prodotti"
+                    class="nav-dropdown-link"
+                    data-filter="Tutti"
+                    >Tutti</a
+                  >
+                </li>
               </ul>
             </li>
             <li><a href="#realizzazioni" class="nav-link">Realizzazioni</a></li>
@@ -105,18 +131,53 @@
           <li><a href="#serramenti" class="mobile-nav-link">Serramenti</a></li>
           <li><a href="#scorrevoli" class="mobile-nav-link">Scorrevoli</a></li>
           <li class="mobile-dropdown-wrapper">
-            <a href="#porte" class="mobile-nav-link mobile-dropdown-toggle">Porte <span class="dropdown-arrow">▾</span></a>
+            <a href="#porte" class="mobile-nav-link mobile-dropdown-toggle"
+              >Porte <span class="dropdown-arrow">▾</span></a
+            >
             <ul class="mobile-dropdown-menu">
-              <li><a href="#porte" data-tab="interne" class="mobile-nav-link mobile-nav-sub">Porte Interne</a></li>
-              <li><a href="#porte" data-tab="scorrevoli" class="mobile-nav-link mobile-nav-sub">Porte Scorrevoli</a></li>
-              <li><a href="#porte" data-tab="blindate" class="mobile-nav-link mobile-nav-sub">Porte Blindate</a></li>
+              <li>
+                <a
+                  href="#porte"
+                  data-tab="interne"
+                  class="mobile-nav-link mobile-nav-sub"
+                  >Porte Interne</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#porte"
+                  data-tab="scorrevoli"
+                  class="mobile-nav-link mobile-nav-sub"
+                  >Porte Scorrevoli</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#porte"
+                  data-tab="blindate"
+                  class="mobile-nav-link mobile-nav-sub"
+                  >Porte Blindate</a
+                >
+              </li>
             </ul>
           </li>
           <li><a href="#consulenza" class="mobile-nav-link">Consulenza</a></li>
           <li class="mobile-dropdown-wrapper" id="mobile-prodotti-wrapper">
-            <a href="#prodotti" class="mobile-nav-link mobile-dropdown-toggle" id="mobile-prodotti-toggle">Prodotti <span class="dropdown-arrow">▾</span></a>
+            <a
+              href="#prodotti"
+              class="mobile-nav-link mobile-dropdown-toggle"
+              id="mobile-prodotti-toggle"
+              >Prodotti <span class="dropdown-arrow">▾</span></a
+            >
             <ul class="mobile-dropdown-menu" id="mobile-prodotti-menu">
-              <li><a href="#prodotti" class="mobile-nav-link mobile-nav-sub" data-filter="Tutti">Tutti</a></li>
+              <li>
+                <a
+                  href="#prodotti"
+                  class="mobile-nav-link mobile-nav-sub"
+                  data-filter="Tutti"
+                  >Tutti</a
+                >
+              </li>
             </ul>
           </li>
           <li>
@@ -130,13 +191,17 @@
     <!-- ===== HERO ===== -->
     <section id="home" class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-title">
-          Soluzioni<br /><em>su misura</em><br />per la tua<br />casa
-        </h1>
-        <p class="hero-subtitle">
-          Funzionalità, design, efficienza energetica e sicurezza: gli
-          ingredienti per il serramento perfetto.
-        </p>
+        <div class="hero-top">
+          <h1 class="hero-title">
+            <br />
+            <br />
+            Soluzioni<br /><em>su misura</em><br />per la tua<br />casa
+          </h1>
+          <p class="hero-subtitle">
+            Funzionalità, design, efficienza energetica e sicurezza: gli
+            ingredienti per il serramento perfetto.
+          </p>
+        </div>
         <div class="hero-cta-container">
           <a href="#prodotti" class="cta-button primary">Scopri i Prodotti</a>
           <a href="#Contatti" class="cta-button">Prenota Consulenza</a>
@@ -228,8 +293,12 @@
       <!-- Tab buttons -->
       <div class="porte-tabs-wrapper">
         <div class="porte-tabs">
-          <button class="porte-tab active" data-tab="interne">Porte Interne</button>
-          <button class="porte-tab" data-tab="scorrevoli">Porte Scorrevoli</button>
+          <button class="porte-tab active" data-tab="interne">
+            Porte Interne
+          </button>
+          <button class="porte-tab" data-tab="scorrevoli">
+            Porte Scorrevoli
+          </button>
           <button class="porte-tab" data-tab="blindate">Porte Blindate</button>
         </div>
       </div>
@@ -240,8 +309,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Porta Interna<br />Legno Massello</h3>
             <p class="materiale-text">
-              <img src="Img/Porte_Section/interne/1.png" alt="Porta interna legno" class="materiale-image" />
-              Porta interna in legno massello con essenza naturale. Disponibile in finitura laccata bianca, noce, rovere e molte altre. Eleganza e solidità garantite.
+              <img
+                src="Img/Porte_Section/interne/1.png"
+                alt="Porta interna legno"
+                class="materiale-image"
+              />
+              Porta interna in legno massello con essenza naturale. Disponibile
+              in finitura laccata bianca, noce, rovere e molte altre. Eleganza e
+              solidità garantite.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Calore</span>
@@ -252,8 +327,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Porta Interna<br />Design</h3>
             <p class="materiale-text">
-              <img src="Img/Porte_Section/interne/2.png" alt="Porta interna design" class="materiale-image" />
-              Porta interna dal design contemporaneo, disponibile a battente o scorrevole. Perfetta per chi cerca linee pulite e moderne in ogni ambiente.
+              <img
+                src="Img/Porte_Section/interne/2.png"
+                alt="Porta interna design"
+                class="materiale-image"
+              />
+              Porta interna dal design contemporaneo, disponibile a battente o
+              scorrevole. Perfetta per chi cerca linee pulite e moderne in ogni
+              ambiente.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Design</span>
@@ -264,8 +345,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Porta Interna<br />Premium</h3>
             <p class="materiale-text">
-              <img src="Img/Porte_Section/interne/3.png" alt="Porta interna premium" class="materiale-image" />
-              Porta interna di alta gamma con finiture pregiate. Coniuga funzionalità e stile per ogni ambiente della casa, con personalizzazioni su misura.
+              <img
+                src="Img/Porte_Section/interne/3.png"
+                alt="Porta interna premium"
+                class="materiale-image"
+              />
+              Porta interna di alta gamma con finiture pregiate. Coniuga
+              funzionalità e stile per ogni ambiente della casa, con
+              personalizzazioni su misura.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Premium</span>
@@ -282,8 +369,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Scorrevole<br />in PVC</h3>
             <p class="materiale-text">
-              <img src="Img/Scorrevoli_Section/1.png" alt="Scorrevole in PVC" class="materiale-image" />
-              Ottima soluzione per chi cerca praticità e risparmio energetico. Scorre in modo fluido e silenzioso, con elevato isolamento termico e acustico. Personalizzabile in colori e finiture.
+              <img
+                src="Img/Scorrevoli_Section/1.png"
+                alt="Scorrevole in PVC"
+                class="materiale-image"
+              />
+              Ottima soluzione per chi cerca praticità e risparmio energetico.
+              Scorre in modo fluido e silenzioso, con elevato isolamento termico
+              e acustico. Personalizzabile in colori e finiture.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Isolamento</span>
@@ -294,8 +387,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Scorrevole<br />in Alluminio</h3>
             <p class="materiale-text">
-              <img src="Img/Scorrevoli_Section/2.png" alt="Scorrevole in Alluminio" class="materiale-image" />
-              Eleganza e leggerezza per grandi aperture. Il profilo sottile in alluminio massimizza la superficie vetrata e la luminosità degli ambienti, con prestazioni di sicurezza elevate.
+              <img
+                src="Img/Scorrevoli_Section/2.png"
+                alt="Scorrevole in Alluminio"
+                class="materiale-image"
+              />
+              Eleganza e leggerezza per grandi aperture. Il profilo sottile in
+              alluminio massimizza la superficie vetrata e la luminosità degli
+              ambienti, con prestazioni di sicurezza elevate.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Design</span>
@@ -306,8 +405,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Scorrevole<br />Panoramico</h3>
             <p class="materiale-text">
-              <img src="Img/Scorrevoli_Section/3.png" alt="Scorrevole panoramico" class="materiale-image" />
-              Sistema scorrevole con apertura massimizzata verso esterno. Ideale per terrazzi e giardini, garantisce vista aperta e continuità tra interno ed esterno.
+              <img
+                src="Img/Scorrevoli_Section/3.png"
+                alt="Scorrevole panoramico"
+                class="materiale-image"
+              />
+              Sistema scorrevole con apertura massimizzata verso esterno. Ideale
+              per terrazzi e giardini, garantisce vista aperta e continuità tra
+              interno ed esterno.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Panorama</span>
@@ -318,8 +423,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Scorrevole<br />Minimalista</h3>
             <p class="materiale-text">
-              <img src="Img/Scorrevoli_Section/4.png" alt="Scorrevole minimalista" class="materiale-image" />
-              Profili ultra-sottili per una visuale totale. Il design minimalista esalta l'architettura contemporanea riducendo al minimo gli ingombri visivi.
+              <img
+                src="Img/Scorrevoli_Section/4.png"
+                alt="Scorrevole minimalista"
+                class="materiale-image"
+              />
+              Profili ultra-sottili per una visuale totale. Il design
+              minimalista esalta l'architettura contemporanea riducendo al
+              minimo gli ingombri visivi.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Minimal</span>
@@ -336,8 +447,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Porta<br />Blindata</h3>
             <p class="materiale-text">
-              <img src="Img/Porte_section/ingresso/1.png" alt="Porta blindata" class="materiale-image" />
-              Massima protezione antieffrazione con certificazione di sicurezza. Struttura in acciaio rinforzato con isolamento termico e acustico integrato. Disponibile in molte finiture esterne.
+              <img
+                src="Img/Porte_section/ingresso/1.png"
+                alt="Porta blindata"
+                class="materiale-image"
+              />
+              Massima protezione antieffrazione con certificazione di sicurezza.
+              Struttura in acciaio rinforzato con isolamento termico e acustico
+              integrato. Disponibile in molte finiture esterne.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Sicurezza</span>
@@ -348,8 +465,14 @@
           <div class="materiale-card">
             <h3 class="materiale-title">Porta Blindata<br />Vetrata</h3>
             <p class="materiale-text">
-              <img src="Img/Porte_section/Ingresso/2.png" alt="Porta blindata vetrata" class="materiale-image" />
-              Design contemporaneo con ampia vetrata laterale in alluminio. Dona luminosità all'ingresso mantenendo alte performance di sicurezza e isolamento.
+              <img
+                src="Img/Porte_section/Ingresso/2.png"
+                alt="Porta blindata vetrata"
+                class="materiale-image"
+              />
+              Design contemporaneo con ampia vetrata laterale in alluminio. Dona
+              luminosità all'ingresso mantenendo alte performance di sicurezza e
+              isolamento.
             </p>
             <div class="materiale-tags">
               <span class="materiale-tag">Design</span>
@@ -502,184 +625,221 @@
 
     <!-- Porte tabs + nav dropdown logic -->
     <script>
-    (function () {
-      // ── Porte tabs ──────────────────────────────────────────
-      function activateTab(tabName) {
-        document.querySelectorAll(".porte-tab").forEach(function(btn) {
-          btn.classList.toggle("active", btn.dataset.tab === tabName);
-        });
-        document.querySelectorAll(".porte-tab-content").forEach(function(panel) {
-          panel.classList.toggle("active", panel.dataset.content === tabName);
-        });
-      }
-
-      document.querySelectorAll(".porte-tab").forEach(function(btn) {
-        btn.addEventListener("click", function() { activateTab(this.dataset.tab); });
-      });
-
-      // ── Dropdown / sub-links → attiva tab direttamente + scroll ──
-      document.querySelectorAll("[data-tab]").forEach(function(link) {
-        link.addEventListener("click", function(e) {
-          var tab = this.dataset.tab;
-          sessionStorage.setItem("porteTab", tab);
-
-          // Se siamo già sulla stessa pagina (index), attiva il tab senza reload
-          if (!this.href || this.href.includes(window.location.pathname)) {
-            e.preventDefault();
-            activateTab(tab);
-            var porteSection = document.getElementById("porte");
-            if (porteSection) {
-              var headerH = (document.querySelector(".site-header") || {}).offsetHeight || 0;
-              var top = porteSection.getBoundingClientRect().top + window.scrollY - headerH;
-              window.scrollTo({ top: top, behavior: "smooth" });
-            }
-          }
-        });
-      });
-
-      // ── On load: open tab from sessionStorage if arriving at #porte ──
-      var savedTab = sessionStorage.getItem("porteTab");
-      if (savedTab) {
-        sessionStorage.removeItem("porteTab");
-        var porteSection = document.getElementById("porte");
-        if (porteSection) {
-          activateTab(savedTab);
-          setTimeout(function() {
-            var headerH = (document.querySelector(".site-header") || {}).offsetHeight || 0;
-            var top = porteSection.getBoundingClientRect().top + window.scrollY - headerH;
-            window.scrollTo({ top: top, behavior: "smooth" });
-          }, 150);
+      (function () {
+        // ── Porte tabs ──────────────────────────────────────────
+        function activateTab(tabName) {
+          document.querySelectorAll(".porte-tab").forEach(function (btn) {
+            btn.classList.toggle("active", btn.dataset.tab === tabName);
+          });
+          document
+            .querySelectorAll(".porte-tab-content")
+            .forEach(function (panel) {
+              panel.classList.toggle(
+                "active",
+                panel.dataset.content === tabName,
+              );
+            });
         }
-      }
 
-      // ── Mobile accordion helper ──────────────────────────────
-      function initMobileAccordion(toggleSel, menuSel) {
-        var toggle = document.querySelector(toggleSel);
-        var menu   = document.querySelector(menuSel);
-        if (!toggle || !menu) return;
-        toggle.addEventListener("click", function(e) {
-          var isOpen = menu.classList.contains("open");
-          if (!isOpen) e.preventDefault();
-          menu.classList.toggle("open");
-          var arrow = this.querySelector(".dropdown-arrow");
-          if (arrow) arrow.style.transform = isOpen ? "" : "rotate(180deg)";
-        });
-      }
-
-      // Porte mobile accordion
-      initMobileAccordion(".mobile-dropdown-toggle", ".mobile-dropdown-menu");
-
-      // ── Prodotti: popola dropdown con categorie dal JSON ─────
-      function buildProdottiDropdown(categories) {
-        var desktopMenu = document.getElementById("nav-prodotti-menu");
-        var mobileMenu  = document.getElementById("mobile-prodotti-menu");
-        if (!desktopMenu || !mobileMenu) return;
-
-        // Gruppa porte in un'unica voce
-        var PORTE = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
-        var shown = new Set(["Tutti"]);
-        var ordered = ["Tutti"];
-        categories.forEach(function(c) {
-          if (PORTE.includes(c)) {
-            if (!shown.has("Porte")) { shown.add("Porte"); ordered.push("Porte"); }
-          } else {
-            if (!shown.has(c)) { shown.add(c); ordered.push(c); }
-          }
-        });
-
-        desktopMenu.innerHTML = "";
-        mobileMenu.innerHTML  = "";
-
-        ordered.forEach(function(cat) {
-          // Desktop
-          var li  = document.createElement("li");
-          var a   = document.createElement("a");
-          a.href  = "#prodotti";
-          a.className = "nav-dropdown-link";
-          a.dataset.prodFilter = cat;
-          a.textContent = cat;
-          li.appendChild(a);
-          desktopMenu.appendChild(li);
-
-          // Mobile
-          var liM  = document.createElement("li");
-          var aM   = document.createElement("a");
-          aM.href  = "#prodotti";
-          aM.className = "mobile-nav-link mobile-nav-sub";
-          aM.dataset.prodFilter = cat;
-          aM.textContent = cat;
-          liM.appendChild(aM);
-          mobileMenu.appendChild(liM);
-        });
-
-        // Click su una voce → scrolla a #prodotti e applica filtro
-        document.querySelectorAll("[data-prod-filter]").forEach(function(link) {
-          link.addEventListener("click", function(e) {
-            var filter = this.dataset.prodFilter;
-            // Attendi che il DOM sia aggiornato poi triggera il filtro
-            setTimeout(function() {
-              applyNavFilter(filter);
-            }, 200);
+        document.querySelectorAll(".porte-tab").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            activateTab(this.dataset.tab);
           });
         });
-      }
 
-      function applyNavFilter(filterName) {
-        // Trova il bottone corrispondente nel filter-buttons desktop
-        var PORTE = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
-        var targetCat = filterName;
+        // ── Dropdown / sub-links → attiva tab direttamente + scroll ──
+        document.querySelectorAll("[data-tab]").forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            var tab = this.dataset.tab;
+            sessionStorage.setItem("porteTab", tab);
 
-        var buttons = document.querySelectorAll("#filter-buttons .filter-button");
-        buttons.forEach(function(btn) {
-          var cat = btn.dataset.category;
-          // "Porte" nel nav corrisponde al gruppo porte nel filtro
-          var match = (filterName === "Porte")
-            ? PORTE.includes(cat) // non esiste bottone gruppo, cerca alternativa
-            : cat === filterName;
-          if (match) btn.click();
-        });
-
-        // Fallback: usa il select mobile
-        var sel = document.getElementById("filter-select");
-        if (sel) {
-          // Prova a trovare la voce nel select
-          Array.from(sel.options).forEach(function(opt) {
-            if (opt.value === targetCat) {
-              sel.value = targetCat;
-              sel.dispatchEvent(new Event("change"));
+            // Se siamo già sulla stessa pagina (index), attiva il tab senza reload
+            if (!this.href || this.href.includes(window.location.pathname)) {
+              e.preventDefault();
+              activateTab(tab);
+              var porteSection = document.getElementById("porte");
+              if (porteSection) {
+                var headerH =
+                  (document.querySelector(".site-header") || {}).offsetHeight ||
+                  0;
+                var top =
+                  porteSection.getBoundingClientRect().top +
+                  window.scrollY -
+                  headerH;
+                window.scrollTo({ top: top, behavior: "smooth" });
+              }
             }
           });
-        }
-      }
-
-      // ── Aspetta il caricamento prodotti per popolare il dropdown ──
-      document.addEventListener("prodottiCaricati", function(e) {
-        var cats = new Set();
-        (e.detail.prodotti || []).forEach(function(p) {
-          (p.categorie || []).forEach(function(c) { cats.add(c); });
         });
-        buildProdottiDropdown(Array.from(cats));
 
-        // Accordion mobile Prodotti (creato dopo il build)
-        initMobileAccordion("#mobile-prodotti-toggle", "#mobile-prodotti-menu");
-
-        // ── Leggi filtro da sessionStorage (arrivo da breadcrumb o nav esterno) ──
-        var savedFilter = sessionStorage.getItem("prodFilter");
-        if (savedFilter) {
-          sessionStorage.removeItem("prodFilter");
-          setTimeout(function() {
-            applyNavFilter(savedFilter);
-            var prodSection = document.getElementById("prodotti");
-            if (prodSection) {
-              var headerH = (document.querySelector(".site-header") || {}).offsetHeight || 0;
-              var top = prodSection.getBoundingClientRect().top + window.scrollY - headerH;
+        // ── On load: open tab from sessionStorage if arriving at #porte ──
+        var savedTab = sessionStorage.getItem("porteTab");
+        if (savedTab) {
+          sessionStorage.removeItem("porteTab");
+          var porteSection = document.getElementById("porte");
+          if (porteSection) {
+            activateTab(savedTab);
+            setTimeout(function () {
+              var headerH =
+                (document.querySelector(".site-header") || {}).offsetHeight ||
+                0;
+              var top =
+                porteSection.getBoundingClientRect().top +
+                window.scrollY -
+                headerH;
               window.scrollTo({ top: top, behavior: "smooth" });
-            }
-          }, 300);
+            }, 150);
+          }
         }
-      });
 
-    })();
+        // ── Mobile accordion helper ──────────────────────────────
+        function initMobileAccordion(toggleSel, menuSel) {
+          var toggle = document.querySelector(toggleSel);
+          var menu = document.querySelector(menuSel);
+          if (!toggle || !menu) return;
+          toggle.addEventListener("click", function (e) {
+            var isOpen = menu.classList.contains("open");
+            if (!isOpen) e.preventDefault();
+            menu.classList.toggle("open");
+            var arrow = this.querySelector(".dropdown-arrow");
+            if (arrow) arrow.style.transform = isOpen ? "" : "rotate(180deg)";
+          });
+        }
+
+        // Porte mobile accordion
+        initMobileAccordion(".mobile-dropdown-toggle", ".mobile-dropdown-menu");
+
+        // ── Prodotti: popola dropdown con categorie dal JSON ─────
+        function buildProdottiDropdown(categories) {
+          var desktopMenu = document.getElementById("nav-prodotti-menu");
+          var mobileMenu = document.getElementById("mobile-prodotti-menu");
+          if (!desktopMenu || !mobileMenu) return;
+
+          // Gruppa porte in un'unica voce
+          var PORTE = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
+          var shown = new Set(["Tutti"]);
+          var ordered = ["Tutti"];
+          categories.forEach(function (c) {
+            if (PORTE.includes(c)) {
+              if (!shown.has("Porte")) {
+                shown.add("Porte");
+                ordered.push("Porte");
+              }
+            } else {
+              if (!shown.has(c)) {
+                shown.add(c);
+                ordered.push(c);
+              }
+            }
+          });
+
+          desktopMenu.innerHTML = "";
+          mobileMenu.innerHTML = "";
+
+          ordered.forEach(function (cat) {
+            // Desktop
+            var li = document.createElement("li");
+            var a = document.createElement("a");
+            a.href = "#prodotti";
+            a.className = "nav-dropdown-link";
+            a.dataset.prodFilter = cat;
+            a.textContent = cat;
+            li.appendChild(a);
+            desktopMenu.appendChild(li);
+
+            // Mobile
+            var liM = document.createElement("li");
+            var aM = document.createElement("a");
+            aM.href = "#prodotti";
+            aM.className = "mobile-nav-link mobile-nav-sub";
+            aM.dataset.prodFilter = cat;
+            aM.textContent = cat;
+            liM.appendChild(aM);
+            mobileMenu.appendChild(liM);
+          });
+
+          // Click su una voce → scrolla a #prodotti e applica filtro
+          document
+            .querySelectorAll("[data-prod-filter]")
+            .forEach(function (link) {
+              link.addEventListener("click", function (e) {
+                var filter = this.dataset.prodFilter;
+                // Attendi che il DOM sia aggiornato poi triggera il filtro
+                setTimeout(function () {
+                  applyNavFilter(filter);
+                }, 200);
+              });
+            });
+        }
+
+        function applyNavFilter(filterName) {
+          // Trova il bottone corrispondente nel filter-buttons desktop
+          var PORTE = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
+          var targetCat = filterName;
+
+          var buttons = document.querySelectorAll(
+            "#filter-buttons .filter-button",
+          );
+          buttons.forEach(function (btn) {
+            var cat = btn.dataset.category;
+            // "Porte" nel nav corrisponde al gruppo porte nel filtro
+            var match =
+              filterName === "Porte"
+                ? PORTE.includes(cat) // non esiste bottone gruppo, cerca alternativa
+                : cat === filterName;
+            if (match) btn.click();
+          });
+
+          // Fallback: usa il select mobile
+          var sel = document.getElementById("filter-select");
+          if (sel) {
+            // Prova a trovare la voce nel select
+            Array.from(sel.options).forEach(function (opt) {
+              if (opt.value === targetCat) {
+                sel.value = targetCat;
+                sel.dispatchEvent(new Event("change"));
+              }
+            });
+          }
+        }
+
+        // ── Aspetta il caricamento prodotti per popolare il dropdown ──
+        document.addEventListener("prodottiCaricati", function (e) {
+          var cats = new Set();
+          (e.detail.prodotti || []).forEach(function (p) {
+            (p.categorie || []).forEach(function (c) {
+              cats.add(c);
+            });
+          });
+          buildProdottiDropdown(Array.from(cats));
+
+          // Accordion mobile Prodotti (creato dopo il build)
+          initMobileAccordion(
+            "#mobile-prodotti-toggle",
+            "#mobile-prodotti-menu",
+          );
+
+          // ── Leggi filtro da sessionStorage (arrivo da breadcrumb o nav esterno) ──
+          var savedFilter = sessionStorage.getItem("prodFilter");
+          if (savedFilter) {
+            sessionStorage.removeItem("prodFilter");
+            setTimeout(function () {
+              applyNavFilter(savedFilter);
+              var prodSection = document.getElementById("prodotti");
+              if (prodSection) {
+                var headerH =
+                  (document.querySelector(".site-header") || {}).offsetHeight ||
+                  0;
+                var top =
+                  prodSection.getBoundingClientRect().top +
+                  window.scrollY -
+                  headerH;
+                window.scrollTo({ top: top, behavior: "smooth" });
+              }
+            }, 300);
+          }
+        });
+      })();
     </script>
   </body>
 </html>
