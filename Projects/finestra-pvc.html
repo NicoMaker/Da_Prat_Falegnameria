@@ -53,8 +53,16 @@
             <li>
               <a href="../index.html#consulenza" class="nav-link">Consulenza</a>
             </li>
-            <li>
-              <a href="../index.html#prodotti" class="nav-link">Prodotti</a>
+            <li class="nav-dropdown-wrapper">
+              <a href="../index.html#prodotti" class="nav-link nav-dropdown-toggle">Prodotti <span class="dropdown-arrow">▾</span></a>
+              <ul class="nav-dropdown-menu">
+                <li><a href="../index.html#prodotti" class="nav-dropdown-link">Tutti</a></li>
+                <li><a href="../index.html#prodotti" class="nav-dropdown-link">Serramenti PVC</a></li>
+                <li><a href="../index.html#prodotti" class="nav-dropdown-link">Serramenti Alluminio</a></li>
+                <li><a href="../index.html#prodotti" class="nav-dropdown-link">Serramenti Legno</a></li>
+                <li><a href="../index.html#prodotti" class="nav-dropdown-link">Porte</a></li>
+                <li><a href="../index.html#prodotti" class="nav-dropdown-link">Ombreggiatura</a></li>
+              </ul>
             </li>
             <li>
               <a href="../index.html#realizzazioni" class="nav-link"
@@ -92,8 +100,16 @@
           <li>
             <a href="../index.html#consulenza" class="mobile-nav-link">Consulenza</a>
           </li>
-          <li>
-            <a href="../index.html#prodotti" class="mobile-nav-link">Prodotti</a>
+          <li class="mobile-dropdown-wrapper">
+            <a href="../index.html#prodotti" class="mobile-nav-link mobile-dropdown-toggle" id="mobile-prodotti-toggle-sub">Prodotti <span class="dropdown-arrow">▾</span></a>
+            <ul class="mobile-dropdown-menu" id="mobile-prodotti-menu-sub">
+              <li><a href="../index.html#prodotti" class="mobile-nav-link mobile-nav-sub">Tutti</a></li>
+              <li><a href="../index.html#prodotti" class="mobile-nav-link mobile-nav-sub">Serramenti PVC</a></li>
+              <li><a href="../index.html#prodotti" class="mobile-nav-link mobile-nav-sub">Serramenti Alluminio</a></li>
+              <li><a href="../index.html#prodotti" class="mobile-nav-link mobile-nav-sub">Serramenti Legno</a></li>
+              <li><a href="../index.html#prodotti" class="mobile-nav-link mobile-nav-sub">Porte</a></li>
+              <li><a href="../index.html#prodotti" class="mobile-nav-link mobile-nav-sub">Ombreggiatura</a></li>
+            </ul>
           </li>
           <li>
             <a href="../index.html#realizzazioni" class="mobile-nav-link"
@@ -370,25 +386,30 @@
     <!-- Porte dropdown logic -->
     <script>
     (function () {
+      function initMobileAccordion(toggleSel, menuSel) {
+        var toggle = document.querySelector(toggleSel);
+        var menu   = document.querySelector(menuSel);
+        if (!toggle || !menu) return;
+        toggle.addEventListener("click", function(e) {
+          var isOpen = menu.classList.contains("open");
+          if (!isOpen) e.preventDefault();
+          menu.classList.toggle("open");
+          var arrow = this.querySelector(".dropdown-arrow");
+          if (arrow) arrow.style.transform = isOpen ? "" : "rotate(180deg)";
+        });
+      }
+
+      // Porte mobile accordion
+      initMobileAccordion(".mobile-dropdown-toggle", ".mobile-dropdown-menu");
+      // Prodotti mobile accordion
+      initMobileAccordion("#mobile-prodotti-toggle-sub", "#mobile-prodotti-menu-sub");
+
       // Dropdown links: save chosen tab to sessionStorage and navigate
       document.querySelectorAll("[data-tab]").forEach(function(link) {
         link.addEventListener("click", function() {
           sessionStorage.setItem("porteTab", this.dataset.tab);
         });
       });
-
-      // Mobile accordion
-      var mobileToggle = document.querySelector(".mobile-dropdown-toggle");
-      var mobileDropMenu = document.querySelector(".mobile-dropdown-menu");
-      if (mobileToggle && mobileDropMenu) {
-        mobileToggle.addEventListener("click", function(e) {
-          var isOpen = mobileDropMenu.classList.contains("open");
-          if (!isOpen) e.preventDefault();
-          mobileDropMenu.classList.toggle("open");
-          var arrow = this.querySelector(".dropdown-arrow");
-          if (arrow) arrow.style.transform = isOpen ? "" : "rotate(180deg)";
-        });
-      }
     })();
     </script>
   </body>

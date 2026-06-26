@@ -81,7 +81,12 @@
               </ul>
             </li>
             <li><a href="#consulenza" class="nav-link">Consulenza</a></li>
-            <li><a href="#prodotti" class="nav-link">Prodotti</a></li>
+            <li class="nav-dropdown-wrapper" id="nav-prodotti-wrapper">
+              <a href="#prodotti" class="nav-link nav-dropdown-toggle">Prodotti <span class="dropdown-arrow">▾</span></a>
+              <ul class="nav-dropdown-menu" id="nav-prodotti-menu">
+                <li><a href="#prodotti" class="nav-dropdown-link" data-filter="Tutti">Tutti</a></li>
+              </ul>
+            </li>
             <li><a href="#realizzazioni" class="nav-link">Realizzazioni</a></li>
             <li><a href="#Contatti" class="nav-link">Contatti</a></li>
           </ul>
@@ -108,7 +113,12 @@
             </ul>
           </li>
           <li><a href="#consulenza" class="mobile-nav-link">Consulenza</a></li>
-          <li><a href="#prodotti" class="mobile-nav-link">Prodotti</a></li>
+          <li class="mobile-dropdown-wrapper" id="mobile-prodotti-wrapper">
+            <a href="#prodotti" class="mobile-nav-link mobile-dropdown-toggle" id="mobile-prodotti-toggle">Prodotti <span class="dropdown-arrow">▾</span></a>
+            <ul class="mobile-dropdown-menu" id="mobile-prodotti-menu">
+              <li><a href="#prodotti" class="mobile-nav-link mobile-nav-sub" data-filter="Tutti">Tutti</a></li>
+            </ul>
+          </li>
           <li>
             <a href="#realizzazioni" class="mobile-nav-link">Realizzazioni</a>
           </li>
@@ -518,7 +528,6 @@
       var savedTab = sessionStorage.getItem("porteTab");
       if (savedTab) {
         sessionStorage.removeItem("porteTab");
-        // Scroll to #porte and activate the right tab
         var porteSection = document.getElementById("porte");
         if (porteSection) {
           activateTab(savedTab);
@@ -530,18 +539,118 @@
         }
       }
 
-      // ── Mobile dropdown accordion ────────────────────────────
-      var mobileToggle = document.querySelector(".mobile-dropdown-toggle");
-      var mobileDropMenu = document.querySelector(".mobile-dropdown-menu");
-      if (mobileToggle && mobileDropMenu) {
-        mobileToggle.addEventListener("click", function(e) {
-          var isOpen = mobileDropMenu.classList.contains("open");
+      // ── Mobile accordion helper ──────────────────────────────
+      function initMobileAccordion(toggleSel, menuSel) {
+        var toggle = document.querySelector(toggleSel);
+        var menu   = document.querySelector(menuSel);
+        if (!toggle || !menu) return;
+        toggle.addEventListener("click", function(e) {
+          var isOpen = menu.classList.contains("open");
           if (!isOpen) e.preventDefault();
-          mobileDropMenu.classList.toggle("open");
+          menu.classList.toggle("open");
           var arrow = this.querySelector(".dropdown-arrow");
           if (arrow) arrow.style.transform = isOpen ? "" : "rotate(180deg)";
         });
       }
+
+      // Porte mobile accordion
+      initMobileAccordion(".mobile-dropdown-toggle", ".mobile-dropdown-menu");
+
+      // ── Prodotti: popola dropdown con categorie dal JSON ─────
+      function buildProdottiDropdown(categories) {
+        var desktopMenu = document.getElementById("nav-prodotti-menu");
+        var mobileMenu  = document.getElementById("mobile-prodotti-menu");
+        if (!desktopMenu || !mobileMenu) return;
+
+        // Gruppa porte in un'unica voce
+        var PORTE = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
+        var shown = new Set(["Tutti"]);
+        var ordered = ["Tutti"];
+        categories.forEach(function(c) {
+          if (PORTE.includes(c)) {
+            if (!shown.has("Porte")) { shown.add("Porte"); ordered.push("Porte"); }
+          } else {
+            if (!shown.has(c)) { shown.add(c); ordered.push(c); }
+          }
+        });
+
+        desktopMenu.innerHTML = "";
+        mobileMenu.innerHTML  = "";
+
+        ordered.forEach(function(cat) {
+          // Desktop
+          var li  = document.createElement("li");
+          var a   = document.createElement("a");
+          a.href  = "#prodotti";
+          a.className = "nav-dropdown-link";
+          a.dataset.prodFilter = cat;
+          a.textContent = cat;
+          li.appendChild(a);
+          desktopMenu.appendChild(li);
+
+          // Mobile
+          var liM  = document.createElement("li");
+          var aM   = document.createElement("a");
+          aM.href  = "#prodotti";
+          aM.className = "mobile-nav-link mobile-nav-sub";
+          aM.dataset.prodFilter = cat;
+          aM.textContent = cat;
+          liM.appendChild(aM);
+          mobileMenu.appendChild(liM);
+        });
+
+        // Click su una voce → scrolla a #prodotti e applica filtro
+        document.querySelectorAll("[data-prod-filter]").forEach(function(link) {
+          link.addEventListener("click", function(e) {
+            var filter = this.dataset.prodFilter;
+            // Attendi che il DOM sia aggiornato poi triggera il filtro
+            setTimeout(function() {
+              applyNavFilter(filter);
+            }, 200);
+          });
+        });
+      }
+
+      function applyNavFilter(filterName) {
+        // Trova il bottone corrispondente nel filter-buttons desktop
+        var PORTE = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
+        var targetCat = filterName;
+
+        var buttons = document.querySelectorAll("#filter-buttons .filter-button");
+        buttons.forEach(function(btn) {
+          var cat = btn.dataset.category;
+          // "Porte" nel nav corrisponde al gruppo porte nel filtro
+          var match = (filterName === "Porte")
+            ? PORTE.includes(cat) // non esiste bottone gruppo, cerca alternativa
+            : cat === filterName;
+          if (match) btn.click();
+        });
+
+        // Fallback: usa il select mobile
+        var sel = document.getElementById("filter-select");
+        if (sel) {
+          // Prova a trovare la voce nel select
+          Array.from(sel.options).forEach(function(opt) {
+            if (opt.value === targetCat) {
+              sel.value = targetCat;
+              sel.dispatchEvent(new Event("change"));
+            }
+          });
+        }
+      }
+
+      // ── Aspetta il caricamento prodotti per popolare il dropdown ──
+      document.addEventListener("prodottiCaricati", function(e) {
+        var cats = new Set();
+        (e.detail.prodotti || []).forEach(function(p) {
+          (p.categorie || []).forEach(function(c) { cats.add(c); });
+        });
+        buildProdottiDropdown(Array.from(cats));
+
+        // Accordion mobile Prodotti (creato dopo il build)
+        initMobileAccordion("#mobile-prodotti-toggle", "#mobile-prodotti-menu");
+      });
+
     })();
     </script>
   </body>
