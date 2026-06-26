@@ -353,7 +353,7 @@ h6 {
 
 .cta-button:hover {
   background: var(--color-gold);
-  color: var(--color-dark);
+  color: var(--color-off-white);
 }
 
 .cta-button.primary {
