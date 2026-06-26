@@ -2004,3 +2004,10 @@ h6 {
 .search-input{
   background-color: white;
 }
+
+.materiale-image {
+  height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
