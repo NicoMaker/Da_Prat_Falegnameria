@@ -1956,7 +1956,7 @@ h6 {
   }
 
   .hero-content {
-    justify-content: center !important;
+    justify-content: space-between !important;
     padding: var(--spacing-lg) var(--spacing-xl) !important;
     margin: 0 !important;
   }

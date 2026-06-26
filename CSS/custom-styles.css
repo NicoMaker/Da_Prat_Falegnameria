@@ -96,8 +96,9 @@
 
 .hero-content {
   align-items: flex-start !important;
-  justify-content: flex-start !important;
+  justify-content: space-between !important;
   padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
 }
 
 html {
@@ -200,7 +201,7 @@ html {
 .nav-dropdown-link {
   display: block;
   padding: 10px 20px;
-  color: rgba(255,255,255,0.85);
+  color: #ffffff !important;
   font-size: 0.9rem;
   font-weight: 500;
   white-space: nowrap;
@@ -210,7 +211,13 @@ html {
 
 .nav-dropdown-link:hover {
   background: rgba(255,255,255,0.1);
-  color: #fff;
+  color: #ffffff !important;
+}
+
+.nav-dropdown-link.active {
+  color: var(--color-gold, #c9a84c) !important;
+  background: rgba(201,168,76,0.12);
+  font-weight: 700;
 }
 
 /* ===== MOBILE DROPDOWN (Porte) ===== */
