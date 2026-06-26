@@ -530,3 +530,19 @@
   background: rgba(255,255,255,0.1);
   color: #fff;
 }
+
+
+/* Nasconde il triangolo e il menu a tendina su mobile */
+@media (max-width: 767px) {
+  .bc-prodotti-wrapper .bc-arrow,
+  .bc-prodotti-wrapper .bc-dropdown {
+    display: none !important;
+  }
+  .bc-prodotti-wrapper .bc-prodotti-toggle {
+    cursor: default;
+    pointer-events: none; /* impedisce il click */
+  }
+  .bc-prodotti-wrapper .bc-prodotti-toggle::after {
+    content: ''; /* rimuove eventuale freccia generata da JS */
+  }
+}
