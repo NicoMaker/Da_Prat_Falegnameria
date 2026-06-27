@@ -15,9 +15,10 @@ document.addEventListener("DOMContentLoaded", function() {
     if (titleTag) productName = titleTag.textContent.split("—")[0].trim();
   }
 
-  // Percorso root
-  var depth = window.location.pathname.split("/").filter(Boolean).length - 1;
-  var root = depth > 0 ? "../".repeat(depth) : "./";
+  // Percorso root — risali di un solo livello da Projects/
+  var pathParts = window.location.pathname.split("/").filter(Boolean);
+  if (pathParts[pathParts.length - 1].includes(".")) pathParts.pop();
+  var root = pathParts.length > 0 ? "../" : "./";
 
   // Categorie (Porte raggruppate)
   var PORTE = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
