@@ -79,37 +79,8 @@
                 class="nav-link nav-dropdown-toggle"
                 >Prodotti <span class="dropdown-arrow">▾</span></a
               >
-              <ul class="nav-dropdown-menu">
-                <li>
-                  <a href="../index.html#prodotti" class="nav-dropdown-link"
-                    >Tutti</a
-                  >
-                </li>
-                <li>
-                  <a href="../index.html#prodotti" class="nav-dropdown-link"
-                    >Serramenti PVC</a
-                  >
-                </li>
-                <li>
-                  <a href="../index.html#prodotti" class="nav-dropdown-link"
-                    >Serramenti Alluminio</a
-                  >
-                </li>
-                <li>
-                  <a href="../index.html#prodotti" class="nav-dropdown-link"
-                    >Serramenti Legno</a
-                  >
-                </li>
-                <li>
-                  <a href="../index.html#prodotti" class="nav-dropdown-link"
-                    >Porte</a
-                  >
-                </li>
-                <li>
-                  <a href="../index.html#prodotti" class="nav-dropdown-link"
-                    >Ombreggiatura</a
-                  >
-                </li>
+              <ul class="nav-dropdown-menu" id="nav-prodotti-menu">
+                <!-- popolato dinamicamente da nav-builder.js -->
               </ul>
             </li>
             <li>
@@ -153,8 +124,11 @@
               href="../index.html#prodotti"
               class="mobile-nav-link mobile-dropdown-toggle"
               id="mobile-prodotti-toggle-sub"
-              >Prodotti</a
+              >Prodotti <span class="dropdown-arrow">▾</span></a
             >
+            <ul class="mobile-dropdown-menu" id="mobile-prodotti-menu">
+              <!-- popolato dinamicamente da nav-builder.js -->
+            </ul>
           </li>
           <li>
             <a href="../index.html#realizzazioni" class="mobile-nav-link"
@@ -421,6 +395,7 @@
     <script src="../JS/ui/active-section.js"></script>
     <script src="../JS/ui/breadcrumb.js"></script>
     <script src="../JS/ui/mobile-menu-projects.js"></script>
+    <script src="../JS/ui/nav-builder.js"></script>
 
     <script src="../JS/footer/date-utils.js"></script>
     <script src="../JS/footer/Gestisci_chiusure.js"></script>
