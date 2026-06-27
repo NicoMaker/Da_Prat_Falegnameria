@@ -283,21 +283,56 @@ h6 {
 /* ===== HERO ===== */
 .hero-section {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: calc(100vh - 80px);
+  min-height: 500px;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: var(--color-dark);
-  min-height: auto;
+  margin-top: 0;
+}
+
+/* Immagine di sfondo */
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+}
+
+/* Overlay scuro sfumato come nella seconda foto */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 10, 10, 0.55) 0%,
+    rgba(10, 10, 10, 0.45) 50%,
+    rgba(10, 10, 10, 0.65) 100%
+  );
 }
 
 .hero-content {
-  background: var(--color-dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: var(--spacing-lg) var(--spacing-xl);
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 3rem;
+  max-width: 860px;
+  width: 100%;
 }
 
 .hero-eyebrow {
@@ -306,18 +341,19 @@ h6 {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 1rem;
 }
 
 .hero-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.6rem);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
-  line-height: 0.95;
-  color: var(--color-white);
-  margin-bottom: var(--spacing-lg);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.6);
 }
 
 .hero-title em {
@@ -326,17 +362,19 @@ h6 {
 }
 
 .hero-subtitle {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: var(--spacing-xl);
-  max-width: 100%;
+  font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 2.5rem;
   line-height: 1.7;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  max-width: 560px;
 }
 
 .hero-cta-container {
   display: flex;
   gap: var(--spacing-sm);
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cta-button {
@@ -348,7 +386,9 @@ h6 {
   text-transform: uppercase;
   border: 2px solid var(--color-gold);
   color: var(--color-gold);
+  text-decoration: none;
   transition: all var(--transition-fast);
+  background: transparent;
 }
 
 .cta-button:hover {
@@ -360,58 +400,42 @@ h6 {
   background: var(--color-gold);
   color: var(--color-off-white);
 }
+
 .cta-button.primary:hover {
   background: var(--color-gold-light);
   border-color: var(--color-gold-light);
 }
 
-.hero-image {
-  position: relative;
-  overflow: hidden;
-  align-self: stretch;
-}
-
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Hero mobile */
+/* Mobile */
 @media (max-width: 768px) {
   .hero-section {
-    grid-template-columns: 1fr;
-    display: flex;
-    flex-direction: column;
+    height: calc(100svh - 80px);
+    min-height: 480px;
+  }
+
+  .hero-bg-image img {
+    object-position: center center;
   }
 
   .hero-content {
-    order: 1;
-    padding: 2.5rem 1.25rem 2rem;
+    padding: 1.5rem 1.5rem 5rem;
   }
 
   .hero-title {
-    font-size: 2.2rem;
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-
-  .hero-eyebrow {
-    margin-bottom: 0.75rem;
+    font-size: clamp(1.5rem, 6.5vw, 2rem);
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
   }
 
   .hero-subtitle {
-    max-width: 100%;
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
+    font-size: 0.88rem;
+    margin-bottom: 1.8rem;
   }
 
   .hero-cta-container {
-    display: flex;
     flex-direction: column;
-    gap: 0.75rem;
     width: 100%;
+    gap: 0.75rem;
   }
 
   .cta-button {
@@ -420,22 +444,6 @@ h6 {
     text-align: center;
     padding: 14px 20px;
     box-sizing: border-box;
-  }
-
-  .hero-image {
-    order: 2;
-    width: 100%;
-    height: 60vw;
-    min-height: 220px;
-    max-height: 340px;
-    flex-shrink: 0;
-  }
-
-  .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
   }
 }
 
@@ -1938,89 +1946,6 @@ h6 {
 }
 
 /* ============================================================
-   FIX: Hero section – mobile image visibility & desktop height
-   ============================================================ */
-
-/* Solo su desktop (≥ 769px) la hero ha altezza fissa */
-@media (min-width: 769px) {
-  .hero-section {
-    min-height: auto !important;
-    height: calc(100vh - 220px) !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
-    gap: 0 !important;
-    align-items: stretch !important;
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-  }
-
-  .hero-content {
-    justify-content: space-between !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    padding-left: var(--spacing-xl) !important;
-    padding-right: var(--spacing-xl) !important;
-    margin: 0 !important;
-  }
-
-  .hero-image {
-    position: relative !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: block !important;
-    height: 100% !important;
-  }
-
-  .hero-image img {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-    display: block !important;
-  }
-}
-
-/* Su mobile l'altezza è auto (adattata al contenuto) e l'immagine occupa spazio */
-@media (max-width: 768px) {
-  .hero-section {
-    height: auto !important;
-    min-height: auto !important;
-    padding: 0 !important;
-    gap: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-  }
-
-  .hero-content {
-    order: 1 !important;
-  }
-
-  .hero-image {
-    order: 2 !important;
-    height: 60vw !important;
-    max-height: 340px !important;
-    min-height: 200px !important;
-    flex-shrink: 0 !important;
-    width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    overflow: hidden !important;
-  }
-
-  .hero-image img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    display: block !important;
-  }
-}
-
-/* ============================================================
    FIX: Materiali grid – 3 colonne su desktop, 1 su mobile
    ============================================================ */
 
@@ -2053,13 +1978,7 @@ h6 {
   background-color: white;
 }
 
-.hero-title{
-  color: var(--color-gold);
-}
 
-.hero-subtitle{
-  font-size: 1.5em;
-}
 
 @media (max-width: 768px) {
   .mobile-dropdown-wrapper .dropdown-arrow,
