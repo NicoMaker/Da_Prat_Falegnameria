@@ -291,10 +291,8 @@ h6 {
   align-items: center;
   justify-content: center;
   background: var(--color-dark);
-  margin-top: 0;
 }
 
-/* Immagine di sfondo */
 .hero-bg-image {
   position: absolute;
   inset: 0;
@@ -309,16 +307,15 @@ h6 {
   display: block;
 }
 
-/* Overlay scuro sfumato come nella seconda foto */
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background: linear-gradient(
     to bottom,
-    rgba(10, 10, 10, 0.55) 0%,
-    rgba(10, 10, 10, 0.45) 50%,
-    rgba(10, 10, 10, 0.65) 100%
+    rgba(10, 10, 10, 0.50) 0%,
+    rgba(10, 10, 10, 0.35) 50%,
+    rgba(10, 10, 10, 0.60) 100%
   );
 }
 
@@ -333,6 +330,7 @@ h6 {
   padding: 2rem 3rem;
   max-width: 860px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .hero-eyebrow {
@@ -342,6 +340,8 @@ h6 {
   text-transform: uppercase;
   color: var(--color-gold);
   margin-bottom: 1rem;
+  text-align: center;
+  width: 100%;
 }
 
 .hero-title {
@@ -354,6 +354,8 @@ h6 {
   color: #ffffff;
   margin-bottom: 1.2rem;
   text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  text-align: center;
+  width: 100%;
 }
 
 .hero-title em {
@@ -368,6 +370,8 @@ h6 {
   line-height: 1.7;
   text-shadow: 0 1px 8px rgba(0,0,0,0.5);
   max-width: 560px;
+  text-align: center;
+  width: 100%;
 }
 
 .hero-cta-container {
@@ -375,6 +379,8 @@ h6 {
   gap: var(--spacing-sm);
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .cta-button {
@@ -409,8 +415,8 @@ h6 {
 /* Mobile */
 @media (max-width: 768px) {
   .hero-section {
-    height: calc(100svh - 80px);
-    min-height: 480px;
+    height: calc(100svh - 88px);
+    min-height: 400px;
   }
 
   .hero-bg-image img {
@@ -418,22 +424,30 @@ h6 {
   }
 
   .hero-content {
-    padding: 1.5rem 1.5rem 5rem;
+    padding: 1.5rem 1.5rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .hero-title {
-    font-size: clamp(1.5rem, 6.5vw, 2rem);
+    font-size: clamp(1.4rem, 6vw, 1.9rem);
     line-height: 1.1;
     margin-bottom: 0.8rem;
+    text-align: center;
+    width: 100%;
   }
 
   .hero-subtitle {
     font-size: 0.88rem;
     margin-bottom: 1.8rem;
+    text-align: center;
+    width: 100%;
   }
 
   .hero-cta-container {
     flex-direction: column;
+    align-items: center;
     width: 100%;
     gap: 0.75rem;
   }
