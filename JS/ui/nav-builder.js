@@ -10,7 +10,11 @@
 
 (function () {
   // ── Costanti ────────────────────────────────────────────────────────────────
-  var PORTE_SUBCATEGORIES = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
+  var PORTE_SUBCATEGORIES = [
+    "Porte Interne",
+    "Porte Scorrevoli",
+    "Porte Blindate",
+  ];
   var PORTE_GROUP = "Porte";
 
   // ── Rileva se siamo su una sotto-pagina (Projects/) ─────────────────────────
@@ -47,12 +51,12 @@
   // ── Popola i menu nel DOM ────────────────────────────────────────────────────
   function populateMenus(categories) {
     var desktopMenu = document.getElementById("nav-prodotti-menu");
-    var mobileMenu  = document.getElementById("mobile-prodotti-menu");
+    var mobileMenu = document.getElementById("mobile-prodotti-menu");
 
     if (!desktopMenu && !mobileMenu) return;
 
     if (desktopMenu) desktopMenu.innerHTML = "";
-    if (mobileMenu)  mobileMenu.innerHTML  = "";
+    if (mobileMenu) mobileMenu.innerHTML = "";
 
     categories.forEach(function (cat) {
       var href = linkBase + "#prodotti";
@@ -60,11 +64,11 @@
       // ── Desktop ──────────────────────────────────────────────────────────────
       if (desktopMenu) {
         var li = document.createElement("li");
-        var a  = document.createElement("a");
-        a.href          = href;
-        a.className     = "nav-dropdown-link";
+        var a = document.createElement("a");
+        a.href = href;
+        a.className = "nav-dropdown-link";
         a.dataset.prodFilter = cat;
-        a.textContent   = cat;
+        a.textContent = cat;
         li.appendChild(a);
         desktopMenu.appendChild(li);
       }
@@ -72,11 +76,11 @@
       // ── Mobile ───────────────────────────────────────────────────────────────
       if (mobileMenu) {
         var liM = document.createElement("li");
-        var aM  = document.createElement("a");
-        aM.href          = href;
-        aM.className     = "mobile-nav-link mobile-nav-sub";
+        var aM = document.createElement("a");
+        aM.href = href;
+        aM.className = "mobile-nav-link mobile-nav-sub";
         aM.dataset.prodFilter = cat;
-        aM.textContent   = cat;
+        aM.textContent = cat;
         liM.appendChild(aM);
         mobileMenu.appendChild(liM);
       }
@@ -92,7 +96,7 @@
     // ── Accordion mobile ──────────────────────────────────────────────────────
     initMobileAccordion(
       "#mobile-prodotti-toggle, #mobile-prodotti-toggle-sub",
-      "#mobile-prodotti-menu"
+      "#mobile-prodotti-menu",
     );
   }
 
@@ -139,7 +143,7 @@
   // ── Accordion mobile generico ────────────────────────────────────────────────
   function initMobileAccordion(toggleSel, menuSel) {
     var toggles = document.querySelectorAll(toggleSel);
-    var menu    = document.querySelector(menuSel);
+    var menu = document.querySelector(menuSel);
     if (!menu) return;
     toggles.forEach(function (toggle) {
       toggle.addEventListener("click", function (e) {
@@ -160,7 +164,9 @@
         .then(function (data) {
           var rawCats = [];
           (data.Prodotti || []).forEach(function (p) {
-            (p.categorie || []).forEach(function (c) { rawCats.push(c); });
+            (p.categorie || []).forEach(function (c) {
+              rawCats.push(c);
+            });
           });
           populateMenus(buildOrderedCategories(rawCats));
         })
@@ -173,11 +179,15 @@
     // Fallback fetch diretto
     var jsonPath = (isSubPage ? "../JSON/" : "JSON/") + "progetti.json";
     fetch(jsonPath)
-      .then(function (r) { return r.json(); })
+      .then(function (r) {
+        return r.json();
+      })
       .then(function (data) {
         var rawCats = [];
         (data.Prodotti || []).forEach(function (p) {
-          (p.categorie || []).forEach(function (c) { rawCats.push(c); });
+          (p.categorie || []).forEach(function (c) {
+            rawCats.push(c);
+          });
         });
         populateMenus(buildOrderedCategories(rawCats));
       })
@@ -199,7 +209,9 @@
   document.addEventListener("prodottiCaricati", function (e) {
     var rawCats = [];
     (e.detail.prodotti || []).forEach(function (p) {
-      (p.categorie || []).forEach(function (c) { rawCats.push(c); });
+      (p.categorie || []).forEach(function (c) {
+        rawCats.push(c);
+      });
     });
     populateMenus(buildOrderedCategories(rawCats));
 
@@ -212,8 +224,12 @@
           applyFilterOnIndex(savedFilter);
           var prodSection = document.getElementById("prodotti");
           if (prodSection) {
-            var headerH = (document.querySelector(".site-header") || {}).offsetHeight || 0;
-            var top = prodSection.getBoundingClientRect().top + window.scrollY - headerH;
+            var headerH =
+              (document.querySelector(".site-header") || {}).offsetHeight || 0;
+            var top =
+              prodSection.getBoundingClientRect().top +
+              window.scrollY -
+              headerH;
             window.scrollTo({ top: top, behavior: "smooth" });
           }
         }, 300);

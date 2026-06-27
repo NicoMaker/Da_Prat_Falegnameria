@@ -442,7 +442,8 @@
   flex-wrap: wrap;
 }
 
-.bc-link, .bc-current {
+.bc-link,
+.bc-current {
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -452,7 +453,9 @@
   transition: opacity 0.15s;
 }
 
-.bc-link:hover { opacity: 0.75; }
+.bc-link:hover {
+  opacity: 0.75;
+}
 
 .bc-current {
   color: var(--color-anthracite, #444);
@@ -492,7 +495,7 @@
   background: var(--color-anthracite, #2c2c2c);
   border-radius: 8px;
   min-width: 190px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   padding: 6px 0;
   list-style: none;
   z-index: 999;
@@ -515,22 +518,23 @@
 .bc-dropdown-link {
   display: block;
   padding: 10px 18px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: none;
   white-space: nowrap;
   text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-    color: white !important;
+  transition:
+    background 0.15s,
+    color 0.15s;
+  color: white !important;
 }
 
 .bc-dropdown-link:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: #fff;
 }
-
 
 /* Nasconde il triangolo e il menu a tendina su mobile */
 @media (max-width: 767px) {
@@ -543,6 +547,6 @@
     pointer-events: none; /* impedisce il click */
   }
   .bc-prodotti-wrapper .bc-prodotti-toggle::after {
-    content: ''; /* rimuove eventuale freccia generata da JS */
+    content: ""; /* rimuove eventuale freccia generata da JS */
   }
 }

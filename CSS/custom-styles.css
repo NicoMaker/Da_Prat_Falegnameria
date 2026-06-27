@@ -199,7 +199,7 @@ html {
   background: var(--color-anthracite, #2c2c2c);
   border-radius: 8px;
   min-width: 180px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   padding: 6px 0;
   list-style: none;
   z-index: 1000;
@@ -227,18 +227,20 @@ html {
   font-size: 0.9rem;
   font-weight: 500;
   white-space: nowrap;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
   text-decoration: none;
 }
 
 .nav-dropdown-link:hover {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   color: #ffffff !important;
 }
 
 .nav-dropdown-link.active {
   color: var(--color-gold, #c9a84c) !important;
-  background: rgba(201,168,76,0.12);
+  background: rgba(201, 168, 76, 0.12);
   font-weight: 700;
 }
 
@@ -254,7 +256,7 @@ html {
   list-style: none;
   margin: 0;
   padding: 0;
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   border-radius: 6px;
   margin-top: 4px;
 }
@@ -272,7 +274,7 @@ html {
 /* I sub-link dei dropdown prodotti NON devono avere stile active dorato
    (evita che "Tutti" diventi oro quando la sezione prodotti è attiva) */
 .mobile-nav-sub.active {
-  color: rgba(255,255,255,0.85) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 .mobile-nav-sub.active::after {
   display: none !important;
@@ -289,9 +291,9 @@ html {
   display: flex;
   gap: 0;
   border-radius: 50px;
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
   padding: 4px;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .porte-tab {
@@ -308,13 +310,13 @@ html {
 }
 
 .porte-tab:hover {
-  background: rgba(0,0,0,0.06);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 .porte-tab.active {
   background: var(--color-anthracite, #2c2c2c);
   color: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .porte-tab-content {
@@ -337,31 +339,23 @@ html {
     text-align: center;
   }
 }
-/* ===== MATERIALE-CARD: allineamento perfetto — fix definitivo ===== */
-
+/* ===== MATERIALE-CARD: allineamento definitivo ===== */
 /*
-  Struttura HTML dopo il fix:
-  .materiale-card
-    h3.materiale-title
-    img.materiale-image        ← immagine diretta nella card
-    p.materiale-text           ← solo testo
-    .materiale-tags
-
-  La card usa grid a 4 righe fisse: titolo | immagine | testo | tags
-  Tutte le card condividono le stesse altezze di riga → allineamento perfetto.
+  Struttura HTML corretta (dopo fix index.html):
+    .materiale-card
+      h3.materiale-title   → riga 1
+      img.materiale-image  → riga 2 (altezza fissa)
+      p.materiale-text     → riga 3
+      .materiale-tags      → riga 4
 */
 
 .materiali-grid .materiale-card {
   display: grid;
-  grid-template-rows: auto 260px auto auto;
-  gap: 0;
+  grid-template-rows: auto 280px auto auto;
+  align-items: start;
+  gap: var(--spacing-sm);
   padding: var(--spacing-lg) !important;
   height: auto !important;
-}
-
-.materiale-card .materiale-title {
-  align-self: start;
-  margin-bottom: var(--spacing-sm);
 }
 
 .materiale-card img.materiale-image {
@@ -373,21 +367,20 @@ html {
   border: none !important;
   box-shadow: none !important;
   display: block;
-  margin-bottom: var(--spacing-sm);
+  margin: 0;
 }
 
 .materiale-card .materiale-text {
-  align-self: start;
+  margin: 0;
+  padding: 0;
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.7;
-  margin: 0;
-  padding: 0;
 }
 
 .materiale-card .materiale-tags {
+  margin-top: 0;
   align-self: end;
-  margin-top: var(--spacing-sm);
 }
 
 @media (max-width: 768px) {
