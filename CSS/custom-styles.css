@@ -414,3 +414,9 @@ html {
     height: 200px !important;
   }
 }
+
+/* ===== Immagine card: cover per riempire sempre lo spazio ===== */
+.materiale-card img.materiale-image {
+  object-fit: cover !important;
+  object-position: center !important;
+}
