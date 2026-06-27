@@ -337,44 +337,61 @@ html {
     text-align: center;
   }
 }
-/* ===== MATERIALE-CARD: immagini stessa altezza + layout allineato ===== */
+/* ===== MATERIALE-CARD: allineamento perfetto — fix definitivo ===== */
 
-/* Rimuove il padding del <p> che contiene l'immagine e il testo
-   e trasforma la card in un layout a 2 righe: immagine sopra, testo sotto */
-.materiale-card {
+/*
+  Struttura HTML dopo il fix:
+  .materiale-card
+    h3.materiale-title
+    img.materiale-image        ← immagine diretta nella card
+    p.materiale-text           ← solo testo
+    .materiale-tags
+
+  La card usa grid a 4 righe fisse: titolo | immagine | testo | tags
+  Tutte le card condividono le stesse altezze di riga → allineamento perfetto.
+*/
+
+.materiali-grid .materiale-card {
+  display: grid;
+  grid-template-rows: auto 260px auto auto;
+  gap: 0;
   padding: var(--spacing-lg) !important;
+  height: auto !important;
 }
 
-.materiale-text {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
-  padding: 0 !important;
-  margin: 0 !important;
+.materiale-card .materiale-title {
+  align-self: start;
+  margin-bottom: var(--spacing-sm);
 }
 
-/* Immagine: altezza fissa, nessun bordo/sfondo */
-.materiale-text img.materiale-image {
-  display: block;
+.materiale-card img.materiale-image {
   width: 100%;
-  height: 260px;
+  height: 100%;
   object-fit: contain;
   object-position: center;
   background: transparent !important;
   border: none !important;
-  outline: none !important;
   box-shadow: none !important;
-  margin: 0 0 var(--spacing-sm) 0;
+  display: block;
+  margin-bottom: var(--spacing-sm);
+}
+
+.materiale-card .materiale-text {
+  align-self: start;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+  padding: 0;
+}
+
+.materiale-card .materiale-tags {
+  align-self: end;
+  margin-top: var(--spacing-sm);
 }
 
 @media (max-width: 768px) {
-  .materiale-text img.materiale-image {
-    height: 200px;
+  .materiali-grid .materiale-card {
+    grid-template-rows: auto 200px auto auto;
   }
-}
-
-/* Reset margini del <p> che contiene l'immagine */
-.materiale-card .materiale-text {
-  margin: 0 !important;
-  padding: 0 !important;
 }
