@@ -2007,3 +2007,20 @@ h6 {
     pointer-events: auto; /* il link rimane cliccabile per l'ancora */
   }
 }
+
+.Progetti-card .card-image,
+.novita-card .card-image {
+  width: 100%;
+  aspect-ratio: 4 / 3;  /* es. 16/9, 1/1, ecc. */
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.Progetti-card .card-image img,
+.novita-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
