@@ -339,28 +339,45 @@ html {
     text-align: center;
   }
 }
-/* ===== MATERIALE-CARD: allineamento definitivo ===== */
+/* ===== MATERIALE-CARD: subgrid per allineamento perfetto su righe ===== */
+
 /*
-  Struttura HTML corretta (dopo fix index.html):
-    .materiale-card
-      h3.materiale-title   → riga 1
-      img.materiale-image  → riga 2 (altezza fissa)
-      p.materiale-text     → riga 3
-      .materiale-tags      → riga 4
+  Con subgrid ogni card condivide le righe della griglia padre.
+  Tutte le card nella stessa riga di grid hanno:
+    - titolo alla stessa altezza
+    - immagine alla stessa altezza (280px)
+    - testo che si espande uguale in tutte le colonne
+    - tags sempre in fondo allineati
 */
 
+.materiali-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto; /* lascia che le righe crescano uniformemente */
+  align-items: start;
+}
+
+/* Ogni card occupa le 4 sottorighe del padre con subgrid */
 .materiali-grid .materiale-card {
   display: grid;
-  grid-template-rows: auto 280px auto auto;
+  grid-row: span 4;
+  grid-template-rows: subgrid;
   align-items: start;
-  gap: var(--spacing-sm);
+  gap: 0;
   padding: var(--spacing-lg) !important;
   height: auto !important;
 }
 
+/* La griglia padre deve sapere che ogni card usa 4 righe */
+.materiali-grid {
+  grid-template-rows: repeat(auto-fill, auto);
+  row-gap: 0;
+}
+
+/* Altezza immagine fissa */
 .materiale-card img.materiale-image {
   width: 100%;
-  height: 100%;
+  height: 280px !important;
   object-fit: contain;
   object-position: center;
   background: transparent !important;
@@ -370,21 +387,30 @@ html {
   margin: 0;
 }
 
+.materiale-card .materiale-title {
+  align-self: start;
+  margin-bottom: var(--spacing-sm);
+}
+
 .materiale-card .materiale-text {
   margin: 0;
   padding: 0;
   font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.7;
+  align-self: start;
 }
 
 .materiale-card .materiale-tags {
-  margin-top: 0;
-  align-self: end;
+  margin-top: var(--spacing-sm);
+  align-self: start;
 }
 
 @media (max-width: 768px) {
-  .materiali-grid .materiale-card {
-    grid-template-rows: auto 200px auto auto;
+  .materiali-grid {
+    grid-template-columns: 1fr;
+  }
+  .materiale-card img.materiale-image {
+    height: 200px !important;
   }
 }
