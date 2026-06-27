@@ -337,3 +337,26 @@ html {
     text-align: center;
   }
 }
+/* ===== MATERIALE-CARD: immagini stessa altezza ===== */
+
+/*
+  Le immagini nelle card .materiale-card sono dentro un <p class="materiale-text">.
+  Estraiamo l'immagine dal flusso del testo con display:block e forziamo
+  un'altezza fissa + object-fit:cover così tutte le card sono uniformi.
+*/
+
+.materiale-text img.materiale-image {
+  display: block;
+  width: 100%;
+  height: 280px;           /* altezza fissa uguale per tutte */
+  object-fit: contain;     /* contain: mostra il prodotto intero senza tagliare */
+  object-position: center;
+  margin-bottom: var(--spacing-sm);
+  background: #f5f5f5;     /* sfondo neutro dove l'immagine non copre */
+}
+
+@media (max-width: 768px) {
+  .materiale-text img.materiale-image {
+    height: 220px;
+  }
+}
