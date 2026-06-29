@@ -558,11 +558,11 @@ h6 {
   overflow: hidden;
   border-radius: var(--radius-md);
   min-height: 380px;
-  background: linear-gradient(135deg, #2a2a2a 60%, #3a3020 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  height:800px
 }
 
 .consulenza-image::after {
