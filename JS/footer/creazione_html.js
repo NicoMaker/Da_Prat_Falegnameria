@@ -360,7 +360,7 @@ function createFooterHTML(data, giornoPartenza) {
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© ${oggiReal.getFullYear()} ${info.titolo || ""}. Tutti i diritti riservati.${info.p_iva ? " - P.IVA " + info.p_iva : ""}</p>
+      <p>© ${oggiReal.getFullYear()} ${info.titolo_footer || ""}. Tutti i diritti riservati.${info.p_iva ? " - P.IVA " + info.p_iva : ""}</p>
     </div>
   `;
 }
