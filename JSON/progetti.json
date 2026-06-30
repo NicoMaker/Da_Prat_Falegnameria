@@ -71,6 +71,14 @@
       "descrizione": "Le finestre 7Stars sono un prodotto premium, che si distingue per il design moderno e minimalista e i notevoli perfezionamenti a livello tecnico. I serramenti termoisolanti 7Stars sono la variante ideale per ridurre i consumi energetici nelle nuove costruzioni più sostenibili.",
       "immagine": "Img/Prodotti_Section/finestra3.webp",
       "link": "#"
+    },
+    {
+      "id": "Finestra4",
+      "nome": "Finestre Epiq 6Stars in PVC",
+      "categorie": ["Finestre in PVC"],
+      "descrizione": "Le prime finestre dal design minimale, con performance di isolamento termico superlative per mantenere temperature costanti. Sottili, resistenti, innovative: con Epiq 6Stars, la tua casa entra nel futuro.",
+      "immagine": "Img/Prodotti_Section/finestra4.webp",
+      "link": "#"
     }
   ]
 }
