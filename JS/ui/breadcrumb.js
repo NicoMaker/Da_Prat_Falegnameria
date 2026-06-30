@@ -37,11 +37,8 @@ document.addEventListener('DOMContentLoaded', function () {
       '<a href="' +
       root +
       'index.html#prodotti" class="bc-link bc-prodotti-toggle">' +
-      'Prodotti <span class="bc-arrow">▾</span>' +
+      'Prodotti' +
       '</a>' +
-      '<ul class="bc-dropdown">' +
-      catLinksHtml +
-      '</ul>' +
       '</span>' +
       '<span class="bc-sep">›</span>' +
       '<span class="bc-current">' +
