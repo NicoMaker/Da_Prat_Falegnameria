@@ -47,6 +47,30 @@
       "descrizione": "Pensati principalmente per nuove costruzioni, gli avvolgibili monoblocco intonacabili della gamma Discret vengono installati direttamente nel muro della finestra, riducendo totalmente l’ingombro del cassettone per migliorare il comfort della stanza e non modificare l’estetica della facciata esterna.",
       "immagine": "Img/Prodotti_Section/veneziane5.webp",
       "link": "#"
+    },
+    {
+      "id": "Finestra1",
+      "nome": "Finestre 6Stars in Alluminio",
+      "categorie": ["Finestre in alluninio"],
+      "descrizione": "I serramenti in Alluminio 6Stars garantiscono un livello di efficienza energetica davvero alto, grazie alle incredibili caratteristiche tecniche e termoisolanti, che offrono un comfort abitativo senza paragoni.",
+      "immagine": "Img/Prodotti_Section/finestra1.webp",
+      "link": "#"
+    },
+    {
+      "id": "Finestra2",
+      "nome": "Finestre Arrogance in Alluminio",
+      "categorie": ["Finestre in alluninio"],
+      "descrizione": "Le finestre in Alluminio Arrogance offrono una luminosità naturale super e una superficie vetrata pari fino all’85% della finestra. Le prestazioni di isoalmento termico e acustico rimangono al top. Il design minimalista, lineare ed elegante consente l’apertura fino a180°. Le finestre Arrogance possono essere personalizzate per accontentare tutte le necessità estetiche e architettoniche.",
+      "immagine": "Img/Prodotti_Section/finestra2.webp",
+      "link": "#"
+    },
+    {
+      "id": "Finestra3",
+      "nome": "Finestre 7Stars in PVC",
+      "categorie": ["Finestre in PVC"],
+      "descrizione": "Le finestre 7Stars sono un prodotto premium, che si distingue per il design moderno e minimalista e i notevoli perfezionamenti a livello tecnico. I serramenti termoisolanti 7Stars sono la variante ideale per ridurre i consumi energetici nelle nuove costruzioni più sostenibili.",
+      "immagine": "Img/Prodotti_Section/finestra3.webp",
+      "link": "#"
     }
   ]
 }

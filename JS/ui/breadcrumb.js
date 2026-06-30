@@ -1,6 +1,7 @@
 /**
  * breadcrumb.js
- * Genera il breadcrumb nelle pagine prodotto con dropdown categorie su "Prodotti".
+ * Genera il breadcrumb nelle pagine prodotto con dropdown categorie su "Prodotti",
+ * leggendo le categorie dinamicamente dal file JSON dei prodotti.
  */
 document.addEventListener("DOMContentLoaded", function () {
   var container = document.querySelector(".product-breadcrumb");
@@ -22,73 +23,97 @@ document.addEventListener("DOMContentLoaded", function () {
   if (pathParts[pathParts.length - 1].includes(".")) pathParts.pop();
   var root = pathParts.length > 0 ? "../" : "./";
 
-  // Categorie (Porte raggruppate)
-  var PORTE = ["Porte Interne", "Porte Scorrevoli", "Porte Blindate"];
-  var ALL_CATS = [
-    "Tutti",
-    "Serramenti PVC",
-    "Serramenti Alluminio",
-    "Serramenti Legno",
-    "Porte",
-    "Ombreggiatura",
-  ];
+  // ⚠️ Modifica questo percorso con quello reale del tuo file JSON prodotti
+  var JSON_PATH = root + "../JSON/progetti.json";
 
-  // Costruisce il breadcrumb con dropdown su "Prodotti"
-  container.innerHTML =
-    '<a href="' +
-    root +
-    'index.html" class="bc-link">Home</a>' +
-    '<span class="bc-sep">›</span>' +
-    '<span class="bc-prodotti-wrapper">' +
-    '<a href="' +
-    root +
-    'index.html#prodotti" class="bc-link bc-prodotti-toggle">' +
-    'Prodotti <span class="bc-arrow">▾</span>' +
-    "</a>" +
-    '<ul class="bc-dropdown">' +
-    ALL_CATS.map(function (cat) {
-      return (
-        '<li><a href="' +
-        root +
-        'index.html#prodotti" class="bc-dropdown-link" data-prod-filter="' +
-        cat +
-        '">' +
-        cat +
-        "</a></li>"
-      );
-    }).join("") +
-    "</ul>" +
-    "</span>" +
-    '<span class="bc-sep">›</span>' +
-    '<span class="bc-current">' +
-    productName +
-    "</span>";
+  // Costruisce lo scheletro del breadcrumb (senza dropdown, riempito dopo il fetch)
+  function renderBreadcrumb(catLinksHtml) {
+    container.innerHTML =
+      '<a href="' +
+      root +
+      'index.html" class="bc-link">Home</a>' +
+      '<span class="bc-sep">›</span>' +
+      '<span class="bc-prodotti-wrapper">' +
+      '<a href="' +
+      root +
+      'index.html#prodotti" class="bc-link bc-prodotti-toggle">' +
+      'Prodotti <span class="bc-arrow">▾</span>' +
+      "</a>" +
+      '<ul class="bc-dropdown">' +
+      catLinksHtml +
+      "</ul>" +
+      "</span>" +
+      '<span class="bc-sep">›</span>' +
+      '<span class="bc-current">' +
+      productName +
+      "</span>";
 
-  // Salva filtro in sessionStorage prima di navigare
-  container.querySelectorAll(".bc-dropdown-link").forEach(function (link) {
-    link.addEventListener("click", function () {
-      sessionStorage.setItem("prodFilter", this.dataset.prodFilter);
-    });
-  });
-
-  // Toggle dropdown al click sul toggle (mobile + desktop)
-  var toggle = container.querySelector(".bc-prodotti-toggle");
-  var dropdown = container.querySelector(".bc-dropdown");
-  if (toggle && dropdown) {
-    toggle.addEventListener("click", function (e) {
-      var open = dropdown.classList.contains("bc-open");
-      if (!open) e.preventDefault();
-      dropdown.classList.toggle("bc-open");
-      var arrow = this.querySelector(".bc-arrow");
-      if (arrow) arrow.style.transform = open ? "" : "rotate(180deg)";
-    });
-    // Chiudi cliccando fuori
-    document.addEventListener("click", function (e) {
-      if (!container.contains(e.target)) {
-        dropdown.classList.remove("bc-open");
-        var arrow = toggle.querySelector(".bc-arrow");
-        if (arrow) arrow.style.transform = "";
-      }
-    });
+    attachDropdownEvents();
   }
+
+  function attachDropdownEvents() {
+    // Salva filtro in sessionStorage prima di navigare
+    container.querySelectorAll(".bc-dropdown-link").forEach(function (link) {
+      link.addEventListener("click", function () {
+        sessionStorage.setItem("prodFilter", this.dataset.prodFilter);
+      });
+    });
+
+    // Toggle dropdown al click sul toggle (mobile + desktop)
+    var toggle = container.querySelector(".bc-prodotti-toggle");
+    var dropdown = container.querySelector(".bc-dropdown");
+    if (toggle && dropdown) {
+      toggle.addEventListener("click", function (e) {
+        var open = dropdown.classList.contains("bc-open");
+        if (!open) e.preventDefault();
+        dropdown.classList.toggle("bc-open");
+        var arrow = this.querySelector(".bc-arrow");
+        if (arrow) arrow.style.transform = open ? "" : "rotate(180deg)";
+      });
+      // Chiudi cliccando fuori
+      document.addEventListener("click", function (e) {
+        if (!container.contains(e.target)) {
+          dropdown.classList.remove("bc-open");
+          var arrow = toggle.querySelector(".bc-arrow");
+          if (arrow) arrow.style.transform = "";
+        }
+      });
+    }
+  }
+
+  // Carica il JSON e costruisce le categorie uniche dinamicamente
+  fetch(JSON_PATH)
+    .then(function (res) {
+      if (!res.ok) throw new Error("Impossibile caricare " + JSON_PATH);
+      return res.json();
+    })
+    .then(function (data) {
+      var prodotti = (data && data.Prodotti) || [];
+      var catSet = new Set();
+      prodotti.forEach(function (p) {
+        (p.categorie || []).forEach(function (cat) {
+          catSet.add(cat);
+        });
+      });
+      var ALL_CATS = Array.from(catSet);
+
+      var catLinksHtml = ALL_CATS.map(function (cat) {
+        return (
+          '<li><a href="' +
+          root +
+          'index.html#prodotti" class="bc-dropdown-link" data-prod-filter="' +
+          cat +
+          '">' +
+          cat +
+          "</a></li>"
+        );
+      }).join("");
+
+      renderBreadcrumb(catLinksHtml);
+    })
+    .catch(function (err) {
+      console.error("Errore caricamento categorie breadcrumb:", err);
+      // Fallback: breadcrumb senza dropdown popolato, in caso di errore di fetch
+      renderBreadcrumb("");
+    });
 });
