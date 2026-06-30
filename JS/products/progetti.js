@@ -37,10 +37,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function getCategoryColors(category) {
     if (category === "Tutti") {
       return {
-        bg: "#ffffff", // sfondo opzione (inattivo)
-        text: "#000000", // testo opzione
+        bg: "#ffffff",
+        text: "#000000",
         border: "#cccccc",
-        activeBg: "#ffffff", // sfondo select attivo
+        activeBg: "#ffffff",
         activeText: "#000000",
       };
     }
@@ -271,14 +271,27 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const storedCategory = localStorage.getItem(CONFIG.storageKeyCategory);
       const storedSearchTerm = localStorage.getItem(CONFIG.storageKeySearch);
-      if (storedCategory && storedCategory !== "null")
+      
+      // Se non c'è un filtro salvato, imposta "Tutti" (forzato)
+      if (storedCategory && storedCategory !== "null") {
         currentFilter = storedCategory;
+      } else {
+        currentFilter = "Tutti"; // FORZATO: se nessun dato, usa "Tutti"
+      }
+      
       if (storedSearchTerm && storedSearchTerm !== "null") {
         currentSearchTerm = storedSearchTerm;
         if (searchInput) searchInput.value = storedSearchTerm;
+      } else {
+        // Se non c'è termine di ricerca, lo resettiamo
+        currentSearchTerm = "";
+        if (searchInput) searchInput.value = "";
       }
     } catch (e) {
       console.error("Impossibile caricare lo stato:", e);
+      // In caso di errore, forziamo "Tutti"
+      currentFilter = "Tutti";
+      currentSearchTerm = "";
     }
   }
 
