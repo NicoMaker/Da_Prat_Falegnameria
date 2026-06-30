@@ -359,7 +359,7 @@ h6 {
 }
 
 .hero-title2 {
-    font-family: var(--font-heading);
+  font-family: var(--font-heading);
   font-size: clamp(1.6rem, 2.8vw, 2.6rem);
   font-weight: 900;
   letter-spacing: 0.02em;
@@ -369,7 +369,7 @@ h6 {
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
   text-align: center;
   width: 100%;
-  font-size:1em;
+  font-size: 1em;
 }
 
 .hero-title em {
@@ -562,7 +562,7 @@ h6 {
   align-items: center;
   justify-content: center;
   position: relative;
-  height:800px
+  height: 800px;
 }
 
 .consulenza-image::after {
@@ -2017,6 +2017,9 @@ h6 {
   }
   .mobile-dropdown-wrapper .mobile-dropdown-toggle {
     pointer-events: auto; /* il link rimane cliccabile per l'ancora */
+  }
+  .consulenza-image {
+    height: 500px;
   }
 }
 
