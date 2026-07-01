@@ -1,12 +1,12 @@
 {
-  "Prodotti": [
+  "prodotti": [
     {
       "id": "fin-pvc-1",
       "nome": "Finestra PVC Classic",
       "categorie": ["Serramenti PVC"],
       "descrizione": "Finestra a battente in PVC con doppio vetro. Ottimo isolamento termoacustico e alta resistenza agli agenti atmosferici. Disponibile in molti colori e formati.",
       "immagine": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=460&fit=crop",
-      "link": "#"
+      "link": "ffwefew"
     },
     {
       "id": "Veneziane",
@@ -51,7 +51,7 @@
     {
       "id": "Finestra1",
       "nome": "Finestre 6Stars in Alluminio",
-      "categorie": ["Finestre in alluninio"],
+      "categorie": ["Finestre in alluminio"],
       "descrizione": "I serramenti in Alluminio 6Stars garantiscono un livello di efficienza energetica davvero alto, grazie alle incredibili caratteristiche tecniche e termoisolanti, che offrono un comfort abitativo senza paragoni.",
       "immagine": "Img/Prodotti_Section/finestra1.webp",
       "link": "#"
@@ -59,8 +59,8 @@
     {
       "id": "Finestra2",
       "nome": "Finestre Arrogance in Alluminio",
-      "categorie": ["Finestre in alluninio"],
-      "descrizione": "Le finestre in Alluminio Arrogance offrono una luminosità naturale super e una superficie vetrata pari fino all’85% della finestra. Le prestazioni di isoalmento termico e acustico rimangono al top. Il design minimalista, lineare ed elegante consente l’apertura fino a180°. Le finestre Arrogance possono essere personalizzate per accontentare tutte le necessità estetiche e architettoniche.",
+      "categorie": ["Finestre in alluminio"],
+      "descrizione": "Le finestre in Alluminio Arrogance offrono una luminosità naturale super e una superficie vetrata pari fino all’85% della finestra. Le prestazioni di isolamento termico e acustico rimangono al top. Il design minimalista, lineare ed elegante consente l’apertura fino a 180°. Le finestre Arrogance possono essere personalizzate per accontentare tutte le necessità estetiche e architettoniche.",
       "immagine": "Img/Prodotti_Section/finestra2.webp",
       "link": "#"
     },
@@ -78,6 +78,58 @@
       "categorie": ["Finestre in PVC"],
       "descrizione": "Le prime finestre dal design minimale, con performance di isolamento termico superlative per mantenere temperature costanti. Sottili, resistenti, innovative: con Epiq 6Stars, la tua casa entra nel futuro.",
       "immagine": "Img/Prodotti_Section/finestra4.webp",
+      "link": "#"
+    }
+  ],
+  "porte": [
+    {
+      "id": "porte-interne",
+      "nome": "Interne",
+      "categorie": ["Porte Interne"],
+      "descrizione": "Porte interne in legno massello o tamburato, disponibili in diverse essenze e finiture. Eleganza, durabilità e isolamento acustico per ogni ambiente della casa.",
+      "immagine": "Img/Porte_section/Interne/1.png",
+      "link": "#"
+    },
+    {
+      "id": "porte-blindate",
+      "nome": "Blindate",
+      "categorie": ["Porte Blindate"],
+      "descrizione": "Porte d'ingresso blindate con certificazione antieffrazione. Struttura in acciaio, serratura di sicurezza e isolamento termico/acustico garantito.",
+      "immagine": "Img/Porte_section/ingresso/1.png",
+      "link": "#"
+    },
+        {
+      "id": "porte-scorrevoli",
+      "nome": "Scorrevoli",
+      "categorie": ["Porte Scorrevoli"],
+      "descrizione": "Sistemi scorrevoli in PVC, alluminio o legno per ottimizzare gli spazi. Meccanismi fluidi e silenziosi, ideali per interni moderni e minimalisti.",
+      "immagine": "Img/Scorrevoli_Section/1.png",
+      "link": "#"
+    }
+  ],
+  "serramenti": [
+    {
+      "id": "serramento-pvc",
+      "nome": "PVC",
+      "categorie": ["Serramenti PVC"],
+      "descrizione": "Gli infissi in PVC offrono ottimo isolamento termico e acustico con manutenzione minima. Resistenti e durevoli, sono ideali per chi cerca efficienza energetica senza rinunciare allo stile.",
+      "immagine": "Img/Serramenti_Section/PVC.png",
+      "link": "Projects/Serramento_PVC.html"
+    },
+    {
+      "id": "serramento-alluminio",
+      "nome": "Alluminio",
+      "categorie": ["Serramenti Alluminio"],
+      "descrizione": "Gli infissi in alluminio offrono solidità, leggerezza e design moderno. Resistenti alla corrosione e quasi privi di manutenzione, sono perfetti per ampie superfici vetrate.",
+      "immagine": "Img/Serramenti_Section/AlU.png",
+      "link": "#"
+    },
+    {
+      "id": "serramento-legno",
+      "nome": "Legno",
+      "categorie": ["Serramenti Legno"],
+      "descrizione": "Gli infissi in legno regalano calore ed eleganza naturale. Garantiscono buon isolamento termico e acustico, mantenendo bellezza e prestazioni nel tempo con la giusta manutenzione.",
+      "immagine": "Img/Serramenti_Section/Legno.png",
       "link": "#"
     }
   ]
