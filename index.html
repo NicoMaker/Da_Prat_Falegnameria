@@ -190,95 +190,60 @@
       </div>
     </section>
 
-    <!-- ===== PORTE SECTION CON SLIDER (ora con 1 card per slide) ===== -->
-    <section id="porte" class="materiali-section porte-section">
-      <div class="container">
-        <h2
-          class="section-title"
-          style="text-align: center; margin-bottom: 0.5rem"
-        >
-          Porte
-        </h2>
-        <p style="text-align: center; margin-bottom: 2rem; color: #666">
-          Scopri le nostre soluzioni per ogni esigenza
-        </p>
+<!-- ===== PORTE SECTION – STESSA GRAFICA DEI SERRAMENTI ===== -->
+<section id="porte" class="materiali-section porte-section">
+  <div class="container" style="margin-bottom: 2rem; text-align: center">
+    <h2 class="section-title" style="margin-bottom: 0.5rem">Porte</h2>
+    <p class="section-subtitle">Soluzioni per ogni ambiente e stile</p>
+  </div>
 
-        <div class="slider-container">
-          <div class="slider-wrapper" id="sliderWrapper">
-            <!-- Slide 1: Interne (solo 1 card) -->
-            <div class="slider-slide slide-interne">
-              <h3 class="slider-slide-title">Porte Interne</h3>
-              <div class="materiali-grid">
-                <div class="materiale-card">
-                  <h3 class="materiale-title">Legno Massello</h3>
-                  <img
-                    src="Img/Porte_section/Interne/1.png"
-                    alt="Porta interna legno"
-                    class="materiale-image"
-                  />
-                  <p class="materiale-text">
-                    Porta interna in legno massello con essenza naturale.
-                    Eleganza e solidità.
-                  </p>
-                </div>
-                <!-- gli altri due card sono stati rimossi -->
-              </div>
-            </div>
+  <div class="materiali-grid">
+    <!-- Card 1 – Porte Interne -->
+    <div class="materiale-card">
+      <h3 class="materiale-title">Interne</h3>
+      <img
+        src="Img/Porte_section/Interne/1.png"
+        alt="Porta interna in legno"
+        class="materiale-image"
+      />
+      <p class="materiale-text">
+        Porte interne in legno massello o tamburato, disponibili in diverse
+        essenze e finiture. Eleganza, durabilità e isolamento acustico per
+        ogni ambiente della casa.
+      </p>
+    </div>
 
-            <!-- Slide 2: Scorrevoli (solo 1 card) -->
-            <div class="slider-slide slide-scorrevoli">
-              <h3 class="slider-slide-title">Porte Scorrevoli</h3>
-              <div class="materiali-grid">
-                <div class="materiale-card">
-                  <h3 class="materiale-title">Scorrevole in PVC</h3>
-                  <img
-                    src="Img/Scorrevoli_Section/1.png"
-                    alt="Scorrevole in PVC"
-                    class="materiale-image"
-                  />
-                  <p class="materiale-text">
-                    Praticità e risparmio energetico. Scorrimento fluido e
-                    silenzioso.
-                  </p>
-                </div>
-                <!-- gli altri due card sono stati rimossi -->
-              </div>
-            </div>
+    <!-- Card 2 – Porte Scorrevoli -->
+    <div class="materiale-card">
+      <h3 class="materiale-title">Scorrevoli</h3>
+      <img
+        src="Img/Scorrevoli_Section/1.png"
+        alt="Porta scorrevole in PVC"
+        class="materiale-image"
+      />
+      <p class="materiale-text">
+        Sistemi scorrevoli in PVC, alluminio o legno per ottimizzare gli spazi.
+        Meccanismi fluidi e silenziosi, ideali per interni moderni e
+        minimalisti.
+      </p>
+    </div>
 
-            <!-- Slide 3: Blindate (solo 1 card) -->
-            <div class="slider-slide slide-blindate">
-              <h3 class="slider-slide-title">Porte Blindate</h3>
-              <div class="materiali-grid">
-                <div class="materiale-card">
-                  <h3 class="materiale-title">Blindata</h3>
-                  <img
-                    src="Img/Porte_section/ingresso/1.png"
-                    alt="Porta blindata"
-                    class="materiale-image"
-                  />
-                  <p class="materiale-text">
-                    Massima protezione antieffrazione. Struttura in acciaio
-                    rinforzato.
-                  </p>
-                </div>
-                <!-- gli altri due card sono stati rimossi -->
-              </div>
-            </div>
-          </div>
-
-          <!-- Navigation buttons -->
-          <button class="slider-btn prev" id="prevBtn">‹</button>
-          <button class="slider-btn next" id="nextBtn">›</button>
-
-          <!-- Dots -->
-          <div class="slider-dots" id="dotsContainer">
-            <button class="slider-dot active" data-index="0"></button>
-            <button class="slider-dot" data-index="1"></button>
-            <button class="slider-dot" data-index="2"></button>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Card 3 – Porte Blindate / Ingresso -->
+    <div class="materiale-card">
+      <h3 class="materiale-title">Blindate</h3>
+      <img
+        src="Img/Porte_section/ingresso/1.png"
+        alt="Porta blindata antieffrazione"
+        class="materiale-image"
+      />
+      <p class="materiale-text">
+        Porte d'ingresso blindate con certificazione antieffrazione. Struttura
+        in acciaio, serratura di sicurezza e isolamento termico/acustico
+        garantito.
+      </p>
+    </div>
+  </div>
+</section>
 
     <!-- ===== CONSULENZA SECTION ===== -->
     <section class="consulenza-section" id="consulenza">
@@ -381,8 +346,6 @@
       <!-- Generato dinamicamente da footer JS -->
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
-    <script src="JS/product/slider.js"></script>
 
     <!-- Altri script (non rimossi) -->
     <script src="JS/shared/json-paths.js"></script>
@@ -397,7 +360,6 @@
     <script src="JS/ui/active-section.js"></script>
     <script src="JS/products/progetti.js"></script>
     <script src="JS/ui/sticky-controls.js"></script>
-    <script src="JS/ui/porte.js"></script>
     <script src="JS/ui/nav-builder.js"></script>
 
     <!-- Footer scripts -->
