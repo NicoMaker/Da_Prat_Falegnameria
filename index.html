@@ -55,6 +55,167 @@
     <link rel="stylesheet" href="CSS/styles.css" />
     <link rel="stylesheet" href="CSS/custom-styles.css" />
     <link rel="stylesheet" href="CSS/category-colors.css" />
+
+    <style>
+      /* Slider styles */
+      .slider-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+      }
+
+      .slider-wrapper {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .slider-slide {
+        min-width: 100%;
+        padding: 2rem;
+        box-sizing: border-box;
+      }
+
+      /* Ora ogni slide ha un solo card, quindi lo centriamo e limitiamo la larghezza */
+      .slider-slide .materiali-grid {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      .slider-slide .materiale-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transition: transform 0.3s;
+        max-width: 400px;
+        width: 100%;
+        flex-shrink: 0;
+      }
+
+      .slider-slide .materiale-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .slider-slide .materiale-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        color: #2c3e50;
+      }
+
+      .slider-slide .materiale-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 0.8rem;
+      }
+
+      .slider-slide .materiale-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #555;
+      }
+
+      /* Navigation buttons */
+      .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.8);
+        border: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        font-size: 2rem;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        transition: background 0.3s;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #333;
+      }
+
+      .slider-btn:hover {
+        background: #fff;
+      }
+
+      .slider-btn.prev {
+        left: 10px;
+      }
+
+      .slider-btn.next {
+        right: 10px;
+      }
+
+      /* Dots indicators */
+      .slider-dots {
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+
+      .slider-dot {
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: #ccc;
+        margin: 0 6px;
+        cursor: pointer;
+        border: none;
+        transition: background 0.3s;
+      }
+
+      .slider-dot.active {
+        background: #2c3e50;
+        transform: scale(1.2);
+      }
+
+      /* Categorie colors */
+      .slide-interne .materiale-card {
+        border-left: 6px solid #3498db;
+      }
+      .slide-scorrevoli .materiale-card {
+        border-left: 6px solid #2ecc71;
+      }
+      .slide-blindate .materiale-card {
+        border-left: 6px solid #e74c3c;
+      }
+
+      .slide-interne .slider-slide-title {
+        color: #3498db;
+      }
+      .slide-scorrevoli .slider-slide-title {
+        color: #2ecc71;
+      }
+      .slide-blindate .slider-slide-title {
+        color: #e74c3c;
+      }
+
+      .slider-slide-title {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .slider-btn {
+          width: 36px;
+          height: 36px;
+          font-size: 1.2rem;
+        }
+        .slider-slide .materiale-card {
+          max-width: 100%;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -71,17 +232,9 @@
           <ul class="nav-list">
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#serramenti" class="nav-link">Serramenti</a></li>
-            <li class="nav-dropdown-wrapper">
-              <a href="#porte" class="nav-link nav-dropdown-toggle"
-                >Porte</a
-              >
-            </li>
+            <li><a href="#porte" class="nav-link">Porte</a></li>
             <li><a href="#consulenza" class="nav-link">Consulenza</a></li>
-            <li class="nav-dropdown-wrapper" id="nav-prodotti-wrapper">
-              <a href="#prodotti" class="nav-link nav-dropdown-toggle"
-                >Prodotti</a
-              >
-            </li>
+            <li><a href="#prodotti" class="nav-link">Prodotti</a></li>
             <li><a href="#realizzazioni" class="nav-link">Realizzazioni</a></li>
             <li><a href="#Contatti" class="nav-link">Contatti</a></li>
           </ul>
@@ -98,26 +251,10 @@
         <ul class="mobile-nav-list">
           <li><a href="#home" class="mobile-nav-link">Home</a></li>
           <li><a href="#serramenti" class="mobile-nav-link">Serramenti</a></li>
-          <li class="mobile-dropdown-wrapper">
-            <a href="#porte" class="mobile-nav-link mobile-dropdown-toggle"
-              >Porte <span class="dropdown-arrow">▾</span></a
-            >
-          </li>
+          <li><a href="#porte" class="mobile-nav-link">Porte</a></li>
           <li><a href="#consulenza" class="mobile-nav-link">Consulenza</a></li>
-          <li class="mobile-dropdown-wrapper" id="mobile-prodotti-wrapper">
-            <a
-              href="#prodotti"
-              class="mobile-nav-link mobile-dropdown-toggle"
-              id="mobile-prodotti-toggle"
-              >Prodotti <span class="dropdown-arrow">▾</span></a
-            >
-            <ul class="mobile-dropdown-menu" id="mobile-prodotti-menu">
-              <!-- popolato dinamicamente da nav-builder.js -->
-            </ul>
-          </li>
-          <li>
-            <a href="#realizzazioni" class="mobile-nav-link">Realizzazioni</a>
-          </li>
+          <li><a href="#prodotti" class="mobile-nav-link">Prodotti</a></li>
+          <li><a href="#realizzazioni" class="mobile-nav-link">Realizzazioni</a></li>
           <li><a href="#Contatti" class="mobile-nav-link">Contatti</a></li>
         </ul>
       </div>
@@ -192,250 +329,69 @@
           <p class="materiale-text">
             Gli infissi in legno regalano calore ed eleganza naturale.
             Garantiscono buon isolamento termico e acustico, mantenendo bellezza
-            e prestazioni nel tempo con la giusta manutenzione. Alluminio
+            e prestazioni nel tempo con la giusta manutenzione.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- ===== PORTE SECTION (unified with tabs) ===== -->
+    <!-- ===== PORTE SECTION CON SLIDER (ora con 1 card per slide) ===== -->
     <section id="porte" class="materiali-section porte-section">
-      <div class="container" style="margin-bottom: 1.5rem; text-align: center">
-        <h2 class="section-title" style="margin-bottom: 0.5rem">Porte</h2>
-      </div>
+      <div class="container">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 0.5rem">Porte</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #666;">Scopri le nostre soluzioni per ogni esigenza</p>
 
-      <!-- Tab buttons -->
-      <div class="porte-tabs-wrapper">
-        <div class="porte-tabs">
-          <button class="porte-tab active" data-tab="interne">
-            Porte Interne
-          </button>
-          <button class="porte-tab" data-tab="scorrevoli">
-            Porte Scorrevoli
-          </button>
-          <button class="porte-tab" data-tab="blindate">Porte Blindate</button>
-        </div>
-      </div>
+        <div class="slider-container">
+          <div class="slider-wrapper" id="sliderWrapper">
+            <!-- Slide 1: Interne (solo 1 card) -->
+            <div class="slider-slide slide-interne">
+              <h3 class="slider-slide-title">Porte Interne</h3>
+              <div class="materiali-grid">
+                <div class="materiale-card">
+                  <h3 class="materiale-title">Legno Massello</h3>
+                  <img src="Img/Porte_section/Interne/1.png" alt="Porta interna legno" class="materiale-image" />
+                  <p class="materiale-text">Porta interna in legno massello con essenza naturale. Eleganza e solidità.</p>
+                </div>
+                <!-- gli altri due card sono stati rimossi -->
+              </div>
+            </div>
 
-      <!-- Tab: Interne -->
-      <div class="porte-tab-content active" data-content="interne">
-        <div class="materiali-grid">
-          <div class="materiale-card">
-            <h3 class="materiale-title">Porta Interna<br />Legno Massello</h3>
-            <img
-              src="Img/Porte_section/Interne/1.png"
-              alt="Porta interna legno"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Porta interna in legno massello con essenza naturale. Disponibile
-              in finitura laccata bianca, noce, rovere e molte altre. Eleganza e
-              solidità garantite.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">Porta Interna<br />Design</h3>
-            <img
-              src="Img/Porte_section/Interne/2.png"
-              alt="Porta interna design"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Porta interna dal design contemporaneo, disponibile a battente o
-              scorrevole. Perfetta per chi cerca linee pulite e moderne in ogni
-              ambiente.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">Porta Interna<br />Premium</h3>
-            <img
-              src="Img/Porte_section/Interne/3.png"
-              alt="Porta interna premium"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Porta interna di alta gamma con finiture pregiate. Coniuga
-              funzionalità e stile per ogni ambiente della casa, con
-              personalizzazioni su misura.
-            </p>
-          </div>
-        </div>
-      </div>
+            <!-- Slide 2: Scorrevoli (solo 1 card) -->
+            <div class="slider-slide slide-scorrevoli">
+              <h3 class="slider-slide-title">Porte Scorrevoli</h3>
+              <div class="materiali-grid">
+                <div class="materiale-card">
+                  <h3 class="materiale-title">Scorrevole in PVC</h3>
+                  <img src="Img/Scorrevoli_Section/1.png" alt="Scorrevole in PVC" class="materiale-image" />
+                  <p class="materiale-text">Praticità e risparmio energetico. Scorrimento fluido e silenzioso.</p>
+                </div>
+                <!-- gli altri due card sono stati rimossi -->
+              </div>
+            </div>
 
-      <!-- Tab: Scorrevoli -->
-      <div class="porte-tab-content" data-content="scorrevoli">
-        <div class="materiali-grid">
-          <div class="materiale-card">
-            <h3 class="materiale-title">Scorrevole<br />in PVC</h3>
-            <img
-              src="Img/Scorrevoli_Section/1.png"
-              alt="Scorrevole in PVC"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Ottima soluzione per chi cerca praticità e risparmio energetico.
-              Scorre in modo fluido e silenzioso, con elevato isolamento termico
-              e acustico. Personalizzabile in colori e finiture.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">Scorrevole<br />in Alluminio</h3>
-            <img
-              src="Img/Scorrevoli_Section/2.png"
-              alt="Scorrevole in Alluminio"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Eleganza e leggerezza per grandi aperture. Il profilo sottile in
-              alluminio massimizza la superficie vetrata e la luminosità degli
-              ambienti, con prestazioni di sicurezza elevate.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">Scorrevole<br />Panoramico</h3>
-            <img
-              src="Img/Scorrevoli_Section/3.png"
-              alt="Scorrevole panoramico"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Sistema scorrevole con apertura massimizzata verso esterno. Ideale
-              per terrazzi e giardini, garantisce vista aperta e continuità tra
-              interno ed esterno.
-            </p>
-          </div>
-        </div>
-
-        <div class="materiali-grid">
-          <div class="materiale-card">
-            <h3 class="materiale-title">
-              Apertura scorrevole Paysage BiFold in Alluminio
-            </h3>
-            <img
-              src="Img/Scorrevoli_Section/4.webp"
-              alt="Scorrevole in PVC"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Le aperture a fisarmonica Paysage BiFold in Alluminio sono la
-              soluzione migliore per delimitare grandi spazi, riducendo
-              l'estensione occupata dal serramento grazie alle parti vetrate
-              pieghevoli, con apertura laterale.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">
-              Apertura scorrevole Paysage 6Stars in Alluminio
-            </h3>
-            <img
-              src="Img/Scorrevoli_Section/6.webp"
-              alt="Scorrevole in PVC"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Le aperture scorrevoli alzanti Paysage 6Stars in Alluminio
-              ridisegnano gli spazi favorendo un agevole accesso verso
-              l'esterno. I profili in alluminio garantiscono alte prestazioni
-              termoisolanti e combinano sicurezza e design.
-              <br /><br />
-              Una nuova sensazione di libertà e stile per le grandi aperture di
-              casa.
-            </p>
+            <!-- Slide 3: Blindate (solo 1 card) -->
+            <div class="slider-slide slide-blindate">
+              <h3 class="slider-slide-title">Porte Blindate</h3>
+              <div class="materiali-grid">
+                <div class="materiale-card">
+                  <h3 class="materiale-title">Blindata</h3>
+                  <img src="Img/Porte_section/ingresso/1.png" alt="Porta blindata" class="materiale-image" />
+                  <p class="materiale-text">Massima protezione antieffrazione. Struttura in acciaio rinforzato.</p>
+                </div>
+                <!-- gli altri due card sono stati rimossi -->
+              </div>
+            </div>
           </div>
 
-          <div class="materiale-card">
-            <h3 class="materiale-title">
-              Porte scorrevoli Alzanti Slide 6Stars View in PVC
-            </h3>
-            <img
-              src="Img/Scorrevoli_Section/5.png"
-              alt="Scorrevole in PVC"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Il sistema scorrevole alzante Slide 6Stars View, con nodo centrale
-              minimalista, è progettato per ampie superfici vetrate e un design
-              contemporaneo. Il nodo centrale sottile massimizza la superficie
-              vetrata e l’apporto di luce naturale, mentre il sistema alzante
-              garantisce uno scorrimento fluido, una tenuta ottimale e
-              prestazioni di isolamento termico superiori. La soluzione ideale
-              per interni moderni, dove comfort, efficienza energetica ed
-              estetica si combinano armoniosamente.
-            </p>
-          </div>
-        </div>
-      </div>
+          <!-- Navigation buttons -->
+          <button class="slider-btn prev" id="prevBtn">‹</button>
+          <button class="slider-btn next" id="nextBtn">›</button>
 
-      <!-- Tab: Blindate -->
-      <div class="porte-tab-content" data-content="blindate">
-        <div class="materiali-grid">
-          <div class="materiale-card">
-            <h3 class="materiale-title">Porta<br />Blindata</h3>
-            <img
-              src="Img/Porte_section/ingresso/1.png"
-              alt="Porta blindata"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Massima protezione antieffrazione con certificazione di sicurezza.
-              Struttura in acciaio rinforzato con isolamento termico e acustico
-              integrato. Disponibile in molte finiture esterne.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">Porta Blindata<br />Vetrata</h3>
-            <img
-              src="Img/Porte_section/ingresso/2.png"
-              alt="Porta blindata vetrata"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Design contemporaneo con ampia vetrata laterale in alluminio. Dona
-              luminosità all'ingresso mantenendo alte performance di sicurezza e
-              isolamento.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">Modern</h3>
-            <img
-              src="Img/Porte_section/ingresso/4.webp"
-              alt="Porta blindata vetrata"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Le porte della Gamma Modern sono il perfetto “Benvenuto” in casa
-              tua. Coniugano perfettamente isoalmento termo-acustico al top,
-              grandi performance nel tempo contro le intemperie e design moderno
-              e ricercato.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">Classic</h3>
-            <img
-              src="Img/Porte_section/ingresso/3.webp"
-              alt="Porta blindata vetrata"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Le porte d’ingresso della Gamma Classic offrono un eccellente
-              isolamento termoacustico grazie allo spessore del pannello che
-              arriva fino a 81mm e alla profondità di montaggio, fino a 80mm,
-              caratteristiche che garantiscono protezione e tenuta anche nelle
-              condizioni climatiche più severe.
-            </p>
-          </div>
-          <div class="materiale-card">
-            <h3 class="materiale-title">Supreme</h3>
-            <img
-              src="Img/Porte_section/ingresso/5.webp"
-              alt="Porta blindata vetrata"
-              class="materiale-image"
-            />
-            <p class="materiale-text">
-              Resistenza, durabilità, sicurezza grazie ai profili in Alluminio
-              che uniscono alte performance a un design unico. Per una porta di
-              un’altra categoria.
-            </p>
+          <!-- Dots -->
+          <div class="slider-dots" id="dotsContainer">
+            <button class="slider-dot active" data-index="0"></button>
+            <button class="slider-dot" data-index="1"></button>
+            <button class="slider-dot" data-index="2"></button>
           </div>
         </div>
       </div>
@@ -477,12 +433,9 @@
           <h2 class="section-title">Prodotti</h2>
         </div>
         <div id="product-controls-sticky" class="product-controls-sticky">
-          <div class="search-container">
-          </div>
+          <div class="search-container"></div>
           <div class="filter-container">
-            <!-- Bottoni (desktop) -->
             <div id="filter-buttons" style="display: none"></div>
-            <!-- Select sempre visibile -->
             <div id="filter-select-wrapper" style="display: block">
               <select id="filter-select"></select>
             </div>
@@ -546,6 +499,38 @@
     </footer>
 
     <!-- ===== SCRIPTS ===== -->
+    <script>
+      // SLIDER LOGIC
+      (function() {
+        const wrapper = document.getElementById('sliderWrapper');
+        const slides = wrapper.querySelectorAll('.slider-slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function goTo(index) {
+          if (index < 0) index = totalSlides - 1;
+          if (index >= totalSlides) index = 0;
+          currentIndex = index;
+          wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+          // update dots
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+          });
+        }
+
+        prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+        nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => goTo(i));
+        });
+      })();
+    </script>
+
+    <!-- Altri script (non rimossi) -->
     <script src="JS/shared/json-paths.js"></script>
     <script src="JS/shared/json-config.js"></script>
     <script src="JS/shared/app-config.js"></script>
@@ -569,7 +554,5 @@
     <script src="JS/footer/creazione_html.js"></script>
     <script src="JS/footer/aggiorna-orari.js"></script>
     <script src="JS/footer/config.js"></script>
-
-    <!-- Porte tabs + nav dropdown logic -->
   </body>
 </html>
