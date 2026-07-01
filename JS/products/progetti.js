@@ -250,7 +250,6 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="Progetti-card-content">
         <h3 class="nome">${item.nome}</h3>
         <p class="descrizione">${item.descrizione}</p>
-        ${categoriaHtml}
         ${hasLink ? '<p class="card-link-hint">Scopri di più →</p>' : ""}
       </div>
     `;
