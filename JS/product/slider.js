@@ -149,3 +149,32 @@ function addSwipeNavigation(element) {
     }
   }
 }
+
+// SLIDER LOGIC
+(function () {
+  const wrapper = document.getElementById("sliderWrapper");
+  const slides = wrapper.querySelectorAll(".slider-slide");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const dots = document.querySelectorAll(".slider-dot");
+  let currentIndex = 0;
+  const totalSlides = slides.length;
+
+  function goTo(index) {
+    if (index < 0) index = totalSlides - 1;
+    if (index >= totalSlides) index = 0;
+    currentIndex = index;
+    wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+    // update dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === currentIndex);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => goTo(currentIndex - 1));
+  nextBtn.addEventListener("click", () => goTo(currentIndex + 1));
+
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => goTo(i));
+  });
+})();
