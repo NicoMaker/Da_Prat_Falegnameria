@@ -30,24 +30,79 @@ document.addEventListener("DOMContentLoaded", () => {
       scorrevoliProducts = data.scorrevoli || [];
 
       // Fallback se non ci sono dati
-      if (allProducts.length === 0 && serramentiProducts.length === 0 && porteProducts.length === 0 && scorrevoliProducts.length === 0) {
+      if (
+        allProducts.length === 0 &&
+        serramentiProducts.length === 0 &&
+        porteProducts.length === 0 &&
+        scorrevoliProducts.length === 0
+      ) {
         console.warn("⚠️ Nessun dato nel JSON. Uso fallback di esempio.");
         // Dati di esempio (solo per debug)
         const fallback = [
-          { id: "serramento-pvc", nome: "PVC", categorie: ["Serramenti PVC"], descrizione: "Infissi in PVC...", immagine: "Img/Serramenti_Section/PVC.png", link: "#" },
-          { id: "serramento-alluminio", nome: "Alluminio", categorie: ["Serramenti Alluminio"], descrizione: "Infissi in alluminio...", immagine: "Img/Serramenti_Section/AlU.png", link: "#" },
-          { id: "serramento-legno", nome: "Legno", categorie: ["Serramenti Legno"], descrizione: "Infissi in legno...", immagine: "Img/Serramenti_Section/Legno.png", link: "#" },
-          { id: "porte-interne", nome: "Interne", categorie: ["Porte Interne"], descrizione: "Porte interne...", immagine: "Img/Porte_section/Interne/1.png", link: "#" },
-          { id: "porte-scorrevoli", nome: "Scorrevoli", categorie: ["Porte Scorrevoli"], descrizione: "Sistemi scorrevoli...", immagine: "Img/Scorrevoli_Section/1.png", link: "#" },
-          { id: "porte-blindate", nome: "Blindate", categorie: ["Porte Blindate"], descrizione: "Porte blindate...", immagine: "Img/Porte_section/ingresso/1.png", link: "#" }
+          {
+            id: "serramento-pvc",
+            nome: "PVC",
+            categorie: ["Serramenti PVC"],
+            descrizione: "Infissi in PVC...",
+            immagine: "Img/Serramenti_Section/PVC.png",
+            link: "#",
+          },
+          {
+            id: "serramento-alluminio",
+            nome: "Alluminio",
+            categorie: ["Serramenti Alluminio"],
+            descrizione: "Infissi in alluminio...",
+            immagine: "Img/Serramenti_Section/AlU.png",
+            link: "#",
+          },
+          {
+            id: "serramento-legno",
+            nome: "Legno",
+            categorie: ["Serramenti Legno"],
+            descrizione: "Infissi in legno...",
+            immagine: "Img/Serramenti_Section/Legno.png",
+            link: "#",
+          },
+          {
+            id: "porte-interne",
+            nome: "Interne",
+            categorie: ["Porte Interne"],
+            descrizione: "Porte interne...",
+            immagine: "Img/Porte_section/Interne/1.png",
+            link: "#",
+          },
+          {
+            id: "porte-scorrevoli",
+            nome: "Scorrevoli",
+            categorie: ["Porte Scorrevoli"],
+            descrizione: "Sistemi scorrevoli...",
+            immagine: "Img/Scorrevoli_Section/1.png",
+            link: "#",
+          },
+          {
+            id: "porte-blindate",
+            nome: "Blindate",
+            categorie: ["Porte Blindate"],
+            descrizione: "Porte blindate...",
+            immagine: "Img/Porte_section/ingresso/1.png",
+            link: "#",
+          },
         ];
-        serramentiProducts = fallback.filter(p => p.categorie.some(c => c.startsWith("Serramenti")));
-        porteProducts = fallback.filter(p => p.categorie.some(c => /^Porte\s+(Interne|Blindate)/i.test(c)));
-        scorrevoliProducts = fallback.filter(p => p.categorie.some(c => /^Porte\s+Scorrevoli/i.test(c)));
+        serramentiProducts = fallback.filter((p) =>
+          p.categorie.some((c) => c.startsWith("Serramenti")),
+        );
+        porteProducts = fallback.filter((p) =>
+          p.categorie.some((c) => /^Porte\s+(Interne|Blindate)/i.test(c)),
+        );
+        scorrevoliProducts = fallback.filter((p) =>
+          p.categorie.some((c) => /^Porte\s+Scorrevoli/i.test(c)),
+        );
         allProducts = fallback;
       }
 
-      console.log(`✅ Caricati: ${allProducts.length} prodotti, ${serramentiProducts.length} serramenti, ${porteProducts.length} porte, ${scorrevoliProducts.length} scorrevoli`);
+      console.log(
+        `✅ Caricati: ${allProducts.length} prodotti, ${serramentiProducts.length} serramenti, ${porteProducts.length} porte, ${scorrevoliProducts.length} scorrevoli`,
+      );
 
       // Popola tutto
       populateFilters();
@@ -61,7 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const section = document.getElementById("Prodotti");
         if (section) section.scrollIntoView({ behavior: "smooth" });
       }
-
     } catch (error) {
       console.error("❌ Errore caricamento JSON:", error);
       progettiContainer.innerHTML =
@@ -81,10 +135,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     container.innerHTML = "";
     if (serramentiProducts.length === 0) {
-      container.innerHTML = "<p class='no-results'>Nessun serramento disponibile.</p>";
+      container.innerHTML =
+        "<p class='no-results'>Nessun serramento disponibile.</p>";
       return;
     }
-    serramentiProducts.forEach(p => container.appendChild(createProductCard(p)));
+    serramentiProducts.forEach((p) =>
+      container.appendChild(createProductCard(p)),
+    );
   }
 
   // ── Popola la sezione Porte (unisce porte + scorrevoli) ──
@@ -97,12 +154,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const tutteLePorte = [...porteProducts, ...scorrevoliProducts];
     container.innerHTML = "";
     if (tutteLePorte.length === 0) {
-      container.innerHTML = "<p class='no-results'>Nessuna porta disponibile.</p>";
+      container.innerHTML =
+        "<p class='no-results'>Nessuna porta disponibile.</p>";
       return;
     }
     const ordine = ["Interne", "Scorrevoli", "Blindate"];
-    tutteLePorte.sort((a, b) => ordine.indexOf(a.nome) - ordine.indexOf(b.nome));
-    tutteLePorte.forEach(p => container.appendChild(createProductCard(p)));
+    tutteLePorte.sort(
+      (a, b) => ordine.indexOf(a.nome) - ordine.indexOf(b.nome),
+    );
+    tutteLePorte.forEach((p) => container.appendChild(createProductCard(p)));
   }
 
   // ── Ottiene i colori per una categoria ──
