@@ -14,10 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
   JsonData.load(AppConfig.products.jsonKey)
     .then((data) => {
       // Cerca il prodotto il cui link termina con il file corrente
-      const prodotto = (data.Prodotti || []).find((p) => {
-        if (!p.link || p.link === "#") return false;
-        return p.link.split("/").pop() === currentFile;
-      });
+      // (cerca in prodotti + porte + serramenti, non solo in "prodotti")
+      const prodotto = ProductsFlat.findByLink(data, currentFile);
 
       if (prodotto && prodotto.categorie && prodotto.categorie.length > 0) {
         badgesEl.innerHTML = CategoryColors.getBadgesHTML(prodotto.categorie);

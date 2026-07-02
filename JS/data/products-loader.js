@@ -7,9 +7,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   JsonData.load(CONFIG.jsonKey)
     .then((data) => {
+      const prodotti =
+        typeof ProductsFlat !== "undefined"
+          ? ProductsFlat.getAll(data)
+          : data.prodotti || [];
       document.dispatchEvent(
         new CustomEvent("prodottiCaricati", {
-          detail: { prodotti: data.Prodotti },
+          detail: { prodotti },
         }),
       );
     })

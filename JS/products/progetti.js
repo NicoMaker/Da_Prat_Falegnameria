@@ -10,10 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!progettiContainer) return;
 
+  // Categorie del JSON che rientrano nei "Sistemi Oscuranti" (home #oscuranti)
+  const OSCURANTI_CATEGORIES = ["Veneziane", "Oscuranti", "Tapparelle"];
+
   let allProducts = [];
   let serramentiProducts = [];
   let porteProducts = [];
   let scorrevoliProducts = [];
+  let oscurantiProducts = [];
   let currentFilter = CONFIG.defaultFilter;
   let currentSearchTerm = "";
 
@@ -28,6 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
       allProducts = data.prodotti || [];
       porteProducts = data.porte || [];
       scorrevoliProducts = data.scorrevoli || [];
+      // Sistemi oscuranti (veneziane, avvolgibili, ecc.) — vivono dentro "prodotti"
+      oscurantiProducts = allProducts.filter((p) =>
+        p.categorie.some((c) => OSCURANTI_CATEGORIES.includes(c)),
+      );
 
       // Fallback se non ci sono dati
       if (
@@ -101,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       console.log(
-        `✅ Caricati: ${allProducts.length} prodotti, ${serramentiProducts.length} serramenti, ${porteProducts.length} porte, ${scorrevoliProducts.length} scorrevoli`,
+        `✅ Caricati: ${allProducts.length} prodotti, ${serramentiProducts.length} serramenti, ${porteProducts.length} porte, ${scorrevoliProducts.length} scorrevoli, ${oscurantiProducts.length} oscuranti`,
       );
 
       // Popola tutto
@@ -111,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
       updateFilterUI();
       populateSerramenti();
       populatePorte();
+      populateOscuranti();
 
       if (window.location.hash === "#Prodotti") {
         const section = document.getElementById("Prodotti");
@@ -140,7 +149,25 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     serramentiProducts.forEach((p) =>
-      container.appendChild(createProductCard(p)),
+      container.appendChild(createProductCard(p, "serramenti")),
+    );
+  }
+
+  // ── Popola la sezione Sistemi Oscuranti ───────────────────
+  function populateOscuranti() {
+    const container = document.getElementById("oscuranti-grid");
+    if (!container) {
+      console.warn("⚠️ Contenitore oscuranti-grid non trovato");
+      return;
+    }
+    container.innerHTML = "";
+    if (oscurantiProducts.length === 0) {
+      container.innerHTML =
+        "<p class='no-results'>Nessun sistema oscurante disponibile.</p>";
+      return;
+    }
+    oscurantiProducts.forEach((p) =>
+      container.appendChild(createProductCard(p, "oscuranti")),
     );
   }
 
@@ -162,7 +189,9 @@ document.addEventListener("DOMContentLoaded", () => {
     tutteLePorte.sort(
       (a, b) => ordine.indexOf(a.nome) - ordine.indexOf(b.nome),
     );
-    tutteLePorte.forEach((p) => container.appendChild(createProductCard(p)));
+    tutteLePorte.forEach((p) =>
+      container.appendChild(createProductCard(p, "porte")),
+    );
   }
 
   // ── Ottiene i colori per una categoria ──
@@ -344,12 +373,17 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  function createProductCard(item) {
+  function createProductCard(item, sezione) {
     const card = document.createElement("div");
     card.className = "Progetti-card";
     card.addEventListener("click", () => {
       saveStateToLocalStorage();
       if (item.link && item.link !== "#") {
+        // "Punto di riferimento": ricorda da quale sezione arriva l'utente
+        // (griglia generica #prodotti = default "prodotti")
+        if (typeof EntryPoint !== "undefined") {
+          EntryPoint.set(sezione || "prodotti");
+        }
         window.open(item.link, "_blank");
       }
     });

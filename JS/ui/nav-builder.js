@@ -163,7 +163,15 @@
       JsonData.load("progetti")
         .then(function (data) {
           var rawCats = [];
-          (data.Prodotti || []).forEach(function (p) {
+          var tutti =
+            typeof ProductsFlat !== "undefined"
+              ? ProductsFlat.getAll(data)
+              : [].concat(
+                  data.prodotti || [],
+                  data.porte || [],
+                  data.serramenti || [],
+                );
+          tutti.forEach(function (p) {
             (p.categorie || []).forEach(function (c) {
               rawCats.push(c);
             });
@@ -184,7 +192,15 @@
       })
       .then(function (data) {
         var rawCats = [];
-        (data.Prodotti || []).forEach(function (p) {
+        var tutti =
+          typeof ProductsFlat !== "undefined"
+            ? ProductsFlat.getAll(data)
+            : [].concat(
+                data.prodotti || [],
+                data.porte || [],
+                data.serramenti || [],
+              );
+        tutti.forEach(function (p) {
           (p.categorie || []).forEach(function (c) {
             rawCats.push(c);
           });

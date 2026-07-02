@@ -23,8 +23,19 @@ document.addEventListener("DOMContentLoaded", function () {
   if (pathParts[pathParts.length - 1].includes(".")) pathParts.pop();
   var root = pathParts.length > 0 ? "../" : "./";
 
-  // ⚠️ Modifica questo percorso con quello reale del tuo file JSON prodotti
-  var JSON_PATH = root + "../JSON/progetti.json";
+  // Percorso del file JSON prodotti (un solo livello sopra "root", non due)
+  var JSON_PATH = root + "JSON/progetti.json";
+
+  // Punto di riferimento: sezione della Home da cui l'utente è entrato
+  // (Serramenti / Porte / Sistemi Oscuranti / Prodotti). Se il modulo non è
+  // caricato, si ricade sempre su "Prodotti" come prima.
+  var entryCfg =
+    typeof EntryPoint !== "undefined"
+      ? EntryPoint.getConfig(EntryPoint.get())
+      : {
+          label: "Prodotti",
+          homeAnchor: "prodotti",
+        };
 
   // Costruisce lo scheletro del breadcrumb (senza dropdown, riempito dopo il fetch)
   function renderBreadcrumb(catLinksHtml) {
@@ -36,8 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
       '<span class="bc-prodotti-wrapper">' +
       '<a href="' +
       root +
-      'index.html#prodotti" class="bc-link bc-prodotti-toggle">' +
-      "Prodotti" +
+      "index.html#" +
+      entryCfg.homeAnchor +
+      '" class="bc-link bc-prodotti-toggle">' +
+      entryCfg.label +
       "</a>" +
       "</span>" +
       '<span class="bc-sep">›</span>' +
@@ -85,7 +98,14 @@ document.addEventListener("DOMContentLoaded", function () {
       return res.json();
     })
     .then(function (data) {
-      var prodotti = (data && data.Prodotti) || [];
+      var prodotti =
+        typeof ProductsFlat !== "undefined"
+          ? ProductsFlat.getAll(data)
+          : [].concat(
+              (data && data.prodotti) || [],
+              (data && data.porte) || [],
+              (data && data.serramenti) || [],
+            );
       var catSet = new Set();
       prodotti.forEach(function (p) {
         (p.categorie || []).forEach(function (cat) {

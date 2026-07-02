@@ -24,6 +24,9 @@
   </head>
 
   <body>
+    <!-- Punto di riferimento: applica subito l'eventuale accento colore -->
+    <script src="../JS/shared/entry-point.js"></script>
+
     <!-- ===== HEADER ===== -->
     <header class="site-header">
       <div class="header-container">
@@ -43,6 +46,9 @@
               <a href="../index.html#porte" class="nav-link nav-dropdown-toggle"
                 >Porte</a
               >
+            </li>
+            <li>
+              <a href="../index.html#oscuranti" class="nav-link">Oscuranti</a>
             </li>
             <li>
               <a href="../index.html#consulenza" class="nav-link">Consulenza</a>
@@ -83,6 +89,11 @@
               href="../index.html#porte"
               class="mobile-nav-link mobile-dropdown-toggle"
               >Porte</a
+            >
+          </li>
+          <li>
+            <a href="../index.html#oscuranti" class="mobile-nav-link"
+              >Oscuranti</a
             >
           </li>
           <li>
@@ -259,6 +270,7 @@
         <div class="product-info">
           <h1 class="product-title">Serramento<br />PVC</h1>
           <div class="product-divider"></div>
+          <div id="product-category-badges"></div>
 
           <div class="product-description">
             <h2>Descrizione</h2>
@@ -336,9 +348,9 @@
             </a>
           </div>
 
-          <a href="../index.html#prodotti" class="back-button">
+          <a href="../index.html#prodotti" id="product-back-button" class="back-button">
             <span class="material-icons">arrow_back</span>
-            Torna a tutti i prodotti
+            <span id="product-back-label">Torna a tutti i prodotti</span>
           </a>
         </div>
       </div>
@@ -353,7 +365,9 @@
     <script src="../JS/shared/app-config.js"></script>
     <script src="../JS/shared/json-loader.js"></script>
     <script src="../JS/shared/category-colors.js"></script>
+    <script src="../JS/shared/products-flat.js"></script>
     <script src="../JS/product/product-page.js"></script>
+    <script src="../JS/product/back-button.js"></script>
     <script src="../JS/product/slider.js"></script>
     <script src="../JS/ui/mobile-menu.js"></script>
     <script src="../JS/ui/active-section.js"></script>

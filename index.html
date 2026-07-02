@@ -58,6 +58,9 @@
   </head>
 
   <body>
+    <!-- Punto di riferimento: applica subito l'eventuale accento colore -->
+    <script src="JS/shared/entry-point.js"></script>
+
     <!-- ===== HEADER ===== -->
     <header class="site-header">
       <div class="header-container">
@@ -72,6 +75,7 @@
             <li><a href="#home" class="nav-link">Home</a></li>
             <li><a href="#serramenti" class="nav-link">Serramenti</a></li>
             <li><a href="#porte" class="nav-link">Porte</a></li>
+            <li><a href="#oscuranti" class="nav-link">Oscuranti</a></li>
             <li><a href="#consulenza" class="nav-link">Consulenza</a></li>
             <li><a href="#prodotti" class="nav-link">Prodotti</a></li>
             <li><a href="#realizzazioni" class="nav-link">Realizzazioni</a></li>
@@ -91,6 +95,7 @@
           <li><a href="#home" class="mobile-nav-link">Home</a></li>
           <li><a href="#serramenti" class="mobile-nav-link">Serramenti</a></li>
           <li><a href="#porte" class="mobile-nav-link">Porte</a></li>
+          <li><a href="#oscuranti" class="mobile-nav-link">Oscuranti</a></li>
           <li><a href="#consulenza" class="mobile-nav-link">Consulenza</a></li>
           <li><a href="#prodotti" class="mobile-nav-link">Prodotti</a></li>
           <li>
@@ -143,6 +148,22 @@
       </div>
       <!-- Contenitore dinamico per i prodotti filtrati -->
       <div id="porte-grid" class="materiali-grid">
+        <!-- Le card saranno generate da JavaScript -->
+      </div>
+    </section>
+
+    <!-- ===== SISTEMI OSCURANTI SECTION ===== -->
+    <section id="oscuranti" class="materiali-section oscuranti-section">
+      <div class="container" style="margin-bottom: 2rem; text-align: center">
+        <h2 class="section-title" style="margin-bottom: 0.5rem">
+          Sistemi Oscuranti
+        </h2>
+        <p class="section-subtitle">
+          Veneziane e soluzioni per l'ombreggiamento
+        </p>
+      </div>
+      <!-- Contenitore dinamico per i prodotti filtrati -->
+      <div id="oscuranti-grid" class="materiali-grid">
         <!-- Le card saranno generate da JavaScript -->
       </div>
     </section>
@@ -254,6 +275,7 @@
     <script src="JS/shared/app-config.js"></script>
     <script src="JS/shared/json-loader.js"></script>
     <script src="JS/shared/category-colors.js"></script>
+    <script src="JS/shared/products-flat.js"></script>
     <script src="JS/data/products-section-config.js"></script>
     <script src="JS/data/products-loader.js"></script>
     <script src="JS/ui/mobile-menu.js"></script>

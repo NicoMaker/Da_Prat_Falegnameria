@@ -116,8 +116,8 @@
 }
 
 .dot.active {
-  background-color: var(--color-gold, #b89a5a);
-  border-color: var(--color-gold, #b89a5a);
+  background-color: var(--entry-accent, var(--color-gold, #b89a5a));
+  border-color: var(--entry-accent, var(--color-gold, #b89a5a));
   transform: scale(1.35);
 }
 
@@ -217,7 +217,7 @@
 }
 
 .back-button:hover {
-  color: var(--color-gold, #b89a5a);
+  color: var(--entry-accent, var(--color-gold, #b89a5a));
   gap: 12px;
   background: none;
   transform: none;
@@ -448,7 +448,7 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--entry-accent, var(--color-gold));
   text-decoration: none;
   transition: opacity 0.15s;
 }
@@ -462,7 +462,7 @@
 }
 
 .bc-sep {
-  color: var(--color-gold);
+  color: var(--entry-accent, var(--color-gold));
   font-size: 0.82rem;
   font-weight: 700;
 }

@@ -4,7 +4,8 @@
 // Uso:
 //   JsonData.load("palette")  -> Promise<palette[]>
 //   JsonData.load("footer")   -> Promise<footerObject>
-//   JsonData.load("progetti") -> Promise<{ Prodotti: [...] }>
+//   JsonData.load("progetti") -> Promise<{ prodotti: [...], porte: [...], serramenti: [...] }>
+//                                 (usa ProductsFlat.getAll(data) per un unico array)
 //
 // Dipende da: json-config.js (JsonConfig), json-paths.js (JsonPaths)
 // ─────────────────────────────────────────────────────────────────────────────

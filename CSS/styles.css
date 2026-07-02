@@ -10,6 +10,14 @@
   --color-gold: #b89a5a;
   --color-gold-light: #d4b878;
 
+  /* Colori "punto di riferimento" per sezione (Home + pagina prodotto) */
+  --color-serramenti: #b89a5a; /* oro */
+  --color-porte: #a15c3e; /* terracotta */
+  --color-oscuranti: #3f6e7a; /* petrolio */
+  /* Accento attivo sulla pagina prodotto: impostato via JS (entry-point.js)
+     in base alla sezione da cui l'utente è entrato. Il fallback è l'oro. */
+  --entry-accent: var(--color-gold);
+
   /* Semantic */
   --primary: var(--color-dark);
   --secondary: var(--color-gold);
@@ -122,6 +130,17 @@ h6 {
   margin-bottom: var(--spacing-xl);
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+/* ── Accento colore per sezione (coerente col "punto di riferimento") ──── */
+#serramenti .section-subtitle {
+  color: var(--color-serramenti);
+}
+.porte-section .section-subtitle {
+  color: var(--color-porte);
+}
+.oscuranti-section .section-subtitle {
+  color: var(--color-oscuranti);
 }
 
 /* ===== HEADER ===== */
@@ -1343,7 +1362,7 @@ h6 {
 .product-divider {
   width: 40px;
   height: 3px;
-  background: var(--color-gold);
+  background: var(--entry-accent, var(--color-gold));
   margin-bottom: var(--spacing-lg);
 }
 
@@ -1388,7 +1407,7 @@ h6 {
 
 .product-feature .material-icons {
   font-size: 16px;
-  color: var(--color-gold);
+  color: var(--entry-accent, var(--color-gold));
 }
 
 .product-cta {

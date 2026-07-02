@@ -235,13 +235,20 @@ document.addEventListener("DOMContentLoaded", () => {
   initializePage();
 });
 
-// ── Pagine prodotto: evidenzia "Prodotti" nel nav ──────────────────────────
+// ── Pagine prodotto: evidenzia il link nav della sezione di provenienza ────
 function highlightProductPage() {
   const navLinks = document.querySelectorAll(".nav-link, .mobile-nav-link");
+
+  // Punto di riferimento: se disponibile, evidenzia la sezione da cui
+  // l'utente è entrato (Serramenti/Porte/Oscuranti); altrimenti "Prodotti".
+  const anchor =
+    typeof EntryPoint !== "undefined"
+      ? EntryPoint.getConfig(EntryPoint.get()).homeAnchor
+      : "prodotti";
+
   navLinks.forEach((link) => {
-    const href = link.getAttribute("href") || "";
-    // Attiva il link che punta a #prodotti (anche con ../index.html#prodotti)
-    if (href.toLowerCase().includes("prodotti")) {
+    const href = (link.getAttribute("href") || "").toLowerCase();
+    if (href.includes("#" + anchor)) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
