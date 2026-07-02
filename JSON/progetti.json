@@ -79,6 +79,13 @@
       "descrizione": "Porta scorrevole in vetro temperato o stratificato, con binario a scomparsa o a vista. Design minimale, massima luminosità e scorrimento silenzioso su carrelli con cuscinetti.",
       "immagine": "Img/Porte_section/Vetro/1.jpg",
       "link": "Projects/porta_scorrevole_vetro.html"
+    },
+    {
+      "id": "porta-interna-pvc",
+      "nome": "Porta Interna PVC",
+      "descrizione": "Porta interna a battente in PVC, resistente all'umidità e senza manutenzione. Ideale per bagni, cucine e ambienti soggetti a umidità, con anima rinforzata e finiture su misura.",
+      "immagine": "Img/Porte_section/pvc2.jpg",
+      "link": "Projects/porta_interna_PVC.html"
     }
   ],
   "serramenti": [
