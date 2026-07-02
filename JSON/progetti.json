@@ -81,7 +81,14 @@
       "descrizione": "Sistemi scorrevoli in PVC, alluminio o legno per ottimizzare gli spazi. Meccanismi fluidi e silenziosi, ideali per interni moderni e minimalisti.",
       "immagine": "Img/Scorrevoli_Section/1.png",
       "link": "#"
-    }
+    },
+{
+  "id": "porta-scorrevole-pvc",
+  "nome": "Porta Scorrevole PVC",
+  "descrizione": "Porta scorrevole in PVC con triplo vetro e profili rinforzati in acciaio. Ampie luci vetrate, soglia ribassata e isolamento termico/acustico superiore, anche in versione alzante-scorrevole (HS).",
+  "immagine": "Img/Porte_section/PVC.jpg",
+  "link": "Projects/porta_scorrevole_PVC.html"
+}
   ],
   "serramenti": [
     {
