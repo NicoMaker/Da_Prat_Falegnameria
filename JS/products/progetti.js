@@ -10,9 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!progettiContainer) return;
 
-  // Categorie del JSON che rientrano nei "Sistemi Oscuranti" (home #oscuranti)
-  const OSCURANTI_CATEGORIES = ["Veneziane", "Oscuranti", "Tapparelle"];
-
   let allProducts = [];
   let serramentiProducts = [];
   let porteProducts = [];
@@ -27,22 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await JsonData.load("progetti");
       console.log("📦 JSON caricato:", data);
 
-      // Estrai i quattro array
+      // Estrai i cinque array
       serramentiProducts = data.serramenti || [];
       allProducts = data.prodotti || [];
       porteProducts = data.porte || [];
       scorrevoliProducts = data.scorrevoli || [];
-      // Sistemi oscuranti (veneziane, avvolgibili, ecc.) — vivono dentro "prodotti"
-      oscurantiProducts = allProducts.filter((p) =>
-        p.categorie.some((c) => OSCURANTI_CATEGORIES.includes(c)),
-      );
+      // Sistemi oscuranti (veneziane, avvolgibili, ecc.) — array dedicato nel JSON, come "porte"
+      oscurantiProducts = data.oscuranti || [];
 
       // Fallback se non ci sono dati
       if (
         allProducts.length === 0 &&
         serramentiProducts.length === 0 &&
         porteProducts.length === 0 &&
-        scorrevoliProducts.length === 0
+        scorrevoliProducts.length === 0 &&
+        oscurantiProducts.length === 0
       ) {
         console.warn("⚠️ Nessun dato nel JSON. Uso fallback di esempio.");
         // Dati di esempio (solo per debug)
@@ -153,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   }
 
-  // ── Popola la sezione Sistemi Oscuranti ───────────────────
+  // ── Popola la sezione Sistemi Oscuranti (array dedicato, come Porte) ──
   function populateOscuranti() {
     const container = document.getElementById("oscuranti-grid");
     if (!container) {

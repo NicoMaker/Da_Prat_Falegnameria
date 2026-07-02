@@ -3,55 +3,19 @@
     {
       "id": "fin-pvc-1",
       "nome": "Finestra PVC Classic",
-      "categorie": ["Serramenti PVC"],
+      "categorie": [
+        "Serramenti PVC"
+      ],
       "descrizione": "Finestra a battente in PVC con doppio vetro. Ottimo isolamento termoacustico e alta resistenza agli agenti atmosferici. Disponibile in molti colori e formati.",
       "immagine": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=460&fit=crop",
       "link": "#"
     },
     {
-      "id": "Veneziane",
-      "nome": "Veneziane manuali",
-      "categorie": ["Veneziane"],
-      "descrizione": "Le veneziane Discret ScreenLine di QFORT ad azionamento manuale si adattano ad ogni contesto abitativo. Un sistema classico per ombreggiare gli interni, molto resistente e che non richiede particolare manutenzione.",
-      "immagine": "Img/Prodotti_Section/Veneziane.webp",
-      "link": "#"
-    },
-    {
-      "id": "veneziane2",
-      "nome": "Veneziane Motorizzate",
-      "categorie": ["Veneziane"],
-      "descrizione": "Le veneziane Discret ScreenLine di QFORT ad azionamento motorizzato permettono un uso comodo e pratico: un pulsante per alzare e abbassare le veneziane, senza l’ingombro delle tende né bisogno di manutenzione.",
-      "immagine": "Img/Prodotti_Section/veneziane2.webp",
-      "link": "#"
-    },
-    {
-      "id": "veneziane3",
-      "nome": "Monoblocco Applicato",
-      "categorie": ["Veneziane"],
-      "descrizione": "Gli avvolgibili monoblocchi applicati Discret vengono installati all’esterno degli infissi in PVC, una volta montata la finestra. Ideali per un ottimo oscuramento degli interni e migliorare la capacità di isolamento termico della finestra.",
-      "immagine": "Img/Prodotti_Section/veneziane3.webp",
-      "link": "#"
-    },
-    {
-      "id": "veneziane4",
-      "nome": "Monoblocco Sovrapposti",
-      "categorie": ["Veneziane"],
-      "descrizione": "Gli avvolgibili monoblocchi sovrapposti Discret vengono montati insieme agli infissi in PVC e sono consigliati se i serramenti non sono ancora stati installati o se si desidera cambiare gli infissi per lavori di restauro.",
-      "immagine": "Img/Prodotti_Section/veneziane4.webp",
-      "link": "#"
-    },
-    {
-      "id": "veneziane5",
-      "nome": "Monoblocco intonacabile",
-      "categorie": ["Veneziane"],
-      "descrizione": "Pensati principalmente per nuove costruzioni, gli avvolgibili monoblocco intonacabili della gamma Discret vengono installati direttamente nel muro della finestra, riducendo totalmente l’ingombro del cassettone per migliorare il comfort della stanza e non modificare l’estetica della facciata esterna.",
-      "immagine": "Img/Prodotti_Section/veneziane5.webp",
-      "link": "#"
-    },
-    {
       "id": "Finestra1",
       "nome": "Finestre 6Stars in Alluminio",
-      "categorie": ["Finestre in alluminio"],
+      "categorie": [
+        "Finestre in alluminio"
+      ],
       "descrizione": "I serramenti in Alluminio 6Stars garantiscono un livello di efficienza energetica davvero alto, grazie alle incredibili caratteristiche tecniche e termoisolanti, che offrono un comfort abitativo senza paragoni.",
       "immagine": "Img/Prodotti_Section/finestra1.webp",
       "link": "#"
@@ -59,7 +23,9 @@
     {
       "id": "Finestra2",
       "nome": "Finestre Arrogance in Alluminio",
-      "categorie": ["Finestre in alluminio"],
+      "categorie": [
+        "Finestre in alluminio"
+      ],
       "descrizione": "Le finestre in Alluminio Arrogance offrono una luminosità naturale super e una superficie vetrata pari fino all’85% della finestra. Le prestazioni di isolamento termico e acustico rimangono al top. Il design minimalista, lineare ed elegante consente l’apertura fino a 180°. Le finestre Arrogance possono essere personalizzate per accontentare tutte le necessità estetiche e architettoniche.",
       "immagine": "Img/Prodotti_Section/finestra2.webp",
       "link": "#"
@@ -67,7 +33,9 @@
     {
       "id": "Finestra3",
       "nome": "Finestre 7Stars in PVC",
-      "categorie": ["Finestre in PVC"],
+      "categorie": [
+        "Finestre in PVC"
+      ],
       "descrizione": "Le finestre 7Stars sono un prodotto premium, che si distingue per il design moderno e minimalista e i notevoli perfezionamenti a livello tecnico. I serramenti termoisolanti 7Stars sono la variante ideale per ridurre i consumi energetici nelle nuove costruzioni più sostenibili.",
       "immagine": "Img/Prodotti_Section/finestra3.webp",
       "link": "#"
@@ -75,7 +43,9 @@
     {
       "id": "Finestra4",
       "nome": "Finestre Epiq 6Stars in PVC",
-      "categorie": ["Finestre in PVC"],
+      "categorie": [
+        "Finestre in PVC"
+      ],
       "descrizione": "Le prime finestre dal design minimale, con performance di isolamento termico superlative per mantenere temperature costanti. Sottili, resistenti, innovative: con Epiq 6Stars, la tua casa entra nel futuro.",
       "immagine": "Img/Prodotti_Section/finestra4.webp",
       "link": "#"
@@ -85,7 +55,9 @@
     {
       "id": "porte-interne",
       "nome": "Interne",
-      "categorie": ["Porte Interne"],
+      "categorie": [
+        "Porte Interne"
+      ],
       "descrizione": "Porte interne in legno massello o tamburato, disponibili in diverse essenze e finiture. Eleganza, durabilità e isolamento acustico per ogni ambiente della casa.",
       "immagine": "Img/Porte_section/Interne/1.png",
       "link": "#"
@@ -93,7 +65,9 @@
     {
       "id": "porte-blindate",
       "nome": "Blindate",
-      "categorie": ["Porte Blindate"],
+      "categorie": [
+        "Porte Blindate"
+      ],
       "descrizione": "Porte d'ingresso blindate con certificazione antieffrazione. Struttura in acciaio, serratura di sicurezza e isolamento termico/acustico garantito.",
       "immagine": "Img/Porte_section/ingresso/1.png",
       "link": "#"
@@ -101,7 +75,9 @@
     {
       "id": "porte-scorrevoli",
       "nome": "Scorrevoli",
-      "categorie": ["Porte Scorrevoli"],
+      "categorie": [
+        "Porte Scorrevoli"
+      ],
       "descrizione": "Sistemi scorrevoli in PVC, alluminio o legno per ottimizzare gli spazi. Meccanismi fluidi e silenziosi, ideali per interni moderni e minimalisti.",
       "immagine": "Img/Scorrevoli_Section/1.png",
       "link": "#"
@@ -111,7 +87,9 @@
     {
       "id": "serramento-pvc",
       "nome": "PVC",
-      "categorie": ["Serramenti PVC"],
+      "categorie": [
+        "Serramenti PVC"
+      ],
       "descrizione": "Gli infissi in PVC offrono ottimo isolamento termico e acustico con manutenzione minima. Resistenti e durevoli, sono ideali per chi cerca efficienza energetica senza rinunciare allo stile.",
       "immagine": "Img/Serramenti_Section/PVC.png",
       "link": "Projects/Serramento_PVC.html"
@@ -119,7 +97,9 @@
     {
       "id": "serramento-alluminio",
       "nome": "Alluminio",
-      "categorie": ["Serramenti Alluminio"],
+      "categorie": [
+        "Serramenti Alluminio"
+      ],
       "descrizione": "Gli infissi in alluminio offrono solidità, leggerezza e design moderno. Resistenti alla corrosione e quasi privi di manutenzione, sono perfetti per ampie superfici vetrate.",
       "immagine": "Img/Serramenti_Section/AlU.png",
       "link": "#"
@@ -127,10 +107,49 @@
     {
       "id": "serramento-legno",
       "nome": "Legno",
-      "categorie": ["Serramenti Legno"],
+      "categorie": [
+        "Serramenti Legno"
+      ],
       "descrizione": "Gli infissi in legno regalano calore ed eleganza naturale. Garantiscono buon isolamento termico e acustico, mantenendo bellezza e prestazioni nel tempo con la giusta manutenzione.",
       "immagine": "Img/Serramenti_Section/Legno.png",
       "link": "#"
+    }
+  ],
+  "oscuranti": [
+    {
+      "id": "Veneziane",
+      "nome": "Veneziane manuali",
+      "descrizione": "Le veneziane Discret ScreenLine di QFORT ad azionamento manuale si adattano ad ogni contesto abitativo. Un sistema classico per ombreggiare gli interni, molto resistente e che non richiede particolare manutenzione.",
+      "immagine": "Img/Prodotti_Section/Veneziane.webp",
+      "link": ""
+    },
+    {
+      "id": "veneziane2",
+      "nome": "Veneziane Motorizzate",
+      "descrizione": "Le veneziane Discret ScreenLine di QFORT ad azionamento motorizzato permettono un uso comodo e pratico: un pulsante per alzare e abbassare le veneziane, senza l’ingombro delle tende né bisogno di manutenzione.",
+      "immagine": "Img/Prodotti_Section/veneziane2.webp",
+      "link": ""
+    },
+    {
+      "id": "veneziane3",
+      "nome": "Monoblocco Applicato",
+      "descrizione": "Gli avvolgibili monoblocchi applicati Discret vengono installati all’esterno degli infissi in PVC, una volta montata la finestra. Ideali per un ottimo oscuramento degli interni e migliorare la capacità di isolamento termico della finestra.",
+      "immagine": "Img/Prodotti_Section/veneziane3.webp",
+      "link": ""
+    },
+    {
+      "id": "veneziane4",
+      "nome": "Monoblocco Sovrapposti",
+      "descrizione": "Gli avvolgibili monoblocchi sovrapposti Discret vengono montati insieme agli infissi in PVC e sono consigliati se i serramenti non sono ancora stati installati o se si desidera cambiare gli infissi per lavori di restauro.",
+      "immagine": "Img/Prodotti_Section/veneziane4.webp",
+      "link": ""
+    },
+    {
+      "id": "veneziane5",
+      "nome": "Monoblocco intonacabile",
+      "descrizione": "Pensati principalmente per nuove costruzioni, gli avvolgibili monoblocco intonacabili della gamma Discret vengono installati direttamente nel muro della finestra, riducendo totalmente l’ingombro del cassettone per migliorare il comfort della stanza e non modificare l’estetica della facciata esterna.",
+      "immagine": "Img/Prodotti_Section/veneziane5.webp",
+      "link": ""
     }
   ]
 }
