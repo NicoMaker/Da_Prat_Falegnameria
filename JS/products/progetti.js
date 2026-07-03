@@ -1,185 +1,128 @@
 // ──────────────────────────────────────────────────────────────
-// progetti.js — Solo sezioni Serramenti, Porte, Oscuranti
+// progetti.js — Gestisce tutte le sezioni: Serramenti, Porte (scorrevoli, interne, ingresso),
+//               Sistemi Oscuranti e Sistemi di Ombreggiatura
 // ──────────────────────────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Selettori dei container (devono esistere nell'HTML)
   const serramentiContainer = document.getElementById("serramenti-grid");
-  const porteContainer = document.getElementById("porte-grid");
+  const porteScorrevoliContainer = document.getElementById("porte-scorrevoli-grid");
+  const porteInterneContainer = document.getElementById("porte-interne-grid");
+  const porteIngressoContainer = document.getElementById("porte-ingresso-grid");
   const oscurantiContainer = document.getElementById("oscuranti-grid");
+  const ombreggiaturaContainer = document.getElementById("ombreggiatura-grid");
 
+  // Array per i dati
   let serramentiProducts = [];
-  let porteProducts = [];
-  let scorrevoliProducts = [];
+  let porteScorrevoliProducts = [];
+  let porteInterneProducts = [];
+  let porteIngressoProducts = [];
   let oscurantiProducts = [];
+  let ombreggiaturaProducts = [];
 
-  // ── Caricamento diretto del JSON ──────────────────────────
+  // ── Caricamento JSON ──────────────────────────────────────
   async function caricaProdotti() {
     try {
       const data = await JsonData.load("progetti");
       console.log("📦 JSON caricato:", data);
 
+      // 1. Serramenti
       serramentiProducts = data.serramenti || [];
-      porteProducts = data.porte || [];
-      scorrevoliProducts = data.scorrevoli || [];
+
+      // 2. Porte Scorrevoli: filtro da data.porte (categorie che contengono "scorrevoli")
+      const tutteLePorte = data.porte || [];
+      porteScorrevoliProducts = tutteLePorte.filter(p =>
+        p.categorie.some(cat => /scorrevoli/i.test(cat))
+      );
+
+      // 3. Porte Interne
+      porteInterneProducts = data.porte_interne || [];
+
+      // 4. Porte Ingresso
+      porteIngressoProducts = data.porte_ingresso || [];
+
+      // 5. Sistemi Oscuranti (array esistente)
       oscurantiProducts = data.oscuranti || [];
 
-      // Fallback solo se tutte le sezioni sono vuote
+      // 6. Sistemi di Ombreggiatura (oggetto → array piatto)
+      const ombreggiaturaObj = data.sistemi_ombreggiatura || {};
+      ombreggiaturaProducts = [];
+      for (const key in ombreggiaturaObj) {
+        if (Array.isArray(ombreggiaturaObj[key])) {
+          ombreggiaturaProducts.push(...ombreggiaturaObj[key]);
+        }
+      }
+
+      // Fallback di esempio (se tutti vuoti) – opzionale, lo lascio come sicurezza
       if (
         serramentiProducts.length === 0 &&
-        porteProducts.length === 0 &&
-        scorrevoliProducts.length === 0 &&
-        oscurantiProducts.length === 0
+        porteScorrevoliProducts.length === 0 &&
+        porteInterneProducts.length === 0 &&
+        porteIngressoProducts.length === 0 &&
+        oscurantiProducts.length === 0 &&
+        ombreggiaturaProducts.length === 0
       ) {
         console.warn("⚠️ Nessun dato nel JSON. Uso fallback di esempio.");
-        const fallback = [
-          {
-            id: "serramento-pvc",
-            nome: "PVC",
-            categorie: ["Serramenti PVC"],
-            descrizione: "Infissi in PVC...",
-            immagine: "Img/Serramenti_Section/PVC.png",
-            link: "#",
-          },
-          {
-            id: "serramento-alluminio",
-            nome: "Alluminio",
-            categorie: ["Serramenti Alluminio"],
-            descrizione: "Infissi in alluminio...",
-            immagine: "Img/Serramenti_Section/AlU.png",
-            link: "#",
-          },
-          {
-            id: "serramento-legno",
-            nome: "Legno",
-            categorie: ["Serramenti Legno"],
-            descrizione: "Infissi in legno...",
-            immagine: "Img/Serramenti_Section/Legno.png",
-            link: "#",
-          },
-          {
-            id: "porte-interne",
-            nome: "Interne",
-            categorie: ["Porte Interne"],
-            descrizione: "Porte interne...",
-            immagine: "Img/Porte_section/Interne/1.png",
-            link: "#",
-          },
-          {
-            id: "porte-scorrevoli",
-            nome: "Scorrevoli",
-            categorie: ["Porte Scorrevoli"],
-            descrizione: "Sistemi scorrevoli...",
-            immagine: "Img/Scorrevoli_Section/1.png",
-            link: "#",
-          },
-          {
-            id: "porte-blindate",
-            nome: "Blindate",
-            categorie: ["Porte Blindate"],
-            descrizione: "Porte blindate...",
-            immagine: "Img/Porte_section/ingresso/1.png",
-            link: "#",
-          },
-        ];
-        serramentiProducts = fallback.filter((p) =>
-          p.categorie.some((c) => c.startsWith("Serramenti")),
-        );
-        porteProducts = fallback.filter((p) =>
-          p.categorie.some((c) => /^Porte\s+(Interne|Blindate)/i.test(c)),
-        );
-        scorrevoliProducts = fallback.filter((p) =>
-          p.categorie.some((c) => /^Porte\s+Scorrevoli/i.test(c)),
-        );
+        // Puoi inserire qui un set di prodotti di esempio o lasciare vuoto
       }
 
       console.log(
-        `✅ Caricati: ${serramentiProducts.length} serramenti, ${porteProducts.length} porte, ${scorrevoliProducts.length} scorrevoli, ${oscurantiProducts.length} oscuranti`,
+        `✅ Caricati: ${serramentiProducts.length} serramenti, ` +
+        `${porteScorrevoliProducts.length} porte scorrevoli, ` +
+        `${porteInterneProducts.length} porte interne, ` +
+        `${porteIngressoProducts.length} porte ingresso, ` +
+        `${oscurantiProducts.length} oscuranti, ` +
+        `${ombreggiaturaProducts.length} ombreggiatura`
       );
 
-      populateSerramenti();
-      populatePorte();
-      populateOscuranti();
+      // Popola tutte le griglie
+      populateGrid(serramentiContainer, serramentiProducts, "serramenti");
+      populateGrid(porteScorrevoliContainer, porteScorrevoliProducts, "porte_scorrevoli");
+      populateGrid(porteInterneContainer, porteInterneProducts, "porte_interne");
+      populateGrid(porteIngressoContainer, porteIngressoProducts, "porte_ingresso");
+      populateGrid(oscurantiContainer, oscurantiProducts, "oscuranti");
+      populateGrid(ombreggiaturaContainer, ombreggiaturaProducts, "ombreggiatura");
 
-      // Gestione anchor per scroll alla sezione
+      // Scroll all'ancora #Prodotti se presente
       if (window.location.hash === "#Prodotti") {
         const section = document.getElementById("Prodotti");
         if (section) section.scrollIntoView({ behavior: "smooth" });
       }
     } catch (error) {
       console.error("❌ Errore caricamento JSON:", error);
-      // Mostra messaggi di errore nei singoli contenitori
-      if (serramentiContainer)
-        serramentiContainer.innerHTML =
-          "<p class='no-results'>Errore nel caricamento dei serramenti.</p>";
-      if (porteContainer)
-        porteContainer.innerHTML =
-          "<p class='no-results'>Errore nel caricamento delle porte.</p>";
-      if (oscurantiContainer)
-        oscurantiContainer.innerHTML =
-          "<p class='no-results'>Errore nel caricamento degli oscuranti.</p>";
+      // Mostra errori in tutti i container
+      const containers = [
+        serramentiContainer,
+        porteScorrevoliContainer,
+        porteInterneContainer,
+        porteIngressoContainer,
+        oscurantiContainer,
+        ombreggiaturaContainer
+      ];
+      containers.forEach(cont => {
+        if (cont) cont.innerHTML = "<p class='no-results'>Errore nel caricamento dei dati.</p>";
+      });
     }
   }
 
-  // ── Avvia il caricamento ────────────────────────────────────
+  // ── Avvia il caricamento ──────────────────────────────────
   caricaProdotti();
 
-  // ── Popola la sezione Serramenti ──────────────────────────
-  function populateSerramenti() {
-    if (!serramentiContainer) {
-      console.warn("⚠️ Contenitore serramenti-grid non trovato");
+  // ── Funzione generica per popolare una griglia ────────────
+  function populateGrid(container, products, sezione) {
+    if (!container) {
+      console.warn(`⚠️ Contenitore per "${sezione}" non trovato`);
       return;
     }
-    serramentiContainer.innerHTML = "";
-    if (serramentiProducts.length === 0) {
-      serramentiContainer.innerHTML =
-        "<p class='no-results'>Nessun serramento disponibile.</p>";
+    container.innerHTML = "";
+    if (products.length === 0) {
+      container.innerHTML = `<p class='no-results'>Nessun prodotto disponibile per ${sezione.replace('_', ' ')}.</p>`;
       return;
     }
-    serramentiProducts.forEach((p) =>
-      serramentiContainer.appendChild(createProductCard(p, "serramenti")),
-    );
+    products.forEach(p => container.appendChild(createProductCard(p, sezione)));
   }
 
-  // ── Popola la sezione Sistemi Oscuranti ──────────────────
-  function populateOscuranti() {
-    if (!oscurantiContainer) {
-      console.warn("⚠️ Contenitore oscuranti-grid non trovato");
-      return;
-    }
-    oscurantiContainer.innerHTML = "";
-    if (oscurantiProducts.length === 0) {
-      oscurantiContainer.innerHTML =
-        "<p class='no-results'>Nessun sistema oscurante disponibile.</p>";
-      return;
-    }
-    oscurantiProducts.forEach((p) =>
-      oscurantiContainer.appendChild(createProductCard(p, "oscuranti")),
-    );
-  }
-
-  // ── Popola la sezione Porte (unisce porte + scorrevoli) ──
-  function populatePorte() {
-    if (!porteContainer) {
-      console.warn("⚠️ Contenitore porte-grid non trovato");
-      return;
-    }
-    const tutteLePorte = [...porteProducts, ...scorrevoliProducts];
-    porteContainer.innerHTML = "";
-    if (tutteLePorte.length === 0) {
-      porteContainer.innerHTML =
-        "<p class='no-results'>Nessuna porta disponibile.</p>";
-      return;
-    }
-    const ordine = ["Interne", "Scorrevoli", "Blindate"];
-    tutteLePorte.sort(
-      (a, b) => ordine.indexOf(a.nome) - ordine.indexOf(b.nome),
-    );
-    tutteLePorte.forEach((p) =>
-      porteContainer.appendChild(createProductCard(p, "porte")),
-    );
-  }
-
-  // ── Crea una card prodotto (usata da tutte le sezioni) ──
+  // ── Crea una card prodotto ────────────────────────────────
   function createProductCard(item, sezione) {
     const card = document.createElement("div");
     card.className = "Progetti-card";

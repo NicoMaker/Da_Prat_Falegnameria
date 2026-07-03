@@ -188,5 +188,139 @@
       "immagine": "Img/Zanzariere/Fissa.jpg",
       "link": "Projects/Zanzariera-Fissa.html"
     }
-  ]
+  ],
+  "porte_interne": [
+    {
+      "id": "porta-interna-pvc",
+      "nome": "Porta Interna PVC",
+      "categorie": ["Porte Interne"],
+      "descrizione": "Porta interna a battente in PVC, resistente all'umidità e facile da pulire. Disponibile in vari colori e finiture, con anima alveolare o piena per un ottimo isolamento acustico. Leggera e durevole, ideale per ambienti moderni e di servizio.",
+      "immagine": "Img/Porte_interne/PVC.jpg",
+      "link": "Projects/Porta_interna_PVC.html"
+    },
+    {
+      "id": "porta-interna-alluminio",
+      "nome": "Porta Interna Alluminio",
+      "categorie": ["Porte Interne"],
+      "descrizione": "Porta interna in alluminio con profili a taglio termico, garantisce robustezza e design minimalista. Disponibile con pannelli pieni o vetrati, offre un'estetica contemporanea e una manutenzione quasi zero. Perfetta per uffici o abitazioni dallo stile industriale.",
+      "immagine": "Img/Porte_interne/Alluminio.jpg",
+      "link": "Projects/Porta_interna_Alluminio.html"
+    }
+  ],
+  "porte_ingresso": [
+    {
+      "id": "porta-ingresso-pvc",
+      "nome": "Porta Ingresso PVC",
+      "categorie": ["Porte Ingresso"],
+      "descrizione": "Porta d'ingresso in PVC con profili a 5 camere e doppia guarnizione. Elevato isolamento termico e acustico, resistente agli agenti atmosferici e senza manutenzione. Disponibile in versione con vetro o piena, ideale per chi cerca efficienza energetica e design moderno.",
+      "immagine": "Img/Porte_ingresso/PVC.jpg",
+      "link": "Projects/Porta_ingresso_PVC.html"
+    },
+    {
+      "id": "porta-ingresso-alluminio",
+      "nome": "Porta Ingresso Alluminio",
+      "categorie": ["Porte Ingresso"],
+      "descrizione": "Porta d'ingresso in alluminio con taglio termico e vetri isolanti. Struttura robusta e leggera, resistente alla corrosione, disponibile in infinite colorazioni RAL. Design minimalista e personalizzabile, con possibilità di pannelli pieni o vetrati e serratura di sicurezza.",
+      "immagine": "Img/Porte_ingresso/Alluminio.jpg",
+      "link": "Projects/Porta_ingresso_Alluminio.html"
+    },
+    {
+      "id": "porta-ingresso-blindata",
+      "nome": "Porta Ingresso Blindata",
+      "categorie": ["Porte Ingresso"],
+      "descrizione": "Porta d'ingresso blindata con certificazione antieffrazione (classe 3 o 4). Struttura in acciaio con rinforzi interni, serratura a doppia mappa e cilindro di sicurezza. Isolamento termico e acustico garantito, finiture in legno, metallo o laminato per unire sicurezza e stile.",
+      "immagine": "Img/Porte_ingresso/Blindata.jpg",
+      "link": "Projects/Porta_ingresso_Blindata.html"
+    }
+  ],
+  "sistemi_ombreggiatura": {
+    "veneziane": [
+      {
+        "id": "veneziane-manuali",
+        "nome": "Veneziane Manuali",
+        "categorie": ["Veneziane"],
+        "descrizione": "Le veneziane Discret ScreenLine di QFORT ad azionamento manuale si adattano ad ogni contesto abitativo. Un sistema classico per ombreggiare gli interni, molto resistente e che non richiede particolare manutenzione.",
+        "immagine": "Img/Prodotti_Section/Veneziane.webp",
+        "link": "Projects/Veneziane_Manuali.html"
+      },
+      {
+        "id": "veneziane-motorizzate",
+        "nome": "Veneziane Motorizzate",
+        "categorie": ["Veneziane"],
+        "descrizione": "Le veneziane Discret ScreenLine di QFORT ad azionamento motorizzato permettono un uso comodo e pratico: un pulsante per alzare e abbassare le veneziane, senza l'ingombro delle tende né bisogno di manutenzione.",
+        "immagine": "Img/Prodotti_Section/veneziane2.webp",
+        "link": "Projects/Veneziane_Motorizzate.html"
+      }
+    ],
+    "monoblocco": [
+      {
+        "id": "monoblocco-applicato",
+        "nome": "Monoblocco Applicato",
+        "categorie": ["Avvolgibili"],
+        "descrizione": "Gli avvolgibili monoblocchi applicati Discret vengono installati all'esterno degli infissi in PVC, una volta montata la finestra. Ideali per un ottimo oscuramento degli interni e migliorare la capacità di isolamento termico della finestra.",
+        "immagine": "Img/Prodotti_Section/veneziane3.webp",
+        "link": "Projects/Monoblocco_Applicato.html"
+      },
+      {
+        "id": "monoblocco-sovrapposti",
+        "nome": "Monoblocco Sovrapposti",
+        "categorie": ["Avvolgibili"],
+        "descrizione": "Gli avvolgibili monoblocchi sovrapposti Discret vengono montati insieme agli infissi in PVC e sono consigliati se i serramenti non sono ancora stati installati o se si desidera cambiare gli infissi per lavori di restauro.",
+        "immagine": "Img/Prodotti_Section/veneziane4.webp",
+        "link": "Projects/Monoblocco_Sovrapposti.html"
+      },
+      {
+        "id": "monoblocco-intonacabile",
+        "nome": "Monoblocco Intonacabile",
+        "categorie": ["Avvolgibili"],
+        "descrizione": "Pensati principalmente per nuove costruzioni, gli avvolgibili monoblocco intonacabili della gamma Discret vengono installati direttamente nel muro della finestra, riducendo totalmente l'ingombro del cassettone per migliorare il comfort della stanza e non modificare l'estetica della facciata esterna.",
+        "immagine": "Img/Prodotti_Section/veneziane5.webp",
+        "link": "Projects/Monoblocco_Intonacabile.html"
+      }
+    ],
+    "scuretti": [
+      {
+        "id": "scuretti",
+        "nome": "Scuretti",
+        "categorie": ["Scuretti"],
+        "descrizione": "Scuretti in legno o alluminio, tradizionali e robusti. Apertura a libro o a vento, garantiscono sicurezza e oscuramento completo. Ideali per case in stile classico o rustico.",
+        "immagine": "Img/Oscuranti/Scuretti.jpg",
+        "link": "Projects/Scuretti.html"
+      }
+    ],
+    "zanzariere": [
+      {
+        "id": "zanzariera-plisse",
+        "nome": "Zanzariera Plissè",
+        "categorie": ["Zanzariere"],
+        "descrizione": "Zanzariera plissè in tessuto tecnico a pieghe, con telaio in alluminio. Si apre e chiude come una fisarmonica, occupando poco spazio. Adatta a finestre e portefinestre di grandi dimensioni.",
+        "immagine": "Img/Zanzariere/Plisse.jpg",
+        "link": "Projects/Zanzariera-Plisse.html"
+      },
+      {
+        "id": "zanzariera-rullo",
+        "nome": "Zanzariera a Rullo",
+        "categorie": ["Zanzariere"],
+        "descrizione": "Zanzariera a rullo in fibra di vetro o poliestere, con telaio in alluminio. Si avvolge in un cassonetto compatto, proteggendo dagli insetti senza compromettere l'estetica della finestra.",
+        "immagine": "Img/Zanzariere/Rullo.jpg",
+        "link": "Projects/Zanzariera-Rullo.html"
+      },
+      {
+        "id": "zanzariera-rollout",
+        "nome": "Zanzariera Roll-Out",
+        "categorie": ["Zanzariere"],
+        "descrizione": "Zanzariera a scomparsa che si estende orizzontalmente con un semplice movimento. Telaio in alluminio e rete in fibra di vetro, ideale per portefinestre e finestre scorrevoli.",
+        "immagine": "Img/Zanzariere/RollOut.jpg",
+        "link": "Projects/Zanzariera-RollOut.html"
+      },
+      {
+        "id": "zanzariera-fissa",
+        "nome": "Zanzariera Fissa",
+        "categorie": ["Zanzariere"],
+        "descrizione": "Zanzariera fissa in alluminio con rete a maglia fine. Montata permanentemente sul telaio della finestra, garantisce una protezione costante contro gli insetti, senza parti mobili.",
+        "immagine": "Img/Zanzariere/Fissa.jpg",
+        "link": "Projects/Zanzariera-Fissa.html"
+      }
+    ]
+  }
 }
