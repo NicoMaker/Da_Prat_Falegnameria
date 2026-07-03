@@ -6,7 +6,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Selettori dei container (devono esistere nell'HTML)
   const serramentiContainer = document.getElementById("serramenti-grid");
-  const porteScorrevoliContainer = document.getElementById("porte-scorrevoli-grid");
+  const porteScorrevoliContainer = document.getElementById(
+    "porte-scorrevoli-grid",
+  );
   const porteInterneContainer = document.getElementById("porte-interne-grid");
   const porteIngressoContainer = document.getElementById("porte-ingresso-grid");
   const oscurantiContainer = document.getElementById("oscuranti-grid");
@@ -31,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // 2. Porte Scorrevoli: filtro da data.porte (categorie che contengono "scorrevoli")
       const tutteLePorte = data.porte || [];
-      porteScorrevoliProducts = tutteLePorte.filter(p =>
-        p.categorie.some(cat => /scorrevoli/i.test(cat))
+      porteScorrevoliProducts = tutteLePorte.filter((p) =>
+        p.categorie.some((cat) => /scorrevoli/i.test(cat)),
       );
 
       // 3. Porte Interne
@@ -68,20 +70,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
       console.log(
         `✅ Caricati: ${serramentiProducts.length} serramenti, ` +
-        `${porteScorrevoliProducts.length} porte scorrevoli, ` +
-        `${porteInterneProducts.length} porte interne, ` +
-        `${porteIngressoProducts.length} porte ingresso, ` +
-        `${oscurantiProducts.length} oscuranti, ` +
-        `${ombreggiaturaProducts.length} ombreggiatura`
+          `${porteScorrevoliProducts.length} porte scorrevoli, ` +
+          `${porteInterneProducts.length} porte interne, ` +
+          `${porteIngressoProducts.length} porte ingresso, ` +
+          `${oscurantiProducts.length} oscuranti, ` +
+          `${ombreggiaturaProducts.length} ombreggiatura`,
       );
 
       // Popola tutte le griglie
       populateGrid(serramentiContainer, serramentiProducts, "serramenti");
-      populateGrid(porteScorrevoliContainer, porteScorrevoliProducts, "porte_scorrevoli");
-      populateGrid(porteInterneContainer, porteInterneProducts, "porte_interne");
-      populateGrid(porteIngressoContainer, porteIngressoProducts, "porte_ingresso");
+      populateGrid(
+        porteScorrevoliContainer,
+        porteScorrevoliProducts,
+        "porte_scorrevoli",
+      );
+      populateGrid(
+        porteInterneContainer,
+        porteInterneProducts,
+        "porte_interne",
+      );
+      populateGrid(
+        porteIngressoContainer,
+        porteIngressoProducts,
+        "porte_ingresso",
+      );
       populateGrid(oscurantiContainer, oscurantiProducts, "oscuranti");
-      populateGrid(ombreggiaturaContainer, ombreggiaturaProducts, "ombreggiatura");
+      populateGrid(
+        ombreggiaturaContainer,
+        ombreggiaturaProducts,
+        "ombreggiatura",
+      );
 
       // Scroll all'ancora #Prodotti se presente
       if (window.location.hash === "#Prodotti") {
@@ -97,10 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
         porteInterneContainer,
         porteIngressoContainer,
         oscurantiContainer,
-        ombreggiaturaContainer
+        ombreggiaturaContainer,
       ];
-      containers.forEach(cont => {
-        if (cont) cont.innerHTML = "<p class='no-results'>Errore nel caricamento dei dati.</p>";
+      containers.forEach((cont) => {
+        if (cont)
+          cont.innerHTML =
+            "<p class='no-results'>Errore nel caricamento dei dati.</p>";
       });
     }
   }
@@ -116,10 +136,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     container.innerHTML = "";
     if (products.length === 0) {
-      container.innerHTML = `<p class='no-results'>Nessun prodotto disponibile per ${sezione.replace('_', ' ')}.</p>`;
+      container.innerHTML = `<p class='no-results'>Nessun prodotto disponibile per ${sezione.replace("_", " ")}.</p>`;
       return;
     }
-    products.forEach(p => container.appendChild(createProductCard(p, sezione)));
+    products.forEach((p) =>
+      container.appendChild(createProductCard(p, sezione)),
+    );
   }
 
   // ── Crea una card prodotto ────────────────────────────────
