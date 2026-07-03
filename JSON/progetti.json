@@ -34,19 +34,19 @@
     },
     {
       "id": "porta-scorrevole-vetro",
-      "nome": "Porta Scorrevole in Vetro",
+      "nome": "Porta Scorrevole Con Vetrata ",
       "categorie": ["Porte Scorrevoli"],
       "descrizione": "Porta scorrevole in vetro temperato o stratificato, con binario a scomparsa o a vista. Design minimale, massima luminosità e scorrimento silenzioso su carrelli con cuscinetti.",
       "immagine": "Img/Porte_section/Vetro/1.jpg",
-      "link": "Projects/porta_scorrevole_Vetro.html"
+      "link": "Projects/porta_scorrevole_Vetrata.html"
     },
     {
-      "id": "porta-interna-pvc",
-      "nome": "Porta Interna PVC",
-      "categorie": ["Porte Interne"],
-      "descrizione": "Porta interna a battente in PVC, resistente all'umidità e senza manutenzione. Ideale per bagni, cucine e ambienti soggetti a umidità, con anima rinforzata e finiture su misura.",
-      "immagine": "Img/Porte_section/pvc2.jpg",
-      "link": "Projects/porta_interna_PVC.html"
+      "id": "porta-scorrevole-alluminio",
+      "nome": "Porta Scorrevole Alluminio",
+      "categorie": ["Porte Scorrevoli"],
+      "descrizione": "Porta scorrevole in alluminio con profili a taglio termico e vetri isolanti. Scorrimento fluido e silenzioso, ideale per ampie aperture verso l'esterno. Soglia a filo pavimento per accesso facilitato.",
+      "immagine": "Img/Porte_section/Alluminio/1.jpg",
+      "link": "Projects/porta_scorrevole_Alluminio.html"
     },
     {
       "id": "scorrevole-alluminio",
@@ -63,22 +63,6 @@
       "descrizione": "Sistema scorrevole in PVC con profili a 5 camere e triplo vetro. Elevato isolamento termico e acustico, resistente e senza manutenzione. Perfetto per ambienti residenziali e climi rigidi.",
       "immagine": "Img/Scorrevoli/PVC.jpg",
       "link": "Projects/Scorrevole-PVC.html"
-    },
-    {
-      "id": "ingresso-pvc",
-      "nome": "Porta Ingresso PVC",
-      "categorie": ["Porte Ingresso/PVC"],
-      "descrizione": "Porta d'ingresso in PVC con anima rinforzata e serratura multipunto. Ottimo isolamento termico e acustico, resistente agli urti e agli agenti atmosferici. Disponibile in diverse finiture e colori.",
-      "immagine": "Img/Ingresso/PVC.jpg",
-      "link": "Projects/Ingresso-PVC.html"
-    },
-    {
-      "id": "ingresso-alluminio",
-      "nome": "Porta Ingresso Alluminio",
-      "categorie": ["Porte Ingresso/Alluminio"],
-      "descrizione": "Porta d'ingresso in alluminio con taglio termico e serratura di sicurezza. Struttura leggera ma robusta, resistente alla corrosione e con finiture a polvere. Design moderno e personalizzabile.",
-      "immagine": "Img/Ingresso/Alluminio.jpg",
-      "link": "Projects/Ingresso-Alluminio.html"
     }
   ],
   "serramenti": [
@@ -105,30 +89,6 @@
       "descrizione": "Gli infissi in legno regalano calore ed eleganza naturale. Garantiscono buon isolamento termico e acustico, mantenendo bellezza e prestazioni nel tempo con la giusta manutenzione.",
       "immagine": "Img/Serramenti_Section/Legno.png",
       "link": "Projects/Serramento_Legno.html"
-    },
-    {
-      "id": "finestra-pvc",
-      "nome": "Finestra PVC",
-      "categorie": ["Finestre/PVC"],
-      "descrizione": "Finestra a battente in PVC con profili multistrato e doppio vetro. Eccellente isolamento termico e acustico, resistente agli agenti atmosferici e senza manutenzione. Disponibile in molteplici colori e finiture.",
-      "immagine": "Img/Finestre/PVC.jpg",
-      "link": "Projects/Finestra-PVC.html"
-    },
-    {
-      "id": "finestra-alluminio",
-      "nome": "Finestra Alluminio",
-      "categorie": ["Finestre/Alluminio"],
-      "descrizione": "Finestra in alluminio con taglio termico e profili sottili per massima superficie vetrata. Leggera, resistente alla corrosione e con finiture a polvere. Ideale per grandi vetrate e architetture moderne.",
-      "immagine": "Img/Finestre/Alluminio.jpg",
-      "link": "Projects/Finestra-Alluminio.html"
-    },
-    {
-      "id": "finestra-legno",
-      "nome": "Finestra Legno",
-      "categorie": ["Finestre/Legno"],
-      "descrizione": "Finestra in legno massello di abete, rovere o pino, con trattamento impregnante e verniciatura protettiva. Calore e eleganza naturale, con ottimo isolamento termoacustico e lunga durata.",
-      "immagine": "Img/Finestre/Legno.jpg",
-      "link": "Projects/Finestra-Legno.html"
     }
   ],
   "oscuranti": [
