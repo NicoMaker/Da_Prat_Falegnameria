@@ -82,18 +82,18 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         ];
         serramentiProducts = fallback.filter((p) =>
-          p.categorie.some((c) => c.startsWith("Serramenti"))
+          p.categorie.some((c) => c.startsWith("Serramenti")),
         );
         porteProducts = fallback.filter((p) =>
-          p.categorie.some((c) => /^Porte\s+(Interne|Blindate)/i.test(c))
+          p.categorie.some((c) => /^Porte\s+(Interne|Blindate)/i.test(c)),
         );
         scorrevoliProducts = fallback.filter((p) =>
-          p.categorie.some((c) => /^Porte\s+Scorrevoli/i.test(c))
+          p.categorie.some((c) => /^Porte\s+Scorrevoli/i.test(c)),
         );
       }
 
       console.log(
-        `✅ Caricati: ${serramentiProducts.length} serramenti, ${porteProducts.length} porte, ${scorrevoliProducts.length} scorrevoli, ${oscurantiProducts.length} oscuranti`
+        `✅ Caricati: ${serramentiProducts.length} serramenti, ${porteProducts.length} porte, ${scorrevoliProducts.length} scorrevoli, ${oscurantiProducts.length} oscuranti`,
       );
 
       populateSerramenti();
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     serramentiProducts.forEach((p) =>
-      serramentiContainer.appendChild(createProductCard(p, "serramenti"))
+      serramentiContainer.appendChild(createProductCard(p, "serramenti")),
     );
   }
 
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     oscurantiProducts.forEach((p) =>
-      oscurantiContainer.appendChild(createProductCard(p, "oscuranti"))
+      oscurantiContainer.appendChild(createProductCard(p, "oscuranti")),
     );
   }
 
@@ -172,10 +172,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     const ordine = ["Interne", "Scorrevoli", "Blindate"];
     tutteLePorte.sort(
-      (a, b) => ordine.indexOf(a.nome) - ordine.indexOf(b.nome)
+      (a, b) => ordine.indexOf(a.nome) - ordine.indexOf(b.nome),
     );
     tutteLePorte.forEach((p) =>
-      porteContainer.appendChild(createProductCard(p, "porte"))
+      porteContainer.appendChild(createProductCard(p, "porte")),
     );
   }
 
