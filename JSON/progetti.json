@@ -7,38 +7,6 @@
       "descrizione": "Finestra a battente in PVC con doppio vetro. Ottimo isolamento termoacustico e alta resistenza agli agenti atmosferici. Disponibile in molti colori e formati.",
       "immagine": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&h=460&fit=crop",
       "link": "#"
-    },
-    {
-      "id": "Finestra1",
-      "nome": "Finestre 6Stars in Alluminio",
-      "categorie": ["Finestre in alluminio"],
-      "descrizione": "I serramenti in Alluminio 6Stars garantiscono un livello di efficienza energetica davvero alto, grazie alle incredibili caratteristiche tecniche e termoisolanti, che offrono un comfort abitativo senza paragoni.",
-      "immagine": "Img/Prodotti_Section/finestra1.webp",
-      "link": "#"
-    },
-    {
-      "id": "Finestra2",
-      "nome": "Finestre Arrogance in Alluminio",
-      "categorie": ["Finestre in alluminio"],
-      "descrizione": "Le finestre in Alluminio Arrogance offrono una luminosità naturale super e una superficie vetrata pari fino all’85% della finestra. Le prestazioni di isolamento termico e acustico rimangono al top. Il design minimalista, lineare ed elegante consente l’apertura fino a 180°. Le finestre Arrogance possono essere personalizzate per accontentare tutte le necessità estetiche e architettoniche.",
-      "immagine": "Img/Prodotti_Section/finestra2.webp",
-      "link": "#"
-    },
-    {
-      "id": "Finestra3",
-      "nome": "Finestre 7Stars in PVC",
-      "categorie": ["Finestre in PVC"],
-      "descrizione": "Le finestre 7Stars sono un prodotto premium, che si distingue per il design moderno e minimalista e i notevoli perfezionamenti a livello tecnico. I serramenti termoisolanti 7Stars sono la variante ideale per ridurre i consumi energetici nelle nuove costruzioni più sostenibili.",
-      "immagine": "Img/Prodotti_Section/finestra3.webp",
-      "link": "#"
-    },
-    {
-      "id": "Finestra4",
-      "nome": "Finestre Epiq 6Stars in PVC",
-      "categorie": ["Finestre in PVC"],
-      "descrizione": "Le prime finestre dal design minimale, con performance di isolamento termico superlative per mantenere temperature costanti. Sottili, resistenti, innovative: con Epiq 6Stars, la tua casa entra nel futuro.",
-      "immagine": "Img/Prodotti_Section/finestra4.webp",
-      "link": "#"
     }
   ],
   "porte": [
@@ -78,7 +46,7 @@
       "nome": "Porta Scorrevole in Vetro",
       "descrizione": "Porta scorrevole in vetro temperato o stratificato, con binario a scomparsa o a vista. Design minimale, massima luminosità e scorrimento silenzioso su carrelli con cuscinetti.",
       "immagine": "Img/Porte_section/Vetro/1.jpg",
-      "link": "Projects/porta_scorrevole_vetro.html"
+      "link": "Projects/porta_scorrevole_Vetro.html"
     },
     {
       "id": "porta-interna-pvc",

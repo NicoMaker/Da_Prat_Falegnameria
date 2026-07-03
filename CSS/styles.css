@@ -2217,3 +2217,8 @@ h6 {
     max-width: 100%;
   }
 }
+
+
+.products-section{
+  display:none;
+}
