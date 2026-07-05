@@ -9,6 +9,12 @@
 //   2) scrivere il nome corretto della sezione nel breadcrumb
 //   3) far puntare "Torna a tutti i ..." alla sezione giusta della Home
 //
+// IMPORTANTE: le chiavi qui sotto devono corrispondere ESATTAMENTE alle
+// stringhe "sezione" passate da progetti.js a EntryPoint.set(sezione), e i
+// vari "homeAnchor" devono corrispondere ESATTAMENTE agli id="..." reali
+// presenti in index.html. Se non corrispondono, i pulsanti "Torna a..."
+// e l'evidenziazione della sezione puntano al posto sbagliato.
+//
 // Nessuna dipendenza. Va incluso PRESTO (subito dopo <body>) sia in index.html
 // sia nelle pagine di Projects/, così l'accento viene applicato prima del paint.
 // ─────────────────────────────────────────────────────────────────────────────
@@ -24,11 +30,25 @@ const EntryPoint = (() => {
       homeAnchor: "serramenti",
       accent: "#b89a5a", // oro — colore storico del brand
     },
-    porte: {
-      key: "porte",
-      label: "Porte",
-      backLabel: "Torna a tutte le Porte",
-      homeAnchor: "porte",
+    porte_scorrevoli: {
+      key: "porte_scorrevoli",
+      label: "Porte Scorrevoli",
+      backLabel: "Torna a tutte le Porte Scorrevoli",
+      homeAnchor: "porte-scorrevoli",
+      accent: "#a15c3e", // terracotta
+    },
+    porte_interne: {
+      key: "porte_interne",
+      label: "Porte Interne",
+      backLabel: "Torna a tutte le Porte Interne",
+      homeAnchor: "porte-interne",
+      accent: "#a15c3e", // terracotta
+    },
+    porte_ingresso: {
+      key: "porte_ingresso",
+      label: "Porte d'Ingresso",
+      backLabel: "Torna a tutte le Porte d'Ingresso",
+      homeAnchor: "porte-ingresso",
       accent: "#a15c3e", // terracotta
     },
     oscuranti: {
@@ -38,11 +58,18 @@ const EntryPoint = (() => {
       homeAnchor: "oscuranti",
       accent: "#3f6e7a", // petrolio
     },
+    ombreggiatura: {
+      key: "ombreggiatura",
+      label: "Sistemi d'Ombreggiatura",
+      backLabel: "Torna ai Sistemi d'Ombreggiatura",
+      homeAnchor: "sistemi-ombreggiatura",
+      accent: "#3f6e7a", // petrolio
+    },
     prodotti: {
       key: "prodotti",
       label: "Prodotti",
       backLabel: "Torna a tutti i Prodotti",
-      homeAnchor: "prodotti",
+      homeAnchor: "serramenti", // fallback: non esiste una sezione unica "prodotti" in index.html
       accent: "#b89a5a",
     },
   };
