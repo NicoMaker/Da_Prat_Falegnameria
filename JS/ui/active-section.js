@@ -1,6 +1,15 @@
 // Active section highlighting on scroll + product pages support
 // Questo script è il SOLO responsabile di aggiornare l'hash dell'URL
 
+// ── Raggruppamento "Porte" ──────────────────────────────────────────────────
+// In index.html esiste UN SOLO pulsante di nav "Porte" (che punta a
+// #porte-scorrevoli), ma le sezioni reali sono tre: porte-scorrevoli,
+// porte-interne, porte-ingresso. Quando una di queste tre è attiva (per
+// scroll sulla home, o come sezione di provenienza in una pagina prodotto),
+// va evidenziato comunque il pulsante "Porte" nell'header.
+const PORTE_SECTION_IDS = ["porte-scorrevoli", "porte-interne", "porte-ingresso"];
+const groupAnchor =(id) => PORTE_SECTION_IDS.includes(id) ? "porte-scorrevoli" : id;
+
 document.addEventListener("DOMContentLoaded", () => {
   // ── Rileva se siamo su una pagina prodotto (Projects/) ──────────────────
   const isProductPage = window.location.pathname.includes("/Projects/");
@@ -26,12 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function updateActiveLink(sectionId) {
-    const normTarget = normalizeId(sectionId);
+    const normTarget = groupAnchor(normalizeId(sectionId));
     navLinks.forEach((link) => {
       const href = link.getAttribute("href") || "";
       // Supporta href="#home", "#Home", "../index.html#prodotti" ecc.
       const hash = href.includes("#") ? href.split("#").pop() : "";
-      const normHash = normalizeId(hash);
+      const normHash = groupAnchor(normalizeId(hash));
       if (normHash === normTarget) {
         link.classList.add("active");
       } else {
@@ -241,10 +250,11 @@ function highlightProductPage() {
 
   // Punto di riferimento: se disponibile, evidenzia la sezione da cui
   // l'utente è entrato (Serramenti/Porte/Oscuranti); altrimenti "Prodotti".
-  const anchor =
+  const rawAnchor =
     typeof EntryPoint !== "undefined"
       ? EntryPoint.getConfig(EntryPoint.get()).homeAnchor
       : "prodotti";
+  const anchor = groupAnchor(rawAnchor.toLowerCase());
 
   navLinks.forEach((link) => {
     const href = (link.getAttribute("href") || "").toLowerCase();
