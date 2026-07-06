@@ -116,14 +116,14 @@
 }
 
 .dot.active {
-  background-color: var(--entry-accent, var(--color-gold, #b89a5a));
-  border-color: var(--entry-accent, var(--color-gold, #b89a5a));
+  background-color: var(--entry-accent, var(--color-gold, #b2a68d));
+  border-color: var(--entry-accent, var(--color-gold, #b2a68d));
   transform: scale(1.35);
 }
 
 .dot:hover {
-  background-color: var(--color-gold-light, #d4b878);
-  border-color: var(--color-gold-light, #d4b878);
+  background-color: var(--color-gold-light, #c5bcaa);
+  border-color: var(--color-gold-light, #c5bcaa);
 }
 
 /* Product Info */
@@ -217,7 +217,7 @@
 }
 
 .back-button:hover {
-  color: var(--entry-accent, var(--color-gold, #b89a5a));
+  color: var(--entry-accent, var(--color-gold, #b2a68d));
   gap: 12px;
   background: none;
   transform: none;

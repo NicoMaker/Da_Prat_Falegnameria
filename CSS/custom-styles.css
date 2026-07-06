@@ -239,7 +239,7 @@ html {
 }
 
 .nav-dropdown-link.active {
-  color: var(--color-gold, #c9a84c) !important;
+  color: var(--color-gold, #b2a68d) !important;
   background: rgba(201, 168, 76, 0.12);
   font-weight: 700;
 }

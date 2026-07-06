@@ -28,7 +28,7 @@ const EntryPoint = (() => {
       label: "Serramenti",
       backLabel: "Torna a tutti i Serramenti",
       homeAnchor: "serramenti",
-      accent: "#b89a5a", // oro — colore storico del brand
+      accent: "#b2a68d", // beige — colore secondario del brand
     },
     porte_scorrevoli: {
       key: "porte_scorrevoli",
@@ -56,21 +56,21 @@ const EntryPoint = (() => {
       label: "Sistemi Oscuranti",
       backLabel: "Torna ai Sistemi Oscuranti",
       homeAnchor: "oscuranti",
-      accent: "#3f6e7a", // petrolio
+      accent: "#20252d", // blu notte
     },
     ombreggiatura: {
       key: "ombreggiatura",
       label: "Sistemi d'Ombreggiatura",
       backLabel: "Torna ai Sistemi d'Ombreggiatura",
       homeAnchor: "sistemi-ombreggiatura",
-      accent: "#3f6e7a", // petrolio
+      accent: "#20252d", // blu notte
     },
     prodotti: {
       key: "prodotti",
       label: "Prodotti",
       backLabel: "Torna a tutti i Prodotti",
       homeAnchor: "serramenti", // fallback: non esiste una sezione unica "prodotti" in index.html
-      accent: "#b89a5a",
+      accent: "#b2a68d",
     },
   };
 

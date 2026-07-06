@@ -1,19 +1,19 @@
 /* ===== CSS Variables - Da Prat Serramenti Theme ===== */
 :root {
   /* Core Palette - architectural, clean */
-  --color-dark: #1a1a1a;
-  --color-anthracite: #2d2d2d;
+  --color-dark: #040919;
+  --color-anthracite: #20252d;
   --color-mid: #555555;
-  --color-light-gray: #f0f0ee;
+  --color-light-gray: #ececec;
   --color-off-white: #fafafa;
   --color-white: #ffffff;
-  --color-gold: #b89a5a;
-  --color-gold-light: #d4b878;
+  --color-gold: #b2a68d;
+  --color-gold-light: #c5bcaa;
 
   /* Colori "punto di riferimento" per sezione (Home + pagina prodotto) */
-  --color-serramenti: #b89a5a; /* oro */
+  --color-serramenti: #b2a68d; /* beige (sostituisce l'oro) */
   --color-porte: #a15c3e; /* terracotta */
-  --color-oscuranti: #3f6e7a; /* petrolio */
+  --color-oscuranti: #20252d; /* blu notte (sostituisce l'azzurro/petrolio) */
   /* Accento attivo sulla pagina prodotto: impostato via JS (entry-point.js)
      in base alla sezione da cui l'utente è entrato. Il fallback è l'oro. */
   --entry-accent: var(--color-gold);
