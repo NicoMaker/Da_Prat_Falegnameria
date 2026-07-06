@@ -24,8 +24,10 @@
   </head>
 
   <body>
+    <!-- Punto di riferimento: applica subito l'eventuale accento colore -->
     <script src="../JS/shared/entry-point.js"></script>
 
+    <!-- ===== HEADER ===== -->
     <header class="site-header">
       <div class="header-container">
         <div class="logo-container">
@@ -91,21 +93,49 @@
       </div>
     </header>
 
+    <!-- ===== PRODUCT DETAIL ===== -->
     <main class="product-detail-container">
+      <!-- Breadcrumb (generato automaticamente da breadcrumb.js) -->
       <div class="product-breadcrumb"></div>
 
       <div class="product-detail-card">
+        <!-- IMAGE SLIDER -->
         <div class="product-image-gallery">
           <div class="slider-container">
             <div class="slide">
               <img
-                src="../Img/Scorrevoli_Section/Scorrevoli/PORTA SCORREVOLE ALUMINIO.webp"
-                alt="Scorrevole Alluminio – Vista frontale"
+                src="../Img/Scorrevoli_Section/Scorrevoli/Alluminio/1.jpg"
+                alt="Scorrevole Alluminio – Dettaglio profilo e scorrimento"
                 class="main-product-image"
               />
             </div>
-          </div>
+            <div class="slide">
+              <img
+                src="../Img/Scorrevoli_Section/Scorrevoli/Alluminio/2.png"
+                alt="Scorrevole Alluminio – Apertura verso l'esterno"
+                class="main-product-image"
+              />
+            </div>
+            <div class="slide">
+              <img
+                src="../Img/Scorrevoli_Section/Scorrevoli/Alluminio/3.webp"
+                alt="Scorrevole Alluminio – Vista laterale"
+                class="main-product-image"
+              />
+            </div>
 
+            <!-- Frecce di navigazione -->
+            <a class="prev" onclick="plusSlides(-1)" aria-label="Precedente"
+              >&#10094;</a
+            >
+            <a class="next" onclick="plusSlides(1)" aria-label="Successiva"
+              >&#10095;</a
+            >
+          </div>
+          <!-- Contenitore per i pallini (dots) -->
+          <div class="dots-container"></div>
+
+          <!-- Specifiche tecniche sotto le immagini -->
           <div
             style="
               margin-top: 1.5rem;
@@ -144,7 +174,9 @@
                 >
                   Materiale
                 </td>
-                <td style="padding: 7px 0">Alluminio con taglio termico</td>
+                <td style="padding: 7px 0">
+                  Alluminio, con o senza taglio termico
+                </td>
               </tr>
               <tr style="border-bottom: 1px solid #e0e0e0">
                 <td
@@ -152,11 +184,14 @@
                     padding: 7px 0;
                     font-weight: 600;
                     color: var(--color-dark);
+                    width: 50%;
                   "
                 >
                   Vetro
                 </td>
-                <td style="padding: 7px 0">Doppio o triplo vetro a scelta</td>
+                <td style="padding: 7px 0">
+                  Vetrocamera doppio o triplo, a scelta
+                </td>
               </tr>
               <tr style="border-bottom: 1px solid #e0e0e0">
                 <td
@@ -164,11 +199,14 @@
                     padding: 7px 0;
                     font-weight: 600;
                     color: var(--color-dark);
+                    width: 50%;
                   "
                 >
                   Trasmittanza Uw
                 </td>
-                <td style="padding: 7px 0">≤ 1,3 W/m²K</td>
+                <td style="padding: 7px 0">
+                  Da 1,0 a 1,8 W/m²K (in base alla configurazione)
+                </td>
               </tr>
               <tr style="border-bottom: 1px solid #e0e0e0">
                 <td
@@ -176,6 +214,7 @@
                     padding: 7px 0;
                     font-weight: 600;
                     color: var(--color-dark);
+                    width: 50%;
                   "
                 >
                   Scorrimento
@@ -188,11 +227,12 @@
                     padding: 7px 0;
                     font-weight: 600;
                     color: var(--color-dark);
+                    width: 50%;
                   "
                 >
                   Soglia
                 </td>
-                <td style="padding: 7px 0">A filo pavimento</td>
+                <td style="padding: 7px 0">A filo pavimento o ribassata</td>
               </tr>
               <tr>
                 <td
@@ -200,16 +240,20 @@
                     padding: 7px 0;
                     font-weight: 600;
                     color: var(--color-dark);
+                    width: 50%;
                   "
                 >
                   Luce massima
                 </td>
-                <td style="padding: 7px 0">Fino a 6 m di larghezza</td>
+                <td style="padding: 7px 0">
+                  Fino a 6-8 m di larghezza (in base al modello)
+                </td>
               </tr>
             </table>
           </div>
         </div>
 
+        <!-- PRODUCT INFO -->
         <div class="product-info">
           <h1 class="product-title">Scorrevole<br />Alluminio</h1>
           <div class="product-divider"></div>
@@ -217,55 +261,86 @@
           <div class="product-description">
             <h2>Descrizione</h2>
             <p>
-              Il sistema <strong>Scorrevole in Alluminio</strong> Da Prat è
-              pensato per chi desidera unire design moderno e massima apertura
-              verso l'esterno. I profili sottili con
-              <strong>taglio termico</strong> e i vetri isolanti garantiscono
-              prestazioni energetiche eccellenti.
+              Il sistema <strong>scorrevole in alluminio</strong> è pensato per
+              chi desidera unire design moderno e massima apertura verso
+              l'esterno. I profili sottili con taglio termico e i vetri isolanti
+              garantiscono prestazioni energetiche eccellenti, senza rinunciare
+              alla luminosità e all'ampiezza delle superfici vetrate.
             </p>
-            <br />
             <p>
               Il meccanismo di scorrimento su
               <strong>carrelli con cuscinetti</strong> assicura un movimento
               fluido e silenzioso, mentre la soglia a filo pavimento facilita
-              l'accesso e dona continuità agli spazi.
+              l'accesso e dona continuità agli spazi, ideale per aperture di
+              grandi dimensioni verso terrazzi e giardini.
             </p>
+
+            <h3>Perché scegliere l'alluminio</h3>
+            <ul>
+              <li>
+                <strong>Taglio termico integrato:</strong> massima efficienza
+                energetica e comfort abitativo.
+              </li>
+              <li>
+                <strong>Design moderno e minimal:</strong> profili sottili per
+                massima superficie vetrata e luminosità.
+              </li>
+              <li>
+                <strong>Scorrimento fluido e silenzioso:</strong> carrelli con
+                cuscinetti per un movimento senza sforzo.
+              </li>
+              <li>
+                <strong>Soglia a filo pavimento:</strong> accessibilità totale e
+                continuità tra interno ed esterno.
+              </li>
+              <li>
+                <strong>Ampia scelta di finiture:</strong> colori e texture per
+                integrarsi in qualsiasi contesto architettonico.
+              </li>
+              <li>
+                <strong>Manutenzione ridotta al minimo:</strong> resistenza agli
+                agenti atmosferici e durata nel tempo.
+              </li>
+            </ul>
           </div>
 
+          <!-- Feature pills -->
           <div class="product-features">
             <div class="product-feature">
-              <span class="material-icons">thermostat</span> Taglio termico
-              <strong>integrato</strong>
+              <span class="material-icons">thermostat</span>
+              Taglio termico — <strong>integrato</strong>
             </div>
             <div class="product-feature">
-              <span class="material-icons">open_in_full</span> Luce massima
-              <strong>6 m</strong>
+              <span class="material-icons">open_in_full</span>
+              Luce massima — <strong>ampia</strong>
             </div>
             <div class="product-feature">
-              <span class="material-icons">volume_off</span> Scorrimento
-              <strong>silenzioso</strong>
+              <span class="material-icons">volume_off</span>
+              Scorrimento — <strong>silenzioso</strong>
             </div>
             <div class="product-feature">
-              <span class="material-icons">accessible_forward</span> Soglia
-              <strong>a filo</strong>
+              <span class="material-icons">accessible_forward</span>
+              Soglia — <strong>a filo pavimento</strong>
             </div>
             <div class="product-feature">
-              <span class="material-icons">palette</span> Finiture
-              <strong>illimitate</strong>
+              <span class="material-icons">palette</span>
+              Finiture — <strong>ampia scelta</strong>
             </div>
             <div class="product-feature">
-              <span class="material-icons">build_circle</span> Manutenzione
-              <strong>zero</strong>
+              <span class="material-icons">build_circle</span>
+              Manutenzione — <strong>ridotta al minimo</strong>
             </div>
           </div>
 
+          <!-- CTA con form integrato -->
           <div class="product-cta">
             <a
               href="#Contatti"
               class="cta-button primary"
               style="text-align: center"
-              >Richiedi Informazioni</a
             >
+              Richiedi Informazioni
+            </a>
             <a
               href="tel:+393391792590"
               class="cta-button"
@@ -296,8 +371,10 @@
       </div>
     </main>
 
+    <!-- ===== FOOTER ===== -->
     <footer id="Contatti" class="site-footer"></footer>
 
+    <!-- ===== SCRIPTS ===== -->
     <script src="../JS/shared/json-paths.js"></script>
     <script src="../JS/shared/json-config.js"></script>
     <script src="../JS/shared/app-config.js"></script>
