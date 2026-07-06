@@ -55,6 +55,20 @@
     <link rel="stylesheet" href="CSS/styles.css" />
     <link rel="stylesheet" href="CSS/custom-styles.css" />
     <link rel="stylesheet" href="CSS/category-colors.css" />
+
+    <style>
+      /* Fallback CSS per evitare righe isolate */
+      .Progetti-card .descrizione,
+      .materiale-text,
+      .tipologia-text,
+      .consulenza-text,
+      .product-description p,
+      .footer-text {
+        widows: 2;
+        orphans: 2;
+        text-wrap: pretty;
+      }
+    </style>
   </head>
 
   <body>
@@ -175,7 +189,7 @@
       </div>
     </section>
 
-    <!-- ===== SISTEMI OSCURANTI (esistente) ===== -->
+    <!-- ===== SISTEMI OSCURANTI ===== -->
     <section id="oscuranti" class="materiali-section oscuranti-section">
       <div class="container" style="margin-bottom: 2rem; text-align: center">
         <h2 class="section-title" style="margin-bottom: 0.5rem">
@@ -190,7 +204,7 @@
       </div>
     </section>
 
-    <!-- ===== SISTEMI DI OMBREGGIATURA (nuova) ===== -->
+    <!-- ===== SISTEMI DI OMBREGGIATURA ===== -->
     <section
       id="sistemi-ombreggiatura"
       class="materiali-section oscuranti-section"
@@ -293,6 +307,8 @@
     <script src="JS/shared/json-config.js"></script>
     <script src="JS/shared/app-config.js"></script>
     <script src="JS/shared/json-loader.js"></script>
+    <!-- Nuovo script per le parole corte – DEVE stare DOPO json-loader.js e PRIMA di progetti.js -->
+    <script src="JS/shared/fix-short-words.js"></script>
     <script src="JS/shared/category-colors.js"></script>
     <script src="JS/shared/products-flat.js"></script>
     <script src="JS/data/products-section-config.js"></script>
