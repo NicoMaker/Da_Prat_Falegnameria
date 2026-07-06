@@ -2217,3 +2217,7 @@ h6 {
     max-width: 100%;
   }
 }
+
+.section-subtitle{
+  color: var(--color-serramenti) !important;
+}
