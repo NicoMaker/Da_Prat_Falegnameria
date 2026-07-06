@@ -2221,3 +2221,20 @@ h6 {
 .section-subtitle {
   color: var(--color-serramenti) !important;
 }
+
+
+/* ===== MOSTRA TUTTE LE IMMAGINI INTERE ===== */
+.Progetti-card .immagine,
+.novita-card .immagine,
+.materiale-card .materiale-image,
+#oscuranti-grid .immagine,
+#ombreggiatura-grid .immagine {
+  object-fit: contain !important;
+  background-color: #ffffff; /* o il colore che preferisci per le bande */
+}
+
+/* Se vuoi che le bande siano trasparenti (per vedere lo sfondo della card) */
+.Progetti-card .immagine,
+.novita-card .immagine {
+  background-color: transparent !important;
+}
