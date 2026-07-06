@@ -17,20 +17,20 @@
       "link": "Projects/Porte_Blindate.html"
     },
     {
-      "id": "scorrevole-alluminio",
-      "nome": "Scorrevole Alluminio",
-      "categorie": ["Scorrevoli/Alluminio"],
-      "descrizione": "Sistema scorrevole in alluminio con profili a taglio termico e vetri isolanti. Scorrimento fluido e silenzioso, ideale per ampie aperture verso l'esterno. Soglia a filo pavimento per accesso facilitato.",
-      "immagine": "Img/Scorrevoli_Section/Scorrevoli/PORTA SCORREVOLE ALUMINIO.webp",
-      "link": "Projects/Scorrevole-Alluminio.html"
-    },
-    {
       "id": "scorrevole-pvc",
       "nome": "Scorrevole PVC",
       "categorie": ["Scorrevoli/PVC"],
       "descrizione": "Sistema scorrevole in PVC con profili a 5 camere e triplo vetro. Elevato isolamento termico e acustico, resistente e senza manutenzione. Perfetto per ambienti residenziali e climi rigidi.",
       "immagine": "Img/Scorrevoli_Section/Scorrevoli/PORTA SCORREVOLE PVC.webp",
       "link": "Projects/Scorrevole-PVC.html"
+    },
+    {
+      "id": "scorrevole-alluminio",
+      "nome": "Scorrevole Alluminio",
+      "categorie": ["Scorrevoli/Alluminio"],
+      "descrizione": "Sistema scorrevole in alluminio con profili a taglio termico e vetri isolanti. Scorrimento fluido e silenzioso, ideale per ampie aperture verso l'esterno. Soglia a filo pavimento per accesso facilitato.",
+      "immagine": "Img/Scorrevoli_Section/Scorrevoli/PORTA SCORREVOLE ALUMINIO.webp",
+      "link": "Projects/Scorrevole-Alluminio.html"
     }
   ],
   "serramenti": [
