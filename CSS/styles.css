@@ -2349,3 +2349,12 @@ h6 {
 .card-hover-overlay {
   display: none;
 }
+
+
+#serramenti,
+#scorrevoli,
+#porte-ingresso,
+#oscuranti,
+#sistemi-ombreggiatura {
+  padding: var(--spacing-2xl) 0;
+}
