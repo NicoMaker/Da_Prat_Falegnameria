@@ -7,8 +7,13 @@
 // porte-interne, porte-ingresso. Quando una di queste tre è attiva (per
 // scroll sulla home, o come sezione di provenienza in una pagina prodotto),
 // va evidenziato comunque il pulsante "Porte" nell'header.
-const PORTE_SECTION_IDS = ["porte-scorrevoli", "porte-interne", "porte-ingresso"];
-const groupAnchor =(id) => PORTE_SECTION_IDS.includes(id) ? "porte-scorrevoli" : id;
+const PORTE_SECTION_IDS = [
+  "porte-scorrevoli",
+  "porte-interne",
+  "porte-ingresso",
+];
+const groupAnchor = (id) =>
+  PORTE_SECTION_IDS.includes(id) ? "porte-scorrevoli" : id;
 
 document.addEventListener("DOMContentLoaded", () => {
   // ── Rileva se siamo su una pagina prodotto (Projects/) ──────────────────
