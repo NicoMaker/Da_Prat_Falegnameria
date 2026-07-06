@@ -101,6 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "ombreggiatura",
       );
 
+      // Segnala che tutte le griglie sono state popolate: active-section.js
+      // usa questo evento per ricorreggere lo scroll verso l'ancora corretta
+      // (le sezioni sotto le griglie si spostano quando le card vengono
+      // inserite, quindi la posizione calcolata prima era sbagliata).
+      document.dispatchEvent(new Event("productsGridsLoaded"));
+
       // Scroll all'ancora #Prodotti se presente
       if (window.location.hash === "#Prodotti") {
         const section = document.getElementById("Prodotti");
@@ -122,6 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
           cont.innerHTML =
             "<p class='no-results'>Errore nel caricamento dei dati.</p>";
       });
+      // Anche in caso di errore, segnala la fine del caricamento così lo
+      // scroll in sospeso non resta bloccato per sempre.
+      document.dispatchEvent(new Event("productsGridsLoaded"));
     }
   }
 

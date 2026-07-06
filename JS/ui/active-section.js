@@ -28,6 +28,10 @@ document.addEventListener("DOMContentLoaded", () => {
   let scrollTimeout;
   let preventHashUpdate = false;
   let isInitialLoad = true;
+  // Ancora verso cui stiamo scrollando: serve per poter ricorreggere la
+  // posizione quando le griglie prodotti (caricate in modo asincrono da
+  // progetti.js) finiscono di popolarsi e cambiano l'altezza della pagina.
+  let pendingScrollTarget = null;
 
   // Normalizza id per confronto case-insensitive
   function normalizeId(id) {
@@ -160,6 +164,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const offsetPosition = targetElement.offsetTop - totalOffset;
     window.scrollTo({ top: offsetPosition, behavior: "smooth" });
 
+    // Se le griglie prodotti non hanno ancora finito di caricarsi, la
+    // posizione appena calcolata potrebbe diventare sbagliata non appena
+    // le card vengono inserite (la pagina si allunga). Segniamo questa
+    // ancora come "in sospeso" così l'evento productsGridsLoaded potrà
+    // ricorreggere lo scroll.
+    pendingScrollTarget = targetId;
+
     setTimeout(() => {
       preventHashUpdate = false;
       isManualNavigation = false;
@@ -196,6 +207,10 @@ document.addEventListener("DOMContentLoaded", () => {
             top: targetElement.offsetTop - headerHeight,
             behavior: "auto",
           });
+          // Le griglie prodotti sopra questa sezione potrebbero non essere
+          // ancora state popolate: quando lo saranno, l'evento
+          // productsGridsLoaded ricorreggerà lo scroll sulla posizione reale.
+          pendingScrollTarget = targetId;
         }
 
         preventHashUpdate = true;
@@ -242,6 +257,36 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initializePage();
+
+  // ── Ricorrezione post-caricamento griglie prodotti ──────────────────────
+  // progetti.js popola le griglie in modo asincrono (fetch del JSON). Se lo
+  // scroll verso un'ancora è già avvenuto ma la pagina si è nel frattempo
+  // allungata (card aggiunte sopra la sezione target), qui ricalcoliamo e
+  // correggiamo la posizione sulla sezione GIUSTA.
+  document.addEventListener("productsGridsLoaded", () => {
+    if (!pendingScrollTarget) return;
+    const norm = normalizeId(pendingScrollTarget);
+    if (norm === "home" || norm === "contatti") {
+      pendingScrollTarget = null;
+      return;
+    }
+    const targetElement = document.getElementById(pendingScrollTarget);
+    if (!targetElement) {
+      pendingScrollTarget = null;
+      return;
+    }
+    const header = document.querySelector(".site-header");
+    const headerHeight = header ? header.offsetHeight : 80;
+    preventHashUpdate = true;
+    window.scrollTo({
+      top: targetElement.offsetTop - headerHeight,
+      behavior: "auto",
+    });
+    pendingScrollTarget = null;
+    setTimeout(() => {
+      preventHashUpdate = false;
+    }, 300);
+  });
 });
 
 // ── Pagine prodotto: evidenzia il link nav della sezione di provenienza ────
