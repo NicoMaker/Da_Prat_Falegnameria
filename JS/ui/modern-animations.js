@@ -11,7 +11,7 @@
   "use strict";
 
   var reduceMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
+    "(prefers-reduced-motion: reduce)",
   ).matches;
 
   // ── 1. Hero: avvia l'entrata orchestrata ──
@@ -79,7 +79,7 @@
       function () {
         btn.classList.toggle("visible", window.scrollY > 600);
       },
-      { passive: true }
+      { passive: true },
     );
   }
 
@@ -97,7 +97,7 @@
           }
         });
       },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
     );
     return observer;
   }
@@ -119,25 +119,25 @@
     // Titoli e sottotitoli di sezione
     root
       .querySelectorAll(
-        ".section-title, .section-subtitle, .consulenza-title, .consulenza-text, .product-title, .product-description, .product-breadcrumb"
+        ".section-title, .section-subtitle, .consulenza-title, .consulenza-text, .product-title, .product-description, .product-breadcrumb",
       )
       .forEach(function (el) {
         markReveal(el, "up");
       });
 
     // Card (home) — stagger per griglia
-    root
-      .querySelectorAll(".materiali-grid")
-      .forEach(function (grid) {
-        Array.prototype.forEach.call(grid.children, function (card, i) {
-          markReveal(card, "up", i);
-        });
+    root.querySelectorAll(".materiali-grid").forEach(function (grid) {
+      Array.prototype.forEach.call(grid.children, function (card, i) {
+        markReveal(card, "up", i);
       });
+    });
 
     // Gallery realizzazioni
-    root.querySelectorAll(".gallery-grid .gallery-item").forEach(function (el, i) {
-      markReveal(el, "zoom", i);
-    });
+    root
+      .querySelectorAll(".gallery-grid .gallery-item")
+      .forEach(function (el, i) {
+        markReveal(el, "zoom", i);
+      });
 
     // Consulenza: immagine da sinistra, testo da destra
     root.querySelectorAll(".consulenza-image").forEach(function (el) {
@@ -148,11 +148,11 @@
     });
 
     // Pagina prodotto
-    root.querySelectorAll(".product-image-gallery, .slider-container").forEach(
-      function (el) {
+    root
+      .querySelectorAll(".product-image-gallery, .slider-container")
+      .forEach(function (el) {
         markReveal(el, "left");
-      }
-    );
+      });
     root.querySelectorAll(".product-info").forEach(function (el) {
       markReveal(el, "right");
     });
@@ -195,7 +195,6 @@
       }, 50);
     });
   }
-
 
   // ── 5. Ispirazione "migliori siti" ──
 
@@ -257,8 +256,11 @@
     var sections = document.querySelectorAll("section.materiali-section");
     sections.forEach(function (sec, i) {
       if (i === 0) return; // niente divisore prima della prima sezione
-      if (sec.previousElementSibling &&
-          sec.previousElementSibling.classList.contains("section-divider")) return;
+      if (
+        sec.previousElementSibling &&
+        sec.previousElementSibling.classList.contains("section-divider")
+      )
+        return;
       var div = document.createElement("div");
       div.className = "section-divider";
       div.setAttribute("aria-hidden", "true");
@@ -274,7 +276,9 @@
     a.className = "quick-whatsapp";
     a.href =
       "https://wa.me/393391792590?text=" +
-      encodeURIComponent("Buongiorno, vorrei informazioni sui vostri serramenti.");
+      encodeURIComponent(
+        "Buongiorno, vorrei informazioni sui vostri serramenti.",
+      );
     a.target = "_blank";
     a.rel = "noopener";
     a.setAttribute("aria-label", "Scrivi a Da Prat su WhatsApp");
@@ -307,14 +311,14 @@
     // Rete di sicurezza: dopo 4s qualsiasi elemento non ancora rivelato
     // ma visibile viene mostrato (evita contenuti "bloccati" invisibili)
     setTimeout(function () {
-      document.querySelectorAll("[data-reveal]:not(.reveal-in)").forEach(
-        function (el) {
+      document
+        .querySelectorAll("[data-reveal]:not(.reveal-in)")
+        .forEach(function (el) {
           var r = el.getBoundingClientRect();
           if (r.top < window.innerHeight && r.bottom > 0) {
             el.classList.add("reveal-in");
           }
-        }
-      );
+        });
     }, 4000);
   }
 
