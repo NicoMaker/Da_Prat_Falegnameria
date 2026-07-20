@@ -162,6 +162,26 @@ function aggiornaColoreOrari(data) {
     giorniDaVisualizzare.push(d);
   }
 
+  // Differenza di fuso attività→visitatore (per gli orari convertiti)
+  const diffHours = -getTimezoneOffsetHours();
+
+  // ── Aggiorna l'ora locale del visitatore e lo scarto di fuso ──
+  const userNow = getUserNow();
+  const userTimeEl = document.getElementById("user-local-time-display");
+  if (userTimeEl) {
+    userTimeEl.textContent =
+      String(userNow.getHours()).padStart(2, "0") +
+      ":" +
+      String(userNow.getMinutes()).padStart(2, "0");
+  }
+  const offsetTextEl = document.getElementById("timezone-offset-text");
+  if (offsetTextEl) {
+    offsetTextEl.textContent = formatTimezoneOffsetText(
+      getTimezoneOffsetHours(),
+      (data.info && data.info.titolo) || "",
+    );
+  }
+
   // ── Lista orari ─────────────────────────────────────────────
   const lista = document.querySelector("#orari-footer");
   if (!lista) return;
@@ -197,6 +217,16 @@ function aggiornaColoreOrari(data) {
         } else if (closureCheck && closureCheck.reason === "motivi-extra") {
           testoOrario = `${nomeGiorno}: Chiuso (${closureCheck.motivoSpecifico})`;
         }
+      }
+
+      // Orario convertito nel fuso del visitatore
+      if (
+        Math.abs(diffHours) > 0.01 &&
+        testoOrario &&
+        !testoOrario.toLowerCase().includes("chiuso")
+      ) {
+        const orarioConvertito = convertOrarioString(testoOrario, diffHours);
+        testoOrario = `${testoOrario} (${orarioConvertito})`;
       }
 
       if (i === 0) {

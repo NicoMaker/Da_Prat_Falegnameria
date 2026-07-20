@@ -89,7 +89,7 @@ function getUnifiedFerieDates(data, year) {
 }
 
 function getMotivoChiusuraForDate(data, dataFormattata) {
-  const year = nowBusiness().getFullYear();
+  const year = getShopNow().getFullYear();
   const { motiviMap } = _buildChiusureMap(data, year);
   if (motiviMap.has(dataFormattata)) return motiviMap.get(dataFormattata);
 
@@ -221,7 +221,7 @@ function getSingleDayClosureReason(
 //   maxFuturedays — quanti giorni nel futuro considerare (default: 365)
 // ─────────────────────────────────────────────────────────────────────────────
 function getAllUpcomingClosures(data, oggiReal, maxFutureDays) {
-  const oggi = new Date(oggiReal || nowBusiness());
+  const oggi = new Date(oggiReal || getShopNow());
   oggi.setHours(0, 0, 0, 0);
   const currentYear = oggi.getFullYear();
   const maxDays = maxFutureDays !== undefined ? maxFutureDays : 365;

@@ -6,85 +6,161 @@
 // ============================================================
 
 // ============================================================
-// GESTIONE FUSO ORARIO (Europe/Rome)
+// GESTIONE FUSO ORARIO (stessa logica della Macelleria da Ketti)
 // ------------------------------------------------------------
-// Tutti gli orari dell'attività sono definiti in ora italiana.
-// Il dispositivo del visitatore, però, può avere un fuso o un
-// orologio diverso (utente all'estero, telefono impostato male,
-// ecc.). Se calcolassimo "aperto/chiuso", stagione, festività e
-// countdown con l'ora locale del visitatore, il risultato sarebbe
-// sbagliato.
+// Gli orari sono definiti nell'ora dell'attività (Europe/Rome).
+// Il dispositivo del visitatore può avere un fuso diverso: senza
+// correzione, "aperto/chiuso", stagione, festività e countdown
+// verrebbero calcolati sull'ora sbagliata.
 //
-// Soluzione: ancoriamo SEMPRE i calcoli al fuso dell'attività.
-// `nowBusiness()` restituisce un oggetto Date i cui componenti da
-// orologio da muro (getFullYear/getMonth/getDate/getHours/
-// getMinutes/getSeconds/getDay) corrispondono all'ora di Roma,
-// indipendentemente dal fuso del dispositivo. Tutto il resto del
-// codice continua a usare i normali getter locali, ma su questa
-// base "riallineata" ottiene i valori italiani corretti.
+// - Il fuso si legge da data.timezone (default "Europe/Rome").
+// - getShopNow() = "adesso" nell'ora dell'attività; i suoi getter
+//   locali (getHours/getDay/...) restituiscono l'orario italiano,
+//   così il resto del codice funziona senza modifiche.
+// - getTimezoneOffsetHours()/formatTimezoneOffsetText() servono a
+//   mostrare al visitatore lo scarto rispetto al suo fuso.
+// - convertOrarioString() converte gli orari nel fuso del visitatore.
 // ============================================================
 
-const BUSINESS_TIMEZONE = "Europe/Rome";
 
-// Converte un istante reale (Date) in un Date i cui componenti
-// locali rappresentano l'ora da muro nel fuso dell'attività.
-function toBusinessWallClock(instant) {
-  try {
-    const fmt = new Intl.DateTimeFormat("en-CA", {
-      timeZone: BUSINESS_TIMEZONE,
-      year: "numeric",
-      month: "2-digit",
-      day: "2-digit",
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: false,
-    });
-    const parts = {};
-    for (const p of fmt.formatToParts(instant)) {
-      if (p.type !== "literal") parts[p.type] = p.value;
-    }
-    let hour = Number.parseInt(parts.hour, 10);
-    if (hour === 24) hour = 0; // alcune runtime restituiscono "24" a mezzanotte
-    return new Date(
-      Number.parseInt(parts.year, 10),
-      Number.parseInt(parts.month, 10) - 1,
-      Number.parseInt(parts.day, 10),
-      hour,
-      Number.parseInt(parts.minute, 10),
-      Number.parseInt(parts.second, 10),
-      0,
-    );
-  } catch (e) {
-    // Fallback estremo: se Intl/timeZone non fosse disponibile,
-    // usiamo l'ora locale del dispositivo (comportamento legacy).
-    return new Date(instant);
+function configuraTimezone(data) {
+  if (data && data.timezone) {
+    _shopTimezone = data.timezone;
   }
 }
 
-// "Adesso" nell'ora dell'attività. Rispetta l'eventuale TEST_DATE
-// definita in config.js per i test manuali.
-function nowBusiness() {
+// Componenti "da orologio da muro" dell'attività per un dato istante
+function _shopParts(instant) {
+  const formatter = new Intl.DateTimeFormat("en-US", {
+    timeZone: _shopTimezone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
+  const obj = {};
+  formatter.formatToParts(instant).forEach((p) => {
+    obj[p.type] = p.value;
+  });
+  return obj;
+}
+
+// Offset (in minuti) del fuso dell'attività rispetto a UTC, adesso
+function getShopOffsetMinutes() {
+  const now = new Date();
+  const o = _shopParts(now);
+  let h = Number.parseInt(o.hour, 10);
+  if (h === 24) h = 0;
+  const asUTC = Date.UTC(
+    Number.parseInt(o.year, 10),
+    Number.parseInt(o.month, 10) - 1,
+    Number.parseInt(o.day, 10),
+    h,
+    Number.parseInt(o.minute, 10),
+    Number.parseInt(o.second, 10),
+  );
+  return (asUTC - now.getTime()) / 60000;
+}
+
+// "Adesso" nell'ora dell'attività. I getter LOCALI di questo Date
+// restituiscono l'orario italiano, indipendentemente dal fuso del
+// dispositivo. Rispetta l'eventuale TEST_DATE definita in config.js.
+function getShopNow() {
   if (typeof TEST_DATE !== "undefined" && TEST_DATE) {
     return new Date(TEST_DATE);
   }
-  return toBusinessWallClock(new Date());
+  try {
+    const o = _shopParts(new Date());
+    let h = Number.parseInt(o.hour, 10);
+    if (h === 24) h = 0;
+    return new Date(
+      Number.parseInt(o.year, 10),
+      Number.parseInt(o.month, 10) - 1,
+      Number.parseInt(o.day, 10),
+      h,
+      Number.parseInt(o.minute, 10),
+      Number.parseInt(o.second, 10),
+      0,
+    );
+  } catch (e) {
+    return new Date(); // fallback legacy se Intl non disponibile
+  }
 }
 
-// Millisecondi da adesso alla prossima mezzanotte NELL'ORA DI ROMA.
-// Usato dallo scheduler per ricostruire il footer al cambio di giorno
-// italiano (e non al cambio di giorno del visitatore).
-function msUntilNextBusinessMidnight() {
-  const wall = nowBusiness();
-  const msIntoDay =
+// "Adesso" nel fuso del visitatore (per mostrargli la sua ora)
+function getUserNow() {
+  return new Date();
+}
+
+// Differenza in ore tra il fuso dell'attività e quello del visitatore
+function getTimezoneOffsetHours() {
+  const shopOffset = getShopOffsetMinutes();
+  const userOffset = -new Date().getTimezoneOffset();
+  return (shopOffset - userOffset) / 60;
+}
+
+// Converte gli orari testuali (HH:MM) sommando diffHours: usato per
+// mostrare l'equivalente degli orari nel fuso del visitatore.
+function convertOrarioString(orarioStr, diffHours) {
+  if (Math.abs(diffHours) < 0.01) return orarioStr;
+  const regex = /(\d{1,2}:\d{2})/g;
+  const matches = orarioStr.match(regex);
+  if (!matches) return orarioStr;
+  let result = orarioStr;
+  for (const match of matches) {
+    const [h, m] = match.split(":").map(Number);
+    let newH = h + diffHours;
+    newH = ((newH % 24) + 24) % 24;
+    const newStr = `${String(Math.floor(newH)).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+    result = result.replace(match, newStr);
+  }
+  return result;
+}
+
+// Testo leggibile della differenza di fuso (plurale corretto)
+function formatTimezoneOffsetText(offsetHours, shopName) {
+  const abs = Math.abs(offsetHours);
+  const ore = Math.floor(abs);
+  const minuti = Math.round((abs - ore) * 60);
+
+  if (ore === 0 && minuti === 0) {
+    return "Sei nello stesso fuso orario dell'attività";
+  }
+
+  let oreFinale = ore;
+  let minutiFinali = minuti;
+  if (minutiFinali >= 60) {
+    oreFinale += 1;
+    minutiFinali = 0;
+  }
+
+  let diffText = "";
+  if (oreFinale > 0 && minutiFinali > 0) {
+    diffText = `${oreFinale}h ${minutiFinali}m`;
+  } else if (oreFinale > 0) {
+    diffText = `${oreFinale} ${oreFinale === 1 ? "ora" : "ore"}`;
+  } else {
+    diffText = `${minutiFinali} minuti`;
+  }
+
+  const direction = offsetHours > 0 ? "avanti" : "indietro";
+  return `L'attività è ${diffText} ${direction} rispetto a te`;
+}
+
+// Millisecondi alla prossima mezzanotte NELL'ORA DELL'ATTIVITÀ
+function msUntilNextShopMidnight() {
+  const wall = getShopNow();
+  const into =
     wall.getHours() * 3600000 +
     wall.getMinutes() * 60000 +
     wall.getSeconds() * 1000 +
     wall.getMilliseconds();
-  const msInDay = 24 * 3600000;
-  let remaining = msInDay - msIntoDay;
-  if (remaining <= 0) remaining += msInDay;
-  return remaining + 1000; // +1s di margine per essere oltre la mezzanotte
+  let rem = 24 * 3600000 - into;
+  if (rem <= 0) rem += 24 * 3600000;
+  return rem + 1000;
 }
 
 const formatDateDM = (date) => {
@@ -204,7 +280,7 @@ function getStagioneAttivaConDate(data, dataRiferimento) {
   const stagioni = data.orariStagionali || [];
   if (!stagioni.length) return null;
 
-  const ref = dataRiferimento || nowBusiness();
+  const ref = dataRiferimento || getShopNow();
   const oggi = new Date(ref);
   oggi.setHours(0, 0, 0, 0);
   const anno = oggi.getFullYear();
@@ -324,7 +400,7 @@ function _testoStagioneConAnni(stagione, annoInizio, annoFine) {
 // Usata per le stagioni non attive
 // ============================================================
 function _getProssimaIstanzaStagione(stagione, dataRiferimento) {
-  const ref = dataRiferimento || nowBusiness();
+  const ref = dataRiferimento || getShopNow();
   const oggi = new Date(ref);
   oggi.setHours(0, 0, 0, 0);
   const anno = oggi.getFullYear();
@@ -357,7 +433,7 @@ function getRilevaTransizioneStagione(data, dataRiferimento) {
   const stagioni = data.orariStagionali || [];
   if (stagioni.length < 2) return null;
 
-  const ref = dataRiferimento || nowBusiness();
+  const ref = dataRiferimento || getShopNow();
   const oggi = new Date(ref);
   oggi.setHours(0, 0, 0, 0);
   const anno = oggi.getFullYear();
