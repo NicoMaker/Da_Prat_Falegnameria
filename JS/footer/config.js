@@ -3,10 +3,15 @@
 // Dipende da: tutti gli altri file footer-*.js
 // ============================================================
 
-// Per testare una data specifica, decommentare la riga sotto:
+// Per testare una data specifica, decommentare la riga sotto.
+// NB: la data di test viene interpretata come ora italiana da muro.
 // const TEST_DATE = new Date("2024-12-25T10:30:00");
-const getNow = () =>
-  typeof TEST_DATE !== "undefined" ? TEST_DATE : new Date();
+//
+// getNow() restituisce SEMPRE "adesso" nell'ora dell'attività
+// (Europe/Rome), così stato apertura, stagione, festività e countdown
+// non dipendono dal fuso/orologio del dispositivo del visitatore.
+// La logica di fuso e l'eventuale override TEST_DATE sono in date-utils.js.
+const getNow = () => nowBusiness();
 
 document.addEventListener("DOMContentLoaded", () => {
   const footer = document.getElementById("Contatti");
@@ -62,12 +67,9 @@ function _ricostruisciFooter(data) {
 }
 
 function scheduleFooterRefreshAtMidnight(data) {
-  const now = new Date();
-  const tomorrow = new Date(now);
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(0, 0, 0, 0);
-
-  const msUntilMidnight = tomorrow.getTime() - now.getTime();
+  // Millisecondi alla prossima mezzanotte NELL'ORA DI ROMA, non del
+  // dispositivo: il footer si ricostruisce al cambio di giorno italiano.
+  const msUntilMidnight = msUntilNextBusinessMidnight();
 
   console.log(
     `Prossimo aggiornamento footer schedulato tra ${Math.round(

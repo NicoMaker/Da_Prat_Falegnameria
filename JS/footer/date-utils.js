@@ -5,6 +5,88 @@
 // Invernale: dall'ultima domenica di ottobre → al sabato prima dell'ultima domenica di marzo
 // ============================================================
 
+// ============================================================
+// GESTIONE FUSO ORARIO (Europe/Rome)
+// ------------------------------------------------------------
+// Tutti gli orari dell'attività sono definiti in ora italiana.
+// Il dispositivo del visitatore, però, può avere un fuso o un
+// orologio diverso (utente all'estero, telefono impostato male,
+// ecc.). Se calcolassimo "aperto/chiuso", stagione, festività e
+// countdown con l'ora locale del visitatore, il risultato sarebbe
+// sbagliato.
+//
+// Soluzione: ancoriamo SEMPRE i calcoli al fuso dell'attività.
+// `nowBusiness()` restituisce un oggetto Date i cui componenti da
+// orologio da muro (getFullYear/getMonth/getDate/getHours/
+// getMinutes/getSeconds/getDay) corrispondono all'ora di Roma,
+// indipendentemente dal fuso del dispositivo. Tutto il resto del
+// codice continua a usare i normali getter locali, ma su questa
+// base "riallineata" ottiene i valori italiani corretti.
+// ============================================================
+
+const BUSINESS_TIMEZONE = "Europe/Rome";
+
+// Converte un istante reale (Date) in un Date i cui componenti
+// locali rappresentano l'ora da muro nel fuso dell'attività.
+function toBusinessWallClock(instant) {
+  try {
+    const fmt = new Intl.DateTimeFormat("en-CA", {
+      timeZone: BUSINESS_TIMEZONE,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    });
+    const parts = {};
+    for (const p of fmt.formatToParts(instant)) {
+      if (p.type !== "literal") parts[p.type] = p.value;
+    }
+    let hour = Number.parseInt(parts.hour, 10);
+    if (hour === 24) hour = 0; // alcune runtime restituiscono "24" a mezzanotte
+    return new Date(
+      Number.parseInt(parts.year, 10),
+      Number.parseInt(parts.month, 10) - 1,
+      Number.parseInt(parts.day, 10),
+      hour,
+      Number.parseInt(parts.minute, 10),
+      Number.parseInt(parts.second, 10),
+      0,
+    );
+  } catch (e) {
+    // Fallback estremo: se Intl/timeZone non fosse disponibile,
+    // usiamo l'ora locale del dispositivo (comportamento legacy).
+    return new Date(instant);
+  }
+}
+
+// "Adesso" nell'ora dell'attività. Rispetta l'eventuale TEST_DATE
+// definita in config.js per i test manuali.
+function nowBusiness() {
+  if (typeof TEST_DATE !== "undefined" && TEST_DATE) {
+    return new Date(TEST_DATE);
+  }
+  return toBusinessWallClock(new Date());
+}
+
+// Millisecondi da adesso alla prossima mezzanotte NELL'ORA DI ROMA.
+// Usato dallo scheduler per ricostruire il footer al cambio di giorno
+// italiano (e non al cambio di giorno del visitatore).
+function msUntilNextBusinessMidnight() {
+  const wall = nowBusiness();
+  const msIntoDay =
+    wall.getHours() * 3600000 +
+    wall.getMinutes() * 60000 +
+    wall.getSeconds() * 1000 +
+    wall.getMilliseconds();
+  const msInDay = 24 * 3600000;
+  let remaining = msInDay - msIntoDay;
+  if (remaining <= 0) remaining += msInDay;
+  return remaining + 1000; // +1s di margine per essere oltre la mezzanotte
+}
+
 const formatDateDM = (date) => {
   const giorno = String(date.getDate()).padStart(2, "0");
   const mese = String(date.getMonth() + 1).padStart(2, "0");
@@ -122,7 +204,7 @@ function getStagioneAttivaConDate(data, dataRiferimento) {
   const stagioni = data.orariStagionali || [];
   if (!stagioni.length) return null;
 
-  const ref = dataRiferimento || new Date();
+  const ref = dataRiferimento || nowBusiness();
   const oggi = new Date(ref);
   oggi.setHours(0, 0, 0, 0);
   const anno = oggi.getFullYear();
@@ -242,7 +324,7 @@ function _testoStagioneConAnni(stagione, annoInizio, annoFine) {
 // Usata per le stagioni non attive
 // ============================================================
 function _getProssimaIstanzaStagione(stagione, dataRiferimento) {
-  const ref = dataRiferimento || new Date();
+  const ref = dataRiferimento || nowBusiness();
   const oggi = new Date(ref);
   oggi.setHours(0, 0, 0, 0);
   const anno = oggi.getFullYear();
@@ -275,7 +357,7 @@ function getRilevaTransizioneStagione(data, dataRiferimento) {
   const stagioni = data.orariStagionali || [];
   if (stagioni.length < 2) return null;
 
-  const ref = dataRiferimento || new Date();
+  const ref = dataRiferimento || nowBusiness();
   const oggi = new Date(ref);
   oggi.setHours(0, 0, 0, 0);
   const anno = oggi.getFullYear();

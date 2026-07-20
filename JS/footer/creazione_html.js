@@ -15,7 +15,7 @@ function getAllStagioniHTML(data, dataRiferimento) {
   if (!stagioni.length)
     return `<div id="descrizione-stagione" style="display:none;"></div>`;
 
-  const ref = dataRiferimento || new Date();
+  const ref = dataRiferimento || nowBusiness();
   const stagioneAttivaResult = getStagioneAttivaConDate(data, ref);
   const stagioneAttiva = stagioneAttivaResult
     ? stagioneAttivaResult.stagione
@@ -58,7 +58,7 @@ function getAllStagioniHTML(data, dataRiferimento) {
 
 // ── Genera HTML per le chiusure programmate nel footer ──────────────────────
 function getClosuresHTML(data, oggiReal) {
-  const oggi = oggiReal || new Date();
+  const oggi = oggiReal || nowBusiness();
   const allClosures = getAllUpcomingClosures(data, oggi, 365);
   if (!allClosures.length) return "";
 
@@ -128,7 +128,7 @@ function _calcolaTitoloOrari(transizione, nomeStagione) {
 }
 
 function createFooterHTML(data, giornoPartenza) {
-  const oggiReal = giornoPartenza || new Date();
+  const oggiReal = giornoPartenza || nowBusiness();
   const oggi = new Date(oggiReal);
   oggi.setHours(0, 0, 0, 0);
 
