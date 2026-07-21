@@ -198,10 +198,6 @@ function createFooterHTML(data, giornoPartenza) {
     giorniDaVisualizzare.push(d);
   }
 
-  // Differenza di fuso attività→visitatore, per mostrare gli orari
-  // anche convertiti nell'ora locale di chi guarda.
-  const diffHours = -getTimezoneOffsetHours();
-
   var orariHtmlItems = [];
   for (var i = 0; i < giorniDaVisualizzare.length; i++) {
     var dataDelGiorno = giorniDaVisualizzare[i];
@@ -243,14 +239,22 @@ function createFooterHTML(data, giornoPartenza) {
       }
     }
 
-    // Mostra anche l'orario convertito nel fuso del visitatore
+    // Mostra anche l'orario convertito nel fuso del visitatore.
+    // L'offset è calcolato per la data di QUESTO giorno → gestisce i cambi
+    // di ora legale che possono cadere tra oggi e un giorno futuro.
+    var diffHoursGiorno = -getTimezoneOffsetHoursForDate(dataDelGiorno);
     if (
-      Math.abs(diffHours) > 0.01 &&
+      Math.abs(diffHoursGiorno) > 0.01 &&
       testoOrario &&
       !testoOrario.toLowerCase().includes("chiuso")
     ) {
-      const orarioConvertito = convertOrarioString(testoOrario, diffHours);
-      testoOrario = `${testoOrario} (${orarioConvertito})`;
+      const orarioConvertito = convertOrarioString(
+        testoOrario,
+        diffHoursGiorno,
+        dataDelGiorno,
+        data.nomiGiorni,
+      );
+      testoOrario = formattaOrarioConFuso(testoOrario, orarioConvertito);
     }
 
     if (i === 0) {

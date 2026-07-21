@@ -162,9 +162,6 @@ function aggiornaColoreOrari(data) {
     giorniDaVisualizzare.push(d);
   }
 
-  // Differenza di fuso attività→visitatore (per gli orari convertiti)
-  const diffHours = -getTimezoneOffsetHours();
-
   // ── Aggiorna l'ora locale del visitatore e lo scarto di fuso ──
   const userNow = getUserNow();
   const userTimeEl = document.getElementById("user-local-time-display");
@@ -219,14 +216,22 @@ function aggiornaColoreOrari(data) {
         }
       }
 
-      // Orario convertito nel fuso del visitatore
+      // Orario convertito nel fuso del visitatore.
+      // Offset per la data di QUESTO giorno → gestisce i cambi di ora legale
+      // che possono cadere tra oggi e un giorno futuro.
+      const diffHoursGiorno = -getTimezoneOffsetHoursForDate(dataDelGiorno);
       if (
-        Math.abs(diffHours) > 0.01 &&
+        Math.abs(diffHoursGiorno) > 0.01 &&
         testoOrario &&
         !testoOrario.toLowerCase().includes("chiuso")
       ) {
-        const orarioConvertito = convertOrarioString(testoOrario, diffHours);
-        testoOrario = `${testoOrario} (${orarioConvertito})`;
+        const orarioConvertito = convertOrarioString(
+          testoOrario,
+          diffHoursGiorno,
+          dataDelGiorno,
+          data.nomiGiorni,
+        );
+        testoOrario = formattaOrarioConFuso(testoOrario, orarioConvertito);
       }
 
       if (i === 0) {

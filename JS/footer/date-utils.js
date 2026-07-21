@@ -48,9 +48,11 @@ function _shopParts(instant) {
   return obj;
 }
 
-// Offset (in minuti) del fuso dell'attività rispetto a UTC, adesso
-function getShopOffsetMinutes() {
-  const now = new Date();
+// Offset (in minuti) del fuso dell'attività rispetto a UTC per un dato istante.
+// Passare un istante specifico serve per gestire correttamente i cambi di ora
+// legale sui giorni futuri.
+function getShopOffsetMinutesForDate(refInstant) {
+  const now = refInstant || new Date();
   const o = _shopParts(now);
   let h = Number.parseInt(o.hour, 10);
   if (h === 24) h = 0;
@@ -63,6 +65,11 @@ function getShopOffsetMinutes() {
     Number.parseInt(o.second, 10),
   );
   return (asUTC - now.getTime()) / 60000;
+}
+
+// Offset (in minuti) del fuso dell'attività rispetto a UTC, adesso
+function getShopOffsetMinutes() {
+  return getShopOffsetMinutesForDate(new Date());
 }
 
 // "Adesso" nell'ora dell'attività. I getter LOCALI di questo Date
@@ -95,29 +102,74 @@ function getUserNow() {
   return new Date();
 }
 
-// Differenza in ore tra il fuso dell'attività e quello del visitatore
-function getTimezoneOffsetHours() {
-  const shopOffset = getShopOffsetMinutes();
-  const userOffset = -new Date().getTimezoneOffset();
+// Differenza in ore tra il fuso dell'attività e quello del visitatore,
+// calcolata per una data specifica (tiene conto dell'ora legale di quel
+// giorno, sia dell'attività che del visitatore).
+function getTimezoneOffsetHoursForDate(refInstant) {
+  const d = refInstant || new Date();
+  const shopOffset = getShopOffsetMinutesForDate(d);
+  const userOffset = -d.getTimezoneOffset();
   return (shopOffset - userOffset) / 60;
 }
 
-// Converte gli orari testuali (HH:MM) sommando diffHours: usato per
-// mostrare l'equivalente degli orari nel fuso del visitatore.
-function convertOrarioString(orarioStr, diffHours) {
+// Differenza in ore tra il fuso dell'attività e quello del visitatore, adesso
+function getTimezoneOffsetHours() {
+  return getTimezoneOffsetHoursForDate(new Date());
+}
+
+// Converte gli orari testuali (HH:MM) nel fuso del visitatore.
+// - Lavora in MINUTI totali → i fusi con mezz'ora (es. +5:30) sono corretti.
+// - Se un orario scavalca la mezzanotte e vengono passati baseDate + nomiGiorni,
+//   l'orario viene scritto col NOME del giorno reale (es. "Mercoledì alle 05:00").
+//   Se baseDate/nomiGiorni non ci sono, ripiega sul marcatore (+1g)/(-1g).
+//
+// Parametri:
+//   orarioStr  — stringa con gli orari (es. "09:00 - 22:00")
+//   diffHours  — differenza in ore da applicare (può essere frazionaria)
+//   baseDate   — (opzionale) Date del giorno a cui appartengono gli orari
+//   nomiGiorni — (opzionale) array nomi giorni indicizzato come getDay() (0 = Domenica)
+function convertOrarioString(orarioStr, diffHours, baseDate, nomiGiorni) {
   if (Math.abs(diffHours) < 0.01) return orarioStr;
-  const regex = /(\d{1,2}:\d{2})/g;
-  const matches = orarioStr.match(regex);
-  if (!matches) return orarioStr;
-  let result = orarioStr;
-  for (const match of matches) {
-    const [h, m] = match.split(":").map(Number);
-    let newH = h + diffHours;
-    newH = ((newH % 24) + 24) % 24;
-    const newStr = `${String(Math.floor(newH)).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
-    result = result.replace(match, newStr);
-  }
-  return result;
+  const deltaMin = Math.round(diffHours * 60);
+
+  return orarioStr.replace(/(\d{1,2}):(\d{2})/g, (match, hh, mm) => {
+    const totale = Number(hh) * 60 + Number(mm) + deltaMin;
+    const shift = Math.floor(totale / 1440); // -1 = giorno prima, +1 = giorno dopo
+    const wrapped = ((totale % 1440) + 1440) % 1440;
+    const nh = Math.floor(wrapped / 60);
+    const nm = wrapped % 60;
+
+    let s = `${String(nh).padStart(2, "0")}:${String(nm).padStart(2, "0")}`;
+
+    if (shift !== 0) {
+      if (baseDate && nomiGiorni) {
+        const d = new Date(baseDate);
+        d.setDate(d.getDate() + shift);
+        const nome = nomiGiorni[d.getDay()];
+        // Es. "Mercoledì alle 05:00" quando l'orario finisce in un altro giorno
+        if (nome) s = `${nome} alle ${s}`;
+        else s += shift > 0 ? `(+${shift}g)` : `(${shift}g)`;
+      } else {
+        s += shift > 0 ? `(+${shift}g)` : `(${shift}g)`;
+      }
+    }
+    return s;
+  });
+}
+
+// Compone la riga orario con le etichette che chiariscono quale blocco è
+// l'ora dell'attività e quale l'ora locale del visitatore.
+//   testoBase        → orario nel fuso dell'attività (es. "Domenica: 09:00 - 22:00")
+//   orarioConvertito → stesso orario convertito nel fuso del visitatore
+function formattaOrarioConFuso(testoBase, orarioConvertito) {
+  const lbl =
+    "font-size:0.8em;opacity:0.55;font-weight:400;letter-spacing:0.02em;";
+  return (
+    testoBase +
+    ` <span style="${lbl}">(negozio)</span> → ` +
+    orarioConvertito +
+    ` <span style="${lbl}">(tua ora)</span>`
+  );
 }
 
 // Testo leggibile della differenza di fuso (plurale corretto)
