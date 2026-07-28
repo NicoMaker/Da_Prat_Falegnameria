@@ -162,7 +162,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (typeof EntryPoint !== "undefined") {
           EntryPoint.set(sezione || "prodotti");
         }
-        window.open(item.link, "_blank");
+        // 🔁 Apertura nella STESSA finestra (non più _blank)
+        window.location.href = item.link;
       }
     });
 
