@@ -7,8 +7,8 @@
    funzionare esattamente come prima.
    ============================================================ */
 
-@import url("category-colors/01-badge-card.css");
-@import url("category-colors/02-badge-pagina-prodotto.css");
-@import url("category-colors/03-override-bottoni-filtro.css");
-@import url("category-colors/04-badge-responsive.css");
-@import url("category-colors/05-filtro-select-colori-forzati.css");
+@import url("category-colors/badge/badge-card.css");
+@import url("category-colors/badge/badge-pagina-prodotto.css");
+@import url("category-colors/filtri/override-bottoni-filtro.css");
+@import url("category-colors/badge/badge-responsive.css");
+@import url("category-colors/filtri/filtro-select-colori-forzati.css");

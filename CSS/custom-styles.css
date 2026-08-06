@@ -7,14 +7,14 @@
    funzionare esattamente come prima.
    ============================================================ */
 
-@import url("custom-styles/01-logo-header-layout.css");
-@import url("custom-styles/02-filtro-select-scuro.css");
-@import url("custom-styles/03-sezioni-spacing-nav-active.css");
-@import url("custom-styles/04-hero-override.css");
-@import url("custom-styles/05-hero-mobile.css");
-@import url("custom-styles/06-hamburger-colore.css");
-@import url("custom-styles/07-dropdown-nav-desktop.css");
-@import url("custom-styles/08-dropdown-nav-mobile.css");
-@import url("custom-styles/09-porte-tabs.css");
-@import url("custom-styles/10-materiale-card-subgrid.css");
-@import url("custom-styles/11-materiale-card-immagine-cover.css");
+@import url("custom-styles/header/logo-header-layout.css");
+@import url("custom-styles/filtri/filtro-select-scuro.css");
+@import url("custom-styles/nav/sezioni-spacing-nav-active.css");
+@import url("custom-styles/hero/hero-override.css");
+@import url("custom-styles/hero/hero-mobile.css");
+@import url("custom-styles/menu/hamburger-colore.css");
+@import url("custom-styles/nav/dropdown-nav-desktop.css");
+@import url("custom-styles/nav/dropdown-nav-mobile.css");
+@import url("custom-styles/componenti/porte-tabs.css");
+@import url("custom-styles/cards/materiale-card-subgrid.css");
+@import url("custom-styles/cards/materiale-card-immagine-cover.css");

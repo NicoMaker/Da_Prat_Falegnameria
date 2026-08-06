@@ -7,14 +7,14 @@
    funzionare esattamente come prima.
    ============================================================ */
 
-@import url("product-page/01-container-card.css");
-@import url("product-page/02-gallery-slider-frecce.css");
-@import url("product-page/03-slider-dots.css");
-@import url("product-page/04-info-prodotto-descrizione.css");
-@import url("product-page/05-back-button.css");
-@import url("product-page/06-responsive-base.css");
-@import url("product-page/07-touch-devices-fix.css");
-@import url("product-page/08-slider-nav-override.css");
-@import url("product-page/09-responsive-completo.css");
-@import url("product-page/10-breadcrumb-dropdown.css");
-@import url("product-page/11-slider-alternativo.css");
+@import url("product-page/layout/container-card.css");
+@import url("product-page/gallery/gallery-slider-frecce.css");
+@import url("product-page/slider/slider-dots.css");
+@import url("product-page/info/info-prodotto-descrizione.css");
+@import url("product-page/navigazione/back-button.css");
+@import url("product-page/responsive/responsive-base.css");
+@import url("product-page/responsive/touch-devices-fix.css");
+@import url("product-page/slider/slider-nav-override.css");
+@import url("product-page/responsive/responsive-completo.css");
+@import url("product-page/navigazione/breadcrumb-dropdown.css");
+@import url("product-page/slider/slider-alternativo.css");
