@@ -1,0 +1,22 @@
+/* ============================================================
+   Pulsante di chiusura del menu mobile
+   Estratto da: styles.css (righe originali 1573-1590)
+   ============================================================ */
+
+/* ===== Mobile menu close button ===== */
+.mobile-menu-close {
+  display: block;
+  margin-left: auto;
+  margin-bottom: var(--spacing-sm);
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 4px;
+  transition: color var(--transition-fast);
+}
+.mobile-menu-close:hover {
+  color: var(--color-gold);
+}

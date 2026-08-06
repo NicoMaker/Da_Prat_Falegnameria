@@ -1,0 +1,64 @@
+/* ============================================================
+   Tabs categoria Porte
+   Estratto da: custom-styles.css (righe originali 284-342)
+   ============================================================ */
+
+/* ===== PORTE TABS ===== */
+.porte-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.porte-tabs {
+  display: flex;
+  gap: 0;
+  border-radius: 50px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.porte-tab {
+  padding: 10px 24px;
+  border: none;
+  background: transparent;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-anthracite, #2c2c2c);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.porte-tab:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.porte-tab.active {
+  background: var(--color-anthracite, #2c2c2c);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.porte-tab-content {
+  display: none;
+}
+
+.porte-tab-content.active {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .porte-tabs {
+    flex-direction: column;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 320px;
+  }
+  .porte-tab {
+    border-radius: 10px;
+    text-align: center;
+  }
+}

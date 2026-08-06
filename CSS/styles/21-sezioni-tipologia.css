@@ -1,0 +1,95 @@
+/* ============================================================
+   Sezioni Tipologia (Scorrevoli / Porte Ingresso)
+   Estratto da: styles.css (righe originali 1787-1877)
+   ============================================================ */
+
+/* ===== TIPOLOGIA SECTIONS (Scorrevoli / Porte Ingresso) ===== */
+.tipologia-section {
+  padding: var(--spacing-2xl) 0;
+  background: var(--color-off-white);
+}
+.tipologia-section--dark {
+  background: var(--color-anthracite);
+}
+.tipologia-section--dark .tipologia-title,
+.tipologia-section--dark .tipologia-eyebrow {
+  color: var(--color-white);
+}
+.tipologia-section--dark .tipologia-title {
+  color: var(--color-white);
+}
+.tipologia-section--dark .tipologia-eyebrow {
+  color: var(--color-gold);
+}
+.tipologia-section--dark .tipologia-text {
+  color: rgba(255, 255, 255, 0.65);
+}
+.tipologia-section--dark .materiale-tag {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.tipologia-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+.tipologia-inner--reverse {
+  direction: rtl;
+}
+.tipologia-inner--reverse > * {
+  direction: ltr;
+}
+
+.tipologia-content {
+  padding: var(--spacing-lg) 0;
+}
+.tipologia-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-md);
+}
+.tipologia-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1;
+}
+.tipologia-text {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-lg);
+  font-size: 0.95rem;
+}
+.tipologia-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tipologia-image {
+  overflow: hidden;
+}
+.tipologia-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .tipologia-inner,
+  .tipologia-inner--reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+  }
+  .tipologia-inner--reverse > * {
+    direction: ltr;
+  }
+}

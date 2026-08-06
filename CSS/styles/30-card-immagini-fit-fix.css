@@ -1,0 +1,32 @@
+/* ============================================================
+   Fix visualizzazione immagini intere nelle card
+   Estratto da: styles.css (righe originali 2225-2252)
+   ============================================================ */
+
+/* ===== MOSTRA TUTTE LE IMMAGINI INTERE ===== */
+.Progetti-card .immagine,
+.novita-card .immagine,
+.materiale-card .materiale-image,
+#oscuranti-grid .immagine,
+#ombreggiatura-grid .immagine {
+  object-fit: contain !important;
+  background-color: #ffffff; /* o il colore che preferisci per le bande */
+}
+
+/* Se vuoi che le bande siano trasparenti (per vedere lo sfondo della card) */
+.Progetti-card .immagine,
+.novita-card .immagine {
+  background-color: transparent !important;
+}
+
+/* Fallback CSS per evitare righe isolate */
+.Progetti-card .descrizione,
+.materiale-text,
+.tipologia-text,
+.consulenza-text,
+.product-description p,
+.footer-text {
+  widows: 2;
+  orphans: 2;
+  text-wrap: pretty;
+}

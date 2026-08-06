@@ -1,0 +1,24 @@
+/* ============================================================
+   Spacing sezioni materiali + stato nav attivo
+   Estratto da: custom-styles.css (righe originali 41-59)
+   ============================================================ */
+
+/* Scorrevoli section */
+#scorrevoli {
+  background: var(--color-off-white);
+}
+
+/* Sezioni materiali spacing */
+#serramenti,
+#scorrevoli,
+#porte-ingresso {
+  padding: var(--spacing-2xl) 0;
+}
+
+/* Active nav link highlight */
+.nav-link.active {
+  color: var(--color-gold) !important;
+}
+.nav-link.active::after {
+  width: 100% !important;
+}

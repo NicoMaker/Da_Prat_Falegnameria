@@ -1,0 +1,17 @@
+/* ============================================================
+   Disabilita overlay hover card + padding sezioni finali
+   Estratto da: styles.css (righe originali 2348-2359)
+   ============================================================ */
+
+/* Rimuovi l'icona open_in_new che può rompere il layout */
+.card-hover-overlay {
+  display: none;
+}
+
+#serramenti,
+#scorrevoli,
+#porte-ingresso,
+#oscuranti,
+#sistemi-ombreggiatura {
+  padding: var(--spacing-2xl) 0;
+}

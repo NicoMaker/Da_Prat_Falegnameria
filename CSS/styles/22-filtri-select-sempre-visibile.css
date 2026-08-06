@@ -1,0 +1,34 @@
+/* ============================================================
+   Filtro: select semplice sempre visibile
+   Estratto da: styles.css (righe originali 1878-1906)
+   ============================================================ */
+
+/* ===== FILTER: select semplice sempre visibile ===== */
+#filter-buttons {
+  display: none !important;
+}
+#filter-select-wrapper {
+  display: block !important;
+  width: 100%;
+  max-width: 280px;
+}
+#filter-select {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  background-color: var(--color-white);
+  color: var(--text-primary);
+  appearance: auto;
+  -webkit-appearance: auto;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+#filter-select:focus {
+  border-color: var(--color-gold);
+  outline: none;
+}

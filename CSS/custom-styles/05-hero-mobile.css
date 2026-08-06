@@ -1,0 +1,41 @@
+/* ============================================================
+   Override Hero per mobile
+   Estratto da: custom-styles.css (righe originali 131-166)
+   ============================================================ */
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 80px;
+  }
+
+  .logo {
+    height: 150px !important;
+  }
+
+  .hero-section {
+    height: auto !important;
+    min-height: unset !important;
+    flex-direction: column !important;
+  }
+
+  .hero-image {
+    width: 100% !important;
+    height: 60vw !important;
+    min-height: 220px !important;
+    max-height: 340px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .hero-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .hero-content {
+    padding-top: 1.5rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}

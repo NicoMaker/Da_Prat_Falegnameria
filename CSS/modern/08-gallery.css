@@ -1,0 +1,37 @@
+/* ============================================================
+   Gallery: hover immagini
+   Estratto da: modern.css (righe originali 465-496)
+   ============================================================ */
+
+/* ---------- 8. Gallery ---------- */
+.gallery-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.45s var(--ease-out),
+    box-shadow 0.45s var(--ease-out);
+}
+.gallery-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(4, 9, 25, 0.45), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+.gallery-item:hover::after {
+  opacity: 1;
+}
+.gallery-item img {
+  transition: transform 0.9s var(--ease-out);
+}
+.gallery-item:hover img {
+  transform: scale(1.08);
+}

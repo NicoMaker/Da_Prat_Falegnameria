@@ -1,0 +1,15 @@
+/* ============================================================
+   Select filtro: colori bianco/nero forzati
+   Estratto da: category-colors.css (righe originali 104-113)
+   ============================================================ */
+
+/* ── Forza select filtro sempre bianco/nero (override definitivo) ─────── */
+#filter-select,
+#filter-select:focus,
+#filter-select:active {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #cccccc !important;
+  outline: none !important;
+  box-shadow: none !important;
+}

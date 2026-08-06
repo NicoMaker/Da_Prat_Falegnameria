@@ -1,0 +1,56 @@
+/* ============================================================
+   Pagina prodotto: card, slider, bottoni
+   Estratto da: modern.css (righe originali 533-583)
+   ============================================================ */
+
+/* ---------- 10. Pagina prodotto ---------- */
+.product-detail-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+.product-title {
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.main-product-image,
+.slider-container {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.slide img,
+.main-product-image img {
+  transition: transform 0.8s var(--ease-out);
+}
+.main-product-image:hover img {
+  transform: scale(1.04);
+}
+.product-feature {
+  transition: transform 0.3s var(--ease-out);
+}
+.product-feature:hover {
+  transform: translateX(4px);
+}
+.back-button {
+  border-radius: 999px;
+  transition:
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out);
+}
+.back-button:hover {
+  transform: translateX(-4px);
+  box-shadow: var(--shadow-md);
+}
+.slider-btn {
+  border-radius: 50%;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition:
+    transform 0.25s var(--ease-out),
+    background 0.25s ease;
+}
+.slider-btn:hover {
+  transform: translateY(-50%) scale(1.12);
+}

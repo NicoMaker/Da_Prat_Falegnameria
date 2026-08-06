@@ -1,0 +1,54 @@
+/* ============================================================
+   Menu mobile (apertura/chiusura base)
+   Estratto da: styles.css (righe originali 251-300)
+   ============================================================ */
+
+/* ===== Mobile Menu ===== */
+.mobile-menu-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  cursor: pointer;
+}
+@media (min-width: 900px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-white);
+  transition: var(--transition-fast);
+}
+
+.mobile-menu {
+  display: none;
+  background: var(--color-anthracite);
+  padding: var(--spacing-md);
+}
+.mobile-menu.active {
+  display: block;
+}
+
+.mobile-nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+.mobile-nav-link {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  display: block;
+  padding: var(--spacing-xs) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.mobile-nav-link:hover {
+  color: var(--color-gold);
+}

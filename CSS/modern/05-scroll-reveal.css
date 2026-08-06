@@ -1,0 +1,34 @@
+/* ============================================================
+   Reveal degli elementi allo scroll
+   Estratto da: modern.css (righe originali 356-384)
+   ============================================================ */
+
+/* ---------- 5. Sezioni & reveal allo scroll ---------- */
+.materiali-section {
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+/* Stato iniziale + entrata degli elementi osservati */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(38px);
+  transition:
+    opacity var(--reveal-duration) var(--ease-out),
+    transform var(--reveal-duration) var(--ease-out);
+  transition-delay: calc(var(--reveal-index, 0) * 90ms);
+  will-change: opacity, transform;
+}
+[data-reveal="left"] {
+  transform: translateX(-44px);
+}
+[data-reveal="right"] {
+  transform: translateX(44px);
+}
+[data-reveal="zoom"] {
+  transform: scale(0.94) translateY(20px);
+}
+[data-reveal].reveal-in {
+  opacity: 1;
+  transform: none;
+}

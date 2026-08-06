@@ -1,0 +1,14 @@
+/* ============================================================
+   Footer coerente col manifesto (linea dorata)
+   Estratto da: modern.css (righe originali 1041-1049)
+   ============================================================ */
+
+/* ── Footer coerente col manifesto ── */
+.site-footer::before {
+  background: linear-gradient(
+    90deg,
+    transparent 15%,
+    var(--color-gold) 50%,
+    transparent 85%
+  );
+}

@@ -1,0 +1,70 @@
+/* ============================================================
+   Slider - indicatori dots + colori per categoria
+   Estratto da: styles.css (righe originali 2159-2224)
+   ============================================================ */
+
+/* Dots indicators */
+.slider-dots {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.slider-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ccc;
+  margin: 0 6px;
+  cursor: pointer;
+  border: none;
+  transition: background 0.3s;
+}
+
+.slider-dot.active {
+  background: #2c3e50;
+  transform: scale(1.2);
+}
+
+/* Categorie colors */
+.slide-interne .materiale-card {
+  border-left: 6px solid #3498db;
+}
+.slide-scorrevoli .materiale-card {
+  border-left: 6px solid #2ecc71;
+}
+.slide-blindate .materiale-card {
+  border-left: 6px solid #e74c3c;
+}
+
+.slide-interne .slider-slide-title {
+  color: #3498db;
+}
+.slide-scorrevoli .slider-slide-title {
+  color: #2ecc71;
+}
+.slide-blindate .slider-slide-title {
+  color: #e74c3c;
+}
+
+.slider-slide-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  .slider-slide .materiale-card {
+    max-width: 100%;
+  }
+}
+
+.section-subtitle {
+  color: var(--color-serramenti) !important;
+}

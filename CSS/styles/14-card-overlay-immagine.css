@@ -1,0 +1,55 @@
+/* ============================================================
+   Overlay scuro sull'immagine della card
+   Estratto da: styles.css (righe originali 1480-1530)
+   ============================================================ */
+
+/* Overlay scuro sull'immagine */
+.Progetti-card .container-immagine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0);
+  transition: background var(--transition-base);
+  pointer-events: none;
+}
+.Progetti-card:hover .container-immagine::after {
+  background: rgba(26, 26, 26, 0.18);
+}
+
+.Progetti-card .Progetti-card-content {
+  padding: 1.2rem 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.4rem;
+  align-items: center;
+  text-align: center;
+}
+
+.Progetti-card .nome {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--color-dark);
+  transition: color var(--transition-fast);
+}
+.Progetti-card:hover .nome {
+  color: var(--color-gold);
+}
+
+.Progetti-card .descrizione {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.no-results {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 3rem;
+  font-size: 1rem;
+  grid-column: 1/-1;
+}

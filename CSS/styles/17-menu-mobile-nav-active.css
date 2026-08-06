@@ -1,0 +1,10 @@
+/* ============================================================
+   Stato attivo nav mobile
+   Estratto da: styles.css (righe originali 1591-1596)
+   ============================================================ */
+
+/* ===== Mobile nav active ===== */
+.mobile-nav-link.active {
+  color: var(--color-gold) !important;
+  border-bottom-color: var(--color-gold);
+}
