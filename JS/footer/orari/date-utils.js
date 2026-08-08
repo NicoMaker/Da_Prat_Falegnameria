@@ -22,7 +22,6 @@
 // - convertOrarioString() converte gli orari nel fuso del visitatore.
 // ============================================================
 
-
 function configuraTimezone(data) {
   if (data && data.timezone) {
     _shopTimezone = data.timezone;

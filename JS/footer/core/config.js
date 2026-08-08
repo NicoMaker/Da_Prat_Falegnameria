@@ -12,7 +12,9 @@
 // fuso da data.timezone). Così tutta la logica orari è ancorata al
 // fuso dell'attività, non a quello del visitatore.
 let getNow = () =>
-  typeof TEST_DATE !== "undefined" && TEST_DATE ? new Date(TEST_DATE) : new Date();
+  typeof TEST_DATE !== "undefined" && TEST_DATE
+    ? new Date(TEST_DATE)
+    : new Date();
 
 // Anno mostrato nel footer al momento della costruzione. Guardia: se la scheda
 // resta aperta oltre la mezzanotte del 1° gennaio e il timer di mezzanotte non
