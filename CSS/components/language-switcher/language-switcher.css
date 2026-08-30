@@ -1,0 +1,126 @@
+/* =========================================================
+   Da Prat - Selettore lingua IT / EN
+   ========================================================= */
+
+/* Posizionato in basso a sinistra: l'header (logo, menu, hamburger) occupa
+   l'area in alto, mentre WhatsApp/telefono/torna-su sono in basso a destra
+   (right: 22px). In basso a sinistra è l'unica zona sempre libera su tutte
+   le pagine, quindi il selettore resta sempre visibile e non copre nulla. */
+.lang-switcher {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px;
+  background: var(--black, #2c2416);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-button, 50px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.lang-switcher-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  color: var(--accent-cream, #fff8e7);
+  font-family: var(--font-body, "Inter", sans-serif);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 8px 13px;
+  border-radius: var(--radius-button, 50px);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast, 0.2s ease),
+    color var(--transition-fast, 0.2s ease),
+    transform var(--transition-fast, 0.2s ease);
+}
+
+.lang-switcher-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-1px);
+}
+
+.lang-switcher-btn:focus-visible {
+  outline: 2px solid var(--accent-warm, #bf8b67);
+  outline-offset: 2px;
+}
+
+.lang-switcher-btn.is-active {
+  background: var(--accent-warm, #bf8b67);
+  color: var(--black, #2c2416);
+}
+
+.lang-flag {
+  display: block;
+  width: 20px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+}
+
+.lang-code {
+  font-size: 11px;
+}
+
+@media (max-width: 640px) {
+  .lang-switcher {
+    bottom: 14px;
+    left: 14px;
+    padding: 4px;
+  }
+
+  .lang-switcher-btn {
+    padding: 7px 10px;
+    font-size: 11px;
+  }
+
+  .lang-flag {
+    width: 18px;
+    height: 13px;
+  }
+}
+
+/* =========================================================
+   Pulizia interfaccia standard di Google Website Translator:
+   il sito usa il widget solo come motore di traduzione,
+   l'interfaccia visibile è interamente sostituita da
+   .lang-switcher qui sopra.
+   ========================================================= */
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover,
+.goog-text-highlight,
+.goog-te-spinner-pos,
+#google_translate_element {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  box-shadow: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+iframe.skiptranslate {
+  display: none !important;
+}

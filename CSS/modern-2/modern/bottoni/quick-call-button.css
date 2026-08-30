@@ -1,0 +1,64 @@
+/* ============================================================
+   Pulsante flottante chiamata rapida
+   Estratto da: modern.css (righe originali 772-830)
+   ============================================================ */
+
+/* ── Contatto sempre accessibile (stile Duca Pipe) ── */
+.quick-call {
+  position: fixed;
+  right: 22px;
+  bottom: 82px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-md);
+  z-index: 1100;
+  transition:
+    transform 0.3s var(--ease-out),
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.quick-call .material-icons {
+  font-size: 22px;
+}
+.quick-call:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: var(--color-porte);
+  box-shadow: 0 14px 30px -10px rgba(161, 92, 62, 0.6);
+}
+.quick-call::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--color-gold);
+  opacity: 0;
+  animation: callPulse 3s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes callPulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  60% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.quick-call:focus-visible {
+  outline: 3px solid var(--color-gold-light);
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .quick-call::after {
+    animation: none;
+  }
+}

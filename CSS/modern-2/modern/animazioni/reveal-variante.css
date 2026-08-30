@@ -1,0 +1,21 @@
+/* ============================================================
+   Variante dissolvenze reveal piu morbide
+   Estratto da: modern.css (righe originali 722-738)
+   ============================================================ */
+
+/* ── Dissolvenze più morbide e ritmate (Montenellago/Oleissimo) ── */
+:root {
+  --reveal-duration: 1.1s;
+}
+[data-reveal] {
+  transform: translateY(24px);
+}
+[data-reveal="left"] {
+  transform: translateX(-32px);
+}
+[data-reveal="right"] {
+  transform: translateX(32px);
+}
+[data-reveal="zoom"] {
+  transform: scale(0.96) translateY(14px);
+}

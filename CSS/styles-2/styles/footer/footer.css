@@ -1,0 +1,358 @@
+/* ============================================================
+   Footer completo (colonne, social, orari, chiusure, mappa, copyright)
+   Estratto da: styles.css (righe originali 848-1201)
+   ============================================================ */
+
+/* ===== FOOTER ===== */
+
+/* ── Struttura base (mobile-first, 1 colonna) ── */
+.site-footer {
+  background: var(--color-anthracite);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-xl);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xl);
+  align-items: flex-start;
+}
+
+/* Tablet: 2 colonne */
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+/* Desktop: 3 colonne */
+@media (min-width: 1024px) {
+  .footer-grid {
+    grid-template-columns: 1.8fr 1.4fr 1fr;
+  }
+}
+
+/* Ogni colonna come flex colonna */
+.footer-grid > .footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-section {
+  padding-top: 1rem;
+}
+
+/* ── Titoli ── */
+.footer-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-white);
+  margin-bottom: var(--spacing-xs);
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.footer-subtitle {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: var(--spacing-sm);
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Spazio tra "info aziendale" e il sottotitolo "Contatti" */
+.footer-section-tradizione-contatti .footer-subtitle {
+  margin-top: 1.5rem !important;
+}
+
+/* ── Testo e lista ── */
+.footer-text {
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: var(--spacing-md);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.footer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.footer-item .material-icons {
+  font-size: 16px;
+  color: var(--color-gold);
+  margin-top: 2px;
+  flex-shrink: 0;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease;
+  vertical-align: middle;
+}
+
+.footer-item:hover .material-icons {
+  transform: scale(1.2);
+  color: var(--color-gold-light);
+}
+
+/* Link nel footer */
+.footer-list .footer-item a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  position: relative;
+}
+
+.footer-list .footer-item a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-gold-light);
+  transition: width 0.3s ease;
+}
+
+.footer-list .footer-item a:hover {
+  color: var(--color-gold-light);
+}
+
+.footer-list .footer-item a:hover::after {
+  width: 100%;
+}
+
+/* ── Social ── */
+.social-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: 1.5rem;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+  opacity: 1;
+}
+
+.social-links a:hover {
+  background-color: rgba(184, 154, 90, 0.25);
+  transform: translateY(-4px) scale(1.1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.social-links a img {
+  width: 24px;
+  height: 24px;
+  transition: filter 0.25s ease;
+}
+
+.social-links a:hover img {
+  filter: brightness(1.15) drop-shadow(0 0 4px rgba(184, 154, 90, 0.6));
+}
+
+/* ── Legenda orari ── */
+.legenda-orari {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 0.8rem;
+  margin-top: 0;
+}
+
+.legenda-orari div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ── Chiusure ── */
+.footer-closure-alert {
+  background: rgba(220, 50, 50, 0.12);
+  border-left: 3px solid rgba(220, 80, 80, 0.7);
+  padding: 10px 14px;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.82rem;
+  margin-top: 10px;
+  color: rgba(255, 180, 180, 0.9);
+}
+
+/* ── Prossime chiusure — widget elegante ── */
+.footer-future-closures {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: rgba(184, 154, 90, 0.07);
+  border: 1px solid rgba(184, 154, 90, 0.2);
+  border-radius: 8px;
+  position: relative;
+}
+
+.footer-future-closures-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+.ffc-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.ffc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ffc-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ffc-date {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-gold-light);
+  white-space: nowrap;
+  min-width: 44px;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ffc-arrow {
+  color: rgba(184, 154, 90, 0.5);
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+
+.ffc-body {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ffc-motivo {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ffc-badge {
+  margin-left: auto;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(184, 154, 90, 0.9);
+  background: rgba(184, 154, 90, 0.12);
+  border: 1px solid rgba(184, 154, 90, 0.25);
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Mappa ── */
+.footer-map {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
+}
+
+#map {
+  width: 100%;
+  height: 280px;
+  background: #333;
+  margin-bottom: var(--spacing-lg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Copyright ── */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: var(--spacing-md);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.8rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  letter-spacing: 0.05em;
+}
+
+/* ── Orario oggi evidenziato ── */
+#orari-footer li:first-child {
+  font-size: 0.95rem;
+}
+
+/* ── Disabilita hover su touch ── */
+@media (hover: none) and (pointer: coarse) {
+  .footer-list .footer-item a:hover {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  .footer-list .footer-item a:hover::after {
+    width: 0 !important;
+  }
+  .footer-item:hover .material-icons {
+    transform: none !important;
+    color: var(--color-gold) !important;
+  }
+  .social-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}

@@ -1,0 +1,18 @@
+/* ============================================================
+   Hero eyebrow (testo contesto sopra il titolo)
+   Estratto da: modern.css (righe originali 708-721)
+   ============================================================ */
+
+/* ── Eyebrow hero (contesto artigianale, stile Duca Pipe) ── */
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold-light);
+}
+.hero-eyebrow .sep {
+  margin: 0 0.6em;
+  opacity: 0.6;
+}

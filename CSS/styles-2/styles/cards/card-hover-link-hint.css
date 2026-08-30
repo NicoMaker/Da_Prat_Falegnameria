@@ -1,0 +1,47 @@
+/* ============================================================
+   Card hover overlay e link hint
+   Estratto da: styles.css (righe originali 1531-1572)
+   ============================================================ */
+
+/* ===== Card hover overlay & link hint ===== */
+.container-immagine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  z-index: 2;
+}
+.card-hover-overlay .material-icons {
+  font-size: 2rem;
+  color: white;
+  background: var(--color-gold);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+.Progetti-card:hover .card-hover-overlay {
+  opacity: 1;
+}
+
+.card-link-hint {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-top: 0.5rem;
+  text-align: center;
+}

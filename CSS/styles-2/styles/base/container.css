@@ -1,0 +1,11 @@
+/* ============================================================
+   Container layout centrale
+   Estratto da: styles.css (righe originali 95-100)
+   ============================================================ */
+
+/* ===== Container ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}

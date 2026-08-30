@@ -1,6 +1,10 @@
 (function () {
   // Carica le parole corte dal JSON
-  var shortWordsPromise = fetch("data/short-words.json")
+  var shortWordsPromise = fetch(
+    typeof JsonPaths !== "undefined"
+      ? JsonPaths.get("short-words.json")
+      : "JSON/short-words.json",
+  )
     .then(function (response) {
       return response.json();
     })

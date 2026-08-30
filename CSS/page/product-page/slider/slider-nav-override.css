@@ -1,0 +1,23 @@
+/* ============================================================
+   Override posizione frecce slider (priorita massima)
+   Estratto da: product-page.css (righe originali 305-322)
+   ============================================================ */
+
+/* Sovrascrive qualsiasi altro stile da altri CSS */
+.slider-container .prev,
+.slider-container .next {
+  transform: translateY(-50%) !important;
+  position: absolute !important;
+  top: 50% !important;
+}
+
+.slider-container .prev:hover,
+.slider-container .next:hover,
+.slider-container .prev:active,
+.slider-container .next:active,
+.slider-container .prev:focus,
+.slider-container .next:focus {
+  transform: translateY(-50%) !important;
+  position: absolute !important;
+  top: 50% !important;
+}

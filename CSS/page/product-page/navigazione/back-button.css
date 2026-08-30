@@ -1,0 +1,40 @@
+/* ============================================================
+   Pulsante Torna indietro
+   Estratto da: product-page.css (righe originali 200-234)
+   ============================================================ */
+
+/* Back button */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 0;
+  color: var(--color-dark, #1a1a1a);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-top: 1px solid #eee;
+  width: 100%;
+  transition:
+    color var(--transition-fast),
+    gap var(--transition-fast);
+  background: none;
+}
+
+.back-button:hover {
+  color: var(--entry-accent, var(--color-gold, #b2a68d));
+  gap: 12px;
+  background: none;
+  transform: none;
+  box-shadow: none;
+}
+
+.back-button .material-icons {
+  font-size: 16px;
+  transition: transform var(--transition-base);
+}
+
+.back-button:hover .material-icons {
+  transform: translateX(-4px);
+}

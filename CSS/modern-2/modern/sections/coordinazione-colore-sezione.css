@@ -1,0 +1,45 @@
+/* ============================================================
+   Coordinazione cromatica per sezione (accento dinamico via JS)
+   Estratto da: modern.css (righe originali 667-706)
+   ============================================================ */
+
+/* ============================================================
+   14. ISPIRAZIONE "MIGLIORI SITI" (Duca Pipe, Oleissimo,
+   Montenellago, With Us): eleganza, ritmo, colore per sezione
+   ============================================================ */
+
+/* ── Coordinazione cromatica per sezione (stile With Us) ──
+   Il JS assegna --section-accent a ogni sezione in base all'id. */
+.materiali-section {
+  --section-accent: var(--color-gold);
+}
+.materiali-section .section-title::after {
+  background: var(--section-accent);
+  width: 72px;
+}
+.materiali-section .Progetti-card:hover,
+.materiali-section .materiale-card:hover {
+  border-color: var(--section-accent);
+}
+.materiali-section .Progetti-card:hover .nome {
+  color: var(--section-accent);
+}
+.materiali-section .Progetti-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--section-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out);
+  z-index: 2;
+}
+.materiali-section .Progetti-card {
+  position: relative;
+}
+.materiali-section .Progetti-card:hover::before {
+  transform: scaleX(1);
+}

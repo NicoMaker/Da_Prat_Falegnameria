@@ -1,0 +1,127 @@
+/* ============================================================
+   Direzione elegante artigianale: spazi, tipografia, divider, card editoriali
+   Estratto da: modern.css (righe originali 832-953)
+   ============================================================ */
+
+/* ============================================================
+   15. ELEGANTE ARTIGIANALE — direzione definitiva
+   (Duca Pipe / Oleissimo: solennità, aria, ritmo misurato)
+   ============================================================ */
+
+/* ── Più aria: il lusso è lo spazio ── */
+.materiali-section {
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+}
+.consulenza-section,
+.gallery-section {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+/* ── Tipografia più leggera e solenne ── */
+.section-title {
+  font-weight: 500;
+  font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+}
+.section-subtitle {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+.hero-title {
+  font-weight: 500;
+}
+.hero-title em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-gold-light);
+}
+.consulenza-title {
+  font-weight: 500;
+}
+
+/* ── Separatore artigianale tra le sezioni ── */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.section-divider span {
+  width: 6px;
+  height: 6px;
+  background: var(--color-gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ── Card editoriali: l'immagine è la protagonista ── */
+.Progetti-card {
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  box-shadow: none;
+}
+.Progetti-card:hover {
+  transform: translateY(-6px);
+  box-shadow: none;
+  background: transparent;
+}
+.Progetti-card .container-immagine {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.5s var(--ease-out);
+}
+.Progetti-card:hover .container-immagine {
+  box-shadow: var(--shadow-lg);
+}
+.Progetti-card .Progetti-card-content {
+  padding: 1.25rem 0.25rem 0.5rem;
+  text-align: left;
+}
+.Progetti-card .nome {
+  font-size: 1.25rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+.Progetti-card .nome::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--section-accent, var(--color-gold));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out);
+}
+.Progetti-card:hover .nome::after {
+  transform: scaleX(1);
+}
+.Progetti-card .descrizione {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+/* la barra colorata in alto non serve più nello stile editoriale */
+.materiali-section .Progetti-card::before {
+  display: none;
+}
+.materiali-section .categoria-badges-wrapper {
+  justify-content: flex-start;
+}

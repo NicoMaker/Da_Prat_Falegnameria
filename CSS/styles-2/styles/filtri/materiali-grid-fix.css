@@ -1,0 +1,33 @@
+/* ============================================================
+   Fix griglia materiali (3 colonne desktop / 1 mobile)
+   Estratto da: styles.css (righe originali 1995-2022)
+   ============================================================ */
+
+/* ============================================================
+   FIX: Materiali grid – 3 colonne su desktop, 1 su mobile
+   ============================================================ */
+
+.materiali-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Assicura che le card all'interno si estendano bene */
+.materiali-grid .materiale-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Mobile: una colonna */
+@media (max-width: 768px) {
+  .materiali-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+  }
+}

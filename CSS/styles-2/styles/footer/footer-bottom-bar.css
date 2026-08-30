@@ -1,0 +1,91 @@
+/* ============================================================
+   Footer: griglia colonne + barra copyright
+   Estratto da: styles.css (righe originali 1908-1994)
+   ============================================================ */
+
+.footer {
+  background: var(--color-dark);
+  color: var(--color-white);
+  /* Ridotto il padding verticale da 2xl a lg per togliere lo spazio in eccesso */
+  padding: var(--spacing-lg) 0;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Ripristina la griglia a 3 colonne del template originale */
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  /* Ridotto il margine inferiore per togliere lo spazio vuoto prima del copyright */
+  margin-bottom: var(--spacing-md);
+  align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+}
+
+.footer-col h3 {
+  font-family: var(--font-heading);
+  color: var(--color-gold);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-md);
+  letter-spacing: 0.05em;
+}
+
+.footer-col p {
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--color-gold);
+}
+
+/* Barra del Copyright in fondo */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: var(--spacing-md);
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+}
+
+.site-header {
+  border-bottom: 7.5px solid var(--color-gold);
+}
+
+.site-footer {
+  border-top: 7.5px solid var(--color-gold);
+}

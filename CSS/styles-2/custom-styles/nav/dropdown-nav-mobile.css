@@ -1,0 +1,40 @@
+/* ============================================================
+   Dropdown nav mobile (Porte)
+   Estratto da: custom-styles.css (righe originali 248-282)
+   ============================================================ */
+
+/* ===== MOBILE DROPDOWN (Porte) ===== */
+.mobile-dropdown-wrapper .mobile-dropdown-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-dropdown-menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  margin-top: 4px;
+}
+
+.mobile-dropdown-menu.open {
+  display: block;
+}
+
+.mobile-nav-sub {
+  padding-left: 2.5rem !important;
+  font-size: 0.9rem !important;
+  opacity: 0.85;
+}
+
+/* I sub-link dei dropdown prodotti NON devono avere stile active dorato
+   (evita che "Tutti" diventi oro quando la sezione prodotti è attiva) */
+.mobile-nav-sub.active {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+.mobile-nav-sub.active::after {
+  display: none !important;
+}

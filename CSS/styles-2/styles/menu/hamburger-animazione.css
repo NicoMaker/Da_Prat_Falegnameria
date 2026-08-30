@@ -1,0 +1,22 @@
+/* ============================================================
+   Animazione hamburger -> X
+   Estratto da: styles.css (righe originali 1597-1614)
+   ============================================================ */
+
+/* ===== Hamburger → × animation ===== */
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+.hamburger-line {
+  transform-origin: center;
+  transition:
+    transform 0.25s ease,
+    opacity 0.2s ease !important;
+}
