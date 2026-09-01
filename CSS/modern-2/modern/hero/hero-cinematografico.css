@@ -88,6 +88,7 @@ html.anim .hero-eyebrow {
   border: 2px solid rgba(255, 255, 255, 0.55);
   border-radius: 14px;
   opacity: 0;
+  display: none;
 }
 .hero-loaded .hero-scroll-hint {
   animation: riseIn 1s var(--ease-out) 1s forwards;
