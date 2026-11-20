@@ -1,0 +1,279 @@
+/* ============================================================
+   mobile-fix.css — Correzioni mobile per le pagine prodotto + footer
+   Caricato per ULTIMO da product-page.css, quindi ha la priorità.
+
+   Problemi risolti:
+   - contenuti tagliati nella card prodotto (overflow:hidden + colonne grid
+     che non si restringevano: servono minmax(0,1fr) e min-width:0)
+   - slider con altezza fissa 400px che tagliava/schiacciava l'immagine
+   - tabella "Specifiche tecniche" e testi lunghi che uscivano dallo schermo
+   - bottoni CTA con testo lungo
+   - footer: box countdown a larghezza fissa 240px, email/indirizzi lunghi,
+     chiusure con testo su una sola riga, mappa
+   ============================================================ */
+
+/* ---------- Base: niente scroll orizzontale ---------- */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ---------- Pagina prodotto ---------- */
+.product-detail-card > *,
+.product-info,
+.product-image-gallery,
+.product-description,
+.product-features,
+.product-feature,
+.product-cta {
+  min-width: 0;
+}
+
+.product-info,
+.product-description,
+.product-feature,
+.product-breadcrumb,
+.bc-current {
+  overflow-wrap: anywhere;
+  word-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+  .product-detail-container {
+    padding: 8px !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .product-breadcrumb {
+    padding: 8px 0;
+    gap: 4px;
+    line-height: 1.4;
+  }
+
+  .bc-link,
+  .bc-current,
+  .bc-sep {
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* la card NON deve tagliare il contenuto */
+  .product-detail-card {
+    grid-template-columns: minmax(0, 1fr) !important;
+    overflow: visible !important;
+    padding: 14px !important;
+    gap: 20px !important;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .product-image-gallery {
+    position: static !important;
+    width: 100%;
+  }
+
+  /* slider: altezza proporzionale invece di 400px fissi */
+  .slider-container {
+    height: auto !important;
+    aspect-ratio: 4 / 3;
+    max-height: 70vh;
+    width: 100%;
+  }
+
+  .slide {
+    height: 100% !important;
+  }
+
+  .slide img,
+  .slider-container .main-product-image {
+    width: 100%;
+    height: 100% !important;
+    object-fit: contain;
+  }
+
+  /* frecce slider piu' piccole e sempre dentro il riquadro */
+  .slider-container .prev,
+  .slider-container .next {
+    width: 34px;
+    height: 34px;
+    font-size: 16px;
+    border-width: 3px;
+  }
+  .slider-container .prev {
+    left: 6px;
+  }
+  .slider-container .next {
+    right: 6px;
+  }
+
+  /* box "Specifiche tecniche" (stili inline nell'HTML) */
+  .product-image-gallery > div[style] {
+    padding: 14px !important;
+    margin-top: 12px !important;
+    box-sizing: border-box;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .product-image-gallery table,
+  .product-detail-card table {
+    width: 100% !important;
+    table-layout: fixed;
+    font-size: 0.8rem !important;
+  }
+
+  .product-image-gallery table td,
+  .product-detail-card table td {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    vertical-align: top;
+    padding: 7px 4px 7px 0 !important;
+  }
+
+  .product-image-gallery table td:first-child,
+  .product-detail-card table td:first-child {
+    width: 42% !important;
+  }
+
+  /* titolo e descrizione completi */
+  .product-title {
+    line-height: 1.15;
+    overflow-wrap: anywhere;
+  }
+
+  .product-description {
+    margin-bottom: 20px;
+  }
+
+  .product-description p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  /* caratteristiche: testo che va a capo, niente taglio */
+  .product-features {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  }
+
+  .product-feature {
+    align-items: flex-start;
+    line-height: 1.3;
+    hyphens: auto;
+  }
+
+  .product-feature:hover {
+    transform: none;
+  }
+
+  /* bottoni CTA: testo lungo va a capo */
+  .product-cta .cta-button {
+    white-space: normal !important;
+    line-height: 1.3;
+    height: auto;
+    min-height: 44px;
+    padding: 12px 14px;
+    box-sizing: border-box;
+  }
+
+  .back-button {
+    white-space: normal;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 380px) {
+  .product-features {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .slider-container {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* ---------- Footer (tutte le pagine, soprattutto mobile) ---------- */
+.site-footer {
+  overflow-x: hidden;
+}
+
+.footer-content,
+.footer-bottom,
+.footer-map {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.footer-grid > .footer-section,
+.footer-section {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.footer-item,
+.footer-item a,
+.footer-text {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 24px !important;
+  }
+
+  .footer-content {
+    padding: 28px 16px 20px !important;
+  }
+
+  .footer-grid > .footer-section {
+    width: 100%;
+  }
+
+  /* box countdown stagione: era larghezza fissa 240px */
+  #countdown-stagione {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* chiusure e festività: testo completo, a capo */
+  .footer-closure-alert {
+    overflow-wrap: anywhere;
+  }
+
+  .ffc-item,
+  .ffc-body {
+    flex-wrap: wrap;
+  }
+
+  .ffc-motivo {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+  }
+
+  .ffc-badge {
+    margin-left: 0;
+  }
+
+  .legenda-orari div {
+    flex-wrap: wrap;
+  }
+
+  #map {
+    height: 240px;
+  }
+
+  .footer-bottom {
+    padding: 14px 16px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+}

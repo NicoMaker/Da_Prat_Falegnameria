@@ -19,9 +19,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Percorso root — risali di un solo livello da Projects/
-  var pathParts = window.location.pathname.split("/").filter(Boolean);
-  if (pathParts[pathParts.length - 1].includes(".")) pathParts.pop();
-  var root = pathParts.length > 0 ? "../" : "./";
+  // (FIX: le pagine sono in Projects/<Categoria>/, quindi servono 2 livelli;
+  //  la root arriva ora da JsonPaths, calcolata in modo robusto)
+  var root =
+    typeof JsonPaths !== "undefined" && JsonPaths.root
+      ? JsonPaths.root
+      : new URL("../../", window.location.href).href;
 
   // Percorso del file JSON prodotti (un solo livello sopra "root", non due)
   var JSON_PATH = root + "JSON/progetti.json";

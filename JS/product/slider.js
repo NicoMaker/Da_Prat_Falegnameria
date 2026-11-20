@@ -92,7 +92,7 @@ function showSlides(n) {
 
   // Mostra la slide corrente e attiva il pallino corrispondente
   slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].classList.add("active");
+  if (dots[slideIndex - 1]) dots[slideIndex - 1].classList.add("active");
 }
 
 // ============================================================================

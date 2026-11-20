@@ -10,6 +10,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const cfg = EntryPoint.getConfig(EntryPoint.get());
 
-  link.href = `../index.html#${cfg.homeAnchor}`;
+  const root =
+    typeof JsonPaths !== "undefined" && JsonPaths.root
+      ? JsonPaths.root
+      : new URL("../../", window.location.href).href;
+  link.href = `${root}index.html#${cfg.homeAnchor}`;
   if (label) label.textContent = cfg.backLabel;
 });

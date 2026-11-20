@@ -48,7 +48,8 @@ document
     ".logo-link, " +
       'a[href="#home"], ' +
       'a[href="index.html#home"], ' +
-      'a[href="../index.html#home"]',
+      'a[href="../index.html#home"], ' +
+      'a[href="../../index.html#home"]',
   )
   .forEach((link) => {
     link.addEventListener("click", function (e) {

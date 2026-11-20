@@ -26,7 +26,11 @@
   });
 
   // Prefisso per i link del menu (su index.html è "", su sub-page è "../")
-  var linkBase = isSubPage ? "../index.html" : "";
+  var siteRoot =
+    typeof JsonPaths !== "undefined" && JsonPaths.root
+      ? JsonPaths.root
+      : new URL("../../", window.location.href).href;
+  var linkBase = isSubPage ? siteRoot + "index.html" : "";
 
   // ── Costruisce le voci ordinate partendo dalle categorie raw ─────────────────
   function buildOrderedCategories(rawCategories) {
@@ -185,7 +189,7 @@
     }
 
     // Fallback fetch diretto
-    var jsonPath = (isSubPage ? "../JSON/" : "JSON/") + "progetti.json";
+    var jsonPath = (isSubPage ? siteRoot + "JSON/" : "JSON/") + "progetti.json";
     fetch(jsonPath)
       .then(function (r) {
         return r.json();
