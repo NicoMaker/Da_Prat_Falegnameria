@@ -12,11 +12,22 @@
      chiusure con testo su una sola riga, mappa
    ============================================================ */
 
-/* ---------- Base: niente scroll orizzontale ---------- */
+/* ---------- Base: niente scroll orizzontale ----------
+   ATTENZIONE: non mettere "overflow-x: hidden" su html E body insieme:
+   body diventerebbe un contenitore di scroll e l'header "position: sticky"
+   smetterebbe di restare fisso. Su html basta "hidden" (si propaga al
+   viewport), su body si usa "clip" che non crea un contenitore di scroll. */
 html,
 body {
   max-width: 100%;
+}
+
+html {
   overflow-x: hidden;
+}
+
+body {
+  overflow-x: clip;
 }
 
 img {
